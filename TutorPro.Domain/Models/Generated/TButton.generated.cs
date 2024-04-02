@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tButtonLink")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TButton> TButtonLink => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TButton>>(_publishedValueFallback, "tButtonLink");
+		public virtual string TButtonLink => this.Value<string>(_publishedValueFallback, "tButtonLink");
 
 		///<summary>
 		/// Title
@@ -64,5 +64,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tButtonTitle")]
 		public virtual string TButtonTitle => this.Value<string>(_publishedValueFallback, "tButtonTitle");
+
+		///<summary>
+		/// Fill
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tFill")]
+		public virtual bool TFill => this.Value<bool>(_publishedValueFallback, "tFill");
 	}
 }

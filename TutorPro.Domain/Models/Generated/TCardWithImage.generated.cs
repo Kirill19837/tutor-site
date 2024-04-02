@@ -69,8 +69,16 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		/// Image position
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tImagePosition")]
-		public virtual bool TImagePosition => this.Value<bool>(_publishedValueFallback, "tImagePosition");
+		public virtual string TImagePosition => this.Value<string>(_publishedValueFallback, "tImagePosition");
+
+		///<summary>
+		/// Shadow
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tShadow")]
+		public virtual bool TShadow => this.Value<bool>(_publishedValueFallback, "tShadow");
 
 		///<summary>
 		/// Title

@@ -64,5 +64,21 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tImage")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tImage");
+
+		///<summary>
+		/// Sub title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tSubTitle")]
+		public virtual string TSubTitle => this.Value<string>(_publishedValueFallback, "tSubTitle");
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tTitle")]
+		public virtual string TTitle => this.Value<string>(_publishedValueFallback, "tTitle");
 	}
 }
