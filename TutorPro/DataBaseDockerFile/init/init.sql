@@ -1,8 +1,8 @@
 IF NOT EXISTS (
     SELECT name
     FROM master.dbo.sysdatabases
-    WHERE name = N'TestUmbraco'
+    WHERE name = N'TutorProUmbraco'
 )
 BEGIN
-    CREATE DATABASE TestUmbraco;
+    CREATE DATABASE TutorProUmbraco;
 END;
