@@ -2,10 +2,5 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = null;
-	var logoIconPath = Model.TLogo == null ? "/media/okxhqfjy/logo-2.svg" : Model.TLogo.Url();
+	Layout = "Main.cshtml";
 }
-<div>
-	<img width="100" height="100" src="@logoIconPath" />
-</div>
-

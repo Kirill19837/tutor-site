@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
+
+<dix>
+	@if (Model.TAboutFoot != null)
+	{
+		var foterContent = Model.TAboutFoot.Content as TAboutFooter;
+
+		<h1>@foterContent.TAboutTitle</h1>
+
+		@Html.Raw(foterContent.TAboutAddress)
+	}
+</dix>

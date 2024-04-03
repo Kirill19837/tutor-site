@@ -66,12 +66,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TButton> TButton => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TButton>>(_publishedValueFallback, "tButton");
 
 		///<summary>
-		/// Card wiht image
+		/// Card with image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tCardWihtImage")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TCardWihtImage => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tCardWihtImage");
+		[ImplementPropertyType("tCardWithImage")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TCardWithImage => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tCardWithImage");
 
 		///<summary>
 		/// Icons

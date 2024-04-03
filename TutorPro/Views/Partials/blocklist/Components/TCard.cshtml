@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TCard)Model.Content;
+}
+<div>
+    <p style="color:@content.TTitleColor">@content.TTitle</p>
+    <div style="color:@content.TTextColor">
+        @Html.Raw(content.TText)
+    </div>
+    
+    @if(content.TButton != null && content.TButton.Count > 0)
+    {
+        @Html.GetBlockListHtml(content.TButton);
+    }   
+</div>
