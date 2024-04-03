@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+ sqlserver:
+    image: ${DOCKER_REGISTRY-}server
+    build:
+      context: .
+      dockerfile: TutorPro/DataBaseDockerFile/DockerFile
+    ports:
+      - "1433:1433"
+ tutorpro:
+    image: ${DOCKER_REGISTRY-}tutorpro
+    build:
+      context: .
+      dockerfile: TutorPro/Dockerfile
+    depends_on:
+       - sqlserver
+    links:
+       - "sqlserver"
+
