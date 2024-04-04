@@ -79,7 +79,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tQuickLinks")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.QuickLinks> TQuickLinks => global::Umbraco.Cms.Web.Common.PublishedModels.TFooterContainer.GetTQuickLinks(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TQuickLinks> TQuickLinks => global::Umbraco.Cms.Web.Common.PublishedModels.TFooterContainer.GetTQuickLinks(this, _publishedValueFallback);
 
 		///<summary>
 		/// Button
