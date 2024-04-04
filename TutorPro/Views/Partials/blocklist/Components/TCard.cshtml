@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TCard)Model.Content;
+}
+<div>
+    @if(content.TTitle != null)
+    {
+        @Html.GetBlockListHtml(content.TTitle)
+    }  
+
+    @if(content.TText != null)
+    {
+        @Html.GetBlockListHtml(content.TText);
+    } 
+    
+    @if(content.TButton != null && content.TButton.Count > 0)
+    {
+        @Html.GetBlockListHtml(content.TButton);
+    }   
+</div>

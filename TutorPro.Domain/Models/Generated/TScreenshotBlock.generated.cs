@@ -18,9 +18,24 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
+	// Mixin Content Type with alias "tScreenshotBlock"
+	/// <summary>Screenshot block</summary>
+	public partial interface ITScreenshotBlock : IPublishedContent
+	{
+		/// <summary>Background image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		global::Umbraco.Cms.Core.Models.MediaWithCrops TBackgroundImage { get; }
+
+		/// <summary>Screenshots</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TScreenshots { get; }
+	}
+
 	/// <summary>Screenshot block</summary>
 	[PublishedModel("tScreenshotBlock")]
-	public partial class TScreenshotBlock : PublishedContentModel
+	public partial class TScreenshotBlock : PublishedContentModel, ITScreenshotBlock
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -55,7 +70,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tBackgroundImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TBackgroundImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tBackgroundImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TBackgroundImage => GetTBackgroundImage(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Background image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static global::Umbraco.Cms.Core.Models.MediaWithCrops GetTBackgroundImage(ITScreenshotBlock that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(publishedValueFallback, "tBackgroundImage");
 
 		///<summary>
 		/// Screenshots
@@ -63,6 +83,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tScreenshots")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.MediaWithCrops> TScreenshots => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.MediaWithCrops>>(_publishedValueFallback, "tScreenshots");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TScreenshots => GetTScreenshots(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Screenshots</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static global::Umbraco.Cms.Core.Models.Blocks.BlockListModel GetTScreenshots(ITScreenshotBlock that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(publishedValueFallback, "tScreenshots");
 	}
 }
