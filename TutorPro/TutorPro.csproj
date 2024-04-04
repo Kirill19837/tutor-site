@@ -42,6 +42,7 @@
     <RazorCompileOnPublish>false</RazorCompileOnPublish>
     <UserSecretsId>dfb42489-0c70-4476-8c31-7a0a97de3249</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
 </Project>
