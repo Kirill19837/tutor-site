@@ -1,0 +1,19 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+	var model = (HomePage)Model.Root();
+}
+<body>
+	<div>
+		@await Html.PartialAsync("tutorPartials/THeader", model)
+	</div>
+
+	@RenderBody()
+
+	<div>
+		@await Html.PartialAsync("tutorPartials/TFooter", model)
+	</div>
+	
+</body>

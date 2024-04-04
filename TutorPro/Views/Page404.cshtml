@@ -1,0 +1,13 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Page404>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Main.cshtml";
+}
+
+<h1>@Model.TErrorCode</h1>
+
+@if(Model.TCard != null)
+{
+	@Html.GetBlockListHtml(Model.TCard)
+}

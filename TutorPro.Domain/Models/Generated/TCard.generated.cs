@@ -86,15 +86,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tText")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString TText => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "tText");
-
-		///<summary>
-		/// Text color
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tTextColor")]
-		public virtual string TTextColor => this.Value<string>(_publishedValueFallback, "tTextColor");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TText => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tText");
 
 		///<summary>
 		/// Title
@@ -102,14 +94,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tTitle")]
-		public virtual string TTitle => this.Value<string>(_publishedValueFallback, "tTitle");
-
-		///<summary>
-		/// Title color
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tTitleColor")]
-		public virtual string TTitleColor => this.Value<string>(_publishedValueFallback, "tTitleColor");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TTitle => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tTitle");
 	}
 }

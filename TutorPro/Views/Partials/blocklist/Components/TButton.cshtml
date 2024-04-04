@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TButton)Model.Content;
+    var buttonClass = content.TFill ? "filled_button" : "button";
+}
+
+<button onclick="window.location.href='@content.TButtonLink'" class=@buttonClass>
+    @content.TButtonTitle
+</button>
