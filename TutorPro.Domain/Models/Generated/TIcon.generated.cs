@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tIconImage")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TIconImage => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tIconImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TIconImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tIconImage");
 
 		///<summary>
 		/// Icon position
@@ -64,13 +64,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tIconPosition")]
 		public virtual string TIconPosition => this.Value<string>(_publishedValueFallback, "tIconPosition");
-
-		///<summary>
-		/// Space between text
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tSpaceBetweenText")]
-		public virtual int TSpaceBetweenText => this.Value<int>(_publishedValueFallback, "tSpaceBetweenText");
 
 		///<summary>
 		/// Text
