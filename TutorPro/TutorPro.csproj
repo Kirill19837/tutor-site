@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TutorPro.Application\TutorPro.Application.csproj" />
     <ProjectReference Include="..\TutorPro.Domain\TutorPro.Domain.csproj" />
   </ItemGroup>
 
