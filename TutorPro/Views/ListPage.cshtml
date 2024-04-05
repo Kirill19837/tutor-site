@@ -1,16 +1,14 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.TBlogGridPage>;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.TListPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = null;
-	ViewBag.CurrentPage = Model;
-	ViewBag.ParentPage = Model.Parent;
 }
 
 <section class="content">
     <div class="container">
         <div class="case-info">
-            @await Html.GetBlockGridHtmlAsync(Model.BlockGrid)
+            @await Html.GetBlockListHtmlAsync(Model.TblockListPage)
         </div>
     </div>
 </section>
