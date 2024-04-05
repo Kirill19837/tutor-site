@@ -71,6 +71,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tText")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString TText => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "tText");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TText => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tText");
+
+		///<summary>
+		/// Width
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tWidth")]
+		public virtual int TWidth => this.Value<int>(_publishedValueFallback, "tWidth");
 	}
 }

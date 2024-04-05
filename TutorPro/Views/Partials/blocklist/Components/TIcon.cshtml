@@ -4,19 +4,30 @@
     var content = (TIcon)Model.Content;
     var iconText = content.TText;
     var iconImage = content.TIconImage;
-    var iconContainerStyle = content.TIconPosition == "Top" ? "align-items: center" : "display:flex";
-    var margin = content.TSpaceBetweenText;
+    var iconContainerStyle = content.TIconPosition == "Top" ? "text-align: center;" : "display: flex; align-items: center;";
+    if (content.TSpaceBetweenText > 0)
+        iconContainerStyle += $" gap:{content.TSpaceBetweenText}px;";
+    if (content.TWidth > 0)
+        iconContainerStyle += $" width:{content.TWidth}px;";
 }
 
 <div style="@iconContainerStyle">
-    @if (content.TIconPosition == "Left")
+    @if (content.TIconPosition == "Left" || content.TIconPosition == "Top")
     {
-        @Html.GetBlockListHtml(iconImage)
-        <p style="margin-right:@margin">@iconText</p>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            @Html.GetBlockListHtml(iconImage)
+        </div>
+        <div style="text-align: center;">
+            @Html.GetBlockListHtml(iconText)
+        </div>
     }
-    else if(content.TIconPosition == "Right")
+    else if (content.TIconPosition == "Right")
     {
-        <p style="margin-left:@margin">@iconText</p>
-        @Html.GetBlockListHtml(iconImage)
+        <div style="text-align: center;">
+            @Html.GetBlockListHtml(iconText)
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            @Html.GetBlockListHtml(iconImage)
+        </div>
     }
 </div>
