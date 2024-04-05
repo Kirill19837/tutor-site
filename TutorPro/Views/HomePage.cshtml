@@ -5,7 +5,7 @@
 	Layout = "Main.cshtml";
 }
 
-@if (Model.TContentPage is TBlogGridPage blockGridPage)
+@if (Model.TContentPage is BlockGridPage blockGridPage)
 {
     <div>
         @await Html.PartialAsync("BlockGridPage", blockGridPage)

@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TBlockImage)Model.Content;
+    var height = content.THeight == 0 ? 400 : content.THeight;
+    var imageHeight = $"{height}px";
+    var width = content.TWidth == 0 ? 400 : content.TWidth;
+    var imageWidth = $"{width}px";
+    var imageUrl = content.TImage?.Url();
+}
+
+<div>
+    <img src="@imageUrl" alt="@content.TImage?.Name"
+        style="max-height:@imageHeight max-width:@imageWidth)" />
+</div>
