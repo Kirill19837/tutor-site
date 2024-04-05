@@ -5,12 +5,13 @@
 }
 
 <div style="display:flex">
-	<div>
-		<img width="100" height="100" src="@logoIconPath" />
+	<img width="100" height="100" src="@logoIconPath" />
 		
+	<div style="display:flex; gap: 10px"
 		@if (Model.THeaderLinks != null && Model.THeaderLinks.Any())
 		{
-			@Html.GetBlockListHtml(Model.THeaderLinks)		
+			@Html.GetBlockListHtml(Model.THeaderLinks)
 		}
 	</div>
+
 </div>

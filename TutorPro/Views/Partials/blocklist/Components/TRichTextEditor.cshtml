@@ -3,6 +3,6 @@
 @{
     var content = (TRichTextEditor)Model.Content;
 }
-<div style="color:@content.TTextColor">
+<div style="color:@content.TTextColor; background-color:@content.TBackgroundColor; border-radius:10px; padding:5px;">
     @Html.Raw(content.TText)
 </div>
