@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TIcon)Model.Content;
+    var iconText = content.TText;
+    var iconImage = content.TIconImage;
+    var iconContainerStyle = content.TIconPosition == "Top" ? "align-items: center" : "display:flex";
+    var margin = content.TSpaceBetweenText;
+}
+
+<div style="@iconContainerStyle">
+    @if (content.TIconPosition == "Left")
+    {
+        @Html.GetBlockListHtml(iconImage)
+        <p style="margin-right:@margin">@iconText</p>
+    }
+    else if(content.TIconPosition == "Right")
+    {
+        <p style="margin-left:@margin">@iconText</p>
+        @Html.GetBlockListHtml(iconImage)
+    }
+</div>

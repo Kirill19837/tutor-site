@@ -18,9 +18,27 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
+	// Mixin Content Type with alias "tBlockImage"
+	/// <summary>Block image</summary>
+	public partial interface ITBlockImage : IPublishedElement
+	{
+		/// <summary>Height</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		int THeight { get; }
+
+		/// <summary>Image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		global::Umbraco.Cms.Core.Models.MediaWithCrops TImage { get; }
+
+		/// <summary>Width</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		int TWidth { get; }
+	}
+
 	/// <summary>Block image</summary>
 	[PublishedModel("tBlockImage")]
-	public partial class TBlockImage : PublishedElementModel
+	public partial class TBlockImage : PublishedElementModel, ITBlockImage
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -54,7 +72,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[ImplementPropertyType("tHeight")]
-		public virtual int THeight => this.Value<int>(_publishedValueFallback, "tHeight");
+		public virtual int THeight => GetTHeight(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Height</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		public static int GetTHeight(ITBlockImage that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "tHeight");
 
 		///<summary>
 		/// Image
@@ -62,13 +84,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TImage => GetTImage(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static global::Umbraco.Cms.Core.Models.MediaWithCrops GetTImage(ITBlockImage that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(publishedValueFallback, "tImage");
 
 		///<summary>
 		/// Width
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[ImplementPropertyType("tWidth")]
-		public virtual int TWidth => this.Value<int>(_publishedValueFallback, "tWidth");
+		public virtual int TWidth => GetTWidth(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Width</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		public static int GetTWidth(ITBlockImage that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "tWidth");
 	}
 }
