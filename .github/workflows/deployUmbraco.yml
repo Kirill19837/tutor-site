@@ -35,7 +35,7 @@ jobs:
           host: ${{ secrets.HOST_DEPLOY_IP }}
           username: ${{ secrets.HOST_ADMIN_USER }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
-          target: /tutorproPl/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
+          target: /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
           script: |
             if [[ $(docker images --filter dangling=true -q ) ]]; then
               docker-compose stop
@@ -48,5 +48,5 @@ jobs:
           username: ${{ secrets.HOST_ADMIN_USER }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
-            cd /tutorproPl/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
+            cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
             docker-compose -f docker-compose.yml build
