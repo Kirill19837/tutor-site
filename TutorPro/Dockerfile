@@ -4,14 +4,14 @@ RUN apt-get update && apt-get install -y sudo && apt-get install -y libgssapi-kr
 RUN apt-get clean
 USER app
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 8090
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["TutorPro/TutorPro.csproj", "TutorPro/"]
 COPY ["TutorPro.Domain/TutorPro.Domain.csproj", "TutorPro.Domain/"]
+COPY ["TutorPro.Application/TutorPro.Application.csproj", "TutorPro.Application/"]
 RUN dotnet restore "./TutorPro/./TutorPro.csproj"
 COPY . .
 WORKDIR "/src/TutorPro"
