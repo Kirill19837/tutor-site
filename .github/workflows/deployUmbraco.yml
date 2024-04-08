@@ -1,0 +1,57 @@
+name: Build and deploy Umbraco app to tutorPro.pl
+
+on:
+  push:
+    branches: ['development', 'task/pipeline']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Checkout code
+       uses: actions/checkout@v2
+
+      - name: Clearing
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY_IP }}
+          username: ${{ secrets.HOST_ADMIN_USER }}
+          key: ${{ secrets.HOST_SSH_KEY}}
+          script: |
+            cd /tutorproPL/${{ secrets.HOST_ADMIN_USER }}
+            rm -rf proj
+
+      - name: Copy project to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY_IP }}
+          username: ${{ secrets.HOST_ADMIN_USER }}
+          key: ${{ secrets..HOST_SSH_KEY }}
+          source: .
+          target: /tutorproPL/${{ secrets.HOST_ADMIN_USER }}/proj
+
+       - name: Dangling images prune
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY_IP }}
+          username: ${{ secrets.HOST_ADMIN_USER }}
+          key: ${{ secrets..HOST_SSH_KEY }}
+          target: /tutorproPL/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
+          script: |
+            if [[ $(docker images --filter dangling=true -q ) ]]; then
+              docker-compose stop
+              docker rmi -f $(docker images --filter dangling=true -q )
+            fi
+
+      - name: Build on
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY_IP }}
+          username: ${{ secrets.HOST_ADMIN_USER }}
+          key: ${{ secrets..HOST_SSH_KEY }}
+          script: |
+            cd /tutorproPL/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
+            docker-compose -f ./docker-compose.yml build
+      
