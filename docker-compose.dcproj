@@ -10,10 +10,10 @@
     <DockerServiceName>tutorpro</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.override.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
+    <None Include="docker-compose-umbraco.override.yml">
+      <DependentUpon>docker-compose-umbraco.yml</DependentUpon>
     </None>
-    <None Include="docker-compose.yml" />
+    <None Include="docker-compose-umbraco.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
 </Project>
