@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   tutorpro:
-    image: ${DOCKER_REGISTRY-}tutorpro
+    image: ${DOCKER_REGISTRY-}tutorproSite
     build:
       context: .
       dockerfile: TutorPro/Dockerfile
