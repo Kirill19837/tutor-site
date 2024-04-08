@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.HOST_ADMIN_USER }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
-            cd /tutorproPL/${{ secrets.HOST_ADMIN_USER }}
+            cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}
             rm -rf proj
       - name: Copy project to EC2
         uses: appleboy/scp-action@master
@@ -28,14 +28,14 @@ jobs:
           username: ${{ secrets.HOST_ADMIN_USER }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
           source: .
-          target: /tutorproPL/${{ secrets.HOST_ADMIN_USER }}/proj
+          target: /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
       - name: Dangling images prune
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DEPLOY_IP }}
           username: ${{ secrets.HOST_ADMIN_USER }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
-          target: /tutorproPL/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
+          target: /tutorproPl/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
           script: |
             if [[ $(docker images --filter dangling=true -q ) ]]; then
               docker-compose stop
@@ -48,5 +48,5 @@ jobs:
           username: ${{ secrets.HOST_ADMIN_USER }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
-            cd /tutorproPL/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
-            docker-compose -f ./docker-compose.yml build
+            cd /tutorproPl/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
+            docker-compose -f docker-compose.yml build
