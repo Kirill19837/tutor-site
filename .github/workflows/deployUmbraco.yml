@@ -26,7 +26,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_DEPLOY_IP }}
           username: ${{ secrets.HOST_ADMIN_USER }}
-          key: ${{ secrets..HOST_SSH_KEY }}
+          key: ${{ secrets.HOST_SSH_KEY }}
           source: .
           target: /tutorproPL/${{ secrets.HOST_ADMIN_USER }}/proj
       - name: Dangling images prune
@@ -46,7 +46,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_DEPLOY_IP }}
           username: ${{ secrets.HOST_ADMIN_USER }}
-          key: ${{ secrets..HOST_SSH_KEY }}
+          key: ${{ secrets.HOST_SSH_KEY }}
           script: |
             cd /tutorproPL/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
             docker-compose -f ./docker-compose.yml build
