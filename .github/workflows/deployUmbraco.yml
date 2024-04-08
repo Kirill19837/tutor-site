@@ -50,3 +50,12 @@ jobs:
           script: |
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
             docker-compose -f docker-compose.yml build
+      - name: Run
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY_IP }}
+          username: ${{ secrets.HOST_ADMIN_USER }}
+          key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
+          script: |
+            cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
+            docker-compose -f docker-compose.yml up
