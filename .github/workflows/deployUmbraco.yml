@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - development
-      - task/pipeline
+      - task/pipeline#2
     workflow_dispatch: null
 jobs:
   build:
@@ -49,7 +49,7 @@ jobs:
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
-            docker-compose -f docker-compose-umbraco.yml build
+            docker-compose -f docker-compose.yml build
       - name: Run
         uses: appleboy/ssh-action@master
         with:
@@ -58,4 +58,4 @@ jobs:
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
-            docker-compose -f docker-compose-umbraco.yml up -d
+            docker-compose -f docker-compose.yml up -d
