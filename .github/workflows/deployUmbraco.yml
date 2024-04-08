@@ -34,7 +34,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_DEPLOY_IP }}
           username: ${{ secrets.HOST_ADMIN_USER }}
-          key: ${{ secrets..HOST_SSH_KEY }}
+          key: ${{ secrets.HOST_SSH_KEY }}
           target: /tutorproPL/${{ secrets.HOST_USERNAME_PRODUCTION }}/proj
           script: |
             if [[ $(docker images --filter dangling=true -q ) ]]; then
