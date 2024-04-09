@@ -25,11 +25,4 @@ RUN dotnet publish "./TutorPro.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-USER root
-RUN mkdir -p /app/umbraco/Data/TEMP
-
-RUN chmod -R 777 /app/umbraco/Data/TEMP
-
-USER app
-
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
