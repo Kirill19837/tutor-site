@@ -24,7 +24,6 @@ RUN dotnet publish "./TutorPro.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-WORKDIR "/src/TutorPro"
-COPY ["/src/TutorPro/umbraco", "umbraco"]
+COPY ["./src/TutorPro/umbraco", "umbraco"]
 
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
