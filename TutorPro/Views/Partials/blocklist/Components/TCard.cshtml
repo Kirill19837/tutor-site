@@ -1,9 +1,18 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
 
 @{
+
     var content = (TCard)Model.Content;
+    var aligment = content.TButtonPosition?.ToLower();
+    var blockContainerStyle = "min-width: 200px;  padding: 30px;";
+    var buttonContainerStyle = $"text-align: {aligment};";
+    if (content.TShadow)
+        blockContainerStyle += " box-shadow: 0 0px 15px rgba(238, 100, 0, 0.16);  border-radius:15px;";
+    if (content.TWidth > 0)
+        blockContainerStyle += $" max-width:{content.TWidth};";
+
 }
-<div>
+<div style="@blockContainerStyle">
     @if(content.TTitle != null)
     {
         @Html.GetBlockListHtml(content.TTitle)
@@ -13,9 +22,11 @@
     {
         @Html.GetBlockListHtml(content.TText);
     } 
-    
-    @if(content.TButton != null && content.TButton.Count > 0)
-    {
-        @Html.GetBlockListHtml(content.TButton);
-    }   
+
+    <div style="@buttonContainerStyle">
+        @if(content.TButton != null && content.TButton.Count > 0)
+        {
+            @Html.GetBlockListHtml(content.TButton);
+        }   
+    </div>
 </div>

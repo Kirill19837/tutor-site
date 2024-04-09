@@ -2,9 +2,8 @@
 
 @{
     var content = (TButton)Model.Content;
-    var buttonClass = content.TFill ? "filled_button" : "button";
 }
 
-<button onclick="window.location.href='@content.TButtonLink'" class=@buttonClass>
+<a href="@content.TButtonLink">
     @content.TButtonTitle
-</button>
+</a>

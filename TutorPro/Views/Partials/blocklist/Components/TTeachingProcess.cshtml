@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TTeachingProcess)Model.Content;
+}
+
+<!-- Section "Teaching process" -->
+<section class="process">
+    <div class="decor-bg green"></div>
+    <div class="decor-bg orange"></div>
+    <div class="container">
+        <div class="process__inner">
+            <h2 class="process__title section-title">@content.TTitle</h2>
+            <div class="process__block">
+                @if(content.TIconItems != null)
+                {
+                    @foreach (var icon in content.TIconItems)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TProcessIcon", icon.Content)
+                    }
+                }           
+            </div>
+        </div>
+    </div>
+</section>

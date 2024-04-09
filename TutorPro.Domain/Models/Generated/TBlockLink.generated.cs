@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tLinkTitle")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TLinkTitle => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tLinkTitle");
+		public virtual string TLinkTitle => this.Value<string>(_publishedValueFallback, "tLinkTitle");
 
 		///<summary>
 		/// Url

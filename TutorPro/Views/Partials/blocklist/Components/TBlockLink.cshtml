@@ -4,7 +4,9 @@
     var content = (TBlockLink)Model.Content;
 }
 
-<a style="text-decoration: none; text-align: center;" href="@content.TUrl?.Url">
-    @Html.GetBlockListHtml(content.TLinkTitle)
-</a>
+<li class="header__menu-item">
+    <a class="header__menu-link" href="@content.TUrl?.Url">
+        @content.TLinkTitle
+    </a>
+</li>
 

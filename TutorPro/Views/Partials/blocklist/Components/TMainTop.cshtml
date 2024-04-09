@@ -1,0 +1,46 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TMainTop)Model.Content;
+    var titleParts = content.TTitle?.Split(" ");
+    var firstTitlePart = "";
+    var secondTitlePart = "";
+
+    if (titleParts != null)
+    {
+        for (int i = 0; i < Math.Min(content.TNumberOfColoredWords, titleParts.Length); i++)
+        {
+            firstTitlePart += $" {titleParts[i]}";
+        }
+
+        if (titleParts.Length > content.TNumberOfColoredWords)
+        {
+            secondTitlePart = " " + string.Join(" ", titleParts.Skip(content.TNumberOfColoredWords));
+        }
+    }
+}
+
+<!-- Section "Main Top" -->
+<section class="main-top">
+    <div class="decor-bg"></div>
+    <div class="container">
+        <!-- <div class="main-top__inner"></div> -->
+        <h1 class="main-top__title"><span>@firstTitlePart</span>@secondTitlePart</h1>
+        <div class="main-top__image">
+            @Html.GetBlockListHtml(content.TImage)
+            <span class="decor-element points-1 parallax-element">
+                <img src="./images/icons/decor-elements/decor-points-white.svg" alt="Decor points">
+            </span>
+            <span class="decor-element points-2 parallax-element">
+                <img src="./images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
+            </span>
+            <span class="decor-element points-3 parallax-element">
+                <img src="./images/icons/decor-elements/decor-points-orange.svg" alt="Decor points">
+            </span>
+        </div>
+        <div class="main-top__info">
+            <p class="main-top__text">@content.TInfoText</p>
+            <a class="main-top__link link link-inverted" href="@content.TButton?.Content.TButtonLink">@content.TButton?.Content.TButtonTitle</a>
+        </div>
+    </div>
+</section>

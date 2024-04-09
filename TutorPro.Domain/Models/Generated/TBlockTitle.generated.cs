@@ -57,6 +57,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool TBold => this.Value<bool>(_publishedValueFallback, "tBold");
 
 		///<summary>
+		/// Center align
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("TCenterAlign")]
+		public virtual bool TcenterAlign => this.Value<bool>(_publishedValueFallback, "TCenterAlign");
+
+		///<summary>
 		/// Color
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
