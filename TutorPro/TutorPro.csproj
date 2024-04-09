@@ -11,9 +11,9 @@
     <None Remove="Models\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="umbraco\Data\Umbraco.sqlite.db">
+    <EmbeddedResource Include="umbraco\Data\Umbraco.sqlite.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
