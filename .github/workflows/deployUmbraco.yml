@@ -58,4 +58,4 @@ jobs:
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
-            docker-compose -f docker-compose.yml up -d
+            docker-compose up
