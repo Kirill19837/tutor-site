@@ -14,7 +14,6 @@ COPY ["TutorPro.Domain/TutorPro.Domain.csproj", "TutorPro.Domain/"]
 COPY ["TutorPro.Application/TutorPro.Application.csproj", "TutorPro.Application/"]
 RUN dotnet restore "./TutorPro/./TutorPro.csproj"
 COPY . .
-RUN ls -laR /src
 WORKDIR "/src/TutorPro"
 RUN dotnet build "./TutorPro.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
@@ -25,6 +24,7 @@ RUN dotnet publish "./TutorPro.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN ls -laR /app
+WORKDIR "/src/TutorPro"
+COPY "/umbraco"
 
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
