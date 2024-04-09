@@ -7,10 +7,10 @@ services:
       context: .
       dockerfile: TutorPro/Dockerfile
     volumes:
-      - ./TutorPro/umbraco/Logs:/app/umbraco/Logs
-      - ./TutorPro/uSync:/app/uSync
-      - ./TutorPro/Views:/app/Views
-      - ./TutorPro/wwwroot/css:/app/wwwroot/css
-      - ./TutorPro/wwwroot/fonts:/app/wwwroot/fonts
-      - ./TutorPro/wwwroot/media:/app/wwwroot/media
-      - ./TutorPro/umbraco/Data:/app/umbraco/Data
+      -  TutorPro/umbraco/Logs:/app/umbraco/Logs
+      -  TutorPro/uSync:/app/uSync
+      -  TutorPro/Views:/app/Views
+      -  TutorPro/wwwroot/css:/app/wwwroot/css
+      -  TutorPro/wwwroot/fonts:/app/wwwroot/fonts
+      -  TutorPro/wwwroot/media:/app/wwwroot/media
+      -  TutorPro/umbraco/Data:/app/umbraco/Data
