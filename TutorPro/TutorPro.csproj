@@ -33,13 +33,7 @@
     <ProjectReference Include="..\TutorPro.Application\TutorPro.Application.csproj" />
     <ProjectReference Include="..\TutorPro.Domain\TutorPro.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\umbraco\MainDom_b6b489ca47d05b9cb98ac233ceb07fbc1c5730d0.lock">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
+	
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
