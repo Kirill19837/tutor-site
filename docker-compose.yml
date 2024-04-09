@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: TutorPro/Dockerfile
+    restart: always
     volumes:
       - ./TutorPro/umbraco/Logs:/app/umbraco/Logs
       - ./TutorPro/uSync:/app/uSync
