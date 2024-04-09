@@ -14,3 +14,4 @@ services:
       - ./TutorPro/wwwroot/fonts:/app/wwwroot/fonts
       - ./TutorPro/wwwroot/media:/app/wwwroot/media
       - ./TutorPro/umbraco/Data:/app/umbraco/Data
+      - ./app/test
