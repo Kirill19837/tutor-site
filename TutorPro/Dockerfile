@@ -25,6 +25,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 WORKDIR "/src/TutorPro"
-COPY "/umbraco"
+COPY "/umbraco" "/umbraco"
 
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
