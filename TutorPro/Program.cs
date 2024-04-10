@@ -1,4 +1,6 @@
 using TutorPro.Configuration;
+using TutorPro.Publishing;
+using Umbraco.Cms.Infrastructure.DependencyInjection;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ builder.CreateUmbracoBuilder()
     .AddWebsite()
     .AddDeliveryApi()
     .AddComposers()
+    .SetServerRegistrar<SchedulingPublisherServerRoleAccessor>()
+    .SetServerRegistrar<SubscriberServerRoleAccessor>()
     .Build();
 
 builder.Services.AddServ();
