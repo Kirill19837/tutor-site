@@ -18,11 +18,14 @@
             secondTitlePart = " " + string.Join(" ", titleParts.Skip(content.TNumberOfColoredWords));
         }
     }
+    var button = content.TButton?.Content;
 }
 
 <!-- Section "Main Top" -->
 <section class="main-top">
-    <div class="decor-bg"></div>
+    <span class="decor-element ring1 parallax-element"></span>
+    <span class="decor-element ring2 parallax-element"></span>
+    <div class="decor-bg radial-bg"></div>
     <div class="container">
         <!-- <div class="main-top__inner"></div> -->
         <h1 class="main-top__title"><span>@firstTitlePart</span>@secondTitlePart</h1>
@@ -40,7 +43,10 @@
         </div>
         <div class="main-top__info">
             <p class="main-top__text">@content.TInfoText</p>
-            <a class="main-top__link link link-inverted" href="@content.TButton?.Content.TButtonLink">@content.TButton?.Content.TButtonTitle</a>
+            @if(button != null)
+            {
+                <a class="main-top__link link link@(button.TFill ? "-main" : "-inverted")" href="@button.TButtonLink">@button.TButtonTitle</a>            
+            }
         </div>
     </div>
 </section>

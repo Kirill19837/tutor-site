@@ -2,9 +2,15 @@
 
 @{
     var logoIconPath = Model.TLogo == null ? "/media/okxhqfjy/logo-2.svg" : Model.TLogo.Url();
+    var button = Model.THeaderButton?.Content;
+    var headerType = "";
+    if (Umbraco.AssignedContentItem.ContentType.Alias != "homePage")
+    {
+        headerType = "light-mode";
+    }
 }
 
-<header class="header" id="header">
+<header class="header @headerType" id="header">
     <div class="container">
         <div class="header__inner">
             <a class="header__logo" href="#">
@@ -27,7 +33,10 @@
                         <a class="languages__link" data-lang="Ua" href="#">Ua</a>
                     </div>
                 </div>
-                <a class="header__link link link-main" href="@Model.THeaderButton?.Content.TButtonLink"><span>@Model.THeaderButton?.Content.TButtonTitle</span></a>
+                @if(button != null)
+                {
+                    <a class="header__link link link@(button.TFill ? "-main" : "-inverted")" href="@button.TButtonLink"><span>@button.TButtonTitle</span></a>
+                }
             </div>
 
             <button class="header__burger" id="header-burger" type="button" aria-label="Burger-menu">

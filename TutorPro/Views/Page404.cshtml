@@ -4,17 +4,7 @@
 @{
 	Layout = "Main.cshtml";
 }
+
 <div>
 	<h1>@Model.TErrorCode</h1>
-
-	@if(Model.TCard != null)
-	{
-		<div style="display: flex; gap: 10px">
-			@Html.GetBlockListHtml(Model.TCard)
-		</div>
-	}
-	@if(Model.TIcons != null)
-	{
-		@Html.GetBlockListHtml(Model.TIcons)
-	}
 </div>

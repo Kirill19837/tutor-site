@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Page 404</summary>
 	[PublishedModel("page404")]
-	public partial class Page404 : PublishedContentModel
+	public partial class Page404 : PublishedContentModel, ISimplePage
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant

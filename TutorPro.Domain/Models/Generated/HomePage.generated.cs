@@ -98,13 +98,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel THeaderLinks => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTHeaderLinks(this, _publishedValueFallback);
 
 		///<summary>
-		/// Is Dark
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tIsDark")]
-		public virtual bool TIsDark => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTIsDark(this, _publishedValueFallback);
-
-		///<summary>
 		/// Language dropdown
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]

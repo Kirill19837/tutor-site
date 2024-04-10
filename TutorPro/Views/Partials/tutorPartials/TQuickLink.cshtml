@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TQuickLinks>
+
+<div class="footer__actions">
+    <span class="footer__title medium-title">@Model.TQuickTitle</span>
+    <ul class="footer__menu">
+        @if(Model.TLinks != null)
+        {
+            @foreach(var link in Model.TLinks)
+            {
+                var newLink = link.Content as TBlockLink;
+                <li class="footer__menu-item">
+                    <a class="footer__menu-link" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
+                </li>
+            }
+        }
+    </ul>
+    @if (Model.TShowLanguagesSwitch)
+    {
+        <div class="footer__languages">
+            <a class="footer__language" href="#">En</a>
+            <a class="footer__language" href="#">Pl</a>
+            <a class="footer__language" href="#">Ua</a>
+        </div>
+    } 
+</div>
