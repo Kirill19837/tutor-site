@@ -1,0 +1,41 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TWhyChooseUs)Model.Content;
+    var card = content.TCard?.Content;
+}
+
+<section class="choose">
+    <div class="choose__top radial-bg">
+        <div class="container">
+            <h2 class="choose__title section-title">Why should you choose us?</h2>
+            <div class="choose__block">    
+                @if(content.TSections != null)
+                {
+                    @foreach(var section in content.TSections)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TChoosePart", section.Content)
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="choose__bottom">
+        <div class="container">
+            <div class="choose__bottom-inner">
+                <img class="choose__bottom-arrow" src="./images/icons/icon-arrow2.svg" alt="Arrow image">
+                <div class="choose__bottom-info">
+                    @if(card != null)
+                    {
+                        <p class="choose__bottom-text">@card.TText</p>
+                        @if(card.TButton != null)
+                        {
+                            <a class="choose__bottom-link link link@(@card.TButton.Content.TFill ? "-main" : "-inverted")" href="@card.TButton.Content.TButtonLink"><span>@card.TButton.Content.TButtonTitle</span></a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

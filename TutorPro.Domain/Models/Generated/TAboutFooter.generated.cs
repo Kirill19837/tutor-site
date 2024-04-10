@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tAboutAddress")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString TAboutAddress => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "tAboutAddress");
+		public virtual string TAboutAddress => this.Value<string>(_publishedValueFallback, "tAboutAddress");
 
 		///<summary>
 		/// Title
@@ -66,11 +66,27 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string TAboutTitle => this.Value<string>(_publishedValueFallback, "tAboutTitle");
 
 		///<summary>
+		/// Adress url: if there is an @ in the link, you need to add another one before it
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tAdressUrl")]
+		public virtual global::Umbraco.Cms.Core.Models.Link TAdressUrl => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "tAdressUrl");
+
+		///<summary>
 		/// Links
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tIinks")]
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TIinks => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tIinks");
+
+		///<summary>
+		/// Short adress
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tShortAdress")]
+		public virtual string TShortAdress => this.Value<string>(_publishedValueFallback, "tShortAdress");
 	}
 }

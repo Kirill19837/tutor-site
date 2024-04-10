@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TActions)Model.Content;
+}
+<!-- Section "Actions (links + request form)" -->
+<section class="actions">
+    <span class="decor-element ring1 parallax-element"></span>
+    <div class="container">
+        <div class="actions__links-wrap">
+            <div class="actions__links">
+                @if(content.TCards != null)
+                {
+                    @foreach (var card in content.TCards)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TActionCard", card.Content)
+                    }
+                }
+            </div>
+        </div>
+        @if (content.TRequestBlock != null)
+        {
+            @await Html.PartialAsync("tutorPartials/TRequestBlock", content.TRequestBlock.FirstOrDefault()?.Content)
+        }
+    </div>   
+</section>

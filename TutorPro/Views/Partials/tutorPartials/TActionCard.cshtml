@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TCard>
+@{
+    var button = Model.TButton?.Content;
+}
+
+<div class="actions__column">
+    <div class="actions__item" tabindex="0">
+        <span class="actions__item-title medium-title">@Model.TTitle</span>
+        <p class="actions__item-text">@Model.TText</p>
+        @if(button != null)
+        {           
+             <a class="actions__item-link link link@(button.TFill ? "-main" : "-inverted")" href="@button.TButtonLink"><span>@button.TButtonTitle</span></a>
+        }
+    </div>
+</div>

@@ -1,17 +1,49 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
 
 @{
-	var logoIconPath = Model.TLogo == null ? "/media/okxhqfjy/logo-2.svg" : Model.TLogo.Url();
+    var logoIconPath = Model.TLogo == null ? "/media/okxhqfjy/logo-2.svg" : Model.TLogo.Url();
+    var button = Model.THeaderButton?.Content;
+    var headerType = "";
+    if (Umbraco.AssignedContentItem.ContentType.Alias != "homePage")
+    {
+        headerType = "light-mode";
+    }
 }
 
-<div style="display:flex">
-	<img width="100" height="100" src="@logoIconPath" />
-		
-	<div style="display:flex; gap: 10px"
-		@if (Model.THeaderLinks != null && Model.THeaderLinks.Any())
-		{
-			@Html.GetBlockListHtml(Model.THeaderLinks)
-		}
-	</div>
+<header class="header @headerType" id="header">
+    <div class="container">
+        <div class="header__inner">
+            <a class="header__logo" href="#">
+                <img src="@logoIconPath" width="199" height="50" alt="Logo">
+            </a>
+            <nav class="header__navigation-wrap" id="header-navigation">
+                <div class="header__navigation" id="header-menu">
+                    <ul class="header__menu">
+                       @Html.GetBlockListHtml(Model.THeaderLinks)
+                    </ul>
+                </div>
+            </nav>
 
-</div>
+            <div class="header__actions" id="header-actions">
+                <div class="header__languages languages">
+                    <button class="languages__current" data-choice="En" type="button">En</button>
+                    <div class="languages__list">
+                        <a class="languages__link active" data-lang="En" href="#">En</a>
+                        <a class="languages__link" data-lang="Pl" href="#">Pl</a>
+                        <a class="languages__link" data-lang="Ua" href="#">Ua</a>
+                    </div>
+                </div>
+                @if(button != null)
+                {
+                    <a class="header__link link link@(button.TFill ? "-main" : "-inverted")" href="@button.TButtonLink"><span>@button.TButtonTitle</span></a>
+                }
+            </div>
+
+            <button class="header__burger" id="header-burger" type="button" aria-label="Burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>

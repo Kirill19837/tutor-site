@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TAboutFooter>
+
+<div class="footer__about">
+    <span class="footer__title medium-title">@Model.TAboutTitle</span>
+    <ul class="footer__menu">
+        @if(Model.TIinks != null)
+        {
+            @foreach (var link in Model.TIinks)
+            {            
+                var newLink = link.Content as TBlockLink;
+                
+                <li class="footer__menu-item">
+                    <a class="footer__menu-link" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
+                </li>
+            }           
+        }             
+    </ul>
+   <p class="footer__text">@Model.TAboutAddress <a href="@Model.TAdressUrl" target="_blank">@Model.TShortAdress</a></p>
+</div>

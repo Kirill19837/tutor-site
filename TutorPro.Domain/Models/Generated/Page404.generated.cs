@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Page 404</summary>
 	[PublishedModel("page404")]
-	public partial class Page404 : PublishedContentModel
+	public partial class Page404 : PublishedContentModel, ISimplePage
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -56,14 +56,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tBackgroundImage")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TBackgroundImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tBackgroundImage");
-
-		///<summary>
-		/// Card
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tCard")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TCard => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tCard");
 
 		///<summary>
 		/// Error code

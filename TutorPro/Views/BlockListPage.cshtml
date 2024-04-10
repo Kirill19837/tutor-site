@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlockListPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = null;
+    ViewBag.CurrentPage = Model;
+    ViewBag.ParentPage = Model.Parent;
+}
+
+<section class="content">
+    @await Html.GetBlockListHtmlAsync(Model.TBlockList)
+</section>

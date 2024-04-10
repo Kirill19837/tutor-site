@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TPrograms)Model.Content;
+}
+
+<!-- Section "Programs" -->
+<section class="programs">
+    <span class="decor-element ring1 parallax-element"></span>
+    <span class="decor-element ring2 parallax-element"></span>
+    <div class="container">
+        <h2 class="programs__title section-title">@content.TTitle</h2>
+        <div class="programs__block">
+            @foreach(var card in content.TCards!)
+            {
+                @await Html.PartialAsync("tutorPartials/TProgramCard", card.Content)
+            }         
+        </div>
+    </div>
+</section>

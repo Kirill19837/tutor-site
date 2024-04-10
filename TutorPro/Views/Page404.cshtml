@@ -5,13 +5,6 @@
 	Layout = "Main.cshtml";
 }
 
-<h1>@Model.TErrorCode</h1>
-
-@if(Model.TCard != null)
-{
-	@Html.GetBlockListHtml(Model.TCard)
-}
-@if(Model.TIcons != null)
-{
-	@Html.GetBlockListHtml(Model.TIcons)
-}
+<div>
+	<h1>@Model.TErrorCode</h1>
+</div>

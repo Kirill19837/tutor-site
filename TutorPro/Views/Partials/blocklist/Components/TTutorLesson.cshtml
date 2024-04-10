@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TTutorLesson)Model.Content;
+}
+
+<section class="tutor-lesson">
+    <div class="container">
+        <h2 class="tutor-lesson__title section-title">@content.TTitle</h2>
+        <p class="tutor-lesson__subtitle section-subtitle">@content.TSubTitle</p>
+        <div class="tutor-lesson__block">
+            <span class="decor-element circle parallax-element">
+                <img src="./images/icons/decor-elements/decor-circle-orange.svg" alt="Decor circle">
+            </span>
+            <span class="decor-element ring parallax-element">
+                <img src="./images/icons/decor-elements/decor-ring-green.svg" alt="Decor ring">
+            </span>
+            @if(content.TItems != null)
+            {
+                @foreach(var item in content.TItems)
+                {
+                    @await Html.PartialAsync("tutorPartials/TLessonImagesWithText", item.Content)
+                }              
+            }
+        </div>
+    </div>
+</section>

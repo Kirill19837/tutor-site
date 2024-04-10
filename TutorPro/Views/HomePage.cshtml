@@ -12,9 +12,9 @@
     </div>
 }
 
-@if (Model.TContentPage is TListPage listPage)
+@if (Model.TContentPage is BlockListPage listPage)
 {
-    <div>
-        @await Html.PartialAsync("ListPage", listPage)
-    </div>
+    <main class="main">
+		@await Html.PartialAsync("BlockListPage", listPage)
+	</main>
 }
