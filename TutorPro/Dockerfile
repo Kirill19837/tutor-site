@@ -3,6 +3,7 @@ USER root
 #For running docker container
 RUN apt-get update && apt-get install -y sudo && apt-get install -y libgssapi-krb5-2
 RUN apt-get clean
+RUN useradd -ms /bin/bash admin
 USER app
 WORKDIR /app
 EXPOSE 32793
@@ -26,9 +27,8 @@ USER root
 FROM base AS final
 WORKDIR /app
 
-RUN chown -R app:admin /app
-# Added to set access rights
-RUN chmod -R 777 /app
-USER app
+RUN chown -R admin:admin /app
+RUN chmod 755 /app
+USER admin
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
