@@ -4,6 +4,15 @@
 @{
 	Layout = null;
 	var model = (HomePage)Model.Root();
+
+	var mainHeader = Model.ContentType.Alias == "homePage";
+	var disableFixedComponents = Model.ContentType.Alias == "page404";
+	var mainHeaderPadding = (mainHeader || disableFixedComponents);
+	@if(Model is BlockListPage page)
+	{
+		mainHeaderPadding = !page.TPadding;
+	}
+	
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -13,24 +22,34 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<title>TutorPro - Main page</title>
+		<title>TutorPro - @Umbraco.AssignedContentItem.Name</title>
 
-		<link rel="stylesheet" href="css/libs.min.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="~/css/libs.min.css">
+		<link rel="stylesheet" href="~/css/style.css">
+		
 	</head>
 	<body>
-		<div class="wrapper" id="top">
-			@await Html.PartialAsync("tutorPartials/THeader", model)
+		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">	
+			@await Html.PartialAsync("tutorPartials/TCookies", model)
 
-			@RenderBody()
+			@if (!disableFixedComponents)
+			{
+				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) {{"isDark", mainHeader}})
+			}
+			
+			<main class="main">
+				@RenderBody()
+			</main>
 
-			<div>
-				@await Html.PartialAsync("tutorPartials/TFooter", model)
-			</div>
+			@if (!disableFixedComponents)
+			{
+				@await Html.PartialAsync("tutorPartials/TFooter", model)		
+			}
 		</div>
 
-		<script src="js/libs.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="~/js/libs.min.js"></script>
+		<script src="~/js/main.js"></script>
+		
 	</body>
 </html>
 

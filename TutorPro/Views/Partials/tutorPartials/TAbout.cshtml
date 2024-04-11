@@ -1,4 +1,7 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TAboutFooter>
+@{
+    var pageName = Umbraco.AssignedContentItem.Name;
+}
 
 <div class="footer__about">
     <span class="footer__title medium-title">@Model.TAboutTitle</span>
@@ -10,7 +13,7 @@
                 var newLink = link.Content as TBlockLink;
                 
                 <li class="footer__menu-item">
-                    <a class="footer__menu-link" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
+                    <a class="footer__menu-link @(pageName == newLink?.TUrl?.Name ? "active" : "")" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
                 </li>
             }           
         }             

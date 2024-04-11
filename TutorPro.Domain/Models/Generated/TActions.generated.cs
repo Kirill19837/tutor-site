@@ -64,5 +64,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tRequestBlock")]
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TRequestBlock => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tRequestBlock");
+
+		///<summary>
+		/// Style
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tStyle")]
+		public virtual string TStyle => this.Value<string>(_publishedValueFallback, "tStyle");
 	}
 }

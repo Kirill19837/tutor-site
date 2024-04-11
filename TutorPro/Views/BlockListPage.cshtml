@@ -2,11 +2,17 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlockListPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-    Layout = null;
+    var rootPage = (HomePage)Model.Root();
+    if (rootPage.TContentPage != null && rootPage.TContentPage.Id == Model.Id)
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "Main.cshtml";
+    }
     ViewBag.CurrentPage = Model;
     ViewBag.ParentPage = Model.Parent;
 }
 
-<section class="content">
-    @await Html.GetBlockListHtmlAsync(Model.TBlockList)
-</section>
+@await Html.GetBlockListHtmlAsync(Model.TBlockList)

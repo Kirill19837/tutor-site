@@ -56,5 +56,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tBlockList")]
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TBlockList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tBlockList");
+
+		///<summary>
+		/// Padding
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tPadding")]
+		public virtual bool TPadding => this.Value<bool>(_publishedValueFallback, "tPadding");
 	}
 }

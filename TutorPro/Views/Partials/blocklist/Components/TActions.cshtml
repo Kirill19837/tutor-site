@@ -4,8 +4,14 @@
     var content = (TActions)Model.Content;
 }
 <!-- Section "Actions (links + request form)" -->
-<section class="actions">
+<section class="actions @(content.TCards?.Count == 1 ? "single-link" : "")">
     <span class="decor-element ring1 parallax-element"></span>
+
+    @if(content.TStyle == "About")
+    {
+        <span class="decor-element ring2 parallax-element"></span>
+    }
+
     <div class="container">
         <div class="actions__links-wrap">
             <div class="actions__links">

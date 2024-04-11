@@ -3,8 +3,44 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "Main.cshtml";
+    var mainPage = (HomePage)Model.Root();
 }
+<div class="page-404">
+    <!-- Header with logo -->
+    <div class="page-404__header radial-bg">
+        <div class="page-404__container">
+            <a class="page-404__header-logo" href="/">
+                <img src="@mainPage.TLogo?.Url()" width="70" height="64" alt="Logo">
+            </a>
+        </div>
+    </div>
 
-<div>
-	<h1>@Model.TErrorCode</h1>
+    <!-- Content block -->
+    <div class="page-404__content radial-bg">
+        <div class="page-404__container">
+            <span class="decor-element points1 parallax-element">
+                <img src="~/images/icons/decor-elements/decor-points-orange-big.svg" alt="Decor points">
+            </span>
+            <span class="decor-element points2 parallax-element">
+                <img src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
+            </span>
+            <span class="decor-element points3 parallax-element">
+                <img src="~/images/icons/decor-elements/decor-points-orange.svg" alt="Decor points">
+            </span>
+            <div class="page-404__content-wrap">
+                <h1 class="page-404__title">@Model.TErrorCode</h1>
+                <p class="page-404__subtitle medium-title section-title">@Model.TErrorName</p>
+                <p class="page-404__text">@Model.TErrorDescription</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with languages -->
+    <div class="page-404__footer radial-bg">
+        <div class="page-404__container">
+            <div class="page-404__languages languages">
+               @await Html.PartialAsync("tutorPartials/TFooterWithLanguages")
+            </div>
+        </div>
+    </div>
 </div>
