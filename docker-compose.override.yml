@@ -3,7 +3,7 @@ version: '3.4'
 services:
   tutorpro-site:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_HTTP_PORTS=8090
     ports:
       - "8090:8090"

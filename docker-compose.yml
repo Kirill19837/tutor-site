@@ -6,6 +6,5 @@ services:
     build:
       context: .
       dockerfile: TutorPro/Dockerfile
-    user: root
     ports:
       - "8090:8090"
