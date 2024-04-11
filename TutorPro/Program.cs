@@ -9,8 +9,6 @@ builder.CreateUmbracoBuilder()
     .AddWebsite()
     .AddDeliveryApi()
     .AddComposers()
-    .SetServerRegistrar<SchedulingPublisherServerRoleAccessor>()
-    .SetServerRegistrar<SubscriberServerRoleAccessor>()
     .Build();
 
 builder.Services.AddServ();
