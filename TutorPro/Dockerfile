@@ -24,5 +24,8 @@ RUN dotnet publish "./TutorPro.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 USER root
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+USER root
+COPY --chown=app:app --from=publish /app/publish .
+USER app
+RUN chmod -R 777 /app
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
