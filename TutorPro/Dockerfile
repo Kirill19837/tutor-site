@@ -26,7 +26,7 @@ USER root
 FROM base AS final
 WORKDIR /app
 
-RUN chown -R app /app
+RUN chown -R app:admin /app
 # Added to set access rights
 RUN chmod -R 777 /app
 USER app
