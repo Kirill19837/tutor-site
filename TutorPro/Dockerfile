@@ -28,7 +28,7 @@ WORKDIR /app
 
 RUN chown -R app /app
 # Added to set access rights
-RUN chmod -R 755 /app
+RUN chmod -R 777 /app
 USER app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
