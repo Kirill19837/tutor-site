@@ -8,4 +8,4 @@ services:
       dockerfile: TutorPro/Dockerfile
     user: root
     ports:
-      - "80:80"
+      - "8090:8090"
