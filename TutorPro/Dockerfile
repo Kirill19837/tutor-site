@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y sudo && apt-get install -y libgssapi-kr
 RUN apt-get clean
 USER app
 WORKDIR /app
-EXPOSE 8090
+EXPOSE 32793
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build
 ARG BUILD_CONFIGURATION=Release
