@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-jammy AS base
 USER root
+#For running docker container
 RUN apt-get update && apt-get install -y sudo && apt-get install -y libgssapi-krb5-2
 RUN apt-get clean
 USER app
@@ -24,6 +25,10 @@ RUN dotnet publish "./TutorPro.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 USER root
 FROM base AS final
 WORKDIR /app
+
 RUN chown -R app /app
+# Added to set access rights
+RUN chmod -R 755 /app
+USER app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "TutorPro.dll"]
