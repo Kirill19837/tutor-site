@@ -6,9 +6,6 @@
             from: "",
             host: "",
             port: "",
-            clientId: "",
-            clientSecret: "",
-            refreshToken: ""
         };
 
         $http.get("/umbraco/api/smtpConfiguration/get").then(function(response) {
