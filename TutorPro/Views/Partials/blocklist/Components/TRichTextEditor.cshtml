@@ -3,12 +3,14 @@
 @{
     var content = (TRichTextEditor)Model.Content;
 }
-<div style="color:@content.TTextColor; background-color:@content.TBackgroundColor; border-radius:10px; padding:5px;">
-    <style>
-        div > p {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-    </style>
-    @Html.Raw(content.TText)
-</div>
+
+<section class="text-content">
+    <div class="container">
+        <div class="text-content__inner" style="color:@content.TTextColor; background-color:@content.TBackgroundColor">
+            <div style="color:@content.TTextColor" >
+                @Html.Raw(content.TText)        
+            </div>
+        </div>
+    </div>
+</section>
+}

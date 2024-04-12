@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TRequestForm>
+
+@if(Model != null)
+{
+    <div class="request-form__row">
+        <div class="request-form__item required">
+            <input class="request-form__input required" type="text" data-name="name" name="request-name" placeholder="@Model.TPlaceholderForName">
+        </div>
+        <div class="request-form__item required">
+            <input class="request-form__input required" type="email" data-name="email" name="request-email" placeholder="@Model.TPlaceholderForEmail">
+        </div>
+        @if (!Model.TPlaceholderForPhone.IsNullOrWhiteSpace())
+        {
+            <div class="request-form__item required">
+                <input class="request-form__input required" type="tel" data-name="phone number" name="request-phone" placeholder="@Model.TPlaceholderForPhone">
+            </div>
+        }     
+    </div>
+    @if (!Model.TPlaceholderForMessage.IsNullOrWhiteSpace())
+    {
+        <textarea class="request-form__message" name="request-message" placeholder="@Model.TPlaceholderForMessage"></textarea>
+    }
+    <div class="request-form__actions @(Model.TCentered ? "centered" : "")">
+        @if (Model.TButton != null)
+        {
+            <button class="request-form__submit link link@(Model.TButton.Content.TFill ? "-main" : "-inverted")" type="submit"><span>@Model.TButton.Content.TButtonTitle</span></button>
+        }
+        <p class="request-form__error"><span></span></p>
+    </div>
+}

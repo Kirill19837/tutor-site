@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TInfoItem>
+
+<div class="about-info__item @(Model.TReverse ? "reverse" : "") ">
+    <span class="decor-element ring-big parallax-element"></span>
+    <div class="about-info__item-content">
+       @Html.Raw(Model.TText)
+    </div>
+    <div class="about-info__item-image">
+        @Html.GetBlockListHtml(Model.TImage)       
+        @if(Model.TStyle == "1")
+        {
+            <span class="decor-element points2 parallax-element">
+                <img src="~/images/icons/decor-elements/decor-points-orange-big.svg" alt="Decor points">
+            </span>
+            <span class="decor-element circle parallax-element">
+                <img src="~/images/icons/decor-elements/decor-circle-orange.svg" alt="Decor circle">
+            </span>
+        }
+        else if(Model.TStyle == "2")
+        {
+            <span class="decor-element points2 parallax-element above">
+                <img src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
+            </span>
+            <span class="decor-element ring parallax-element">
+                <img src="~/images/icons/decor-elements/decor-ring-green.svg" alt="Decor ring">
+            </span>
+        }
+
+    </div>
+</div>

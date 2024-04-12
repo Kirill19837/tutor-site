@@ -4,7 +4,8 @@
     var logoIconPath = Model.TLogo == null ? "/media/okxhqfjy/logo-2.svg" : Model.TLogo.Url();
     var button = Model.THeaderButton?.Content;
     var headerType = "";
-    if (Umbraco.AssignedContentItem.ContentType.Alias != "homePage")
+    var isDark = (ViewData["isDark"] as bool? ?? false);
+    if (!isDark)
     {
         headerType = "light-mode";
     }
@@ -13,13 +14,13 @@
 <header class="header @headerType" id="header">
     <div class="container">
         <div class="header__inner">
-            <a class="header__logo" href="#">
+            <a class="header__logo" href="/">
                 <img src="@logoIconPath" width="199" height="50" alt="Logo">
             </a>
             <nav class="header__navigation-wrap" id="header-navigation">
                 <div class="header__navigation" id="header-menu">
                     <ul class="header__menu">
-                       @Html.GetBlockListHtml(Model.THeaderLinks)
+                        @Html.GetBlockListHtml(Model.THeaderLinks)
                     </ul>
                 </div>
             </nav>
@@ -46,4 +47,5 @@
             </button>
         </div>
     </div>
-</header>
+</header>  
+

@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>HomePage</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, ITFooterContainer, ITHeaderContainer
+	public partial class HomePage : PublishedContentModel, ITCookies, ITFooterContainer, ITHeaderContainer
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -56,6 +56,46 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tContentPage")]
 		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent TContentPage => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "tContentPage");
+
+		///<summary>
+		/// Cookies Bottom Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tBottomText")]
+		public virtual string TBottomText => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTBottomText(this, _publishedValueFallback);
+
+		///<summary>
+		/// Button
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tButton")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TButton> TButton => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTButton(this, _publishedValueFallback);
+
+		///<summary>
+		/// Cookie Icon
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tCookieIcon")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TCookieIcon => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTCookieIcon(this, _publishedValueFallback);
+
+		///<summary>
+		/// Cookies Top Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tTopText")]
+		public virtual string TTopText => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTTopText(this, _publishedValueFallback);
+
+		///<summary>
+		/// Urls
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tUrls")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.Link> TUrls => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTUrls(this, _publishedValueFallback);
 
 		///<summary>
 		/// About footer

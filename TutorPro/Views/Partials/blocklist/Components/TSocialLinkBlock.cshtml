@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TSocialLinkBlock)Model.Content;
+}
+
+<!-- Section with different information + color background -->
+<div class="info-block radial-bg">
+    <div class="info-block__bg radial-bg"></div>
+    <div class="container">
+        <h2 class="info-block__title section-title">@content.TTitle</h2>
+        <ul class="info-block__socials">
+            @if(content.TSocialLinks != null)
+            {
+                @foreach (var link in content.TSocialLinks)
+                {
+                    @if (link.Content is TSocialLink newLink)
+                    {
+                        <li class="info-block__socials-item">
+                            <a class="info-block__socials-link" target="_blank" href="@newLink?.TUrl?.Url)">
+                                <img class="social-icon" width="32" height="36" src="@newLink?.TIcon?.Url()" alt="Icon">
+                            </a>
+                        </li>
+                    }
+                }
+            }                  
+        </ul>
+    </div>
+</div>

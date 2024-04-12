@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TContactCard>
+
+<div class="info-block__contacts-item">
+    <span class="info-block__contacts-title medium-title">@Model.TTitle</span>
+    @if(Model.TUrl != null)
+    {
+        <a class="info-block__contacts-link" href="@Model.TUrl.Url">@Model.TUrl.Name</a>
+    }
+    @if(Model.TText != null)
+    {
+        @Html.Raw(Model.TText)
+    }
+</div>

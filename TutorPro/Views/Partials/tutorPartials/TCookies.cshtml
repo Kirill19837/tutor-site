@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
+
+<!-- Cookies block -->
+<div class="cookies" id="cookies">
+    <div class="cookies__container">
+        <img class="cookies__icon" src="@Model.TCookieIcon?.Url()" alt="Icon">
+        <div class="cookies__info">
+            <p class="cookies__text">@Model.TTopText</p>
+            <p class="cookies__text">@Model.TBottomText</p>
+            <div class="cookies__links">
+                @if(Model.TUrls != null)
+                {
+                    @foreach (var link in @Model.TUrls)
+                    {
+                        <a class="cookies__link" href="@link.Url">@link.Name</a>
+                    }
+                }                        
+            </div>
+        </div>
+        <a class="cookies__accept link link-orange" href="#">Accept</a>
+    </div>
+</div>

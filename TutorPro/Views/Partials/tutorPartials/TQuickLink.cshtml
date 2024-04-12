@@ -1,4 +1,9 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TQuickLinks>
+@{
+    var pageName = Umbraco.AssignedContentItem.Name;
+
+    var language = Umbraco.CultureDictionary.Culture.Name;
+}
 
 <div class="footer__actions">
     <span class="footer__title medium-title">@Model.TQuickTitle</span>
@@ -9,7 +14,7 @@
             {
                 var newLink = link.Content as TBlockLink;
                 <li class="footer__menu-item">
-                    <a class="footer__menu-link" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
+                    <a class="footer__menu-link @(pageName == newLink?.TUrl?.Name  ? "active" : "")" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
                 </li>
             }
         }
