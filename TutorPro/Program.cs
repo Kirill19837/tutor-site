@@ -1,4 +1,5 @@
 using TutorPro.Configuration;
+using TutorPro.Middlewares;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,6 @@ WebApplication app = builder.Build();
 await app.BootUmbracoAsync();
 
 app.UseHttpsRedirection();
-
 app.UseUmbraco()
     .WithMiddleware(u =>
     {
@@ -29,5 +29,7 @@ app.UseUmbraco()
         u.UseBackOfficeEndpoints();
         u.UseWebsiteEndpoints();
     });
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 await app.RunAsync();

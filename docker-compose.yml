@@ -1,8 +1,11 @@
 version: '3.4'
 
 services:
-  tutorpro:
-    image: ${DOCKER_REGISTRY-}tutorpro
+  tutorpro-site:
+    image: ${DOCKER_REGISTRY-}tutorpro-site
     build:
       context: .
       dockerfile: TutorPro/Dockerfile
+    user: app
+    ports:
+      - "8090:8090"
