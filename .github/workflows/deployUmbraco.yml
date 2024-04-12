@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - development
+      - task/pipeline#2
   workflow_dispatch: null
 jobs:
   build:
