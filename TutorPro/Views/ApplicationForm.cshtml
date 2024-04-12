@@ -1,0 +1,47 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ApplicationForm>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Main.cshtml";
+    var mainPage = (HomePage)Model.Root();
+}
+
+<!-- Section "Application form block" -->
+<div class="app-block radial-bg">
+    <span class="decor-element ring parallax-element"></span>
+    <span class="decor-element points parallax-element">
+        <img src="~/images/icons/decor-elements/decor-points-green-big.svg" alt="Decor points">
+    </span>
+    <div class="app-block__inner">
+        <!-- Header with logo -->
+        <div class="app-block__header">
+            <div class="app-block__container">
+                <a class="app-block__header-logo" href="/">
+                    <img src="@mainPage.TLogo?.Url()" width="70" height="64" alt="Logo">
+                </a>
+            </div>
+        </div>
+
+    <div class="app-block__content">
+        <div class="app-block__container">   
+            <div class="app-block__form-wrap radial-bg">
+                <div class="actions__form-wrap">
+                    <p class="actions__form-text">@Model.TTitle</p>
+                    <form class="actions__form request-form" action="@Model.TActionUrl" method="POST">
+                        @await Html.PartialAsync("tutorPartials/TRequestForm", Model.TSendForm?.FirstOrDefault()?.Content)
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Footer with languages -->
+        <div class="app-block__footer">
+            <div class="app-block__container">
+                <div class="app-block__languages languages">
+                    @await Html.PartialAsync("tutorPartials/TFooterWithLanguages")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

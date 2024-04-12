@@ -4,11 +4,14 @@
     var content = (TInnerPageTop)Model.Content;
 }
 <!-- Section "Inner page top" -->
-<section class="inner-top radial-bg">
+<section class="inner-top @(content.TStyle == "About" ? "radial-bg" : "")">
     <div class="container">
         <div class="inner-top__content">
             <h1 class="inner-top__title big-title">@content.TTitle</h1>
-            @Html.Raw(content.TText)
+            @if (!content.TText.IsNullOrWhiteSpace())
+            {
+                @Html.Raw(content.TText)
+            }          
         </div>
     </div>
 </section>

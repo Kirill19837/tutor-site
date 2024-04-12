@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var content = (TRequestFormBlock)Model.Content;
+}
+
+<section class="contacts-request">
+    <span class="decor-element ring1 parallax-element"></span>
+    <span class="decor-element ring2 parallax-element"></span>
+    <div class="container">
+        <div class="contacts-request__inner">
+        <span class="decor-element points1 parallax-element">
+            <img src="~/images/icons/decor-elements/decor-points-green-big.svg" alt="Decor points">
+        </span>
+        <span class="decor-element points2 parallax-element">
+            <img src="~/images/icons/decor-elements/decor-points-orange.svg" alt="Decor points">
+        </span>
+        <div class="actions__form-wrap">              
+            <h2 class="actions__form-title medium-title section-title">@content.TTitle</h2>
+            <p class="actions__form-subtitle">@content.TSubTitle</p>
+            <form class="actions__form request-form two-cols" action="@content.TActionUrl" method="POST">
+                @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestForm?.FirstOrDefault()?.Content)
+            </form>
+            </div>
+        </div>
+    </div>
+</section>

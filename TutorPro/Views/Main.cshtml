@@ -6,7 +6,7 @@
 	var model = (HomePage)Model.Root();
 
 	var mainHeader = Model.ContentType.Alias == "homePage";
-	var disableFixedComponents = Model.ContentType.Alias == "page404";
+	var disableFixedComponents = Model.ContentType.Alias == "page404" || Model.ContentType.Alias == "ApplicationForm";
 	var mainHeaderPadding = (mainHeader || disableFixedComponents);
 	@if(Model is BlockListPage page)
 	{
