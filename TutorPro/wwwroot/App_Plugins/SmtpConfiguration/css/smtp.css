@@ -1,0 +1,65 @@
+﻿.smtp-dashboard {
+    padding: 0 20px;
+    background-color: #f5f5f5;
+}
+
+.smtp-dashboard-header h2{
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    font-weight: 600;
+}
+
+input[type=text], input[type=email], input[type=password], input[type=number] {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    cursor: pointer;
+}
+
+.buttons, .testing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttons button{
+    width: 15%;
+}
+
+.testing p {
+    margin: 0;
+}
+
+.testing {
+    align-items: center;
+}

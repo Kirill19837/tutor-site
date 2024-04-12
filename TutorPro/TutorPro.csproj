@@ -11,7 +11,9 @@
     <None Remove="Models\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="umbraco\Data\Umbraco.sqlite.db" />
+    <EmbeddedResource Include="umbraco\Data\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +33,7 @@
     <ProjectReference Include="..\TutorPro.Application\TutorPro.Application.csproj" />
     <ProjectReference Include="..\TutorPro.Domain\TutorPro.Domain.csproj" />
   </ItemGroup>
-
+	
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
