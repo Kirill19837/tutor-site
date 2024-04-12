@@ -12,7 +12,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: BackUpDataBase
+      - name: Delete previous back up
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY_IP }}
+          username: ${{ secrets.HOST_ADMIN_USER }}
+          key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
+          script: |
+            cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}
+            rm -rf BackUpDataBase
+      - name: Back up dataBase
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DEPLOY_IP }}
@@ -47,7 +56,7 @@ jobs:
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/umbraco/Data
-            cp /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/BackUpDatabase/Umbraco.sqlite.db
+            cp /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/BackUpDataBase/Umbraco.sqlite.db
       - name: Dangling images prune
         uses: appleboy/ssh-action@master
         with:
