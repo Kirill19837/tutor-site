@@ -16,16 +16,6 @@ WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
 
-if (app.Environment.IsDevelopment())
-{
-   
-}
-else
-{
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
-}
-
 app.UseHttpsRedirection();
 app.UseUmbraco()
     .WithMiddleware(u =>
