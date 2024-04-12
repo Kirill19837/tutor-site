@@ -55,8 +55,7 @@ jobs:
           username: ${{ secrets.HOST_ADMIN_USER }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
-            cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/umbraco/Data
-            cp /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/BackUpDataBase/Umbraco.sqlite.db
+            cp /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/BackUpDatabase/Umbraco.sqlite.db /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/umbraco/Data
       - name: Dangling images prune
         uses: appleboy/ssh-action@master
         with:
