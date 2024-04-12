@@ -15,6 +15,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\SmtpConfiguration\css\smtp.css" />
+    <Content Include="App_Plugins\SmtpConfiguration\html\SmtpConfiguration.html" />
+    <Content Include="App_Plugins\SmtpConfiguration\lang\en-US.xml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
@@ -32,6 +37,11 @@
   <ItemGroup>
     <ProjectReference Include="..\TutorPro.Application\TutorPro.Application.csproj" />
     <ProjectReference Include="..\TutorPro.Domain\TutorPro.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App_Plugins\SmtpConfiguration\package.manifest" />
+    <None Include="App_Plugins\SmtpConfiguration\scripts\SmtpConfiguration.controller.js" />
   </ItemGroup>
 	
   <PropertyGroup>

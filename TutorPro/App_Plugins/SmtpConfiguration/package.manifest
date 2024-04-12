@@ -1,0 +1,16 @@
+{
+	"dashboards": [
+		{
+			"alias": "smtpDashboard",
+			"view": "/App_Plugins/SmtpConfiguration/html/SmtpConfiguration.html",
+			"sections": [ "settings" ]
+		}
+	],
+	"javascript": [
+		"~/App_Plugins/SmtpConfiguration/scripts/SmtpConfiguration.controller.js"
+
+	],
+	"css": [
+		"~/App_Plugins/SmtpConfiguration/css/smtp.css"
+	]
+}

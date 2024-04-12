@@ -8,6 +8,8 @@ namespace TutorPro.Application
 {
     public class Constants
     {
+        public const string Appsettings = "appsettings.json";
+        public const string AppsettingsProduction = "appsettings.Production.json";
         public static class EmailTemplates
         {
             public const string BaseFolder = "EmailTemplates";
@@ -20,6 +22,11 @@ namespace TutorPro.Application
             public const string SenderEmail = "[SENDER_EMAIL]";
             public const string SenderPhone = "[SENDER_PHONE]";
         }
-       
+
+        public static class EmailConfig
+        {
+            public const string MainSection = "Umbraco:CMS:Global:Smtp";
+        }
+
     }
 }
