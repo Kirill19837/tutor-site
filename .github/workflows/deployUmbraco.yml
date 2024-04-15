@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - development
+      - task/fixPipelineBackUp
   workflow_dispatch: null
 jobs:
   build:
@@ -30,7 +31,8 @@ jobs:
           script: |
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}
             mkdir BackUpDataBase
-            cp /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/umbraco/Data/Umbraco.sqlite.db /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/BackUpDataBase
+            CONTAINER_ID=$(docker ps -qf "name=tutorpro-site")
+            docker cp $CONTAINER_ID:/app/umbraco/Data/Umbraco.sqlite.db ../tutorproPl/root/BackUpDataBase
       - name: Clearing
         uses: appleboy/ssh-action@master
         with:
