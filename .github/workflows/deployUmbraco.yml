@@ -32,7 +32,7 @@ jobs:
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}
             mkdir -p BackUpDataBase
             CONTAINER_ID=$(docker ps -qf "name=tutorpro-site")
-            docker cp $CONTAINER_ID:/app/umbraco/Data/Umbraco.sqlite.db /tutorproPl/BackUpDataBase/
+            docker cp $CONTAINER_ID:/app/umbraco/Data/Umbraco.sqlite.db /root/BackUpDataBase/
       - name: Clearing
         uses: appleboy/ssh-action@master
         with:
