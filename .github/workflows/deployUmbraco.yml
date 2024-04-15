@@ -29,8 +29,9 @@ jobs:
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
             cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}
-            mkdir BackUpDataBase
-            cp /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/umbraco/Data/Umbraco.sqlite.db /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/BackUpDataBase
+            mkdir -p BackUpDataBase
+            CONTAINER_ID=$(docker ps -qf "name=tutorpro-site")
+            docker cp $CONTAINER_ID:/app/umbraco/Data/Umbraco.sqlite.db BackUpDataBase/Umbraco.sqlite.db
       - name: Clearing
         uses: appleboy/ssh-action@master
         with:
