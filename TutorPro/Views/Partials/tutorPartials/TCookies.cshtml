@@ -8,15 +8,15 @@
             <p class="cookies__text">@Model.TTopText</p>
             <p class="cookies__text">@Model.TBottomText</p>
             <div class="cookies__links">
-                @if(Model.TUrls != null)
+                @if(Model.TCookieUrls != null)
                 {
-                    @foreach (var link in @Model.TUrls)
+                    @foreach (var link in @Model.TCookieUrls)
                     {
                         <a class="cookies__link" href="@link.Url">@link.Name</a>
                     }
                 }                        
             </div>
         </div>
-        <a class="cookies__accept link link-orange" href="#">Accept</a>
+        <a class="cookies__accept link link-orange" href="@Model.TCookieButton?.Content.TLink?.Url">@Model.TCookieButton?.Content.TButtonTitle</a>
     </div>
 </div>

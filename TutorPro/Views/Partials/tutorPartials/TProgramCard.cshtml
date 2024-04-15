@@ -1,9 +1,9 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TCard>
 
 <div class="programs__column">
-    @if (Model.TButton != null && Model.TButton.Content != null && !string.IsNullOrEmpty(Model.TButton.Content.TButtonLink))
+    @if (Model.TButton != null && Model.TButton.Content != null && !string.IsNullOrEmpty(Model.TButton.Content.TLink?.Url))
     {
-        <a class="programs__item" href="@Model.TButton.Content.TButtonLink">
+        <a class="programs__item" href="@Model.TButton.Content.TLink?.Url">
             <div class="programs__item-image">
                 @Html.GetBlockListHtml(Model.TImage)
             </div>

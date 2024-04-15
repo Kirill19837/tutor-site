@@ -32,21 +32,21 @@
         <div class="main-top__image">
             @Html.GetBlockListHtml(content.TImage)
             <span class="decor-element points-1 parallax-element">
-                <img src="./images/icons/decor-elements/decor-points-white.svg" alt="Decor points">
+                <img src="~/images/icons/decor-elements/decor-points-white.svg" alt="Decor points">
             </span>
             <span class="decor-element points-2 parallax-element">
-                <img src="./images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
+                <img src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
             </span>
             <span class="decor-element points-3 parallax-element">
-                <img src="./images/icons/decor-elements/decor-points-orange.svg" alt="Decor points">
+                <img src="~/images/icons/decor-elements/decor-points-orange.svg" alt="Decor points">
             </span>
         </div>
         <div class="main-top__info">
             <p class="main-top__text">@content.TInfoText</p>
             @if(button != null)
             {
-                <a class="main-top__link link link@(button.TFill ? "-main" : "-inverted")" href="@button.TButtonLink">@button.TButtonTitle</a>            
-            }
+                @await Html.PartialAsync("tutorPartials/TButton", button, new ViewDataDictionary(ViewData) { { "class", "main-top__link" }, { "span", false } })
+            }           
         </div>
     </div>
 </section>

@@ -1,9 +1,0 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
-
-@{
-    var content = (TButton)Model.Content;
-}
-
-<a href="@content.TButtonLink">
-    @content.TButtonTitle
-</a>

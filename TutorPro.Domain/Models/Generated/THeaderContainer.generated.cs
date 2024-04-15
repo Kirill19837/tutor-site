@@ -32,11 +32,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		global::Umbraco.Cms.Core.Models.Blocks.BlockListModel THeaderLinks { get; }
 
-		/// <summary>Language dropdown</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TLanguageDropdown { get; }
-
 		/// <summary>Logo</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -99,19 +94,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		public static global::Umbraco.Cms.Core.Models.Blocks.BlockListModel GetTHeaderLinks(ITHeaderContainer that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(publishedValueFallback, "tHeaderLinks");
-
-		///<summary>
-		/// Language dropdown
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tLanguageDropdown")]
-		public virtual string TLanguageDropdown => GetTLanguageDropdown(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Language dropdown</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTLanguageDropdown(ITHeaderContainer that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tLanguageDropdown");
 
 		///<summary>
 		/// Logo
