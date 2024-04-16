@@ -26,12 +26,9 @@
 
 		<link rel="stylesheet" href="~/css/libs.min.css">
 		<link rel="stylesheet" href="~/css/style.css">
-		
 	</head>
 	<body>
-		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">	
-			@await Html.PartialAsync("tutorPartials/TCookies", model)
-
+		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">
 			@if (!disableFixedComponents)
 			{
 				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) {{"isDark", mainHeader}})
@@ -46,10 +43,10 @@
 				@await Html.PartialAsync("tutorPartials/TFooter", model)		
 			}
 		</div>
-
+		@await Html.PartialAsync("tutorPartials/TCookies", model)
+		<script src="~/js/cookie.js"></script>
 		<script src="~/js/libs.min.js"></script>
 		<script src="~/js/main.js"></script>
-		
 	</body>
 </html>
 

@@ -1,4 +1,4 @@
-$(function(){
+$(function () {
 
   // $('.str_static').removeClass('str_static');
 
@@ -89,8 +89,8 @@ $(function(){
 
   // Cookies
   $('.cookies__accept').on('click', function(e){
-    e.preventDefault();
-    $(this).closest('.cookies').fadeOut(300);
+      e.preventDefault();
+      $(this).closest('.cookies').fadeOut(300).addClass('accepted');
   });
 
   // Mask for input[type="tel"]
