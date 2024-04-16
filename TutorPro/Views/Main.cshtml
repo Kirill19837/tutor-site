@@ -4,7 +4,7 @@
 @{
 	Layout = null;
 	var model = (HomePage)Model.Root();
-
+	var logoIconPath = model == null ? "/media/okxhqfjy/logo-2.svg" : model.TLogo.Url();
 	var mainHeader = Model.ContentType.Alias == "homePage";
 	var disableFixedComponents = Model.ContentType.Alias == "page404" || Model.ContentType.Alias == "ApplicationForm";
 	var mainHeaderPadding = (mainHeader || disableFixedComponents);
@@ -24,6 +24,7 @@
 		<meta name="keywords" content="">
 		<title>TutorPro - @Umbraco.AssignedContentItem.Name</title>
 
+		<link rel="icon" href="@logoIconPath" />
 		<link rel="stylesheet" href="~/css/libs.min.css">
 		<link rel="stylesheet" href="~/css/style.css">
 	</head>
