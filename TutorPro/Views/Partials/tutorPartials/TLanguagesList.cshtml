@@ -6,13 +6,19 @@
 }
 @if (isDropDown)
 {
-    <button class="languages__current" data-choice="@Umbraco.CultureDictionary.Culture.Name" type="button">@Umbraco.CultureDictionary.Culture.Name.Split("-")[0].ToUpper()</button>
+    var languageNameMain = Umbraco.CultureDictionary.Culture.Name.Split("-")[0];
+    var modifiedLanguageNameMain = char.ToUpper(languageNameMain[0]) + languageNameMain.Substring(1).ToLower();
+
+    <button class="languages__current" data-choice="@Umbraco.CultureDictionary.Culture.Name" type="button">@modifiedLanguageNameMain</button>
     <div class="languages__list">
         @foreach (var (culture, infos) in currentPage.Cultures)
         {
             var cultureInfo = new CultureInfo(culture);
+            var languageName = cultureInfo.TwoLetterISOLanguageName;
+            var modifiedLanguageName = char.ToUpper(languageName[0]) + languageName.Substring(1).ToLower();
+
             <a class="languages__link @(currentPage.GetCultureFromDomains().ToLower().Equals(culture) ? "active" : "")" href="@currentPage.Url(culture)" data-lang="@culture">
-                @cultureInfo.TwoLetterISOLanguageName.ToUpper()
+                @modifiedLanguageName
             </a>
         }
     </div>
@@ -35,8 +41,11 @@ else
     @foreach (var (culture, infos) in currentPage.Cultures)
     {
         var cultureInfo = new CultureInfo(culture);
+        var languageName = cultureInfo.TwoLetterISOLanguageName;
+        var modifiedLanguageName = char.ToUpper(languageName[0]) + languageName.Substring(1).ToLower();
+
         <a class="footer__language @(currentPage.GetCultureFromDomains().ToLower().Equals(culture) ? "active" : "")" href="@currentPage.Url(culture)" data-lang="@culture">
-            @cultureInfo.TwoLetterISOLanguageName.ToUpper()
+            @modifiedLanguageName
         </a>
     }
 }

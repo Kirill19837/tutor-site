@@ -1,5 +1,5 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TDecorItem>
 
-<span class="decor-element @Model.TType-@Model.TTypeNumber.ToString() parallax-element @(Model.TAbove ? "above" : "")">
+<span class="decor-element @Model.TType@(Model.TTypeNumber == 0 ? "" : "-"+Model.TTypeNumber.ToString()) parallax-element @(Model.TAbove ? "above" : "")">
     <img src="~/images/icons/decor-elements/decor-@Model.TType-@(Model.TStyle).svg" alt="Decor points">
 </span>

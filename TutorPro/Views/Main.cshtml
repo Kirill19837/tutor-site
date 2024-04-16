@@ -12,6 +12,8 @@
 	{
 		mainHeaderPadding = !page.TPadding;
 	}
+
+	var pageName = Umbraco.AssignedContentItem.Name;
 	
 }
 <!DOCTYPE html>
@@ -34,7 +36,7 @@
 
 			@if (!disableFixedComponents)
 			{
-				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) {{"isDark", mainHeader}})
+				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) {{"isDark", mainHeader}, {"pageName", pageName}})
 			}
 			
 			<main class="main">

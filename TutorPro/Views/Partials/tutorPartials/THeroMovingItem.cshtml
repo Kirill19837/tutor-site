@@ -1,0 +1,8 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<THeroMovingItem>
+@{
+    var style = $"style=\"{Model.TStyle}\"";
+}
+
+<div class="school-hero__moving-item" @style">
+    @Html.Raw(Model.TText)
+</div>

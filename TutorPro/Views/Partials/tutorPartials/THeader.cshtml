@@ -20,7 +20,19 @@
             <nav class="header__navigation-wrap" id="header-navigation">
                 <div class="header__navigation" id="header-menu">
                     <ul class="header__menu">
-                        @Html.GetBlockListHtml(Model.THeaderLinks)
+                        @if(Model.THeaderLinks != null)
+                        {
+                            @foreach(var link in Model.THeaderLinks)
+                            {
+                                @if(link.Content is TBlockLink blockLink && blockLink != null)
+                                {
+                                    <li class="header__menu-item">
+                                        <a class="header__menu-link @(ViewData["pageName"]?.ToString() == blockLink.TUrl?.Name  ? "active" : "")" href="@blockLink.TUrl?.Url">@blockLink.TLinkTitle</a>
+                                    </li>
+                                }
+                                
+                            }
+                        }
                     </ul>
                 </div>
             </nav>
