@@ -57,6 +57,27 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool TAbove => this.Value<bool>(_publishedValueFallback, "tAbove");
 
 		///<summary>
+		/// Dash: pull dash between type and number
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tDash")]
+		public virtual bool TDash => this.Value<bool>(_publishedValueFallback, "tDash");
+
+		///<summary>
+		/// Direction
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tDirection")]
+		public virtual bool TDirection => this.Value<bool>(_publishedValueFallback, "tDirection");
+
+		///<summary>
+		/// Speed: Indicate at what speed this element will be moving
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tSpeed")]
+		public virtual int TSpeed => this.Value<int>(_publishedValueFallback, "tSpeed");
+
+		///<summary>
 		/// Style
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]

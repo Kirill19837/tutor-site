@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TInnerForPageTop)Model.Content;
+}
+<section class="@content.TFor-top inner-top">
+    <div class="container">
+        <div class="inner-top__content">
+            <h1 class="inner-top__title big-title">@content.TTitle</h1>
+            @if (!content.TsubTitle.IsNullOrWhiteSpace())
+            {
+                <p class="inner-top__subtitle">@content.TsubTitle</p>
+            }               
+            <div class="inner-top__images">               
+                <div class="inner-top__image image-big">
+                    <img src="@content.TImages?.ElementAt(0).Content.Url()" alt="Top image1">
+                </div>
+                <div class="inner-top__image image-small">
+                    <img src="@content.TImages?.ElementAt(1).Content.Url()" alt="Top image2">
+                </div>
+
+                @if (content.TDecors != null)
+                {
+                    @foreach (var decor in content.TDecors)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

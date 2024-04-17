@@ -10,10 +10,10 @@
         }    
     </div>
     <div class="branches__item-image">
-        @Html.GetBlockListHtml(Model.TMainImage)
-        @if(Model.TDecors != null)
+        @Html.GetBlockGridHtml(Model.TMainImage)
+        @if (Model.TDecors != null)
         {
-            @foreach(var decor in Model.TDecors)
+            @foreach (var decor in Model.TDecors)
             {
                 @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
             }

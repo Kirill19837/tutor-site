@@ -12,9 +12,9 @@
 <div class="hero-block__image radial-bg">
     @if(Model.TImage != null)
     {
-        @Html.GetBlockListHtml(Model.TImage)  
+        @Html.GetBlockGridHtml(Model.TImage)  
     }
-    <span class="decor-element points parallax-element">
+    <span class="decor-element points parallax-element" data-speed="75" data-direction="false">
         <img src="~/images/icons/decor-elements/decor-points-@ViewData["style"]-big.svg" alt="Decor points">
     </span>
 </div>

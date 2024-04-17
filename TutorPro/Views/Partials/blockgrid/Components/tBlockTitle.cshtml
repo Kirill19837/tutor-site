@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TBlockTitle)Model.Content;
+    var fontWeight = content.TBold ? "bold" : "normal";
+    var fontColor = content.TColor == null ? "black" : content.TColor;
+    var fontSize = content.TSize == 0 ? 20 : content.TSize;
+    var textAlign = content.TcenterAlign ? "center" : "left";
+}
+
+<p style="font-size:@content.TSize; font-weight:@fontWeight; color:@fontColor; text-align:@textAlign; margin-top: 0; margin-bottom: 0;">@content.TTitle</p>
+

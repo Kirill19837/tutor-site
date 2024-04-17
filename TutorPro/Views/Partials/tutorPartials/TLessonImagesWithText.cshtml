@@ -22,9 +22,13 @@
             <h3 class="tutor-lesson__item-title">@Model.TTitle</h3>
             <p class="tutor-lesson__item-text"><span>@Model.TText</span></p>
         </div>
-        <span class="decor-element points parallax-element above">
-            <img src="~/images/icons/decor-elements/decor-points-orange-big.svg" alt="Decor points">
-        </span>
+        @if (Model.TDecors != null)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
     </div>
 }
 else
@@ -46,8 +50,12 @@ else
                 </picture>
             </div>
         </div>
-        <span class="decor-element points parallax-element">
-            <img src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
-        </span>
+        @if (Model.TDecors != null)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
     </div>
 }

@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlockGridPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var rootPage = (HomePage)Model.Root();
+    if (rootPage.TContentPage != null && rootPage.TContentPage.Id == Model.Id)
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "Main.cshtml";
+    }
+    ViewBag.CurrentPage = Model;
+    ViewBag.ParentPage = Model.Parent;
+}
+
+@await Html.GetBlockGridHtmlAsync(Model.TBlockGridPage)

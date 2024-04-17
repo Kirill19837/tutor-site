@@ -76,6 +76,22 @@ $(function(){
     $(this).closest('.cookies').fadeOut(300);
   });
 
+  // Parallax elements moving
+  let parallaxElements = document.querySelectorAll('.parallax-element img');
+  for (let i = 0; i < parallaxElements.length; i++){
+    let speed = parallaxElements[i].parentNode.getAttribute('data-speed'),
+        direction = parallaxElements[i].parentNode.getAttribute('data-direction');
+    window.addEventListener('mousemove', function(e) { 
+      let x = e.clientX / window.innerWidth;
+      let y = e.clientY / window.innerHeight; 
+      if(direction == 'true') {
+        parallaxElements[i].style.transform = 'translate(' + x * speed + 'px, ' + y * speed + 'px)';
+      } else {
+          parallaxElements[i].style.transform = 'translate(-' + x * speed + 'px, -' + y * speed + 'px)';
+        }
+    });    
+  }
+
   // Mask for input[type="tel"]
   $('.request-form input[type="tel"]').each(function(){
     $(this).mask("+380-99-999-99-99",{placeholder:"x"},{autoclear: false});

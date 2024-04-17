@@ -1,0 +1,63 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TSchoolHero)Model.Content;
+    var info = content.TInfo?.Content;
+}
+
+<!-- Section "School hero" -->
+<section class="school-hero radial-bg">
+    <span class="decor-element ring1 parallax-element"></span>
+    <span class="decor-element ring2 parallax-element"></span>
+    <div class="decor-bg"></div>
+    <div class="container">
+        @if(info != null)
+        {
+            <div class="school-hero__inner">
+                <h2 class="school-hero__title">@info.TTitle</h2>
+                <div class="school-hero__block hero-block">
+                    <div class="hero-block__info">
+                        @Html.Raw(info.TText)
+                        @if (info.TButton != null)
+                        {
+                            @await Html.PartialAsync("tutorPartials/TButton", info.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "hero-block__link" }, { "span", false } })
+                        }
+                    </div>
+
+                    <div class="hero-block__image">
+                        @Html.GetBlockGridHtml(info.TImage)
+                        @if (content.TDecors != null)
+                        {
+                            @foreach (var decor in content.TDecors)
+                            {
+                                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }     
+    </div>
+
+    <div class="school-hero__moving-block">
+        @if(content.TMovingItems1 != null)
+        {
+            <div class="school-hero__moving moving-element">
+                @foreach(var item in content.TMovingItems1)
+                {
+                    <div class="school-hero__moving-item">@item</div>
+                }
+            </div>
+        }
+
+        @if (content.TMovingItems2 != null)
+        {
+            <div class="school-hero__moving moving-element">
+                @foreach (var item in content.TMovingItems2)
+                {
+                    <div class="school-hero__moving-item">@item</div>
+                }
+            </div>
+        }
+    </div>
+</section>
