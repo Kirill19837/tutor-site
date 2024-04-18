@@ -320,17 +320,28 @@ body {
   pointer-events: none;
 }
 
-.str_wrap {
-  background-color: transparent;
+@-webkit-keyframes runningAnimation {
+  from {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
 }
 
-.str_wrap.str_active {
-  background-color: transparent;
-}
+@keyframes runningAnimation {
+  from {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
 
-.str_move {
-  cursor: pointer;
-  /*default, pointer*/
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
 }
 
 .cookies {
@@ -343,23 +354,18 @@ body {
   background-color: #fdfdfd;
 }
 
-    .cookies.accepted{
-        display: none !important;
-        opacity: 0;
-    }
-
-    .cookies__container {
-        width: 100%;
-        max-width: 915px;
-        padding: 22px 15px 21px;
-        margin: 0 auto;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: start;
-        -ms-flex-align: start;
-        align-items: flex-start;
-    }
+.cookies__container {
+  width: 100%;
+  max-width: 915px;
+  padding: 22px 15px 21px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
 
 .cookies__icon {
   -ms-flex-negative: 0;
@@ -2887,24 +2893,8 @@ body {
   margin-top: 148px;
 }
 
-.school-hero__moving {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: -4px;
+.school-hero__moving-block .animated__row-wrap {
   margin-bottom: 16px;
-}
-
-.school-hero__moving-item {
-  display: inline-block;
-  border-radius: 10px;
-  background-color: #000000;
-  margin: 0 13px;
-  padding: 5px 35px 5px 36px;
-  font-size: 28px;
-  line-height: 1.35;
-  color: #fdfdfd;
-  white-space: nowrap;
 }
 
 .hero-block {
@@ -3428,68 +3418,6 @@ body {
   margin-top: 77px;
 }
 
-.school-info__moving-block .str_move {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: stretch !important;
-  -ms-flex-align: stretch !important;
-  align-items: stretch !important;
-}
-
-.school-info__moving-block .str_wrap {
-  overflow: visible;
-}
-
-.school-info__moving-block .school-hero__moving {
-  margin-bottom: 38px;
-}
-
-.school-info__moving-block .school-hero__moving-item {
-  min-height: 156px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 18px;
-  -webkit-box-shadow: 0 0 25px 9px rgba(201, 85, 0, 0.08);
-  box-shadow: 0 0 25px 9px rgba(201, 85, 0, 0.08);
-  margin: 0 17px 0 17px;
-  padding: 22px 32px 22px;
-  background-color: #fdfdfd;
-  font-size: 18px;
-  line-height: 1.45;
-  color: #622901;
-  text-align: center;
-  vertical-align: top;
-}
-
-.school-info__moving-block .school-hero__moving-item span {
-  display: block;
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 1.15;
-  color: #E95F32 !important;
-}
-
-.school-info__moving-block .school-hero__moving-item p {
-  display: block;
-  min-width: 350px;
-  max-width: 700px;
-  font-weight: 400;
-  white-space: normal;
-}
-
 .school-info__bottom {
   padding: 100px 0 126px;
 }
@@ -3560,6 +3488,88 @@ body {
 
 .school-info__descr-link {
   margin-top: 36px;
+}
+
+.animated__row-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  margin-left: -46px;
+  margin-bottom: 38px;
+}
+
+.animated__row-wrap:hover .animated__row,
+.animated__row-wrap:focus .animated__row {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.animated__row {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation: runningAnimation infinite linear;
+  animation: runningAnimation infinite linear;
+}
+
+.animated__item {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  min-height: 156px;
+  max-width: 630px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 18px;
+  -webkit-box-shadow: 0 0 25px 9px rgba(201, 85, 0, 0.08);
+  box-shadow: 0 0 25px 9px rgba(201, 85, 0, 0.08);
+  margin-right: 33px;
+  padding: 22px 52px 22px;
+  background-color: #fdfdfd;
+  font-size: 18px;
+  line-height: 1.45;
+  color: #622901;
+  text-align: center;
+}
+
+.animated__item span {
+  display: block;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.15;
+  color: #E95F32;
+}
+
+.animated__item p {
+  display: block;
+  font-weight: 400;
+}
+
+.animated__small-item {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #000000;
+  margin-right: 26px;
+  padding: 5px 35px 5px 36px;
+  font-size: 28px;
+  line-height: 1.35;
+  color: #fdfdfd;
+  white-space: nowrap;
 }
 
 .teacher-hero {
@@ -3713,7 +3723,7 @@ body {
   margin-top: 66px;
 }
 
-.teacher-info .school-info__moving-block .school-hero__moving-item {
+.teacher-info .school-info__moving-block .animated__item {
   min-height: 192px;
 }
 
@@ -5289,14 +5299,6 @@ body {
     margin-top: 100px;
   }
 
-  .school-hero__moving {
-    margin-bottom: 10px;
-  }
-
-  .school-hero__moving-item {
-    font-size: 20px;
-  }
-
   .hero-block > .decor-element.points {
     left: auto;
     right: 0;
@@ -5347,24 +5349,29 @@ body {
     width: 650px;
   }
 
-  .school-info__moving-block .school-hero__moving {
+  .school-info__bottom {
+    padding: 75px 0 100px;
+  }
+
+  .animated__row-wrap {
     margin-bottom: 20px;
   }
 
-  .school-info__moving-block .school-hero__moving-item {
+  .animated__item {
     min-height: 130px;
+    max-width: 550px;
     margin: 0 10px;
     padding: 15px 25px;
     -webkit-box-shadow: 0 0 15px 5px rgba(201, 85, 0, 0.1);
     box-shadow: 0 0 15px 5px rgba(201, 85, 0, 0.1);
   }
 
-  .school-info__moving-block .school-hero__moving-item span {
+  .animated__item span {
     font-size: 30px;
   }
 
-  .school-info__bottom {
-    padding: 75px 0 100px;
+  .animated__small-item {
+    font-size: 20px;
   }
 
   .teacher-hero {
@@ -5389,7 +5396,7 @@ body {
     margin-left: auto;
   }
 
-  .teacher-info .school-info__moving-block .school-hero__moving-item {
+  .teacher-info .school-info__moving-block .animated__item {
     min-height: 130px;
   }
 
@@ -6188,14 +6195,8 @@ body {
     margin-top: 60px;
   }
 
-  .school-hero__moving {
-    margin-bottom: 4px;
-  }
-
-  .school-hero__moving-item {
-    margin: 0 4px;
-    border-radius: 4px;
-    font-size: 20px;
+  .school-hero__moving-block .animated__row-wrap {
+    margin-bottom: 8px;
   }
 
   .hero-block > .decor-element.points {
@@ -6397,21 +6398,6 @@ body {
     margin-top: 50px;
   }
 
-  .school-info__moving-block .school-hero__moving-item {
-    min-height: 100px;
-    padding: 8px 25px;
-    border-radius: 8px;
-  }
-
-  .school-info__moving-block .school-hero__moving-item span {
-    font-size: 24px;
-  }
-
-  .school-info__moving-block .school-hero__moving-item p {
-    min-width: 250px;
-    max-width: 600px;
-  }
-
   .school-info__bottom {
     padding-bottom: 75px;
   }
@@ -6438,6 +6424,23 @@ body {
 
   .school-info__descr-link {
     margin-top: 20px;
+  }
+
+  .animated__item {
+    min-height: 100px;
+    max-width: 450px;
+    padding: 8px 25px;
+    border-radius: 8px;
+  }
+
+  .animated__item span {
+    font-size: 24px;
+  }
+
+  .animated__small-item {
+    margin-right: 8px;
+    border-radius: 4px;
+    font-size: 20px;
   }
 
   .teacher-hero {
@@ -6476,7 +6479,7 @@ body {
     margin-top: 50px;
   }
 
-  .teacher-info .school-info__moving-block .school-hero__moving-item {
+  .teacher-info .school-info__moving-block .animated__item {
     min-height: 100px;
   }
 
@@ -6958,10 +6961,6 @@ body {
     transform: rotateY(180deg) rotate(22deg) translate(-10px, 30px);
   }
 
-  .school-hero__moving-item {
-    font-size: 16px;
-  }
-
   .hero-block {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -7003,8 +7002,12 @@ body {
     width: 500px;
   }
 
-  .school-info__moving-block .school-hero__moving-item span {
+  .animated__item span {
     font-size: 18px;
+  }
+
+  .animated__small-item {
+    font-size: 16px;
   }
 
   .teacher-hero > .decor-element.ring2 {
@@ -8264,10 +8267,8 @@ body {
     margin-top: 42px;
   }
 
-  .school-hero__moving-item {
-    padding: 6px 16px 6px;
-    font-size: 14px;
-    line-height: 1.45;
+  .school-hero__moving-block .animated__row-wrap {
+    margin-bottom: 4px;
   }
 
   .hero-block > .decor-element.points {
@@ -8583,21 +8584,7 @@ body {
     margin-top: 39px;
   }
 
-  .school-info__moving-block .school-hero__moving {
-    margin-bottom: 10px;
-  }
-
-  .school-info__moving-block .school-hero__moving-item {
-    margin: 0 5px;
-    min-height: 36px;
-  }
-
-  .school-info__moving-block .school-hero__moving-item span {
-    font-weight: 400;
-    font-size: 14px;
-  }
-
-  .school-info__moving-block .school-hero__moving-item p {
+  .school-info__moving-block .animated__item p {
     display: none;
   }
 
@@ -8638,6 +8625,27 @@ body {
   .school-info__descr-text {
     max-width: 100%;
     padding-right: 30px;
+  }
+
+  .animated__row-wrap {
+    margin-bottom: 10px;
+  }
+
+  .animated__item {
+    margin: 0 5px;
+    min-height: 36px;
+    max-width: 280px;
+  }
+
+  .animated__item span {
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .animated__small-item {
+    padding: 6px 16px 6px;
+    font-size: 14px;
+    line-height: 1.45;
   }
 
   .teacher-hero {
@@ -8734,13 +8742,13 @@ body {
     margin-top: 30px;
   }
 
-  .teacher-info .school-info__moving-block .school-hero__moving-item {
+  .teacher-info .school-info__moving-block .animated__item {
     min-height: 36px;
   }
 
-  .teacher-info .school-info__moving-block .school-hero__moving-item p {
+  .teacher-info .school-info__moving-block .animated__item p {
     display: block;
-    font-size: 6px;
+    font-size: 12px;
   }
 
   .teacher-info .school-info__bottom {

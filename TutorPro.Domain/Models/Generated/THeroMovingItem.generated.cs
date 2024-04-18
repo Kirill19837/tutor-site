@@ -50,12 +50,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Style
+		/// Size
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tStyle")]
-		public virtual string TStyle => this.Value<string>(_publishedValueFallback, "tStyle");
+		[ImplementPropertyType("tSize")]
+		public virtual string TSize => this.Value<string>(_publishedValueFallback, "tSize");
 
 		///<summary>
 		/// Text

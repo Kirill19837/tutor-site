@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TAboutHomework)Model.Content;
+    var icon = content.TIcon?.FirstOrDefault()?.Content as TIcon;
+}
+
+<!-- Section about homework -->
+<section class="homework radial-bg">
+    <div class="container">
+        <h2 class="homework__title section-title">@content.TTitle</h2>
+        <div class="homework__notice">
+            @if(icon != null)
+            {
+                <img class="homework__notice-icon" src="@icon.TIconImage?.Url()" alt="Notice icon">
+                <p class="homework__notice-text">
+                    <span>@icon.TText</span>
+                </p>
+            }          
+        </div>
+        @if(content.TBranchItems != null)
+        {
+            @foreach(var branchItem in content.TBranchItems)
+            {
+                @await Html.PartialAsync("tutorPartials/TBrancheItem", branchItem.Content, new ViewDataDictionary(ViewData) { { "bracnheClass", "homework__branch-item" } })
+            }
+        }
+
+        @await Html.PartialAsync("tutorPartials/THomeworkItem", content.THomeworkItem?.FirstOrDefault()?.Content)
+
+        <h2 class="homework__third-title section-title">@content.TBottomTitle</h2>
+
+        @await Html.PartialAsync("tutorPartials/TDescriptionBlock", content.TBottomDescription?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "descriptionClass", "homework__description" } })
+
+    </div>
+</section>

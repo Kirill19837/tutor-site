@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TDescriptionCard>
+
+<div class="@ViewData["descriptionClass"] description-block @(Model.TReverse ? "reverse" : "" )">
+    @if (Model.TDecors != null && Model.TDecorsOnTop)
+    {
+        @foreach (var decor in Model.TDecors)
+        {
+            @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+        }
+        
+    }
+    <div class="description-block__info">
+        @if (!Model.TTitile.IsNullOrWhiteSpace())
+        {
+            <span class="description-block__title">@Model.TTitile</span>
+        }       
+        @Html.Raw(Model.TText)
+        @if(Model.TButton != null && !Model.TButton.Content.TButtonTitle.IsNullOrWhiteSpace())
+        {
+            @await Html.PartialAsync("tutorPartials/TButton", Model.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "description-block__link" }, { "span", true } })
+        }
+    </div>
+    <div class="description-block__image">
+        @if(Model.TImage != null)
+        {
+            <img src="@Model.TImage?.FirstOrDefault()?.Url()" alt="Description image">          
+        }
+        @if (Model.TDecors != null && !Model.TDecorsOnTop)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+    </div>
+</div>

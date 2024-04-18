@@ -39,25 +39,26 @@
         }     
     </div>
 
-    <div class="school-hero__moving-block">
-        @if(content.TMovingItems1 != null)
+    <div class="school-hero__moving-block animated">
+        @if (content.TMovingItems != null)
         {
-            <div class="school-hero__moving moving-element">
-                @foreach(var item in content.TMovingItems1)
+            @foreach (var block in content.TMovingItems)
+            {
+                @if (block.Content is THeroMoving movingBlock && movingBlock.TItems != null)
                 {
-                    <div class="school-hero__moving-item">@item</div>
+                    <div class="animated__row-wrap" data-duration="@(movingBlock.TDuration)s" data-left-offset="@(movingBlock.TLeftOffset)px" tabindex="0">
+                        @for (int i = 0; i < 2; i++)
+                        {
+                            <div class="animated__row">
+                                @foreach (var item in movingBlock.TItems)
+                                {
+                                    @await Html.PartialAsync("tutorPartials/THeroMovingItem", item.Content)
+                                }
+                            </div>
+                        }
+                    </div>
                 }
-            </div>
-        }
-
-        @if (content.TMovingItems2 != null)
-        {
-            <div class="school-hero__moving moving-element">
-                @foreach (var item in content.TMovingItems2)
-                {
-                    <div class="school-hero__moving-item">@item</div>
-                }
-            </div>
+            }
         }
     </div>
 </section>

@@ -1,0 +1,45 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TSteps)Model.Content;
+}
+<!-- Section "Steps" -->
+<section class="steps radial-bg">
+    <div class="container">
+        @if (content.TTopDescription != null)
+        {
+            <div class="steps__description1">
+                <span class="steps__description1-arrow">
+                    <img src="~/images/icons/icon-arrow3.svg" alt="Arrow icon">
+                </span>
+            
+                @await Html.PartialAsync("tutorPartials/TDescriptionBlock", content.TTopDescription.FirstOrDefault()?.Content)
+                            
+            </div>
+        }
+
+        <h2 class="steps__main-title section-title">Here's a glimpse of how the magic unfolds:</h2>
+        <div class="steps__block">
+            <span class="steps__block-arrow">
+                @if (content.TArrow)
+                {
+                    <img src="~/images/icons/icon-arrow3.svg" alt="Arrow icon">
+                }                
+            </span>
+            @if(content.TStepItems != null)
+            {
+                @for (int i = 0; i < content.TStepItems.Count; i++)
+                {                                  
+                    @await Html.PartialAsync("tutorPartials/TStepItem", content.TStepItems[i].Content , new ViewDataDictionary(ViewData) {{"index", i+1}})
+                }
+            }          
+        </div>
+
+        @if(content.TBottomDescription != null)
+        {
+            <div class="steps__description2">
+                @await Html.PartialAsync("tutorPartials/TDescriptionBlock", content.TBottomDescription.FirstOrDefault()?.Content)
+            </div>
+        }      
+    </div>
+</section>

@@ -1,22 +1,4 @@
-$(function () {
-
-  // $('.str_static').removeClass('str_static');
-
-  if($('.moving-element').length != 0) {
-    $('.moving-element').each(function(){
-      $(this).liMarquee({
-        direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
-        loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
-        scrolldelay: 0, //Величина задержки в миллисекундах между движениями
-        scrollamount: 50, //Скорость движения контента (px/sec)
-        circular: true, //Если "true" - строка непрерывная 
-        drag: true, //Если "true" - включено перетаскивание строки
-        runshort: false, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
-        hoverstop: true, //true - строка останавливается при наведении курсора мыши, false - строка не останавливается
-        inverthover: false, //false - стандартное поведение. Если "true" - строка начинает движение только при наведении курсора
-      });
-    });
-  }
+$(function(){  
 
   // Burger-menu
 	$('#header-burger').on('click', function(e) {
@@ -90,8 +72,8 @@ $(function () {
 
   // Cookies
   $('.cookies__accept').on('click', function(e){
-      e.preventDefault();
-      $(this).closest('.cookies').fadeOut(300).addClass('accepted');
+    e.preventDefault();
+    $(this).closest('.cookies').fadeOut(300);
   });
 
   // Parallax elements moving
@@ -208,34 +190,48 @@ $(function () {
       }    
   });
 
+  // // Moving elements
+  // if($('.moving-element').length != 0) {
+  //   $('.moving-element').each(function(){
+  //     $(this).liMarquee({
+  //       direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
+  //       loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
+  //       scrolldelay: 0, //Величина задержки в миллисекундах между движениями
+  //       scrollamount: 40, //Скорость движения контента (px/sec)
+  //       // scrollamount: 50, //Скорость движения контента (px/sec)
+  //       circular: true, //Если "true" - строка непрерывная 
+  //       drag: true, //Если "true" - включено перетаскивание строки
+  //       runshort: false, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
+  //       hoverstop: true, //true - строка останавливается при наведении курсора мыши, false - строка не останавливается
+  //       inverthover: false, //false - стандартное поведение. Если "true" - строка начинает движение только при наведении курсора
+  //     });
+  //   });
+  // }
+ 
+  // let movingElementsHeight = function(){};
+  // $('.str_wrap').each(function(){
+  //   let height = $(this).height(),
+  //       items = $(this).find('.school-hero__moving-item');
+    
+  //   items.each(function(){
+  //     $(this).css({'height': Math.round(height) + 'px'});
+  //   });
+  // });
+
+  // movingElementsHeight();
+
   // Moving elements
-  if($('.moving-element').length != 0) {
-    $('.moving-element').each(function(){
-      $(this).liMarquee({
-        direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
-        loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
-        scrolldelay: 0, //Величина задержки в миллисекундах между движениями
-        scrollamount: 40, //Скорость движения контента (px/sec)
-        // scrollamount: 50, //Скорость движения контента (px/sec)
-        circular: true, //Если "true" - строка непрерывная 
-        drag: true, //Если "true" - включено перетаскивание строки
-        runshort: false, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
-        hoverstop: true, //true - строка останавливается при наведении курсора мыши, false - строка не останавливается
-        inverthover: false, //false - стандартное поведение. Если "true" - строка начинает движение только при наведении курсора
+  if($('.animated').length != 0) {
+    $('.animated__row-wrap').each(function(){
+      let duration = $(this).data('duration'),
+          leftOffset = $(this).data('left-offset'),
+          animatedRows = $(this).find('.animated__row');
+
+      $(this).css({'margin-left': leftOffset});
+      animatedRows.each(function(){
+        $(this).css({'animation-duration': duration});
       });
     });
   }
- 
-  let movingElementsHeight = function(){};
-  $('.str_wrap').each(function(){
-    let height = $(this).height(),
-        items = $(this).find('.school-hero__moving-item');
-    
-    items.each(function(){
-      $(this).css({'height': Math.round(height) + 'px'});
-    });
-  });
-
-  movingElementsHeight();
 
 });
