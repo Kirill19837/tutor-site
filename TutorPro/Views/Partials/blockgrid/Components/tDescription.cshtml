@@ -1,0 +1,72 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var content = (TDescription)Model.Content;
+    var mainDesc = content.TMainDescription?.Content;
+    var bottomDesc = content.TBottomDescription?.Content;
+}
+
+<section class="description">
+    @if(mainDesc != null)
+    {
+        <div class="description__top">
+            <div class="container">
+                @if (content.TArrow)
+                {
+                    <span class="description__top-arrow">
+                        <img src="~/images/icons/icon-arrow4.svg" alt="Arrow icon">
+                    </span>
+                }
+                <div class="description__top-block description-block @(content.TRevert ? "reverse" : "")">
+                    @if (content.TDecorOnTop && content.TDecors != null)
+                    {
+                        @foreach (var decor in content.TDecors)
+                        {
+                            @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                        }
+                    }
+                    <div class="description-block__info">
+                        <span class="description-block__title">@mainDesc.TTitle</span>
+                        <p class="description-block__text">@mainDesc.TText</p>
+                        @if(mainDesc.TButton != null)
+                        {
+                            @await Html.PartialAsync("tutorPartials/TButton", mainDesc.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "description-block__link" }, { "span", true } })                  
+                        }
+                    </div>
+                    <div class="description-block__image">
+                        @Html.GetBlockGridHtml(mainDesc.TImage)
+                    </div>
+                </div>
+            </div>
+        </div>
+    } 
+
+    @if(bottomDesc != null)
+    {
+        <div class="description__bottom info-block radial-bg">
+            <div class="info-block__bg radial-bg"></div>
+            <div class="container">
+                <h2 class="info-block__title section-title">@bottomDesc.TTitle</h2>
+                @Html.Raw(bottomDesc.TText)
+                @if(bottomDesc.TButton != null)
+                {
+                    @await Html.PartialAsync("tutorPartials/TButton", bottomDesc.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "info-block__main-link" }, { "span", true } })                    
+                }
+            </div>
+            @if (bottomDesc.TImage != null || !content.TDecorOnTop)
+            {
+                <div class="description-block__image big-image">
+
+                    @Html.GetBlockGridHtml(bottomDesc.TImage)
+
+                    @if (content.TDecors != null && !content.TDecorOnTop)
+                    {
+                        @foreach (var decor in content.TDecors)
+                        {
+                            @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                        }
+                    }                                    
+                </div>
+            }
+        </div>
+    } 
+</section>

@@ -50,12 +50,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// Decors
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tDecors")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TDecors => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tDecors");
+
+		///<summary>
 		/// Image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tImage")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TImage => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tImage");
 
 		///<summary>
 		/// Reverse
@@ -63,14 +71,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[ImplementPropertyType("tReverse")]
 		public virtual bool TReverse => this.Value<bool>(_publishedValueFallback, "tReverse");
-
-		///<summary>
-		/// Style
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tStyle")]
-		public virtual string TStyle => this.Value<string>(_publishedValueFallback, "tStyle");
 
 		///<summary>
 		/// Text

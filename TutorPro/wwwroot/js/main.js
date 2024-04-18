@@ -79,6 +79,7 @@ $(function () {
   removeMenuElements();
   $(window).on('resize', function(){
 		removeMenuElements();
+    movingElementsHeight();
 
     if($(window).width() > 992) {
       $('#header-burger').removeClass('active');
@@ -92,6 +93,22 @@ $(function () {
       e.preventDefault();
       $(this).closest('.cookies').fadeOut(300).addClass('accepted');
   });
+
+  // Parallax elements moving
+  let parallaxElements = document.querySelectorAll('.parallax-element img');
+  for (let i = 0; i < parallaxElements.length; i++){
+    let speed = parallaxElements[i].parentNode.getAttribute('data-speed'),
+        direction = parallaxElements[i].parentNode.getAttribute('data-direction');
+    window.addEventListener('mousemove', function(e) { 
+      let x = e.clientX / window.innerWidth;
+      let y = e.clientY / window.innerHeight; 
+      if(direction == 'true') {
+        parallaxElements[i].style.transform = 'translate(' + x * speed + 'px, ' + y * speed + 'px)';
+      } else {
+          parallaxElements[i].style.transform = 'translate(-' + x * speed + 'px, -' + y * speed + 'px)';
+        }
+    });    
+  }
 
   // Mask for input[type="tel"]
   $('.request-form input[type="tel"]').each(function(){
@@ -191,20 +208,34 @@ $(function () {
       }    
   });
 
-  // if($('.moving-element').length != 0) {
-  //   $('.moving-element').each(function(){
-  //     $(this).liMarquee({
-  //       direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
-  //       loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
-  //       scrolldelay: 0, //Величина задержки в миллисекундах между движениями
-  //       scrollamount: 50, //Скорость движения контента (px/sec)
-  //       circular: true, //Если "true" - строка непрерывная 
-  //       drag: true, //Если "true" - включено перетаскивание строки
-  //       runshort: false, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
-  //       hoverstop: true, //true - строка останавливается при наведении курсора мыши, false - строка не останавливается
-  //       inverthover: false, //false - стандартное поведение. Если "true" - строка начинает движение только при наведении курсора
-  //     });
-  //   });
-  // }
+  // Moving elements
+  if($('.moving-element').length != 0) {
+    $('.moving-element').each(function(){
+      $(this).liMarquee({
+        direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
+        loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
+        scrolldelay: 0, //Величина задержки в миллисекундах между движениями
+        scrollamount: 40, //Скорость движения контента (px/sec)
+        // scrollamount: 50, //Скорость движения контента (px/sec)
+        circular: true, //Если "true" - строка непрерывная 
+        drag: true, //Если "true" - включено перетаскивание строки
+        runshort: false, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
+        hoverstop: true, //true - строка останавливается при наведении курсора мыши, false - строка не останавливается
+        inverthover: false, //false - стандартное поведение. Если "true" - строка начинает движение только при наведении курсора
+      });
+    });
+  }
+ 
+  let movingElementsHeight = function(){};
+  $('.str_wrap').each(function(){
+    let height = $(this).height(),
+        items = $(this).find('.school-hero__moving-item');
+    
+    items.each(function(){
+      $(this).css({'height': Math.round(height) + 'px'});
+    });
+  });
+
+  movingElementsHeight();
 
 });

@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TDecorItem>
+
+
+<span class="decor-element @Model.TType@(Model.TTypeNumber == 0 ? "" : (Model.TDash ? "-" : "")+Model.TTypeNumber.ToString()) parallax-element @(Model.TAbove ? "above" : "")" data-speed="@Model.TSpeed" data-direction="@Model.TDirection.ToString().ToLower()">
+    <img src="~/images/icons/decor-elements/decor-@Model.TType-@(Model.TStyle).svg" alt="Decor points">
+</span>
+

@@ -4,9 +4,9 @@
 	Layout = "Main.cshtml";
 }
 
-@if (Model.TContentPage is BlockListPage listPage)
+@if (Model.TContentPage is BlockGridPage listPage)
 {
 
-	@await Html.PartialAsync("BlockListPage", listPage)
+	@await Html.PartialAsync("BlockGridPage", listPage)
 
 }
