@@ -17,6 +17,38 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Plugins\BlockGrid\Button\tButton.html" />
+    <Content Include="wwwroot\media\0wzakafs\about-info-image1.jpg" />
+    <Content Include="wwwroot\media\4sbdlbqh\screenshots-image1.jpg" />
+    <Content Include="wwwroot\media\52vji5we\cookies-icon.png" />
+    <Content Include="wwwroot\media\5gjnncui\screenshots-image2.jpg" />
+    <Content Include="wwwroot\media\5tdfafj3\platform-image-small.png" />
+    <Content Include="wwwroot\media\5tsfliws\screenshots-image9.jpg" />
+    <Content Include="wwwroot\media\bnqn3fni\screenshots-image8.jpg" />
+    <Content Include="wwwroot\media\crzntdkk\screenshots-image10.jpg" />
+    <Content Include="wwwroot\media\gbdckvo3\screenshots-image7.jpg" />
+    <Content Include="wwwroot\media\hgrk41po\program-item1-image.jpg" />
+    <Content Include="wwwroot\media\j0hichsi\screenshots-image4.jpg" />
+    <Content Include="wwwroot\media\o0qf5sm0\tutor-lesson-item1-image2.png" />
+    <Content Include="wwwroot\media\p3cofzms\tutor-lesson-item1-image.png" />
+    <Content Include="wwwroot\media\ppalbmn4\screenshots-image3.jpg" />
+    <Content Include="wwwroot\media\rgdjnss1\platform-image-big.png" />
+    <Content Include="wwwroot\media\vaubs5z0\screenshots-image6.jpg" />
+    <Content Include="wwwroot\media\vmfjvqch\screenshots-image5.jpg" />
+    <Content Include="wwwroot\media\whrlzf0m\main-top-image.png" />
+    <Content Include="wwwroot\media\wz5b2kvq\main-top-image.png" />
+    <Content Include="wwwroot\media\x3shmj5d\about-info-image2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\media\3tejzlbo\process-item5-icon.svg" />
+    <None Include="wwwroot\media\5arjg5tq\tiktok-1.svg" />
+    <None Include="wwwroot\media\dsjphn3d\instagram-1-1.svg" />
+    <None Include="wwwroot\media\e1pfg3yt\process-item2-icon.svg" />
+    <None Include="wwwroot\media\enln1xl4\process-item4-icon.svg" />
+    <None Include="wwwroot\media\envl4lca\instagram-1.svg" />
+    <None Include="wwwroot\media\rf2hkjph\tik-tok.svg" />
+    <None Include="wwwroot\media\sbslj1pa\logo-2.svg" />
+    <None Include="wwwroot\media\so1okzoy\process-item3-icon.svg" />
+    <None Include="wwwroot\media\txtpd1xl\process-item1-icon.svg" />
   </ItemGroup>
 
   <ItemGroup>

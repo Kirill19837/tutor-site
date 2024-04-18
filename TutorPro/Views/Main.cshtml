@@ -4,7 +4,7 @@
 @{
 	Layout = null;
 	var model = (HomePage)Model.Root();
-
+	var logoIconPath = model == null ? "/media/okxhqfjy/logo-2.svg" : model.TLogo.Url();
 	var mainHeader = Model.ContentType.Alias == "homePage";
 	var disableFixedComponents = Model.ContentType.Alias == "page404" || Model.ContentType.Alias == "ApplicationForm";
 	var mainHeaderPadding = (mainHeader || disableFixedComponents);
@@ -26,14 +26,12 @@
 		<meta name="keywords" content="">
 		<title>TutorPro - @Umbraco.AssignedContentItem.Name</title>
 
+		<link rel="icon" href="@logoIconPath" />
 		<link rel="stylesheet" href="~/css/libs.min.css">
 		<link rel="stylesheet" href="~/css/style.css">
-		
 	</head>
 	<body>
-		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">	
-			@await Html.PartialAsync("tutorPartials/TCookies", model)
-
+		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">
 			@if (!disableFixedComponents)
 			{
 				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) {{"isDark", mainHeader}, {"pageName", pageName}})
@@ -48,10 +46,10 @@
 				@await Html.PartialAsync("tutorPartials/TFooter", model)		
 			}
 		</div>
-
+		@await Html.PartialAsync("tutorPartials/TCookies", model)
+		<script src="~/js/cookie.js"></script>
 		<script src="~/js/libs.min.js"></script>
 		<script src="~/js/main.js"></script>
-		
 	</body>
 </html>
 

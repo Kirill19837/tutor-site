@@ -343,18 +343,23 @@ body {
   background-color: #fdfdfd;
 }
 
-.cookies__container {
-  width: 100%;
-  max-width: 915px;
-  padding: 22px 15px 21px;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
+    .cookies.accepted{
+        display: none !important;
+        opacity: 0;
+    }
+
+    .cookies__container {
+        width: 100%;
+        max-width: 915px;
+        padding: 22px 15px 21px;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
 
 .cookies__icon {
   -ms-flex-negative: 0;
