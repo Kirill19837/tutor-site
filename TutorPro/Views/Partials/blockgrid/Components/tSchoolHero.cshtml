@@ -44,20 +44,7 @@
         {
             @foreach (var block in content.TMovingItems)
             {
-                @if (block.Content is THeroMoving movingBlock && movingBlock.TItems != null)
-                {
-                    <div class="animated__row-wrap" data-duration="@(movingBlock.TDuration)s" data-left-offset="@(movingBlock.TLeftOffset)px" tabindex="0">
-                        @for (int i = 0; i < 2; i++)
-                        {
-                            <div class="animated__row">
-                                @foreach (var item in movingBlock.TItems)
-                                {
-                                    @await Html.PartialAsync("tutorPartials/THeroMovingItem", item.Content)
-                                }
-                            </div>
-                        }
-                    </div>
-                }
+                @await Html.PartialAsync("tutorPartials/TMovingRow", block.Content)
             }
         }
     </div>

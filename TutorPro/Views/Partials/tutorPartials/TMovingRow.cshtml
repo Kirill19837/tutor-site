@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<THeroMoving>
+
+@if(Model.TItems != null)
+{
+    <div class="animated__row-wrap" data-duration="@(Model.TDuration)s" data-left-offset="@(Model.TLeftOffset)px" tabindex="0">
+        @for (int i = 0; i < 2; i++)
+        {
+            <div class="animated__row">
+                @foreach (var item in Model.TItems)
+                {
+                    @await Html.PartialAsync("tutorPartials/THeroMovingItem", item.Content)
+                }
+            </div>
+        }
+    </div>
+}
+
+

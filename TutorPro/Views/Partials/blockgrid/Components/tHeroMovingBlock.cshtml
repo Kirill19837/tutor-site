@@ -2,7 +2,7 @@
 
 @{
     var content = (THeroMovingBlock)Model.Content;
-    var bottomInfo = content.TBottomInfo?.Content;
+    var bottomInfo = content.TBottomInfo?.FirstOrDefault()?.Content as TDescriptionCard;
     var mainClass = content.TStyle == "teacher" ? "teacher-info " : "";
     mainClass += "school-info";
 }
@@ -28,22 +28,8 @@
             @if (content.TMovingBlocks != null)
             {
                 @foreach(var block in content.TMovingBlocks)
-                {                                           
-                    @if(block.Content is THeroMoving movingBlock && movingBlock.TItems != null)
-                    {
-                        <div class="animated__row-wrap" data-duration="@(movingBlock.TDuration)s" data-left-offset="@(movingBlock.TLeftOffset)px" tabindex="0">
-                        @for (int i = 0; i < 2; i++)
-                        {
-                            <div class="animated__row">
-                                @foreach (var item in movingBlock.TItems)
-                                {
-                                    @await Html.PartialAsync("tutorPartials/THeroMovingItem", item.Content)
-                                }
-                            </div>
-                        }
-                    </div>
-                    }                      
-                    
+                {
+                    @await Html.PartialAsync("tutorPartials/TMovingRow", block.Content)
                 }
             }
         </div>
@@ -54,32 +40,16 @@
             <div class="container">
                 @if(content.TStyle == "school")
                 {
-                    <div class="school-info__description description-block reverse">
-                        <div class="description-block__info">
-                            <span class="description-block__title">@bottomInfo.TTitle</span>
-                            <p class="description-block__text">@bottomInfo.TText</p>
-                            @if (bottomInfo.TButton != null)
-                            {
-                                @await Html.PartialAsync("tutorPartials/TButton", bottomInfo.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "description-block__link" }, { "span", true } })
-                            }
-                        </div>
-                        <div class="description-block__image big-image">
-                            @Html.GetBlockGridHtml(bottomInfo.TImage)
-                            @if (content.TDecors != null)
-                            {
-                                @foreach (var decor in content.TDecors)
-                                {
-                                    @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
-                                }
-                            }
-                        </div>
-                    </div>
+                    @await Html.PartialAsync("tutorPartials/TDescriptionBlock", bottomInfo, new ViewDataDictionary(ViewData) { { "descriptionClass", "school-info__description" } })
                 }
                 else if (content.TStyle == "teacher")
                 {
                     <div class="school-info__descr">
                         <div class="school-info__descr-image">
-                            @Html.GetBlockGridHtml(bottomInfo.TImage)
+                            @if(bottomInfo.TImage != null)
+                            {
+                                <img src="@bottomInfo.TImage.FirstOrDefault()?.Content.Url()" />
+                            }                       
                             @if (content.TDecors != null)
                             {
                                 @foreach (var decor in content.TDecors)
@@ -88,7 +58,8 @@
                                 }
                             }
                         </div>
-                        <p class="school-info__descr-text">@bottomInfo.TText</p>
+
+                        <p class="school-info__descr-text">@bottomInfo.TText.</p>
                         @if (bottomInfo.TButton != null)
                         {
                             @await Html.PartialAsync("tutorPartials/TButton", bottomInfo.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "school-info__descr-link" }, { "span", true } })
