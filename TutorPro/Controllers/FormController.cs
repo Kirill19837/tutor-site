@@ -16,9 +16,6 @@ namespace TutorPro.Controllers
                 return BadRequest();
             }
 
-            logger.LogError("New Ex");
-            throw new Exception("New Ex");
-
             await emailSenderService.SendEmailAsync(form, "Request", cancellation);
 
             return Ok();
