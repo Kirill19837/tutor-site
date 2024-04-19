@@ -164,7 +164,7 @@ $(function(){
 
     let errorInputs = currentForm.find('input.error');
     if(errorInputs.length === 0) {
-      // Обаботка и отправка запроса
+        currentForm[0].submit();
       } else {
         let errorString = 'Enter ',
             wordDevider1 = ', ',
@@ -187,7 +187,7 @@ $(function(){
           });
           currentForm.find('.request-form__error span').html(errorString);
         }
-      }    
+      }      
   });
 
   // // Moving elements

@@ -4,21 +4,21 @@
 {
     <div class="request-form__row">
         <div class="request-form__item required">
-            <input class="request-form__input required" id="nameInput" type="text" data-name="name" name="request-name" placeholder="@Model.TPlaceholderForName">
+            <input class="request-form__input required" id="nameInput" type="text" data-name="name" name="SenderName" placeholder="@Model.TPlaceholderForName">
         </div>
         <div class="request-form__item required">
-            <input class="request-form__input required" id="emailInput" type="email" data-name="email" name="request-email" placeholder="@Model.TPlaceholderForEmail">
+            <input class="request-form__input required" id="emailInput" type="email" data-name="email" name="SenderEmail" placeholder="@Model.TPlaceholderForEmail">
         </div>
         @if (!Model.TPlaceholderForPhone.IsNullOrWhiteSpace())
         {
             <div class="request-form__item required">
-                <input class="request-form__input required" id="phoneInput" type="tel" data-name="phone number" name="request-phone" placeholder="@Model.TPlaceholderForPhone">
+                <input class="request-form__input required" id="phoneInput" type="tel" data-name="phone number" name="SenderPhone" placeholder="@Model.TPlaceholderForPhone">
             </div>
         }     
     </div>
     @if (!Model.TPlaceholderForMessage.IsNullOrWhiteSpace())
     {
-        <textarea class="request-form__message" name="request-message" placeholder="@Model.TPlaceholderForMessage"></textarea>
+        <textarea class="request-form__message" name="SenderMessage" placeholder="@Model.TPlaceholderForMessage"></textarea>
     }
     <div class="request-form__actions @(Model.TCentered ? "centered" : "")">
         @if (Model.TButton != null)

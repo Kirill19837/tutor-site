@@ -1,10 +1,9 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace TutorPro.Middlewares
 {
-    public class ExceptionMiddleware(ILogger<ExceptionMiddleware> logger) : IMiddleware
+    public class ExceptionMiddleware : IMiddleware
     {
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
@@ -15,7 +14,6 @@ namespace TutorPro.Middlewares
             catch (Exception ex)
             {
                 var traceId = Guid.NewGuid();
-                logger.LogError($"Error occure while processing the request, TraceId : ${traceId}, Message : ${ex.Message}, StackTrace: ${ex.StackTrace}");
                 await HandleExceptionAsync(context, ex);
             }
         }
