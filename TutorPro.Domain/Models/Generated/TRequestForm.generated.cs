@@ -65,14 +65,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool TCentered => this.Value<bool>(_publishedValueFallback, "tCentered");
 
 		///<summary>
-		/// Email List
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEmaiLList")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TEmaiLlist => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tEmaiLList");
-
-		///<summary>
 		/// Placeholder for email
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]

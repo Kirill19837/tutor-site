@@ -156,46 +156,15 @@ $(function () {
   $('.request-form').on('submit',function(e){
     e.preventDefault();
     let currentForm = $(this),
-        inputs = currentForm.find('input.required'),
-        formData = {};
+        inputs = currentForm.find('input.required');
 
     inputs.each(function(){
       validateInputs($(this));
     });
 
-      inputs.each(function () {
-          formData[$(this).attr('name')] = $(this).val();
-      });
-
-      // Collect data from hidden fields
-      currentForm.find('input[name="AdditionalEmail"]').each(function () {
-          if (!formData["AdditionalEmail"]) {
-              formData["AdditionalEmail"] = [];
-          }
-          formData["AdditionalEmail"].push($(this).val());
-      });
-
-      formData["SenderMessage"] = currentForm.find('.request-form__message').val();
-
-      var jsonData = JSON.stringify(formData);
-
     let errorInputs = currentForm.find('input.error');
-      if (errorInputs.length === 0) {
-          var actionUrl = $('#urlToSend').val();
-         
-        $.ajax({
-            type: 'POST',
-            url: actionUrl,
-            data: jsonData,
-            contentType: "application/json; charset=utf-8",
-            success: function (response) {
-                
-            },
-            error: function (xhr, status, error) {
-                console.error('Error:', error);
-            }
-          });
-
+    if(errorInputs.length === 0) {
+        currentForm[0].submit();
       } else {
         let errorString = 'Enter ',
             wordDevider1 = ', ',
