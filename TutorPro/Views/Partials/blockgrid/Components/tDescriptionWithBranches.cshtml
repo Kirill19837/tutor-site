@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var content = (TDescriptionWithBranches)Model.Content;
+    var bottomDesc = content.TBottomDescription?.Content;
+}
+
+<!-- Section "Description (with arrow in bottom)" -->
+<section class="@content.TClass-description description">
+    <div class="description__top">
+        <div class="container">
+            @if (content.TArrow)
+            {
+                <span class="description__top-arrow">
+                    <img src="~/images/icons/icon-arrow3.svg" alt="Arrow icon">
+                </span>
+            }           
+            @if(content.TBranches != null)
+            {
+                @foreach(var branche in content.TBranches)
+                {
+                    @await Html.PartialAsync("tutorPartials/TBrancheItem", branche.Content, new ViewDataDictionary(ViewData) { { "bracnheClass", $"{content.TClass}-description" } })
+                }
+            }
+        </div>
+    </div>
+    @if(bottomDesc != null)
+    {
+        <div class="description__bottom info-block radial-bg">
+            <div class="info-block__bg radial-bg"></div>
+            <div class="container">
+                <h2 class="info-block__title section-title">@bottomDesc.TTitle</h2>
+                @{
+                    string text = System.Text.RegularExpressions.Regex.Replace(bottomDesc.TText.ToString(), "<.*?>", string.Empty);
+                }
+                <p class="info-block__subtitle">@text</p>
+                @if (bottomDesc.TButton != null && !bottomDesc.TButton.Content.TButtonTitle.IsNullOrWhiteSpace())
+                {
+                    @await Html.PartialAsync("tutorPartials/TButton", bottomDesc.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "info-block__main-link" }, { "span", true } })
+                }
+            </div>
+        </div>
+    }
+</section>

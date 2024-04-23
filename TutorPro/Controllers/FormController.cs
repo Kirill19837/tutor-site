@@ -6,7 +6,7 @@ using Umbraco.Cms.Web.Common.Controllers;
 
 namespace TutorPro.Controllers
 {
-    public class FormController(IEmailSenderService emailSenderService) : UmbracoApiController
+    public class FormController(IEmailSenderService emailSenderService, ILogger<FormController> logger) : UmbracoApiController
     {
         [HttpPost]
         public async Task<ActionResult> RequestForm([FromForm] FormRequestDTO form, CancellationToken cancellation)

@@ -42,8 +42,8 @@ namespace TutorPro.Application.Services
             stringBuilder
                 .Replace(Constants.EmailProperty.SenderName, formRequest.SenderName)
                 .Replace(Constants.EmailProperty.SenderEmail, formRequest.SenderEmail)
-                .Replace(Constants.EmailProperty.SenderPhone, formRequest.SenderPhone);
-
+                .Replace(Constants.EmailProperty.SenderPhone, formRequest.SenderPhone)
+                .Replace(Constants.EmailProperty.SenderMessage, formRequest.SenderMessage);
             body = stringBuilder.ToString();
             return body;
         }

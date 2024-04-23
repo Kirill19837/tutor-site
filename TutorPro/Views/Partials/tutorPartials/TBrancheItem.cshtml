@@ -1,6 +1,6 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TBrancheItem>
 
-<div class="branches__item @(Model.TReverse ? "reverse" : "")">
+<div class="@ViewData["bracnheClass"] branches__item @(Model.TReverse ? "reverse" : "")">
     <div class="branches__item-info">
         <span class="branches__item-title">@Model.TTitle</span>
         <p class="branches__item-text">@Model.TText</p>

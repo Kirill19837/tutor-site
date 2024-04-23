@@ -16,7 +16,8 @@ WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
 
-app.UseHttpsRedirection();
+app.UseGlobalExceptionHandler();
+
 app.UseUmbraco()
     .WithMiddleware(u =>
     {
@@ -30,6 +31,6 @@ app.UseUmbraco()
         u.UseWebsiteEndpoints();
     });
 
-app.UseMiddleware<ExceptionMiddleware>();
+app.UseHttpsRedirection();
 
 await app.RunAsync();

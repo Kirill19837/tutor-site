@@ -66,19 +66,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TCard> TInfo => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TCard>>(_publishedValueFallback, "tInfo");
 
 		///<summary>
-		/// Moving items row 1
+		/// Moving items
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tMovingItems1")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TMovingItems1 => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tMovingItems1");
-
-		///<summary>
-		/// Moving items row 2
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tMovingItems2")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TMovingItems2 => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tMovingItems2");
+		[ImplementPropertyType("tMovingItems")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TMovingItems => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tMovingItems");
 	}
 }
