@@ -23,9 +23,12 @@ namespace TutorPro.Application.Services
 
             message.To.Add(new MailboxAddress(config.Value.Smtp.From, config.Value.Smtp.Username));
             //Go throught emails list at umbraco and add to message 
-            foreach (var email in formRequest.AdditionalEmail)
+            if(formRequest.AdditionalEmail != null)
             {
-                message.To.Add(new MailboxAddress(config.Value.Smtp.Username, email));
+                foreach (var email in formRequest.AdditionalEmail)
+                {
+                    message.To.Add(new MailboxAddress(config.Value.Smtp.Username, email));
+                }
             }
             message.Subject = subject;
             var bodyBuilder = new BodyBuilder();
