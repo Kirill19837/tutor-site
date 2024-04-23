@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TMatirialCard>
+
+<div class="matirials__column">
+    <a class="matirials__item" href="@Model.TItemLink?.Url">
+        @if(Model.TImage != null)
+        {
+            <div class="matirials__item-image">
+                <img src="@Model.TImage.Url()" alt="Item image">
+            </div>
+        }      
+        <h3 class="matirials__item-title">@Model.TTitle</h3>
+        <div class="matirials__item-tags">
+            @if (Model.TTags != null)
+            {
+                @foreach(var tag in Model.TTags)
+                {
+                    <span class="matirials__item-tag">@tag</span>
+                }
+            }          
+        </div>
+        @if (!Model.TText.IsNullOrWhiteSpace())
+        {
+            <p class="matirials__item-text">@Model.TText</p>
+        }      
+    </a>
+</div>

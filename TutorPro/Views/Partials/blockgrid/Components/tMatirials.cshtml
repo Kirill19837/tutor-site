@@ -1,0 +1,46 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var content = (TMatirials)Model.Content;
+}
+
+<div class="matirials">
+    <div class="matirials__filtration-block">
+        <div class="container">
+            <div class="matirials__filtration">
+                <form class="matirials__filtration-form filter-form" action="/Umbraco/Api/Matirials/GetMatirials" method="post">
+                    <div class="filter-form__item search-item">
+                        <input class="filter-form__input" type="text" name="filter-search">
+                        <button class="filter-form__search-button" type="button" aria-label="search-button"></button>
+                    </div>
+                    <div class="filter-form__row">
+                        @if(content.TFilters != null)
+                        {
+                            @foreach(var filter in content.TFilters)
+                            {
+                                @await Html.PartialAsync("tutorPartials/TFilterSelect", filter.Content)
+                            }
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="matirials__content radial-bg">
+        <div class="matirials__bg radial-bg"></div>
+        <div class="matirials__container">
+            <div class="matirials__block">
+                
+            </div>
+
+            <!-- Pagenation of pages -->
+            <div class="matirials__pagination pagination">
+                <ul class="pagination__list">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/filter.js"></script>
