@@ -7,19 +7,19 @@ $(document).ready(function () {
 
         document.querySelector('.filter-form__input').addEventListener('input', function () {
             var searchValue = this.value;
-            sendRequest("search", searchValue); // Передаємо нове значення searchValue в функцію sendRequest
+            sendRequest("search", searchValue); // Passing the new value of searchValue to the sendRequest function
         });
 
         $('.pagination__list').on('click', '.pagination__list-link', function (e) {
             e.preventDefault();
-            var page = $(this).text(); // Отримайте номер сторінки
-            sendRequest(null,null,page); // Відправте AJAX запит з номером сторінки
+            var page = $(this).text(); // Get the page number
+            sendRequest(null, null, page); // Send an AJAX request with the page number
         });
 
 });
 
 
-// Функція для відправки AJAX запиту
+// Function for sending AJAX request
 function sendRequest(key = null, value = null, page = 1) {
     var subject = $('#subject').hasClass('new-select') && $('#subject').hasClass('empty') ?
         $('#subject').text().trim() : $('#subject').val();
@@ -34,12 +34,10 @@ function sendRequest(key = null, value = null, page = 1) {
         $('#sort').text().trim() : $('#sort').val();
 
     var searchValue = document.getElementsByClassName('filter-form__input')[0].value
-    console.log(searchValue);
 
-    // Перевірка, чи передано новий ключ і значення
+    // Checking if a new key and value have been passed
     if (key !== null && value !== null) {
-        // Додаємо новий ключ та його значення до об'єкту параметрів запиту
-        console.log(key)
+        // Adding a new key and its value to the request parameters object
         switch (key) {
             case 'subject':
                 subject = value;
@@ -73,7 +71,7 @@ function sendRequest(key = null, value = null, page = 1) {
             searchText: searchValue
         },
         success: function (response) {
-            // Оновлення контенту сторінки з отриманими даними
+            // Updating the page content with the received data
             updateContent(response);
         },
         error: function (xhr, status, error) {
@@ -82,12 +80,12 @@ function sendRequest(key = null, value = null, page = 1) {
     });
 }
 
-// Функція для оновлення контенту сторінки з отриманими даними
+// Function for updating the page content with the received data
 function updateContent(data) {
-    // Очистити поточний вміст блоку матеріалів
+    // Clear the current content of the materials block
     $('.matirials__block').empty();
 
-    // Додати нові матеріали до блоку матеріалів
+    // Add new materials to the materials block
     data.materials.forEach(function (material) {
         var html = `
                     <div class="matirials__column">
@@ -104,16 +102,16 @@ function updateContent(data) {
         $('.matirials__block').append(html);
     });
 
-    // Оновити пагінацію
+    // Update pagination
     updatePagination(data);
 }
 
-// Функція для оновлення пагінації
+// Function for updating pagination
 function updatePagination(data) {
-    // Очистити поточний вміст пагінації
+    // Clear the current content of pagination
     $('.pagination__list').empty();
 
-    // Додати пагінацію для кожної сторінки
+    // Add pagination for each page
     for (var i = 1; i <= data.totalPages; i++) {
         var activeClass = (i === data.currentPage) ? 'active' : '';
         var html = `<li class="pagination__list-item"><a class="pagination__list-link ${activeClass}" href="#">${i}</a></li>`;
