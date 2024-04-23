@@ -49,10 +49,10 @@
                 }
             <div class="actions__form-wrap">              
                 <h2 class="actions__form-title medium-title section-title">@content.TTitle</h2>
-                <form class="actions__form request-form three-cols" action="@content.TActionUrl" enctype="application/x-www-url-formencoded" method="post">
-                    @Html.AntiForgeryToken()
+                <form class="actions__form request-form three-cols" method="post">
                      @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestBlock.FirstOrDefault()?.Content)
                 </form>
+                <input type="hidden" id="urlToSend" value="@content.TActionUrl"/>
                 </div>
             </div>
         }
