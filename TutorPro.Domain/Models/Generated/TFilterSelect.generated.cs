@@ -58,7 +58,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::System.Collections.Generic.IEnumerable<string> TFilterItems => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tFilterItems");
 
 		///<summary>
-		/// Name
+		/// Name: do not change, this is the name for filtering
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
