@@ -19,7 +19,14 @@ namespace TutorPro.Application.Services
         public async Task SendEmailAsync(FormRequestDTO formRequest, string subject, CancellationToken cancellation = default, bool isHtml = true)
         {
             var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(config.Value.Smtp.From, config.Value.Smtp.Username));
+
             message.To.Add(new MailboxAddress(config.Value.Smtp.From, config.Value.Smtp.Username));
+            //Go throught emails list at umbraco and add to message 
+            foreach (var email in formRequest.AdditionalEmail)
+            {
+                message.To.Add(new MailboxAddress(config.Value.Smtp.Username, email));
+            }
             message.Subject = subject;
             var bodyBuilder = new BodyBuilder();
             bodyBuilder.HtmlBody = await GenerateTemplateAsync(formRequest);

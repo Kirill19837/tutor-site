@@ -9,7 +9,7 @@ namespace TutorPro.Controllers
     public class FormController(IEmailSenderService emailSenderService, ILogger<FormController> logger) : UmbracoApiController
     {
         [HttpPost]
-        public async Task<ActionResult> RequestForm([FromForm] FormRequestDTO form, CancellationToken cancellation)
+        public async Task<ActionResult> RequestForm([FromBody] FormRequestDTO form, CancellationToken cancellation)
         {
             if(form == null)
             {
