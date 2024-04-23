@@ -34,12 +34,10 @@ function sendRequest(key = null, value = null, page = 1) {
         $('#sort').text().trim() : $('#sort').val();
 
     var searchValue = document.getElementsByClassName('filter-form__input')[0].value
-    console.log(searchValue);
 
     // Перевірка, чи передано новий ключ і значення
     if (key !== null && value !== null) {
         // Додаємо новий ключ та його значення до об'єкту параметрів запиту
-        console.log(key)
         switch (key) {
             case 'subject':
                 subject = value;
