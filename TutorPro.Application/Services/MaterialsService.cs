@@ -22,25 +22,27 @@ namespace TutorPro.Application.Services
                 {
                     foreach (var card in matirials.TMatirialCards)
                     {
-                        if (card.Content is TMatirialCard matirialCard)
+                        if (card.Content is not TMatirialCard matirialCard)
                         {
-                            if (searchText == null || matirialCard.TTitle.ToLower().Contains(searchText.ToLower()) || matirialCard.TText.ToLower().Contains(searchText.ToLower())) // фільтр пошуку
+                            continue;     
+                        }
+
+                        if (searchText == null || matirialCard.TTitle.ToLower().Contains(searchText.ToLower()) || matirialCard.TText.ToLower().Contains(searchText.ToLower())) // фільтр пошуку
+                        {
+                            // Перевірка фільтрів
+                            if (IsMatchFilter(matirialCard, subject, grade, level))
                             {
-                                // Перевірка фільтрів
-                                if (IsMatchFilter(matirialCard, subject, grade, level))
+                                filteredMaterials.Add(new MaterialCardView
                                 {
-                                    filteredMaterials.Add(new MaterialCardView
-                                    {
-                                        Title = matirialCard.TTitle,
-                                        Text = matirialCard.TText,
-                                        ImageUrl = matirialCard.TImage?.Url(),
-                                        Tags = matirialCard.TTags?.ToList(),
-                                        LinkUrl = matirialCard.TItemLink?.Url,
-                                        DateOfRealeaseUpdate = matirialCard.TDateOfReleaseUpdate,
-                                        NumberOfUse = matirialCard.TNumberOfUse,
-                                    });
-                                }
-                            }                          
+                                    Title = matirialCard.TTitle,
+                                    Text = matirialCard.TText,
+                                    ImageUrl = matirialCard.TImage?.Url(),
+                                    Tags = matirialCard.TTags?.ToList(),
+                                    LinkUrl = matirialCard.TItemLink?.Url,
+                                    DateOfRealeaseUpdate = matirialCard.TDateOfReleaseUpdate,
+                                    NumberOfUse = matirialCard.TNumberOfUse,
+                                });
+                            }
                         }
                     }
 
