@@ -6,7 +6,5 @@
         public string SenderEmail { get; set; } = "";
         public string SenderPhone { get; set; } = "";
         public string SenderMessage { get; set; } = "";
-
-        public List<string> AdditionalEmail {  get; set; } = new List<string>();
     }
 }

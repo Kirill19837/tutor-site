@@ -22,25 +22,27 @@ namespace TutorPro.Application.Services
                 {
                     foreach (var card in matirials.TMatirialCards)
                     {
-                        if (card.Content is TMatirialCard matirialCard)
+                        if (card.Content is not TMatirialCard matirialCard)
                         {
-                            if (searchText == null || matirialCard.TTitle.ToLower().Contains(searchText.ToLower()) || matirialCard.TText.ToLower().Contains(searchText.ToLower())) // фільтр пошуку
+                            continue;     
+                        }
+
+                        if (searchText == null || matirialCard.TTitle.ToLower().Contains(searchText.ToLower()) || matirialCard.TText.ToLower().Contains(searchText.ToLower())) // Search filter
+                        {
+                            // Checking filters
+                            if (IsMatchFilter(matirialCard, subject, grade, level))
                             {
-                                // Перевірка фільтрів
-                                if (IsMatchFilter(matirialCard, subject, grade, level))
+                                filteredMaterials.Add(new MaterialCardView
                                 {
-                                    filteredMaterials.Add(new MaterialCardView
-                                    {
-                                        Title = matirialCard.TTitle,
-                                        Text = matirialCard.TText,
-                                        ImageUrl = matirialCard.TImage?.Url(),
-                                        Tags = matirialCard.TTags?.ToList(),
-                                        LinkUrl = matirialCard.TItemLink?.Url,
-                                        DateOfRealeaseUpdate = matirialCard.TDateOfReleaseUpdate,
-                                        NumberOfUse = matirialCard.TNumberOfUse,
-                                    });
-                                }
-                            }                          
+                                    Title = matirialCard.TTitle,
+                                    Text = matirialCard.TText,
+                                    ImageUrl = matirialCard.TImage?.Url(),
+                                    Tags = matirialCard.TTags?.ToList(),
+                                    LinkUrl = matirialCard.TItemLink?.Url,
+                                    DateOfRealeaseUpdate = matirialCard.TDateOfReleaseUpdate,
+                                    NumberOfUse = matirialCard.TNumberOfUse,
+                                });
+                            }
                         }
                     }
 
@@ -55,7 +57,7 @@ namespace TutorPro.Application.Services
 
         private bool IsMatchFilter(TMatirialCard materialCard, string subject, string grade, string level)
         {
-            // Перевіряємо, чи матеріал відповідає введеним фільтрам
+            // Checking if the material matches the entered filters
             return (subject == null || materialCard.TTags?.Contains(subject) == true)
                 && (grade == null || materialCard.TTags?.Contains(grade) == true)
                 && (level == null || materialCard.TTags?.Contains(level) == true);
@@ -63,7 +65,7 @@ namespace TutorPro.Application.Services
 
         private FilterResponse GetSortedMaterialsList(List<MaterialCardView> filteredMaterials, int page, int pageSize, string sort)
         {
-            // Сортування
+            // Sorting
             if (sort == "Date of release/update")
             {
                 filteredMaterials = filteredMaterials.OrderByDescending(m => m.DateOfRealeaseUpdate).ToList();
@@ -71,9 +73,9 @@ namespace TutorPro.Application.Services
             else if (sort == "Number of use")
             {
                 filteredMaterials = filteredMaterials.OrderByDescending(m => m.NumberOfUse).ToList();
-            }          
+            }
 
-            // Пагінація
+            // Pagination
             var totalCount = filteredMaterials.Count;
             var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
             var paginatedMaterials = filteredMaterials.Skip((page - 1) * pageSize).Take(pageSize).ToList();
