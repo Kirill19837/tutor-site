@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<THomeworkItem>
+@{
+    var info = Model.TInfo!.Content;
+}
+
+<h3 class="homework__second-title small-title type-2">@info.TTitle</h3>
+    @{
+        string text = System.Text.RegularExpressions.Regex.Replace(info?.TText.ToString(), "<.*?>", string.Empty);         
+    }
+<p class="homework__second-subtitle">@text</p>
+<div class="homework__info-block">
+    <div class="homework__info-left">
+        <div class="homework__info-image">
+            @if (info.TImage != null)
+            {
+                @Html.GetBlockGridItemsHtml(info.TImage)
+            }          
+            @if (Model.TDecors != null)
+            {
+                @foreach (var decor in Model.TDecors)
+                {
+                    @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                }
+            }
+        </div>
+        @if (info.TButton != null && !info.TButton.Content.TButtonTitle.IsNullOrWhiteSpace())
+        {
+            @await Html.PartialAsync("tutorPartials/TButton", info.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "homework__info-link" }, { "span", true } })
+        }
+    </div>
+    <div class="homework__info-right">
+        @if(Model.TTextLists != null)
+        {
+            @foreach (var textList in Model.TTextLists)
+            {
+                @await Html.PartialAsync("tutorPartials/TTextList", textList.Content, new ViewDataDictionary(ViewData) {{"class", "homework"}})
+            }
+        }      
+    </div>
+</div>

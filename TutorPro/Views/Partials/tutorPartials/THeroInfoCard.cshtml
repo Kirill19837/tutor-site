@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TCard>
+
+<div class="hero-block__info">
+    @Html.Raw(Model.TText)
+    @if(Model.TButton != null)
+    {
+        @await Html.PartialAsync("tutorPartials/TButton", Model.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "hero-block__link" }, { "span", false } })
+    }
+
+</div>
+
+<div class="hero-block__image radial-bg">
+    @if(Model.TImage != null)
+    {
+        @Html.GetBlockGridHtml(Model.TImage)  
+    }
+    <span class="decor-element points parallax-element" data-speed="75" data-direction="false">
+        <img src="~/images/icons/decor-elements/decor-points-@ViewData["style"]-big.svg" alt="Decor points">
+    </span>
+</div>

@@ -1,0 +1,57 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TStepItem>
+
+<div class="steps__item">
+    <div class="steps__item-info">
+        <span class="steps__item-number">@ViewData["index"]</span>
+        <h3 class="steps__item-title small-title type-@Model.TTitleType">@Model.TTitle</h3>
+        @if(Model.TTexts != null)
+            {
+            <ul class="steps__item-list">           
+                @foreach(var text in Model.TTexts)
+                {
+                    <li class="steps__item-list-item">@text</li>
+                }                     
+            </ul>
+        }
+    </div>
+    <div class="steps__item-images type-@Model.TImagesType">
+        @if (Model.TSmallImageOnTop)
+        {
+            @if (Model.TSmallImage != null && Model.TSmallImage.Count > 0)
+            {
+                <div class="steps__item-image small-image">
+                    @Html.GetBlockGridItemsHtml(Model.TSmallImage)
+                </div>
+            }
+            @if (Model.TBigImage != null)
+            {
+                <div class="steps__item-image big-image">
+                    @Html.GetBlockGridItemsHtml(Model.TBigImage)
+                </div>
+            }
+        }
+        else
+        {
+            @if (Model.TBigImage != null)
+            {
+                <div class="steps__item-image big-image">
+                    @Html.GetBlockGridItemsHtml(Model.TBigImage)
+                </div>
+            }
+            @if (Model.TSmallImage != null && Model.TSmallImage.Count > 0)
+            {
+                <div class="steps__item-image small-image">
+                    @Html.GetBlockGridItemsHtml(Model.TSmallImage)
+                </div>
+            }
+        }
+
+        @if (Model.TDecors != null)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+    </div>
+</div>

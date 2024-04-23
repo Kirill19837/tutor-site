@@ -1,4 +1,5 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TQuickLinks>
+﻿@using System.Globalization
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TQuickLinks>
 @{
     var pageName = Umbraco.AssignedContentItem.Name;
 
@@ -20,11 +21,9 @@
         }
     </ul>
     @if (Model.TShowLanguagesSwitch)
-    {
+    {              
         <div class="footer__languages">
-            <a class="footer__language" href="#">En</a>
-            <a class="footer__language" href="#">Pl</a>
-            <a class="footer__language" href="#">Ua</a>
+            @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent)
         </div>
     } 
 </div>

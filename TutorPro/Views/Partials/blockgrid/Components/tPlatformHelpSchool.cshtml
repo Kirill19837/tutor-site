@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var content = (TPlatformHelpSchool)Model.Content;
+    var texts = content.TContent;
+}
+
+<!-- Section "Platform help school" -->
+<section class="platform">
+    <div class="container">
+        <h2 class="platform__title section-title">@content.TTitle</h2>
+        <div class="platform__block">
+            <div class="platform__info">
+                <ul class="platform__list">
+                    @if (texts != null)
+                    {
+                        @foreach(var text in texts)
+                        {
+                            <li class="platform__list-item">@text</li>
+                        }
+                    }   
+                </ul>
+            </div>
+            <div class="platform__image">
+                @if (content.TDecors != null)
+                {
+                    @foreach (var decor in content.TDecors)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                    }
+                }
+                <img class="platform__image-big" src="@content.TImage?.Url()" alt="Big image">
+                <img class="platform__image-small" src="@content.TImageSmall?.Url()" alt="Small image">
+            </div>
+        </div>
+    </div>
+</section>

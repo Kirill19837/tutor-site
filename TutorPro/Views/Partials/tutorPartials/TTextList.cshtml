@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TTextList>
+@{
+    var infoClass = ViewData["class"] != null ? ViewData["class"]!.ToString() : "";
+}
+
+<span class="@(infoClass)__info-title small-title type-@Model.TTitleType">@Model.TTitle</span>
+<ul class="@(infoClass)__info-list">
+    @if(Model.TListItems != null)
+    {
+        @foreach (var item in Model.TListItems)
+        {
+            <li class="@(infoClass)__info-list-item">@item</li>
+        }     
+    }
+   
+</ul>

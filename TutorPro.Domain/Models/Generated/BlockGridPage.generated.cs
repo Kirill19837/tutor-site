@@ -18,7 +18,7 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Blog grid page</summary>
+	/// <summary>Block grid page</summary>
 	[PublishedModel("blockGridPage")]
 	public partial class BlockGridPage : PublishedContentModel
 	{
@@ -50,11 +50,18 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// BlockGrid
+		/// Block grid page
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("blockGrid")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel BlockGrid => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "blockGrid");
+		[ImplementPropertyType("tBlockGridPage")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TBlockGridPage => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tBlockGridPage");
+
+		///<summary>
+		/// Padding
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tPadding")]
+		public virtual bool TPadding => this.Value<bool>(_publishedValueFallback, "tPadding");
 	}
 }

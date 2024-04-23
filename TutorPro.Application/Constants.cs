@@ -21,6 +21,7 @@ namespace TutorPro.Application
             public const string SenderName = "[SENDER_NAME]";
             public const string SenderEmail = "[SENDER_EMAIL]";
             public const string SenderPhone = "[SENDER_PHONE]";
+            public const string SenderMessage = "[SENDER_MESSAGE]";
         }
 
         public static class EmailConfig

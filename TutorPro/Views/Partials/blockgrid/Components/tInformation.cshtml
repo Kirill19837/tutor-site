@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TInformation)Model.Content;
+}
+
+<div class="about-info">
+    <div class="container">
+        @if (content.TDecors != null)
+        {
+            @foreach (var decor in content.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+        <div class="about-info__block">
+            @if(content.TItems != null)
+            {
+                @foreach (var item in content.TItems)
+                {
+                    @await Html.PartialAsync("tutorPartials/TInfoItem", item.Content)
+                }
+            }          
+        </div>
+    </div>
+</div>
