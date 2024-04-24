@@ -75,8 +75,9 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		/// Size
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tSize")]
-		public virtual int TSize => this.Value<int>(_publishedValueFallback, "tSize");
+		public virtual string TSize => this.Value<string>(_publishedValueFallback, "tSize");
 
 		///<summary>
 		/// Title

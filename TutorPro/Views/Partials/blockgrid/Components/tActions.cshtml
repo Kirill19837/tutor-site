@@ -5,21 +5,26 @@
     var actionsClass = "actions ";
     if (content.TStyle == "Matirials")
         actionsClass += "matirials-actions ";
+    else if (content.TStyle == "Blog")
+        actionsClass += "blog-actions";
+    else if (content.TStyle == "Article")
+        actionsClass += "article-actions";
 
     if (content.TCards != null && content.TCards.Count == 1)
         actionsClass += "single-link";
 }
 <!-- Section "Actions (links + request form)" -->
 <section class="@actionsClass">
-    @if(content.TStyle != "Matirials")
+    @if(content.TStyle == "")
     {
         <span class="decor-element ring1 parallax-element"></span>
-
-        @if (content.TStyle == "About")
-        {
-            <span class="decor-element ring2 parallax-element"></span>
-        }
-    }   
+    }
+    @if (content.TStyle == "About")
+    {
+        <span class="decor-element ring1 parallax-element"></span>
+        <span class="decor-element ring2 parallax-element"></span>
+    }
+    
     <div class="container">
         @if (content.TCards != null && content.TCards.Count > 0)
         {
@@ -35,17 +40,12 @@
         @if (content.TRequestBlock != null)
         {
             <div class="actions__form-block">
-                @if (content.TStyle == "")
+                @if (content.TDecors != null)
                 {
-                    <span class="decor-element points parallax-element" data-speed="40" data-direction="false">
-                        <img src="~/images/icons/decor-elements/decor-points-orange-big.svg" alt="Decor points">
-                    </span>
-                }    
-                else if(content.TStyle == "Matirials")
-                {
-                    <span class="decor-element points-2 parallax-element" data-speed="40" data-direction="false">
-                        <img src="~/images/icons/decor-elements/decor-points-green-big.svg" alt="Decor points">
-                    </span>
+                    @foreach (var decor in content.TDecors)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                    }
                 }
             <div class="actions__form-wrap">              
                 <h2 class="actions__form-title medium-title section-title">@content.TTitle</h2>

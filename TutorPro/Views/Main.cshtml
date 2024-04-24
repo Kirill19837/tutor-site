@@ -7,7 +7,8 @@
 	var logoIconPath = model == null ? "/media/okxhqfjy/logo-2.svg" : model.TLogo.Url();
 	var mainHeader = Model.ContentType.Alias == "homePage";
 	var disableFixedComponents = Model.ContentType.Alias == "page404" || Model.ContentType.Alias == "ApplicationForm";
-	var mainHeaderPadding = (mainHeader || disableFixedComponents);
+	var isBlogComponent = Model.ContentType.Alias == "blogPage" || Model.ContentType.Alias == "blogArticle";
+	var mainHeaderPadding = (mainHeader || disableFixedComponents || isBlogComponent);
 	@if(Model is BlockGridPage page)
 	{
 		mainHeaderPadding = !page.TPadding;

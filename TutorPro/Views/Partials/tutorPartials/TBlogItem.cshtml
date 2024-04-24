@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlogArticle>
+
+@{
+    var model = Model;
+}
+
+<a class="blog__item" href="@Model.UrlSegment">
+    @if(Model.TImage != null)
+    {
+        <div class="blog__item-image">
+            <img src="@Model.TImage.Url()" alt="Article image">
+        </div>
+    }
+    @if (!Model.TTitle.IsNullOrWhiteSpace())
+    {
+        <h3 class="blog__item-title medium-title">@Model.TTitle</h3>
+    }
+    <span class="blog__item-date">@Model.TPublicDate.ToString("MMMM d, yyyy")</span>
+</a>

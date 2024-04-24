@@ -21,17 +21,13 @@ $(document).ready(function () {
 
 // Function for sending AJAX request
 function sendRequest(key = null, value = null, page = 1) {
-    var subject = $('#subject').hasClass('new-select') && $('#subject').hasClass('empty') ?
-        $('#subject').text().trim() : $('#subject').val();
+    var subject = $('#subject').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
 
-    var grade = $('#grade').hasClass('new-select') && $('#grade').hasClass('empty') ?
-        $('#grade').text().trim() : $('#grade').val();
+    var grade = $('#grade').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
 
-    var level = $('#level').hasClass('new-select') && $('#level').hasClass('empty') ?
-        $('#level').text().trim() : $('#level').val();
+    var level = $('#level').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
 
-    var sort = $('#sort').hasClass('new-select') && $('#sort').hasClass('empty') ?
-        $('#sort').text().trim() : $('#sort').val();
+    var sort = $('#sort').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
 
     var searchValue = document.getElementsByClassName('filter-form__input')[0].value
 
@@ -85,22 +81,34 @@ function updateContent(data) {
     // Clear the current content of the materials block
     $('.matirials__block').empty();
 
+    var articleUrlElement = document.querySelector('[data-articleUrl]');
+    var articleUrl = articleUrlElement.getAttribute('data-articleUrl');
+
     // Add new materials to the materials block
-    data.materials.forEach(function (material) {
-        var html = `
-                    <div class="matirials__column">
-                        <a class="matirials__item" href="${material.linkUrl}">
-                            ${material.imageUrl ? `<div class="matirials__item-image"><img src="${material.imageUrl}" alt="Item image"></div>` : ''}
-                            <h3 class="matirials__item-title">${material.title}</h3>
-                            <div class="matirials__item-tags">
-                                ${material.tags.map(tag => `<span class="matirials__item-tag">${tag}</span>`).join('')}
-                            </div>
-                            ${material.text ? `<p class="matirials__item-text">${material.text}</p>` : ''}
-                        </a>
-                    </div>
-                `;
-        $('.matirials__block').append(html);
-    });
+    if (data.materials && data.materials.length > 0) {
+        // Add new materials to the materials block
+        data.materials.forEach(function (material) {
+            var html = `
+                <div class="matirials__column">
+                    <a class="matirials__item" href="${articleUrl}?title=${material.title}&guid=${material.guid}">
+                        ${material.imageUrl ? `<div class="matirials__item-image"><img src="${material.imageUrl}" alt="Item image"></div>` : ''}
+                        <h3 class="matirials__item-title">${material.title}</h3>
+                        <div class="matirials__item-tags">
+                            ${material.tags.map(tag => `<span class="matirials__item-tag">${tag.substring(1)}</span>`).join('')}
+                        </div>
+                        ${material.text ? `<p class="matirials__item-text">${material.text}</p>` : ''}
+                    </a>
+                </div>
+            `;
+            $('.matirials__block').append(html);
+        });
+    } else {
+        // Get the not found message from data-notFoundMessage attribute
+        var notFoundMessage = $('.matirials__block').attr('data-notFoundMessage');
+        // Display not found message
+        $('.matirials__block').html(`<h1 style="width: 100%; text-align: center;">${notFoundMessage}</h1>`);
+
+    }
 
     // Update pagination
     updatePagination(data);

@@ -1,0 +1,74 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Main.cshtml";
+
+    var totalPages = (int)Math.Ceiling((double)Model.Children.Count() / Model.TPageSize);
+
+    if (int.TryParse(Context.Request.Query["page"], out int page))
+    {
+        if (page < 1 || page > totalPages)
+        {
+            Context.Response.Redirect(Model.Url());
+        }
+    }
+    else
+    {
+        page = 1;
+    }
+}
+
+<section class="inner-top blog-top radial-bg">
+    <div class="container">
+        @if (Model.TDecors != null)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+        <div class="inner-top__content">
+            <h1 class="inner-top__title big-title">@Model.TTitle</h1>
+        </div>
+    </div>
+</section>
+
+<!-- Section "Blog" -->
+<div class="blog">
+    <div class="container">
+        <form class="blog__form filter-form" action="/" method="post">
+            <div class="filter-form__item search-item">
+                <input class="filter-form__input" type="text" name="filter-search">
+                <button class="filter-form__search-button" type="button" aria-label="search-button"></button>
+            </div>
+        </form>
+
+        <div class="blog__block">
+            @if (Model.Children != null)
+            {              
+                int startIndex = (page - 1) * Model.TPageSize;
+
+                @foreach (var blogItem in Model.Children.Skip(startIndex).Take(Model.TPageSize))
+                {
+                    @if(blogItem is BlogArticle blogAcrticle)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TBlogItem", blogItem)
+                    }
+                }
+            }
+        </div>
+
+        <!-- Pagenation of pages -->
+        <div class="blog__pagination pagination">
+            <ul class="pagination__list">
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="pagination__list-item">
+                        <a class="pagination__list-link @(i == page ? "active" : "")" @(i != page ? $"href={Model.Url()}?page={i}" : "")>@i</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

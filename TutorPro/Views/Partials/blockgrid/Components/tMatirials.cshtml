@@ -4,7 +4,7 @@
 }
 
 <div class="matirials">
-    <div class="matirials__filtration-block">
+    <div class="matirials__filtration-block" data-articleUrl="@content.TArticleUrl?.Url">
         <div class="container">
             <div class="matirials__filtration">
                 <form class="matirials__filtration-form filter-form" action="/Umbraco/Api/Matirials/GetMatirials" method="post">
@@ -29,7 +29,7 @@
     <div class="matirials__content radial-bg">
         <div class="matirials__bg radial-bg"></div>
         <div class="matirials__container">
-            <div class="matirials__block">
+            <div class="matirials__block" data-notFoundMessage="@content.TNotFoundMessage">
                 
             </div>
 

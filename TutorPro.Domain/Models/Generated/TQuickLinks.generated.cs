@@ -64,12 +64,5 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tQuickTitle")]
 		public virtual string TQuickTitle => this.Value<string>(_publishedValueFallback, "tQuickTitle");
-
-		///<summary>
-		/// Show languages switch
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tShowLanguagesSwitch")]
-		public virtual bool TShowLanguagesSwitch => this.Value<bool>(_publishedValueFallback, "tShowLanguagesSwitch");
 	}
 }
