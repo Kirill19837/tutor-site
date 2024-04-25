@@ -1,4 +1,4 @@
-﻿const cookieConsent = document.getElementById('cookies');
+const cookieConsent = document.getElementById('cookies');
 const acceptButton = document.querySelector('.cookies__accept');
 
 // Function to set a cookie

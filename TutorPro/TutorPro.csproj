@@ -16,8 +16,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Plugins\BlockGrid\Button\tButton.html" />
-    <Content Include="App_Plugins\BlockGrid\RichTextEditor\tRichTextEditor.html" />
     <Content Include="wwwroot\media\0wzakafs\about-info-image1.jpg" />
     <Content Include="wwwroot\media\1l4pwhci\teacher-hero-info-icon6.png" />
     <Content Include="wwwroot\media\2kgnqe01\thomas-griesbeck-bs-uxe8wu5y-unsplash.jpg" />
@@ -110,10 +108,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="app_plugins\blockgrid\button\package.manifest" />
-    <None Include="app_plugins\blockgrid\button\tButton.controller.js" />
-    <None Include="App_Plugins\BlockGrid\RichTextEditor\package.manifest" />
-    <None Include="app_plugins\blockgrid\richtexteditor\tRichTextEditor.controller.js" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\button\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\button\tButton.controller.js" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\richtexteditor\tRichTextEditor.controller.js" />
     <None Include="wwwroot\media\1aqd11uv\process-item1-icon.svg" />
     <None Include="wwwroot\media\1i0m4qmw\decor-points-green-big.svg" />
     <None Include="wwwroot\media\2jynb010\decor-circle-green.svg" />
@@ -145,6 +143,12 @@
     <None Include="wwwroot\media\sdhdj1sf\process-item2-icon.svg" />
     <None Include="wwwroot\media\so1okzoy\process-item3-icon.svg" />
     <None Include="wwwroot\media\txtpd1xl\process-item1-icon.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EmailTemplates\EmailTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	
   <PropertyGroup>

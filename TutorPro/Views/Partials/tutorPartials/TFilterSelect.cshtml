@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TFilterSelect>
+
+<div class="filter-form__select-wrap">
+    <select class="filter-form__select select" name="@Model.TName" id="@Model.TName" data-placeholder="@Model.TPlaceholder">
+        @if (Model.TFilterItems != null)
+        {
+            <option value=""></option>
+            @for (int i = 0; i < Model.TFilterItems.Count(); i++)
+            {
+                <option value="@Model.TFilterItems.ElementAt(i)">@Model.TFilterItems.ElementAt(i)</option>
+            }
+        }
+    </select>
+</div>

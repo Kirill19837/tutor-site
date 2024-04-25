@@ -16,6 +16,15 @@
             </div>
         }     
     </div>
+    @if(Model.TEmaiLlist != null)
+    {
+        @foreach (var email in Model.TEmaiLlist)
+        {
+            <input type="hidden" class="check" name="AdditionalEmail" value="@email" />
+        }
+    }
+
+
     @if (!Model.TPlaceholderForMessage.IsNullOrWhiteSpace())
     {
         <textarea class="request-form__message" name="SenderMessage" placeholder="@Model.TPlaceholderForMessage"></textarea>
