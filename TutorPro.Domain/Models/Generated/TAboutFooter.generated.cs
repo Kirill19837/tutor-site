@@ -66,6 +66,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string TAboutTitle => this.Value<string>(_publishedValueFallback, "tAboutTitle");
 
 		///<summary>
+		/// Addres index
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tAddresIndex")]
+		public virtual string TAddresIndex => this.Value<string>(_publishedValueFallback, "tAddresIndex");
+
+		///<summary>
 		/// Adress url: if there is an @ in the link, you need to add another one before it
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]

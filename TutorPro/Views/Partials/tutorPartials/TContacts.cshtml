@@ -18,6 +18,12 @@
             }         
         }       
     </ul>
+    @if (Model.TShowLanguageDropdown)
+    {
+        <div class="footer__languages">
+            @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent)
+        </div>
+    }
 </div>
 
 

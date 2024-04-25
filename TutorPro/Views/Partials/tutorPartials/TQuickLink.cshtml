@@ -19,11 +19,5 @@
                 </li>
             }
         }
-    </ul>
-    @if (Model.TShowLanguagesSwitch)
-    {              
-        <div class="footer__languages">
-            @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent)
-        </div>
-    } 
+    </ul>  
 </div>

@@ -50,6 +50,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// Api url: Url from where we get the materials
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tApiUrl")]
+		public virtual string TApiUrl => this.Value<string>(_publishedValueFallback, "tApiUrl");
+
+		///<summary>
+		/// Article url
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tArticleUrl")]
+		public virtual global::Umbraco.Cms.Core.Models.Link TArticleUrl => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "tArticleUrl");
+
+		///<summary>
 		/// Filters
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -58,11 +74,18 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TFilters => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tFilters");
 
 		///<summary>
-		/// Matirial cards
+		/// Not found message
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tMatirialCards")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TMatirialCards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tMatirialCards");
+		[ImplementPropertyType("tNotFoundMessage")]
+		public virtual string TNotFoundMessage => this.Value<string>(_publishedValueFallback, "tNotFoundMessage");
+
+		///<summary>
+		/// Page size
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tPageSize")]
+		public virtual int TPageSize => this.Value<int>(_publishedValueFallback, "tPageSize");
 	}
 }

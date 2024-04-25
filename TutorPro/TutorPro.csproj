@@ -19,8 +19,10 @@
     <Content Include="wwwroot\media\0wzakafs\about-info-image1.jpg" />
     <Content Include="wwwroot\media\1l4pwhci\teacher-hero-info-icon6.png" />
     <Content Include="wwwroot\media\2kgnqe01\thomas-griesbeck-bs-uxe8wu5y-unsplash.jpg" />
+    <Content Include="wwwroot\media\3yllqyob\blog-item2-image.jpg" />
     <Content Include="wwwroot\media\3yylu34a\steps-item3-image-big.png" />
     <Content Include="wwwroot\media\4aonipek\hossein-nasr-wr56ynk67uc-unsplash.jpg" />
+    <Content Include="wwwroot\media\4lwi1dh5\blog-item4-image.jpg" />
     <Content Include="wwwroot\media\4sbdlbqh\screenshots-image1.jpg" />
     <Content Include="wwwroot\media\52vji5we\cookies-icon.png" />
     <Content Include="wwwroot\media\5gjnncui\screenshots-image2.jpg" />
@@ -29,6 +31,8 @@
     <Content Include="wwwroot\media\5tdfafj3\platform-image-small.png" />
     <Content Include="wwwroot\media\5tmhdn3f\branches-item-image.jpg" />
     <Content Include="wwwroot\media\5tsfliws\screenshots-image9.jpg" />
+    <Content Include="wwwroot\media\ac4fbdbf\blog-item1-image.jpg" />
+    <Content Include="wwwroot\media\ao4j5e4p\blog-item6-image.jpg" />
     <Content Include="wwwroot\media\aq4gbk5l\teacher-hero-info-icon9.png" />
     <Content Include="wwwroot\media\at2pdc3c\geran-de-klerk-qzgn45hsen0-unsplash.jpg" />
     <Content Include="wwwroot\media\bnqn3fni\screenshots-image8.jpg" />
@@ -37,6 +41,7 @@
     <Content Include="wwwroot\media\cfodpvfl\teacher-description-image3.png" />
     <Content Include="wwwroot\media\ch1dsasu\ed-259-xcri6cpkkjs-unsplash.jpg" />
     <Content Include="wwwroot\media\ckjjeme1\teacher-description-image2.png" />
+    <Content Include="wwwroot\media\ckwbznjm\blog-item3-image.jpg" />
     <Content Include="wwwroot\media\crzntdkk\screenshots-image10.jpg" />
     <Content Include="wwwroot\media\csum3lwi\description-image-1.png" />
     <Content Include="wwwroot\media\ehbeodnj\teacher-hero-info-icon7.png" />
@@ -45,11 +50,13 @@
     <Content Include="wwwroot\media\f5qjafx4\teacher-branch-image1.jpg" />
     <Content Include="wwwroot\media\gbdckvo3\screenshots-image7.jpg" />
     <Content Include="wwwroot\media\gfseurhe\teacher-hero-image.png" />
+    <Content Include="wwwroot\media\gqlk50nj\matirials-item1-image.jpg" />
     <Content Include="wwwroot\media\hgrk41po\program-item1-image.jpg" />
     <Content Include="wwwroot\media\hiydim21\teacher-hero-info-icon5.png" />
     <Content Include="wwwroot\media\hsdhddlz\meiying-ng-orwkd-iwgqg-unsplash.jpg" />
     <Content Include="wwwroot\media\hwdhmosr\teacher-hero-info-icon2.png" />
     <Content Include="wwwroot\media\i4wp2u2u\steps-item2-image-small.png" />
+    <Content Include="wwwroot\media\ir2lcefb\blog-item5-image.jpg" />
     <Content Include="wwwroot\media\j0hichsi\screenshots-image4.jpg" />
     <Content Include="wwwroot\media\k31oq3tc\hossein-nasr-uj99hdy2mmw-unsplash.jpg" />
     <Content Include="wwwroot\media\lgsbnjbc\collin-clyne-zsuely56fzu-unsplash.jpg" />
@@ -65,6 +72,7 @@
     <Content Include="wwwroot\media\ravpjeo3\hossein-nasr-2nuu_j3zgke-unsplash.jpg" />
     <Content Include="wwwroot\media\rgdjnss1\platform-image-big.png" />
     <Content Include="wwwroot\media\rxehp51j\geran-de-klerk-wjkc3xzjsxw-unsplash.jpg" />
+    <Content Include="wwwroot\media\s4opjhaj\matirials-item1-image.jpg" />
     <Content Include="wwwroot\media\tmljqwp2\teacher-hero-info-icon4.png" />
     <Content Include="wwwroot\media\txxp4ui2\teacher-hero-info-icon1.png" />
     <Content Include="wwwroot\media\vaubs5z0\screenshots-image6.jpg" />
@@ -114,22 +122,30 @@
     <None Include="wwwroot\App_Plugins\BlockGrid\richtexteditor\tRichTextEditor.controller.js" />
     <None Include="wwwroot\media\1aqd11uv\process-item1-icon.svg" />
     <None Include="wwwroot\media\1i0m4qmw\decor-points-green-big.svg" />
+    <None Include="wwwroot\media\1nwjoawg\process-item1-icon.svg" />
     <None Include="wwwroot\media\2jynb010\decor-circle-green.svg" />
     <None Include="wwwroot\media\2sko42mf\steps-bg-figure.svg" />
+    <None Include="wwwroot\media\3ltpgwto\icon-social-tiktok-white.svg" />
     <None Include="wwwroot\media\3tejzlbo\process-item5-icon.svg" />
     <None Include="wwwroot\media\4c0njtrs\icon-social-instagram-white.svg" />
     <None Include="wwwroot\media\4k5j4y3k\decor-points-green.svg" />
     <None Include="wwwroot\media\4r5ebwzs\icon-ai.svg" />
     <None Include="wwwroot\media\5arjg5tq\tiktok-1.svg" />
+    <None Include="wwwroot\media\5soptm3s\icon-social-instagram-white.svg" />
     <None Include="wwwroot\media\b2kbvadt\decor-points-orange.svg" />
+    <None Include="wwwroot\media\blnnhggy\process-item4-icon.svg" />
+    <None Include="wwwroot\media\bznj1tcp\logo.svg" />
     <None Include="wwwroot\media\cshplkqn\decor-circle-orange.svg" />
     <None Include="wwwroot\media\d13ppidp\process-item4-icon.svg" />
     <None Include="wwwroot\media\dsjphn3d\instagram-1-1.svg" />
     <None Include="wwwroot\media\e1pfg3yt\process-item2-icon.svg" />
+    <None Include="wwwroot\media\e2sngsd0\process-item2-icon.svg" />
+    <None Include="wwwroot\media\egefuhgk\process-item3-icon.svg" />
     <None Include="wwwroot\media\enln1xl4\process-item4-icon.svg" />
     <None Include="wwwroot\media\envl4lca\instagram-1.svg" />
     <None Include="wwwroot\media\hl3hpvfw\process-item3-icon.svg" />
     <None Include="wwwroot\media\htnblh0p\decor-ring-green.svg" />
+    <None Include="wwwroot\media\i1gifp5x\icon-social-instagram-dark.svg" />
     <None Include="wwwroot\media\idodsl04\icon-social-instagram-dark.svg" />
     <None Include="wwwroot\media\iippav4w\decor-ring-orange.svg" />
     <None Include="wwwroot\media\kcllnsuq\decor-points-white-big.svg" />
@@ -141,8 +157,10 @@
     <None Include="wwwroot\media\ricnsmu3\process-item5-icon.svg" />
     <None Include="wwwroot\media\sbslj1pa\logo-2.svg" />
     <None Include="wwwroot\media\sdhdj1sf\process-item2-icon.svg" />
+    <None Include="wwwroot\media\sggnopdf\process-item5-icon.svg" />
     <None Include="wwwroot\media\so1okzoy\process-item3-icon.svg" />
     <None Include="wwwroot\media\txtpd1xl\process-item1-icon.svg" />
+    <None Include="wwwroot\media\zjnhvlgr\icon-social-tiktok-dark.svg" />
   </ItemGroup>
 
   <ItemGroup>
