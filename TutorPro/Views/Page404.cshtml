@@ -9,7 +9,7 @@
     <!-- Header with logo -->
     <div class="page-404__header radial-bg">
         <div class="page-404__container">
-            <a class="page-404__header-logo" href="/">
+            <a class="page-404__header-logo" href="@("/" + Umbraco.CultureDictionary.Culture.Name.Split("-")[0])">
                 <img src="@mainPage.TLogo?.Url()" width="70" height="64" alt="Logo">
             </a>
         </div>
@@ -39,7 +39,7 @@
     <div class="page-404__footer radial-bg">
         <div class="page-404__container">
             <div class="page-404__languages languages">
-               @await Html.PartialAsync("tutorPartials/TFooterWithLanguages")
+                @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent, new ViewDataDictionary(ViewData) { { "DropDown", true } })
             </div>
         </div>
     </div>

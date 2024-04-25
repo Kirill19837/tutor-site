@@ -63,7 +63,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tCards")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TCards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tCards");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TCards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tCards");
 
 		///<summary>
 		/// Request block
@@ -71,7 +71,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tRequestBlock")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TRequestBlock => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tRequestBlock");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TRequestBlock => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tRequestBlock");
 
 		///<summary>
 		/// Style

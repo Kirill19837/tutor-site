@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TInnerPageTop)Model.Content;
+    var innerClass = "inner-top ";
+    if (content.TStyle == "About")
+        innerClass += "radial-bg";
+    else if (content.TStyle == "Matirials")
+        innerClass += "matirials-top radial-bg";
+}
+<!-- Section "Inner page top" -->
+<section class="@innerClass">
+    <div class="container">
+        @if (content.TDecors != null)
+        {
+            @foreach (var decor in content.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+        <div class="inner-top__content">
+            <h1 class="inner-top__title big-title">@content.TTitle</h1>
+            @if (!content.TText.IsNullOrWhiteSpace())
+            {
+                @Html.Raw(content.TText)
+            }          
+        </div>
+    </div>
+</section>

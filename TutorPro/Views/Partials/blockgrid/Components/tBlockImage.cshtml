@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var imageStyle = "";
+    var content = (TBlockImage)Model.Content;
+    if (content.THeight > 0)
+        imageStyle += $"height:{content.THeight}px;";
+    if (content.TWidth > 0)
+        imageStyle += $"width:{content.TWidth}px;";
+    var imageUrl = content.TImage?.Url();
+    
+}
+
+<img src="@imageUrl" alt="@content.TImage?.Name" style="@imageStyle" />

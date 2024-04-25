@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TButton>
+
+<a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" href="@Model.TLink?.Url">
+    @if((ViewData["span"] as bool? ?? false))
+    {
+        <span>@Model.TButtonTitle</span>
+    }
+    else
+    {
+        @Model.TButtonTitle
+    }
+</a>    

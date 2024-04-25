@@ -66,12 +66,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string TBottomText => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTBottomText(this, _publishedValueFallback);
 
 		///<summary>
-		/// Button
+		/// CookieButton
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tButton")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TButton> TButton => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTButton(this, _publishedValueFallback);
+		[ImplementPropertyType("tCookieButton")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TButton> TCookieButton => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTCookieButton(this, _publishedValueFallback);
 
 		///<summary>
 		/// Cookie Icon
@@ -82,20 +82,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TCookieIcon => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTCookieIcon(this, _publishedValueFallback);
 
 		///<summary>
+		/// CookieUrls
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tCookieUrls")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.Link> TCookieUrls => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTCookieUrls(this, _publishedValueFallback);
+
+		///<summary>
 		/// Cookies Top Text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tTopText")]
 		public virtual string TTopText => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTTopText(this, _publishedValueFallback);
-
-		///<summary>
-		/// Urls
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tUrls")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.Link> TUrls => global::Umbraco.Cms.Web.Common.PublishedModels.TCookies.GetTUrls(this, _publishedValueFallback);
 
 		///<summary>
 		/// About footer
@@ -136,14 +136,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tHeaderLinks")]
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel THeaderLinks => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTHeaderLinks(this, _publishedValueFallback);
-
-		///<summary>
-		/// Language dropdown
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tLanguageDropdown")]
-		public virtual string TLanguageDropdown => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTLanguageDropdown(this, _publishedValueFallback);
 
 		///<summary>
 		/// Logo

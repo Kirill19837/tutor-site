@@ -9,14 +9,14 @@
 <!-- Section "Application form block" -->
 <div class="app-block radial-bg">
     <span class="decor-element ring parallax-element"></span>
-    <span class="decor-element points parallax-element">
+    <span class="decor-element points parallax-element" data-speed="50" data-direction="false">
         <img src="~/images/icons/decor-elements/decor-points-green-big.svg" alt="Decor points">
     </span>
     <div class="app-block__inner">
         <!-- Header with logo -->
         <div class="app-block__header">
             <div class="app-block__container">
-                <a class="app-block__header-logo" href="/">
+                <a class="app-block__header-logo" href="@("/" + Umbraco.CultureDictionary.Culture.Name.Split("-")[0])">
                     <img src="@mainPage.TLogo?.Url()" width="70" height="64" alt="Logo">
                 </a>
             </div>
@@ -39,7 +39,7 @@
         <div class="app-block__footer">
             <div class="app-block__container">
                 <div class="app-block__languages languages">
-                    @await Html.PartialAsync("tutorPartials/TFooterWithLanguages")
+                    @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent, new ViewDataDictionary(ViewData) { { "DropDown", true } })
                 </div>
             </div>
         </div>

@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TBrancheItem>
+
+<div class="@ViewData["bracnheClass"] branches__item @(Model.TReverse ? "reverse" : "")">
+    <div class="branches__item-info">
+        <span class="branches__item-title">@Model.TTitle</span>
+        <p class="branches__item-text">@Model.TText</p>
+        @if(Model.TButton != null)
+        {
+            @await Html.PartialAsync("tutorPartials/TButton", Model.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "branches__item-link" }, {"span", true} })
+        }    
+    </div>
+    <div class="branches__item-image">
+        @Html.GetBlockGridHtml(Model.TMainImage)
+        @if (Model.TDecors != null)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+    </div>
+</div>

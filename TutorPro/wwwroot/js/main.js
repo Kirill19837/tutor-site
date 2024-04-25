@@ -1,22 +1,4 @@
-$(function () {
-
-  // $('.str_static').removeClass('str_static');
-
-  if($('.moving-element').length != 0) {
-    $('.moving-element').each(function(){
-      $(this).liMarquee({
-        direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
-        loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
-        scrolldelay: 0, //Величина задержки в миллисекундах между движениями
-        scrollamount: 50, //Скорость движения контента (px/sec)
-        circular: true, //Если "true" - строка непрерывная 
-        drag: true, //Если "true" - включено перетаскивание строки
-        runshort: false, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
-        hoverstop: true, //true - строка останавливается при наведении курсора мыши, false - строка не останавливается
-        inverthover: false, //false - стандартное поведение. Если "true" - строка начинает движение только при наведении курсора
-      });
-    });
-  }
+$(function () {  
 
   // Burger-menu
 	$('#header-burger').on('click', function(e) {
@@ -79,6 +61,7 @@ $(function () {
   removeMenuElements();
   $(window).on('resize', function(){
 		removeMenuElements();
+    // movingElementsHeight();
 
     if($(window).width() > 992) {
       $('#header-burger').removeClass('active');
@@ -89,9 +72,25 @@ $(function () {
 
   // Cookies
   $('.cookies__accept').on('click', function(e){
-      e.preventDefault();
-      $(this).closest('.cookies').fadeOut(300).addClass('accepted');
+    e.preventDefault();
+    $(this).closest('.cookies').fadeOut(300).addClass('accepted');
   });
+
+/*   Parallax elements moving*/
+   let parallaxElements = document.querySelectorAll('.parallax-element img');
+   for (let i = 0; i < parallaxElements.length; i++){
+     let speed = parallaxElements[i].parentNode.getAttribute('data-speed'),
+         direction = parallaxElements[i].parentNode.getAttribute('data-direction');
+     window.addEventListener('mousemove', function(e) { 
+       let x = e.clientX / window.innerWidth;
+       let y = e.clientY / window.innerHeight; 
+       if(direction == 'true') {
+         parallaxElements[i].style.transform = 'translate(' + x * speed + 'px, ' + y * speed + 'px)';
+       } else {
+           parallaxElements[i].style.transform = 'translate(-' + x * speed + 'px, -' + y * speed + 'px)';
+         }
+     });    
+   }
 
   // Mask for input[type="tel"]
   $('.request-form input[type="tel"]').each(function(){
@@ -157,15 +156,45 @@ $(function () {
   $('.request-form').on('submit',function(e){
     e.preventDefault();
     let currentForm = $(this),
-        inputs = currentForm.find('input.required');
+        inputs = currentForm.find('input.required'),
+        formData = {};
 
     inputs.each(function(){
       validateInputs($(this));
     });
 
+      inputs.each(function () {
+          formData[$(this).attr('name')] = $(this).val();
+      });
+
+      // Collect data from hidden fields
+      currentForm.find('input[name="AdditionalEmail"]').each(function () {
+          if (!formData["AdditionalEmail"]) {
+              formData["AdditionalEmail"] = [];
+          }
+          formData["AdditionalEmail"].push($(this).val());
+      });
+
+      formData["SenderMessage"] = currentForm.find('.request-form__message').val();
+
+      var jsonData = JSON.stringify(formData);
+
     let errorInputs = currentForm.find('input.error');
     if(errorInputs.length === 0) {
-      // Обаботка и отправка запроса
+        var actionUrl = $('#urlToSend').val();
+
+        $.ajax({
+            type: 'POST',
+            url: actionUrl,
+            data: jsonData,
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
       } else {
         let errorString = 'Enter ',
             wordDevider1 = ', ',
@@ -191,13 +220,15 @@ $(function () {
       }    
   });
 
+  // // Moving elements
   // if($('.moving-element').length != 0) {
   //   $('.moving-element').each(function(){
   //     $(this).liMarquee({
   //       direction: 'left', //Указывает направление движения содержимого контейнера (left | right | up | down)
   //       loop: -1, //Задает, сколько раз будет прокручиваться содержимое. "-1" для бесконечного воспроизведения движения
   //       scrolldelay: 0, //Величина задержки в миллисекундах между движениями
-  //       scrollamount: 50, //Скорость движения контента (px/sec)
+  //       scrollamount: 40, //Скорость движения контента (px/sec)
+  //       // scrollamount: 50, //Скорость движения контента (px/sec)
   //       circular: true, //Если "true" - строка непрерывная 
   //       drag: true, //Если "true" - включено перетаскивание строки
   //       runshort: false, //Если "true" - короткая строка тоже "бегает", "false" - стоит на месте
@@ -206,5 +237,103 @@ $(function () {
   //     });
   //   });
   // }
+ 
+  // let movingElementsHeight = function(){};
+  // $('.str_wrap').each(function(){
+  //   let height = $(this).height(),
+  //       items = $(this).find('.school-hero__moving-item');
+    
+  //   items.each(function(){
+  //     $(this).css({'height': Math.round(height) + 'px'});
+  //   });
+  // });
 
+  // movingElementsHeight();
+
+  // Moving elements
+  if($('.animated').length != 0) {
+    $('.animated__row-wrap').each(function(){
+      let duration = $(this).data('duration'),
+          leftOffset = $(this).data('left-offset'),
+          animatedRows = $(this).find('.animated__row');
+
+      $(this).css({'margin-left': leftOffset});
+      animatedRows.each(function(){
+        $(this).css({'animation-duration': duration});
+      });
+    });
+  }
+
+   /*Custom Select in section Hero-L2, block "Employee Benefits"*/
+	$('.select').each(function() {
+    const _this = $(this),
+        selectOption = _this.find('option'),
+        selectOptionLength = selectOption.length,
+        selectedOption = selectOption.filter(':selected'),
+        duration = 300;
+
+    _this.hide();
+    _this.wrap('<div class="select"></div>');
+    $('<div>', {
+        class: 'new-select',
+        text: _this.data('placeholder')
+    }).insertAfter(_this);
+
+    const selectHead = _this.next('.new-select');
+    selectHead.addClass('empty');
+    $('<div>', {
+        class: 'new-select__list'
+    }).insertAfter(selectHead);
+
+    const selectList = selectHead.next('.new-select__list');
+    for (let i = 0; i < selectOptionLength; i++) {
+        $('<div>', {
+            class: 'new-select__item',
+            html: $('<span>', {
+                text: selectOption.eq(i).text()
+            })
+        })
+        .attr('data-value', selectOption.eq(i).val())
+        .appendTo(selectList);
+    }
+
+    const selectItem = selectList.find('.new-select__item');
+    selectList.slideUp(0);
+    selectHead.on('click', function() {      
+        if ( !$(this).hasClass('on') ) {
+          if($(this).hasClass('empty')) {
+            $(this).css({'color':'transparent'});
+          }
+					$('.new-select.on').removeClass('on').css({'color':'#FF6B00'}).next('.new-select__list').slideUp();
+            $(this).addClass('on');
+            selectList.slideDown(duration);
+
+            selectItem.on('click', function() {
+              selectHead.removeClass('empty').css({'color':'#FF6B00'});
+              $(this).siblings('.selected').removeClass('selected');
+              $(this).addClass('selected');
+                let chooseItem = $(this).data('value');
+
+                $('select').val(chooseItem).attr('selected', 'selected');
+                selectHead.text( $(this).find('span').text() );
+
+                selectList.slideUp(duration);
+                selectHead.removeClass('on');
+            });
+
+        } else {
+            $(this).removeClass('on');
+            selectList.slideUp(duration);
+            if($(this).hasClass('empty')) {
+              $(this).css({'color':'#FF6B00'});
+            }
+        }
+    });
+    $('.new-select__item').on('click', function () {
+        const category = $(this).closest(".new-select__list").siblings(".select").attr("id")
+        const data = $(this).find('span').html()
+        sendRequest(category, data);
+    });
+  });
 });
+
