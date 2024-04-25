@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Web;
 using TutorPro.Application.Interfaces;
@@ -16,8 +17,8 @@ namespace TutorPro.Application.Services
             _logger = logger;
             _clientFactory = clientFactory;
         }
-        public async Task<FilterResponse> GetMaterials(string searchText, string subject, string grade, string level, string sort, int page = 1, int pageSize = 12)
-        {
+        public async Task<FilterResponse> GetMaterials(string searchText, string subject, string grade, string level, string sort, string apiUrl, int page = 1, int pageSize = 12)
+        {         
             // Forming a JSON object for the input parameter
             var inputObject = new Dictionary<string, object>();
 
@@ -42,7 +43,6 @@ namespace TutorPro.Application.Services
             var inputJson = JsonConvert.SerializeObject(inputObject);
 
             // Making a request to a third-party API
-            var apiUrl = "https://tutorpro.team/api/trpc/availableMaterial.getPublicMaterials";
             var fullUrl = $"{apiUrl}?input={HttpUtility.UrlEncode(inputJson)}";
 
             var client = _clientFactory.CreateClient();

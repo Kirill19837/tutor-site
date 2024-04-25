@@ -15,7 +15,6 @@ $(document).ready(function () {
             var page = $(this).text(); // Get the page number
             sendRequest(null, null, page); // Send an AJAX request with the page number
         });
-
 });
 
 
@@ -57,6 +56,7 @@ function sendRequest(key = null, value = null, page = 1) {
 
     var pagination = document.querySelector('.matirials__pagination');
     var pageSize = pagination.getAttribute('data-pageSize');
+    var apiUrl = pagination.getAttribute('data-apiUrl');
 
     $.ajax({
         url: '/Umbraco/Api/Materials/GetMaterials',
@@ -68,7 +68,8 @@ function sendRequest(key = null, value = null, page = 1) {
             sort: sort,
             page: page,
             pageSize: pageSize,
-            searchText: searchValue
+            searchText: searchValue,
+            apiUrl: apiUrl,
         },
         success: function (response) {
             // Updating the page content with the received data
