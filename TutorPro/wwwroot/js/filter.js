@@ -55,6 +55,9 @@ function sendRequest(key = null, value = null, page = 1) {
         }
     }
 
+    var pagination = document.querySelector('.matirials__pagination');
+    var pageSize = pagination.getAttribute('data-pageSize');
+
     $.ajax({
         url: '/Umbraco/Api/Materials/GetMaterials',
         method: 'GET',
@@ -64,6 +67,7 @@ function sendRequest(key = null, value = null, page = 1) {
             level: level,
             sort: sort,
             page: page,
+            pageSize: pageSize,
             searchText: searchValue
         },
         success: function (response) {

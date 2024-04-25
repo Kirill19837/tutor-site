@@ -9,8 +9,11 @@ namespace TutorPro.Configuration
     {
         public static IServiceCollection AddServ(this IServiceCollection services)
         {
+            services.AddHttpClient();
+
             services.AddScoped<IEmailSenderService, EmailSenderService>();
             services.AddScoped<IMaterialsService, MaterialsService>();
+            services.AddScoped<IBlogService, BlogService>();
 
             services.AddTransient<ExceptionMiddleware>();
 
