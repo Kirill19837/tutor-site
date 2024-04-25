@@ -144,6 +144,12 @@
     <None Include="wwwroot\media\so1okzoy\process-item3-icon.svg" />
     <None Include="wwwroot\media\txtpd1xl\process-item1-icon.svg" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EmailTemplates\EmailTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 	
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
