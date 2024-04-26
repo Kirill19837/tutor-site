@@ -1,0 +1,52 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Main.cshtml";
+}
+
+<section class="inner-top blog-top radial-bg">
+    <div class="container">
+        @if (Model.TDecors != null)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+        <div class="inner-top__content">
+            <h1 class="inner-top__title big-title">@Model.TTitle</h1>
+        </div>
+    </div>
+</section>
+
+<!-- Section "Blog" -->
+<div class="blog">
+    <div class="container">
+        <form class="blog__form filter-form">
+            <div class="filter-form__item search-item">
+                <input id="searchInput" class="filter-form__input" type="text" name="filter-search">
+                <button id="searchButton" class="filter-form__search-button" type="button" aria-label="search-button"></button>
+            </div>
+        </form>
+
+        <!-- Blog items block -->
+        <div class="blog__block" data-pageSize="@Model.TPageSize" data-notFoundMessage="@Model.TNotFoundMessage">
+            
+        </div>
+
+        <!-- Pagenation of pages -->
+        <div class="blog__pagination pagination">
+            <ul class="pagination__list">
+                
+            </ul>
+        </div>
+    </div>
+</div>
+@if (Model.TActions != null)
+{
+    @await Html.GetBlockGridItemsHtmlAsync(Model.TActions)
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/blog.js"></script>

@@ -1,4 +1,4 @@
-﻿namespace TutorPro.Application.Models
+﻿namespace TutorPro.Application.Models.ResponseModel
 {
     public class FilterResponse
     {

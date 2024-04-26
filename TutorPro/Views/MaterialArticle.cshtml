@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.MaterialArticle>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Main.cshtml";
+    var guid = Context.Request.Query["guid"];
+    var title = Context.Request.Query["title"];
+}
+
+<link rel="stylesheet" href="https://tutorpro.team/web-component/index-web-component.css">
+<script type="module" src="https://tutorpro.team/web-component/index-web-component.js"></script>
+<div style="text-align: center;">
+    <div style="display: inline-block; width: 65%; text-align: left;">
+        <ce-tutorpro-material guid="@guid"></ce-tutorpro-material>
+    </div>
+</div>
+
+@await Html.GetBlockGridHtmlAsync(Model.TAction);

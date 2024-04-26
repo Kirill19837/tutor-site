@@ -4,7 +4,7 @@
     var content = (TRichTextEditor)Model.Content;
 }
 
-<section class="text-content">
+<section class="@(content.TPadding ? "text-content" : "")">
     <div class="container">
         <div class="text-content__inner" style="color:@content.TTextColor; background-color:@content.TBackgroundColor">
             <div style="color:@content.TTextColor" >
@@ -13,4 +13,3 @@
         </div>
     </div>
 </section>
-}

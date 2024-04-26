@@ -82,6 +82,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string TNumber => this.Value<string>(_publishedValueFallback, "tNumber");
 
 		///<summary>
+		/// Show language dropdown
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tShowLanguageDropdown")]
+		public virtual bool TShowLanguageDropdown => this.Value<bool>(_publishedValueFallback, "tShowLanguageDropdown");
+
+		///<summary>
 		/// Social links
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
