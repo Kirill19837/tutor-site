@@ -136,23 +136,9 @@ $(function () {
 						}
                 break;
             //TODO: Validation for phone number
-
-      /*case 'tel':
-        for(let i=0; i<value.length; i++) {
-          if(value[i] == 'x') {
-            letterNumber++;
-          }
-        }
-				if(value == '') {
-					inputField.addClass('error').parent().addClass('error');
-				} else
-					if(letterNumber > 0) {
-            inputField.addClass('error').parent().addClass('error');					
-					}	else {
-            inputField.removeClass('error').parent().removeClass('error');
-						}
+      case 'tel':
 			break;
-			} */
+			} 
 	};
 
   $('.request-form').on('submit',function(e){
