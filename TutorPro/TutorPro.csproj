@@ -83,6 +83,37 @@
     <Content Include="wwwroot\media\zhvjsnsn\steps-item1-image-big.png" />
     <Content Include="wwwroot\media\zmenzklu\simone-hutsch-l8fyk9rs-ou-unsplash.jpg" />
     <Content Include="wwwroot\media\zxelh4yi\grant-ritchie-fbkrqhnlqoy-unsplash.jpg" />
+	  <Content Include="wwwroot\media\sbslj1pa\logo-2.svg" />
+	  <Content Include="wwwroot\media\1aqd11uv\process-item1-icon.svg" />
+	  <Content Include="wwwroot\media\1i0m4qmw\decor-points-green-big.svg" />
+	  <Content Include="wwwroot\media\2jynb010\decor-circle-green.svg" />
+	  <Content Include="wwwroot\media\2sko42mf\steps-bg-figure.svg" />
+	  <Content Include="wwwroot\media\3tejzlbo\process-item5-icon.svg" />
+	  <Content Include="wwwroot\media\4c0njtrs\icon-social-instagram-white.svg" />
+	  <Content Include="wwwroot\media\4k5j4y3k\decor-points-green.svg" />
+	  <Content Include="wwwroot\media\4r5ebwzs\icon-ai.svg" />
+	  <Content Include="wwwroot\media\5arjg5tq\tiktok-1.svg" />
+	  <Content Include="wwwroot\media\b2kbvadt\decor-points-orange.svg" />
+	  <Content Include="wwwroot\media\cshplkqn\decor-circle-orange.svg" />
+	  <Content Include="wwwroot\media\d13ppidp\process-item4-icon.svg" />
+	  <Content Include="wwwroot\media\dsjphn3d\instagram-1-1.svg" />
+	  <Content Include="wwwroot\media\e1pfg3yt\process-item2-icon.svg" />
+	  <Content Include="wwwroot\media\enln1xl4\process-item4-icon.svg" />
+	  <Content Include="wwwroot\media\envl4lca\instagram-1.svg" />
+	  <Content Include="wwwroot\media\hl3hpvfw\process-item3-icon.svg" />
+	  <Content Include="wwwroot\media\htnblh0p\decor-ring-green.svg" />
+	  <Content Include="wwwroot\media\idodsl04\icon-social-instagram-dark.svg" />
+	  <Content Include="wwwroot\media\iippav4w\decor-ring-orange.svg" />
+	  <Content Include="wwwroot\media\kcllnsuq\decor-points-white-big.svg" />
+	  <Content Include="wwwroot\media\kezfsnjx\icon-social-tiktok-dark.svg" />
+	  <Content Include="wwwroot\media\lsqi2slm\decor-points-white.svg" />
+	  <Content Include="wwwroot\media\or1b0kze\icon-social-tiktok-white.svg" />
+	  <Content Include="wwwroot\media\pnpdfmgu\decor-points-orange-big.svg" />
+	  <Content Include="wwwroot\media\rf2hkjph\tik-tok.svg" />
+	  <Content Include="wwwroot\media\ricnsmu3\process-item5-icon.svg" />
+	  <Content Include="wwwroot\media\sdhdj1sf\process-item2-icon.svg" />
+	  <Content Include="wwwroot\media\so1okzoy\process-item3-icon.svg" />
+	  <Content Include="wwwroot\media\txtpd1xl\process-item1-icon.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -112,37 +143,6 @@
     <None Include="wwwroot\App_Plugins\BlockGrid\button\tButton.controller.js" />
     <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\richtexteditor\tRichTextEditor.controller.js" />
-    <None Include="wwwroot\media\1aqd11uv\process-item1-icon.svg" />
-    <None Include="wwwroot\media\1i0m4qmw\decor-points-green-big.svg" />
-    <None Include="wwwroot\media\2jynb010\decor-circle-green.svg" />
-    <None Include="wwwroot\media\2sko42mf\steps-bg-figure.svg" />
-    <None Include="wwwroot\media\3tejzlbo\process-item5-icon.svg" />
-    <None Include="wwwroot\media\4c0njtrs\icon-social-instagram-white.svg" />
-    <None Include="wwwroot\media\4k5j4y3k\decor-points-green.svg" />
-    <None Include="wwwroot\media\4r5ebwzs\icon-ai.svg" />
-    <None Include="wwwroot\media\5arjg5tq\tiktok-1.svg" />
-    <None Include="wwwroot\media\b2kbvadt\decor-points-orange.svg" />
-    <None Include="wwwroot\media\cshplkqn\decor-circle-orange.svg" />
-    <None Include="wwwroot\media\d13ppidp\process-item4-icon.svg" />
-    <None Include="wwwroot\media\dsjphn3d\instagram-1-1.svg" />
-    <None Include="wwwroot\media\e1pfg3yt\process-item2-icon.svg" />
-    <None Include="wwwroot\media\enln1xl4\process-item4-icon.svg" />
-    <None Include="wwwroot\media\envl4lca\instagram-1.svg" />
-    <None Include="wwwroot\media\hl3hpvfw\process-item3-icon.svg" />
-    <None Include="wwwroot\media\htnblh0p\decor-ring-green.svg" />
-    <None Include="wwwroot\media\idodsl04\icon-social-instagram-dark.svg" />
-    <None Include="wwwroot\media\iippav4w\decor-ring-orange.svg" />
-    <None Include="wwwroot\media\kcllnsuq\decor-points-white-big.svg" />
-    <None Include="wwwroot\media\kezfsnjx\icon-social-tiktok-dark.svg" />
-    <None Include="wwwroot\media\lsqi2slm\decor-points-white.svg" />
-    <None Include="wwwroot\media\or1b0kze\icon-social-tiktok-white.svg" />
-    <None Include="wwwroot\media\pnpdfmgu\decor-points-orange-big.svg" />
-    <None Include="wwwroot\media\rf2hkjph\tik-tok.svg" />
-    <None Include="wwwroot\media\ricnsmu3\process-item5-icon.svg" />
-    <None Include="wwwroot\media\sbslj1pa\logo-2.svg" />
-    <None Include="wwwroot\media\sdhdj1sf\process-item2-icon.svg" />
-    <None Include="wwwroot\media\so1okzoy\process-item3-icon.svg" />
-    <None Include="wwwroot\media\txtpd1xl\process-item1-icon.svg" />
   </ItemGroup>
 
   <ItemGroup>
