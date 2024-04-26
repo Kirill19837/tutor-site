@@ -94,7 +94,7 @@ $(function () {
 
   // Mask for input[type="tel"]
   $('.request-form input[type="tel"]').each(function(){
-    $(this).mask("+380-99-999-99-99",{placeholder:"x"},{autoclear: false});
+    $(this).mask("+999-99-999-99-99",{placeholder:"x"},{autoclear: false});
   }); 
 
   $('.request-form input.required').on('focus', function(){
@@ -134,21 +134,9 @@ $(function () {
 					}	else {
             inputField.addClass('error').parent().addClass('error');
 						}
-			break;
+                break;
+            //TODO: Validation for phone number
       case 'tel':
-        for(let i=0; i<value.length; i++) {
-          if(value[i] == 'x') {
-            letterNumber++;
-          }
-        }
-				if(value == '') {
-					inputField.addClass('error').parent().addClass('error');
-				} else
-					if(letterNumber > 0) {
-            inputField.addClass('error').parent().addClass('error');					
-					}	else {
-            inputField.removeClass('error').parent().removeClass('error');
-						}
 			break;
 			} 
 	};
