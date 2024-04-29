@@ -10,6 +10,9 @@
     {
         <img src="@imgUrl" alt="Icon" class="form-thanks__icon">
     }
-    <p class="form-thanks__text medium-title">@thanks?.TText</p>
-    <a class="form-thanks__link link link-main" href="@thanks?.TButton?.Content.TLink.Url"><span>@thanks?.TButton?.Content.TButtonTitle</span></a>
+    @if(thanks != null)
+    {
+        <p class="form-thanks__text medium-title">@thanks?.TText</p>
+        <a class="form-thanks__link link link-main" href="@thanks?.TButton?.Content.TLink.Url"><span>@thanks?.TButton?.Content.TButtonTitle</span></a>
+    }
 </div>
