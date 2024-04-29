@@ -53,8 +53,8 @@
 
 			@if (!disableFixedComponents)
 			{
-				@await Html.PartialAsync("tutorPartials/TFooter", model)		
-			}
+			@await Html.PartialAsync("tutorPartials/TFooter", model, new ViewDataDictionary(ViewData) { { "pageName", pageName } })
+		}
 		</div>
 		@await Html.PartialAsync("tutorPartials/TCookies", model)
 		<script src="~/js/cookie.js"></script>

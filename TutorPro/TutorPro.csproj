@@ -151,6 +151,16 @@
     <None Include="wwwroot\App_Plugins\BlockGrid\button\tButton.controller.js" />
     <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\richtexteditor\tRichTextEditor.controller.js" />
+    <Content Include="wwwroot\media\1nwjoawg\process-item1-icon.svg" />
+    <Content Include="wwwroot\media\3ltpgwto\icon-social-tiktok-white.svg" />
+    <Content Include="wwwroot\media\5soptm3s\icon-social-instagram-white.svg" />
+    <Content Include="wwwroot\media\blnnhggy\process-item4-icon.svg" />
+    <Content Include="wwwroot\media\bznj1tcp\logo.svg" />
+    <Content Include="wwwroot\media\e2sngsd0\process-item2-icon.svg" />
+    <Content Include="wwwroot\media\egefuhgk\process-item3-icon.svg" />
+    <Content Include="wwwroot\media\i1gifp5x\icon-social-instagram-dark.svg" />
+    <Content Include="wwwroot\media\sggnopdf\process-item5-icon.svg" />
+    <Content Include="wwwroot\media\zjnhvlgr\icon-social-tiktok-dark.svg" />
   </ItemGroup>
 
   <ItemGroup>
