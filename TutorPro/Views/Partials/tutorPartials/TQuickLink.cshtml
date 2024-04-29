@@ -14,7 +14,7 @@
             @foreach(var link in Model.TLinks)
             {
                 var newLink = link.Content as TBlockLink;
-                var name = newLink?.TUrl?.Name;
+ 
                 <li class="footer__menu-item">
                     <a class="footer__menu-link @(pageName == newLink?.TUrl?.Name  ? "active" : "")" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
                 </li>
