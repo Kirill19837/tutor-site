@@ -352,7 +352,6 @@ body {
 /* Cookies */
 
 .cookies {
-  display: none;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -360,6 +359,11 @@ body {
   width: 100%;
   background-color: #fdfdfd;
 }
+
+    .cookies.accepted {
+        display: none !important;
+        opacity: 0;
+    }
 
 .cookies__container {
   width: 100%;
@@ -1848,6 +1852,16 @@ body {
   z-index: 2;
 }
 
+    .actions__form-wrap.send > *:not(.form-thanks) {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .actions__form-wrap.send .form-thanks {
+        opacity: 1;
+        visibility: visible;
+    }
+
 .actions__form-title {
   margin-bottom: 31px;
 }
@@ -2057,6 +2071,46 @@ body {
   font-weight: 600;
   font-size: 14px;
   color: red;
+}
+
+.form-thanks {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    background-color: #FFFDFB;
+    padding: 20px 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.form-thanks__icon {
+    display: inline-block;
+    width: auto;
+    height: 72px;
+    margin-bottom: 10px;
+}
+
+.form-thanks__link {
+    margin-top: 44px;
 }
 
 .footer {
@@ -5661,6 +5715,18 @@ body {
     transform: translateX(0);
   }
 
+    .form-thanks {
+        border-radius: 15px;
+    }
+
+    .form-thanks__icon {
+        height: 60px;
+    }
+
+    .form-thanks__link {
+        margin-top: 30px;
+    }
+
   .steps__description1 .description-block.reverse {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -8310,6 +8376,18 @@ body {
     padding: 11px 0 20px;
     border-radius: 30px 30px 0 0;
   }
+
+    .form-thanks {
+        border-radius: 8px;
+    }
+
+    .form-thanks__icon {
+        height: 50px;
+    }
+
+    .form-thanks__link {
+        margin-top: 20px;
+    }
 
   .main-top {
     padding: 109px 0 30px;

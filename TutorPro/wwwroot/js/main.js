@@ -170,14 +170,13 @@ $(function () {
     let errorInputs = currentForm.find('input.error');
     if(errorInputs.length === 0) {
         var actionUrl = $('#urlToSend').val();
-
         $.ajax({
             type: 'POST',
             url: actionUrl,
             data: jsonData,
             contentType: "application/json; charset=utf-8",
             success: function (response) {
-
+                currentForm.closest('.actions__form-wrap').addClass('send');
             },
             error: function (xhr, status, error) {
                 console.error('Error:', error);

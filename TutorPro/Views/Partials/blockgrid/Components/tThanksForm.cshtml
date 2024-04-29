@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TThanksForm)Model.Content;
+}
+
+@await Html.PartialAsync("tutorPartials/TThanksForm", content)
