@@ -56,5 +56,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tAction")]
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TAction => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tAction");
+
+		///<summary>
+		/// Material content block height
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tMaterialContentBlockHeight")]
+		public virtual int TMaterialContentBlockHeight => this.Value<int>(_publishedValueFallback, "tMaterialContentBlockHeight");
 	}
 }

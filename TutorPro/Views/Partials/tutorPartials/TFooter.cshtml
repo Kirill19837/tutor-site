@@ -7,7 +7,7 @@
             {
                 @if (Model.TQuickLinks != null)
                 {
-                    @await Html.PartialAsync("tutorPartials/TQuickLink", Model.TQuickLinks.Content)
+                    @await Html.PartialAsync("tutorPartials/TQuickLink", Model.TQuickLinks.Content, new ViewDataDictionary(ViewData))
                 }
                 @if (Model.TContactUsFooter != null)
                 {

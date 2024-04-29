@@ -1,9 +1,9 @@
 ﻿@using System.Globalization
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TQuickLinks>
 @{
-    var pageName = Umbraco.AssignedContentItem.Name;
+    var pageName = ViewData["pageName"]?.ToString();
 
-    var language = Umbraco.CultureDictionary.Culture.Name;
+    var language = Umbraco.CultureDictionary.Culture.Name;   
 }
 
 <div class="footer__actions">
@@ -14,6 +14,7 @@
             @foreach(var link in Model.TLinks)
             {
                 var newLink = link.Content as TBlockLink;
+ 
                 <li class="footer__menu-item">
                     <a class="footer__menu-link @(pageName == newLink?.TUrl?.Name  ? "active" : "")" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
                 </li>

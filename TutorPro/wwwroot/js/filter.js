@@ -56,7 +56,6 @@ function sendRequest(key = null, value = null, page = 1) {
 
     var pagination = document.querySelector('.matirials__pagination');
     var pageSize = pagination.getAttribute('data-pageSize');
-    var apiUrl = pagination.getAttribute('data-apiUrl');
 
     $.ajax({
         url: '/Umbraco/Api/Materials/GetMaterials',
@@ -69,7 +68,6 @@ function sendRequest(key = null, value = null, page = 1) {
             page: page,
             pageSize: pageSize,
             searchText: searchValue,
-            apiUrl: apiUrl,
         },
         success: function (response) {
             // Updating the page content with the received data
