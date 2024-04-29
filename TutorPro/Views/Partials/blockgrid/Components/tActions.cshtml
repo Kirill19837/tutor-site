@@ -54,6 +54,7 @@
                      @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestBlock.FirstOrDefault()?.Content)
                 </form>
                 <input type="hidden" id="urlToSend" value="@content.TActionUrl"/>
+                    @await Html.PartialAsync("tutorPartials/TThanksForm", content.TThanksAction?.FirstOrDefault()?.Content)
                 </div>
             </div>
         }
