@@ -69,8 +69,8 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEmaiLList")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TEmaiLlist => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tEmaiLList");
+		[ImplementPropertyType("tEmailList")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TEmailList => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tEmailList");
 
 		///<summary>
 		/// Placeholder for email

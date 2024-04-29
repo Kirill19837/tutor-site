@@ -352,7 +352,6 @@ body {
 /* Cookies */
 
 .cookies {
-  display: none;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -360,6 +359,11 @@ body {
   width: 100%;
   background-color: #fdfdfd;
 }
+
+    .cookies.accepted {
+        display: none !important;
+        opacity: 0;
+    }
 
 .cookies__container {
   width: 100%;
