@@ -2,10 +2,17 @@
 @{
     var thanks = (TCard)Model.TThanksReply?.FirstOrDefault()?.Content;
     var image = (TBlockImage)thanks?.TImage?.FirstOrDefault()?.Content;
+    var imgUrl = image?.TImage?.Url() ?? string.Empty; 
 }
 
 <div class="actions__form-thanks form-thanks" id="request-thanks">
-    <img src="@image.TImage.Url()" alt="Icon" class="form-thanks__icon">
-    <p class="form-thanks__text medium-title">@thanks?.TText</p>
-    <a class="form-thanks__link link link-main" href="@thanks?.TButton?.Content.TLink.Url"><span>@thanks?.TButton?.Content.TButtonTitle</span></a>
+    @if(imgUrl != null)
+    {
+        <img src="@imgUrl" alt="Icon" class="form-thanks__icon">
+    }
+    @if(thanks != null)
+    {
+        <p class="form-thanks__text medium-title">@thanks?.TText</p>
+        <a class="form-thanks__link link link-main" href="@thanks?.TButton?.Content.TLink.Url"><span>@thanks?.TButton?.Content.TButtonTitle</span></a>
+    }
 </div>
