@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TutorPro.Application.Models;
+﻿using TutorPro.Application.Models;
 
 namespace TutorPro.Application.Interfaces
 {

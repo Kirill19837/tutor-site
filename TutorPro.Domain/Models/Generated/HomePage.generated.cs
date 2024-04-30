@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>HomePage</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, ITCookies, ITFooterContainer, ITHeaderContainer
+	public partial class HomePage : PublishedContentModel, ITCookies, ITFooterContainer, ITHeaderContainer, ITSendFormSettings
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -144,5 +144,61 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tLogo")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TLogo => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTLogo(this, _publishedValueFallback);
+
+		///<summary>
+		/// Email placeholder
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tEmailPlaceholder")]
+		public virtual string TEmailPlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTEmailPlaceholder(this, _publishedValueFallback);
+
+		///<summary>
+		/// Emails to send
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tEmailsToSend")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TEmailsToSend => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTEmailsToSend(this, _publishedValueFallback);
+
+		///<summary>
+		/// Form url
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tFormUrl")]
+		public virtual string TFormUrl => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTFormUrl(this, _publishedValueFallback);
+
+		///<summary>
+		/// Message placeholder
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tMessagePlaceholder")]
+		public virtual string TMessagePlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTMessagePlaceholder(this, _publishedValueFallback);
+
+		///<summary>
+		/// Name placeholder
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tNamePlaceholder")]
+		public virtual string TNamePlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTNamePlaceholder(this, _publishedValueFallback);
+
+		///<summary>
+		/// Phone placeholder
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tPhonePlaceholder")]
+		public virtual string TPhonePlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTPhonePlaceholder(this, _publishedValueFallback);
+
+		///<summary>
+		/// Thanks form
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tThanksForm")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TThanksForm => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTThanksForm(this, _publishedValueFallback);
 	}
 }

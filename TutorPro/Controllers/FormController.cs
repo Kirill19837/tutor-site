@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 using TutorPro.Application.Interfaces;
 using TutorPro.Application.Models;
 using Umbraco.Cms.Web.Common.Controllers;

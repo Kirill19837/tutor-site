@@ -29,10 +29,13 @@
                     <p class="actions__form-text">@Model.TTitle</p>
                         <form class="actions__form request-form" method="post">
                             @Html.AntiForgeryToken()
-                            @await Html.PartialAsync("tutorPartials/TRequestForm", Model.TSendForm?.FirstOrDefault()?.Content)
+                            @await Html.PartialAsync("tutorPartials/TRequestForm", Model.TSendForm?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "mainPage", mainPage } })
                         </form>
-                        <input type="hidden" id="urlToSend" value="@Model.TActionUrl" />
-                        @await Html.PartialAsync("tutorPartials/TThanksForm", Model.TThank?.FirstOrDefault()?.Content)
+                        <input type="hidden" id="urlToSend" value="@mainPage.TFormUrl" />
+                        @if (mainPage?.TThanksForm != null && mainPage?.TThanksForm.FirstOrDefault() != null)
+                        {
+                            @await Html.PartialAsync("tutorPartials/TThanksForm", mainPage.TThanksForm?.FirstOrDefault()?.Content)
+                        }                      
                 </div>
             </div>
         </div>
