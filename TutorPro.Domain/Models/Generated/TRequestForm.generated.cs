@@ -65,43 +65,17 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool TCentered => this.Value<bool>(_publishedValueFallback, "tCentered");
 
 		///<summary>
-		/// Email List
+		/// Message input
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEmailList")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TEmailList => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tEmailList");
+		[ImplementPropertyType("tMessageInput")]
+		public virtual bool TMessageInput => this.Value<bool>(_publishedValueFallback, "tMessageInput");
 
 		///<summary>
-		/// Placeholder for email
+		/// Phone input
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tPlaceholderForEmail")]
-		public virtual string TPlaceholderForEmail => this.Value<string>(_publishedValueFallback, "tPlaceholderForEmail");
-
-		///<summary>
-		/// Placeholder for message
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tPlaceholderForMessage")]
-		public virtual string TPlaceholderForMessage => this.Value<string>(_publishedValueFallback, "tPlaceholderForMessage");
-
-		///<summary>
-		/// Placeholder for name
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tPlaceholderForName")]
-		public virtual string TPlaceholderForName => this.Value<string>(_publishedValueFallback, "tPlaceholderForName");
-
-		///<summary>
-		/// Placeholder for phone
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tPlaceholderForPhone")]
-		public virtual string TPlaceholderForPhone => this.Value<string>(_publishedValueFallback, "tPlaceholderForPhone");
+		[ImplementPropertyType("tPhoneInput")]
+		public virtual bool TPhoneInput => this.Value<bool>(_publishedValueFallback, "tPhoneInput");
 	}
 }
