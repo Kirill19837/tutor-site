@@ -2,6 +2,7 @@
 
 @{
     var content = (TRequestFormBlock)Model.Content;
+    var rootPage = Umbraco.ContentAtRoot().FirstOrDefault() as HomePage;
 }
 
 <section class="contacts-request">
@@ -21,12 +22,12 @@
             <p class="actions__form-subtitle">@content.TSubTitle</p>
                 <form class="actions__form request-form two-cols" method="post">
                     @Html.AntiForgeryToken()
-                    @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestForm?.FirstOrDefault()?.Content)
+                    @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestForm?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) {{"mainPage", rootPage}})
                 </form>
-                <input type="hidden" id="urlToSend" value="@content.TActionUrl" />
-                @if (content.TThanksRequestForm != null && content.TThanksRequestForm.FirstOrDefault()?.Content != null)
+                <input type="hidden" id="urlToSend" value="@rootPage?.TFormUrl" />
+                @if (rootPage?.TThanksForm != null && rootPage?.TThanksForm.FirstOrDefault() != null)
                 {
-                    @await Html.PartialAsync("tutorPartials/TThanksForm", content.TThanksRequestForm?.FirstOrDefault()?.Content)
+                    @await Html.PartialAsync("tutorPartials/TThanksForm", rootPage.TThanksForm?.FirstOrDefault()?.Content)
                 }
             </div>
         </div>

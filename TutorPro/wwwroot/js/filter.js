@@ -97,7 +97,7 @@ function updateContent(data) {
                         ${material.imageUrl ? `<div class="matirials__item-image"><img src="${material.imageUrl}" alt="Item image"></div>` : ''}
                         <h3 class="matirials__item-title">${material.title}</h3>
                         <div class="matirials__item-tags">
-                            ${material.tags.map(tag => `<span class="matirials__item-tag">${tag.substring(1)}</span>`).join('')}
+                            ${material.tags.map(tag => `<span class="matirials__item-tag">${tag.replace('#', '')}</span>`).join('')}
                         </div>
                         ${material.text ? `<p class="matirials__item-text">${material.text}</p>` : ''}
                     </a>

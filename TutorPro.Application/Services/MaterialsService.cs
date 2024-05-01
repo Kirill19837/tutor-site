@@ -32,7 +32,7 @@ namespace TutorPro.Application.Services
             if (!string.IsNullOrEmpty(grade))
                 tags.Add("#" + grade.ToLower());
             if (!string.IsNullOrEmpty(level))
-                tags.Add("#" + level.ToLower());
+                tags.Add(level.Replace(" ", ""));
 
             if (tags.Any())
                 inputObject["tags"] = tags.ToArray();
