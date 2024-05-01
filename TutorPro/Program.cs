@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using TutorPro.Application;
 using TutorPro.Configuration;
 using TutorPro.Middlewares;
 
@@ -12,6 +14,12 @@ builder.CreateUmbracoBuilder()
 
 builder.Services.AddServ();
 
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<ApplicationDbContext>((options) =>
+{
+    options.UseSqlite(connection);
+});
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
