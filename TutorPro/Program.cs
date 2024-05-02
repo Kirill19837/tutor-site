@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TutorPro.Application;
+using TutorPro.Application.Mapping;
 using TutorPro.Configuration;
 using TutorPro.Middlewares;
 
@@ -13,6 +14,7 @@ builder.CreateUmbracoBuilder()
     .Build();
 
 builder.Services.AddServ();
+builder.Services.AddAutoMapper(typeof(WaitlistUserProfile).Assembly);
 
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 

@@ -1,0 +1,49 @@
+﻿<div class="umb-box-content" ng-controller="waitlist" ng-init="getDeletedData()">
+    <div class="umb-table umb-user-table umb-form-entries-list">
+        <div class="umb-table-head">
+            <div class="umb-table-row">
+                <div class="umb-table-cell">
+                    <button type="button" class="umb-table-head__link sortable" ng-click="sortBy('id')">
+                        Id
+                        <i class="umb-table-head__icon icon" aria-hidden="true" ng-class="{'icon-navigation-up': isSortedBy('id', 'asc'), 'icon-navigation-down': isSortedBy('id', 'desc')}"></i>
+                    </button>
+                </div>
+                <div class="umb-table-cell">
+                    <button type="button" class="umb-table-head__link">Name</button>
+                </div>
+                <div class="umb-table-cell">
+                    <button type="button" class="umb-table-head__link">Email</button>
+                </div>
+                <div class="umb-table-cell">
+                    <button type="button" class="umb-table-head__link">Phone</button>
+                </div>
+                <div class="umb-table-cell">
+                    <button type="button" class="umb-table-head__link">Message</button>
+                </div>
+                <div class="umb-table-cell">
+                    <button type="button" class="umb-table-head__link sortable" ng-click="sortBy('createDate')">
+                        Created
+                        <i class="umb-table-head__icon icon" aria-hidden="true" ng-class="{'icon-navigation-up': isSortedBy('createDate', 'asc'), 'icon-navigation-down': isSortedBy('createDate', 'desc')}"></i>
+                    </button>
+                </div>
+                <div class="umb-table-cell">
+                    <button type="button" class="umb-table-head__link sortable" ng-click="sortBy('deletedDate')">
+                        Deleted
+                        <i class="umb-table-head__icon icon" aria-hidden="true" ng-class="{'icon-navigation-up': isSortedBy('deletedDate', 'asc'), 'icon-navigation-down': isSortedBy('deletedDate', 'desc')}"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="umb-table-body">
+            <div class="umb-table-row" ng-repeat="row in entryDetails" style="height: 50px;">
+                <div class="umb-table-cell">{{row.id}}</div>
+                <div class="umb-table-cell">{{row.name}}</div>
+                <div class="umb-table-cell">{{row.email}}</div>
+                <div class="umb-table-cell">{{row.phoneNumber}}</div>
+                <div class="umb-table-cell">{{row.message}}</div>
+                <div class="umb-table-cell">{{row.createDate | date:'yyyy-MM-dd'}}</div>
+                <div class="umb-table-cell">{{row.deletedDate | date:'yyyy-MM-dd'}}</div>
+            </div>
+        </div>
+    </div>
+</div>

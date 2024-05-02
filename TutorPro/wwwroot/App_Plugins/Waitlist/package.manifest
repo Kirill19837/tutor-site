@@ -1,0 +1,25 @@
+{
+  "sections": [
+    {
+      "alias": "waitlist",
+      "name": "Waitlist"
+    }
+  ],
+  "dashboards":  [
+    {
+      "alias": "waitlist",
+      "view": "/App_Plugins/Waitlist/BackOffice/waitlist.html",
+      "sections": [ "waitlist" ],
+      "weight": -10
+    },
+    {
+      "alias": "deleted",
+      "view": "/App_Plugins/Waitlist/BackOffice/deleted.html",
+      "sections": [ "waitlist" ],
+      "weight": -9
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/Waitlist/BackOffice/waitlist.controller.js"
+  ]
+}
