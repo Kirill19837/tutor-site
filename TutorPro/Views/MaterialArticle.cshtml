@@ -8,8 +8,8 @@
     var language = Umbraco.CultureDictionary.Culture.Name.ToLower();
 }
 <h1 class="main-top__title"><span>@title</span></h1>
-<link rel="stylesheet" href="https://tutorpro.team/web-component/index-web-component.css">
-<script type="module" src="https://tutorpro.team/web-component/index-web-component.js"></script>
+<link rel="stylesheet" href="@(Model.TApiUrl).css">
+<script type="module" src="@(Model.TApiUrl).js"></script>
 <div style="text-align: center;">
     <div style="display: inline-block; width: 65%; text-align: left;">
         <ce-tutorpro-material guid="@guid" lang="@language" height="@Model.TMaterialContentBlockHeight"></ce-tutorpro-material>
