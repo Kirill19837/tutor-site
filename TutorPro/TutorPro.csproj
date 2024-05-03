@@ -154,6 +154,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Umbraco.Cms" Version="13.2.2" />
   </ItemGroup>
@@ -169,10 +181,6 @@
   <ItemGroup>
     <ProjectReference Include="..\TutorPro.Application\TutorPro.Application.csproj" />
     <ProjectReference Include="..\TutorPro.Domain\TutorPro.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="App_Plugins\UmbracoBlockGrid\BlockViews\" />
   </ItemGroup>
 
   <ItemGroup>

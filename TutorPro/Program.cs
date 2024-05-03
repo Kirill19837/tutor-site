@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using TutorPro.Application;
+using TutorPro.Application.Extensions;
+using TutorPro.Application.Mapping;
 using TutorPro.Configuration;
 using TutorPro.Middlewares;
 
@@ -11,7 +15,14 @@ builder.CreateUmbracoBuilder()
     .Build();
 
 builder.Services.AddServ();
+builder.Services.AddAutoMapper(typeof(WaitlistUserProfile).Assembly);
 
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddUmbracoDbContext<ApplicationDbContext>((options) =>
+{
+    options.UseSqlite(connection);
+});
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
