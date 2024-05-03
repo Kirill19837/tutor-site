@@ -5,7 +5,7 @@ using Umbraco.Cms.Core.Notifications;
 
 namespace TutorPro.Notifications
 {
-    public class ApplicationNotiMigration(ApplicationDbContext dbContext, ILogger<ApplicationNotiMigration> logger) : INotificationAsyncHandler<UmbracoApplicationStartedNotification>
+    public class ApplicationMigration(ApplicationDbContext dbContext, ILogger<ApplicationMigration> logger) : INotificationAsyncHandler<UmbracoApplicationStartedNotification>
     {
         public async Task HandleAsync(UmbracoApplicationStartedNotification notification, CancellationToken cancellationToken)
         {
