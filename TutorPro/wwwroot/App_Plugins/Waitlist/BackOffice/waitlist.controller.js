@@ -15,7 +15,6 @@ angular.module("umbraco").controller("waitlist", function ($scope, $sce, $http) 
                 entryDetails = response.data;
                 sortedDetails = response.data;
                 $scope.updatePagination();
-                console.log(entryDetails)
             })
             .catch(function (error) {
                 console.error("Error fetching waitlist data:", error);
@@ -38,26 +37,62 @@ angular.module("umbraco").controller("waitlist", function ($scope, $sce, $http) 
     };
 
     $scope.removeSelectedItems = function () {
+        let endpoint = "range_remove";
+        if ($scope.showDeletedData) {
+            endpoint = "hard_range_remove"
+        }
         var ids = $scope.selectedItems.map(item => item.id);
-        console.log(ids);
-        $http.post("/api/WaitList/range_remove", ids)
+        $http.post(`/api/WaitList/${endpoint}`, ids)
             .then(function (response) {
-
-                entryDetails = entryDetails.filter(function (item) {
-                    return !ids.includes(item.id);
-                });
-                
-               console.log($scope.paginatedSortedDetails)
-                $scope.selectedItems.map(row => {
-                    row.parentNode.parentNode.parentNode.removeChild(row);
-                })                  
-                
-                $scope.clearSelect();
+                $scope.refresh(ids);
             })
             .catch(function (error) {
                 console.error("Error removing waitlist users:", error);
             });
+    };  
+
+    $scope.restoreSelectedItems = function () {
+        var ids = $scope.selectedItems.map(item => item.id);
+        $http.post("/api/WaitList/range_restore", ids)
+            .then(function (response) {
+                $scope.refresh(ids);
+            })
+            .catch(function (error) {
+                console.error("Error restoring waitlist users:", error);
+            });
     };
+
+    $scope.export = function () {
+        $http.get("/api/WaitList/export", { responseType: 'arraybuffer' })
+            .then(function (response) {
+                var blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                var url = window.URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'waitlist.xlsx'; // file name
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            })
+            .catch(function (error) {
+                console.error("Error exporting waitlist data:", error);
+            });
+    };
+
+    $scope.refresh = function (ids)  {
+        $scope.paginatedSortedDetails = $scope.paginatedSortedDetails.filter(function (item) {
+            return !ids.includes(item.id);
+        });
+        entryDetails = entryDetails.filter(function (item) {
+            return !ids.includes(item.id);
+        });
+        sortedDetails = sortedDetails.filter(function (item) {
+            return !ids.includes(item.id);
+        });
+        $scope.updatePagination();
+        $scope.clearSelect();
+    }
 
     $scope.gotoPage = function (page) {
         if (page >= 1 && page <= $scope.pageCount()) {
@@ -105,13 +140,12 @@ angular.module("umbraco").controller("waitlist", function ($scope, $sce, $http) 
 
     $scope.updatePagination = function () {
         var startIndex = ($scope.currentPage - 1) * $scope.pageSize;
-        var endIndex = Math.min(startIndex + $scope.pageSize, entryDetails.length);
-        
+        var endIndex = Math.min(startIndex + $scope.pageSize, sortedDetails.length);
         $scope.paginatedSortedDetails = sortedDetails.slice(startIndex, endIndex);
     };
 
     $scope.pageCount = function () {
-        if (!$scope.sortedDetails) {
+        if (!sortedDetails) {
             return 0;
         }
         return Math.ceil(sortedDetails.length / $scope.pageSize);
@@ -133,10 +167,16 @@ angular.module("umbraco").controller("waitlist", function ($scope, $sce, $http) 
                     return (new Date(a[field]) > new Date(b[field])) ? 1 : -1;
                 }
             } else {
-                return (a[field] > b[field]) ? 1 : -1;
+                if ($scope.reverse) {
+                    return (a[field] < b[field]) ? 1 : -1;
+                } else {
+                    return (a[field] > b[field]) ? 1 : -1;
+                }
+                
             }
         });
 
+        sortedDetails = entryDetails.slice(); // Clone the array
         $scope.updatePagination();
     };
 
@@ -151,7 +191,7 @@ angular.module("umbraco").controller("waitlist", function ($scope, $sce, $http) 
             return;
         }
 
-        sortedDetails = entryDetails.filter(function (item) {
+        var filteredDetails = entryDetails.filter(function (item) {
             return (
                 (item.phoneNumber && item.phoneNumber.toLowerCase().includes(searchText.toLowerCase())) ||
                 (item.email && item.email.toLowerCase().includes(searchText.toLowerCase())) ||
@@ -160,6 +200,8 @@ angular.module("umbraco").controller("waitlist", function ($scope, $sce, $http) 
             );
         });
 
-        $scope.gotoPage(1);
+        sortedDetails = filteredDetails.slice(); // Clone the array
+        $scope.updatePagination();
+        $scope.gotoPage(1); // Reset to the first page after filtering
     };
 });

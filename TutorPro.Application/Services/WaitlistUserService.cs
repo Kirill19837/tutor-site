@@ -141,6 +141,41 @@ namespace TutorPro.Application.Services
             }
         }
 
+        public async Task RestoreWaitlistUserByIdRange(List<int> ids)
+        {
+            if (ids == null || !ids.Any())
+            {
+                _logger.LogError("WaitlistUsers IDs are null or empty");
+                throw new Exception("WaitlistUsers IDs are null or empty");
+            }
+
+            try
+            {
+                foreach (int id in ids)
+                {
+                    var user = await _context.WaitlistUsers.FindAsync(id);
+
+                    if (user != null)
+                    {
+                        user.DeletedDate = null;
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"WaitlistUser with ID {id} not found in the database.");
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation($"WaitlistUsers with IDs {string.Join(",", ids)} - restored");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while restoring waitlist users from the database");
+                throw;
+            }
+        }
+
         public async Task RemoveWaitlistUserById(int id)
         {
             try

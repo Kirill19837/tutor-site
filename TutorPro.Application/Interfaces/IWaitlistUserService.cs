@@ -12,5 +12,6 @@ namespace TutorPro.Application.Interfaces
         Task RemoveWaitlistUserByIdRange(List<int> ids);
         Task RemoveWaitlistUserById(int id);
         Task HardRemoveWaitlistUserById(int id);
+        Task RestoreWaitlistUserByIdRange(List<int> ids);
     }
 }
