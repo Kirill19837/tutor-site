@@ -19,7 +19,7 @@ builder.Services.AddAutoMapper(typeof(WaitlistUserProfile).Assembly);
 
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<ApplicationDbContext>((options) =>
+builder.Services.AddUmbracoDbContext<ApplicationDbContext>((options) =>
 {
     options.UseSqlite(connection);
 });
@@ -44,6 +44,6 @@ app.UseUmbraco()
 
 app.UseHttpsRedirection();
 
-app.MigrateDatabase(builder.Configuration);
+await app.MigrateDatabase(builder.Configuration);
 
 await app.RunAsync();

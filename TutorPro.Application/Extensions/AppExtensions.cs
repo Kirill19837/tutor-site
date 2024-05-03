@@ -8,7 +8,7 @@ namespace TutorPro.Application.Extensions;
 
 public static class AppExtensions
 {
-    public static IApplicationBuilder MigrateDatabase(this IApplicationBuilder app, IConfiguration configuration)
+    public static async Task<IApplicationBuilder> MigrateDatabase(this IApplicationBuilder app, IConfiguration configuration)
     {
         var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
         using var scope = scopeFactory.CreateScope();
@@ -36,7 +36,7 @@ public static class AppExtensions
             }
 
             logger.LogInformation("Migrations are going to be applied");
-            db.Database.Migrate();
+            await db.Database.MigrateAsync();
             logger.LogInformation("Pending migrations were applied successfully");
         }
         catch (Exception ex)
