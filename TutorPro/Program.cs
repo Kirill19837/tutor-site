@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TutorPro.Application;
+using TutorPro.Application.Extensions;
 using TutorPro.Application.Mapping;
 using TutorPro.Configuration;
 using TutorPro.Middlewares;
@@ -42,5 +43,7 @@ app.UseUmbraco()
     });
 
 app.UseHttpsRedirection();
+
+app.MigrateDatabase(builder.Configuration);
 
 await app.RunAsync();

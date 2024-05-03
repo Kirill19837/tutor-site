@@ -8,12 +8,7 @@ namespace TutorPro.Application
         public DbSet<WaitlistUsers> WaitlistUsers { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-            if(!Database.CanConnect() || Database.GetPendingMigrations().Any())
-            {
-                Database.Migrate();
-            }
-
+        {          
             WaitlistUsers = Set<WaitlistUsers>();
         }      
     }
