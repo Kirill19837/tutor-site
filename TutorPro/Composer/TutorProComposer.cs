@@ -8,7 +8,7 @@ namespace TutorPro.Composer
     {
         public void Compose(IUmbracoBuilder builder)
         {
-            builder.AddNotificationAsyncHandler<UmbracoApplicationStartedNotification, ApplicationNotiMigration>();
+            builder.AddNotificationAsyncHandler<UmbracoApplicationStartedNotification, ApplicationMigration>();
         }
     }
 }

@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TutorPro.Application;
-using TutorPro.Application.Extensions;
 using TutorPro.Application.Mapping;
 using TutorPro.Configuration;
 using TutorPro.Middlewares;
