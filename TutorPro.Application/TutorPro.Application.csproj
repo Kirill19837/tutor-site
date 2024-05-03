@@ -30,4 +30,16 @@
     <ProjectReference Include="..\TutorPro.Domain\TutorPro.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Migrations\20240501075716_Init.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Migrations\20240501075716_Init.Designer.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Migrations\ApplicationDbContextModelSnapshot.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>

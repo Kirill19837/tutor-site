@@ -44,6 +44,4 @@ app.UseUmbraco()
 
 app.UseHttpsRedirection();
 
-await app.MigrateDatabase(builder.Configuration);
-
 await app.RunAsync();
