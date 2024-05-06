@@ -20,6 +20,7 @@
     }
     var button = content.TButton?.Content;
 }
+<link rel="stylesheet" href="~/css/image.css">
 
 <!-- Section "Main Top" -->
 <section class="main-top">
@@ -29,16 +30,25 @@
     <div class="container">
         <!-- <div class="main-top__inner"></div> -->
         <h1 class="main-top__title"><span>@firstTitlePart</span>@secondTitlePart</h1>
-        <div class="main-top__image">
-            @Html.GetBlockGridHtml(content.TImage)
-            @if (content.TDecors != null)
-            {
-                @foreach (var decor in content.TDecors)
+        @if(content.TImages != null && content.TImages.Count() > 0)
+        {
+            <div style="margin-bottom:30px" class="main-top__image">
+                <div class="image-container">
+                    <img src="@content.TImages.ElementAt(0).Url()" alt="@content.TImages.ElementAt(0).Name" class="first-image" />
+                    <div class="second-image-container">
+                        <img src="@content.TImages.ElementAt(1).Url()" alt="@content.TImages.ElementAt(1).Name" class="second-image" />
+                    </div>
+                    <img src="@content.TImages.ElementAt(2).Url()" alt="@content.TImages.ElementAt(2).Name" class="third-image" />
+                </div>
+                @if (content.TDecors != null)
                 {
-                    @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                    @foreach (var decor in content.TDecors)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                    }
                 }
-            }
-        </div>
+            </div>
+        }     
         <div class="main-top__info">
             <p class="main-top__text">@content.TInfoText</p>
             @if(button != null)

@@ -2,6 +2,7 @@
 
 @{
     var content = (TInnerForPageTop)Model.Content;
+    var forTeacher = content.TFor == "teacher";
 }
 <section class="@content.TFor-top inner-top">
     <div class="container">
@@ -12,10 +13,10 @@
                 <p class="inner-top__subtitle">@content.TsubTitle</p>
             }               
             <div class="inner-top__images">               
-                <div class="inner-top__image image-big">
+                <div class="inner-top__image image-@(forTeacher ? "big" : "small")">
                     <img src="@content.TImages?.ElementAt(0).Content.Url()" alt="Top image1">
                 </div>
-                <div class="inner-top__image image-small">
+                <div class="inner-top__image image-@(forTeacher ? "small" : "big")">
                     <img src="@content.TImages?.ElementAt(1).Content.Url()" alt="Top image2">
                 </div>
 

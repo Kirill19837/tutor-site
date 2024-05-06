@@ -1,0 +1,21 @@
+﻿.image-container {
+    position: relative;
+}
+
+.second-image-container {
+    position: absolute;
+    top: 47%;
+    left: 50.5%; 
+    transform: translate(-50%, -50%);
+    width: 78%;
+}
+
+.second-image {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+}
+
+.third-image {
+    margin-top: -5px;
+}
