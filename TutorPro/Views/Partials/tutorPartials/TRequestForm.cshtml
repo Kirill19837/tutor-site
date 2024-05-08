@@ -8,15 +8,15 @@
 {
     <div class="request-form__row">
         <div class="request-form__item required">
-            <input class="request-form__input required" id="nameInput" type="text" data-name="name" name="SenderName" placeholder="@mainPage.TNamePlaceholder">
+            <input class="request-form__input required" id="nameInput" type="text" data-name="@mainPage.TNamePlaceholder" name="SenderName" placeholder="@mainPage.TNamePlaceholder">
         </div>
         <div class="request-form__item required">
-            <input class="request-form__input required" id="emailInput" type="email" data-name="email" name="SenderEmail" placeholder="@mainPage.TEmailPlaceholder">
+            <input class="request-form__input required" id="emailInput" type="email" data-name="@mainPage.TEmailPlaceholder" name="SenderEmail" placeholder="@mainPage.TEmailPlaceholder">
         </div>
         @if (Model.TPhoneInput)
         {
             <div class="request-form__item required">
-                <input class="request-form__input required" id="phoneInput" type="tel" data-name="phone number" name="SenderPhone" placeholder="@mainPage.TPhonePlaceholder">
+                <input class="request-form__input required" id="phoneInput" type="tel" data-name="@mainPage.TPhonePlaceholder" name="SenderPhone" placeholder="@mainPage.TPhonePlaceholder">
             </div>
         }     
     </div>

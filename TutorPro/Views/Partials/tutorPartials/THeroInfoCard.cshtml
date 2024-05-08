@@ -1,6 +1,7 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TCard>
 
 <div class="hero-block__info">
+    <h3 class="hero-block__title">@Model.TTitle</h3>
     @Html.Raw(Model.TText)
     @if(Model.TButton != null)
     {
