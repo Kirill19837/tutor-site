@@ -1,0 +1,20 @@
+﻿<div ng-controller="tMainTop" ng-click="block.edit()">
+    <section class="main-top">
+        <span class="decor-element ring1 parallax-element"></span>
+        <span class="decor-element ring2 parallax-element"></span>
+        <div class="decor-bg radial-bg"></div>
+        <div class="container">
+            <!-- <div class="main-top__inner"></div> -->
+            <h1 class="main-top__title"><span>{{firstTitlePart}}</span>{{secondTitlePart}}</h1>
+            <div class="main-top__image">
+                <!-- Placeholder for image -->
+            </div>
+            <div class="main-top__info">
+                <p class="main-top__text">{{text}}</p>
+                <button ng-controller="tButton" ng-init="initButton(button)" ng-class="toggleClass">
+                    <span>{{button.tButtonTitle}}</span>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

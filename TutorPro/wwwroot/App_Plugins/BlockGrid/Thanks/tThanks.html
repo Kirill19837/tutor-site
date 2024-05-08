@@ -1,0 +1,9 @@
+﻿<div class="actions__form-thanks" style="visibility:visible" ng-controller="tThanks" ng-click="block.edit()">
+    <div ng-controller="tImage" ng-init="initImage(image)">
+        <img class="form-thanks__icon" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+    </div>
+    <p class="form-thanks__text medium-title">{{content.tTitle}}</p>
+    <button ng-controller="tButton" ng-init="initButton(button)" ng-class="toggleClass">
+        <span>{{button.tButtonTitle}}</span>
+    </button>
+</div>

@@ -1,0 +1,45 @@
+﻿<div ng-controller="tAction" ng-click="block.edit()">
+    <section ng-class="actionClass">
+        <div class="container">
+            <div class="actions__links-wrap" ng-if="cards.length > 0">
+                <div class="actions__links" ng-repeat="card in cards">
+                    <div class="actions__column">
+                        <div class="actions__item" tabindex="0">
+                            <span class="actions__item-title medium-title">{{card.tTitle}}</span>
+                            <p class="actions__item-text" ng-bind-html="card.tText.markup"></p>
+                            <button ng-controller="tButton" ng-init="initButton(card.tButton.contentData[0])" ng-class="toggleClass">
+                                <span>{{card.tButton.contentData[0].tButtonTitle}}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="actions__form-block">
+                <div class="actions__form-wrap" ng-controller="tRequestForm" ng-click="block.edit()" ng-init="initForm(form)">
+                    <h2 class="actions__form-title medium-title section-title">{{content.tTitle}}</h2>
+                    <form class="actions__form request-form three-cols" method="post">
+                        <div class="request-form__row">
+                            <div class="request-form__item required">
+                                <input class="request-form__input required" id="nameInput" type="text" data-name="name" placeholder="Name">
+                            </div>
+                            <div class="request-form__item required">
+                                <input class="request-form__input required" id="emailInput" type="email" data-name="email" placeholder="Email">
+                            </div>
+                            <div class="request-form__item required" ng-if="showPhoneInput">
+                                <input class="request-form__input required" id="phoneInput" type="tel" data-name="phone number" name="SenderPhone" placeholder="Phone Number">
+                            </div>
+                        </div>
+
+                        <textarea class="request-form__message" name="SenderMessage" placeholder="Message" ng-if="showMessageInput"></textarea>
+
+                        <div ng-class="actionClass">
+                            <button ng-controller="tButton" ng-init="initButton(form.tButton.contentData[0])" ng-class="toggleClass">
+                                <span>{{form.tButton.contentData[0].tButtonTitle}}</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

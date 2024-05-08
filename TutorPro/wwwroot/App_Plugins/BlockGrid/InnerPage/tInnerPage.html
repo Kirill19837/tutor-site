@@ -1,0 +1,11 @@
+﻿<div ng-controller="tInnerPage" ng-click="block.edit()">
+    <!-- Section "Inner page top" -->
+    <section class="{{innerClass}}">
+        <div class="container">              
+            <div class="inner-top__content">
+                <h1 class="inner-top__title big-title">{{content.tTitle}}</h1>
+                <div ng-if="!content.TText.IsNullOrWhiteSpace()" ng-bind-html="content.tText.markup"></div>
+            </div>
+        </div>
+    </section>
+</div>

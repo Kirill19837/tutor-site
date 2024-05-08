@@ -1,0 +1,23 @@
+﻿<div class="actions__form-wrap" ng-controller="tRequestForm" ng-click="block.edit()" ng-init="initForm(block.data)">
+    <form class="actions__form request-form" method="post">
+        <div class="request-form__row">
+            <div class="request-form__item required">
+                <input class="request-form__input required" id="nameInput" type="text" data-name="name" placeholder="Name">
+            </div>
+            <div class="request-form__item required">
+                <input class="request-form__input required" id="emailInput" type="email" data-name="email" placeholder="Email">
+            </div>
+            <div class="request-form__item required" ng-if="showPhoneInput">
+                <input class="request-form__input required" id="phoneInput" type="tel" data-name="phone number" name="SenderPhone" placeholder="Phone Number">
+            </div>
+        </div>
+
+        <textarea class="request-form__message" name="SenderMessage" placeholder="Message" ng-if="showMessageInput"></textarea>
+
+        <div ng-class="actionClass">
+            <button ng-controller="tButton" ng-init="initButton(block.data.tButton.contentData[0])" ng-class="toggleClass">
+                <span>{{block.data.tButton.contentData[0].tButtonTitle}}</span>
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+﻿<div ng-controller="tInnerForPage" ng-click="block.edit()" style="min-height:900px">
+    <section class="{{class}}">
+        <div class="container">
+            <div class="inner-top__content">
+                <h1 class="inner-top__title big-title">{{content.tTitle}}</h1>
+                <p class="inner-top__subtitle" ng-if="!content.TSubTitle.IsNullOrWhiteSpace()">{{content.TSubTitle}}</p>
+                <div class="inner-top__images">
+                    <div class="inner-top__image image-big">
+                        <img ng-src="{{images[0].mediaLink}}" alt="Top image1">
+                    </div>
+                    <div class="inner-top__image image-small">
+                        <img ng-src="{{images[1].mediaLink}}" alt="Top image2">
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
