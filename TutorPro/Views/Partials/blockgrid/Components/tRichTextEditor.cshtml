@@ -5,8 +5,8 @@
 }
 
 <section class="@(content.TPadding ? "text-content" : "")">
-    <div class="container">
-        <div class="text-content__inner" style="color:@content.TTextColor; background-color:@content.TBackgroundColor">
+    <div class="@(content.TPadding ? "container" : "")">
+        <div class="@(content.TPadding ? "text-content__inner" : "")" style="color:@content.TTextColor; background-color:@content.TBackgroundColor">
             <div style="color:@content.TTextColor" >
                 @Html.Raw(content.TText)        
             </div>

@@ -16,8 +16,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="wwwroot\media\05pht0n0\macbook-pro-17_2.png" />
     <Content Include="wwwroot\media\0agiooc5\13.png" />
     <Content Include="wwwroot\media\0wzakafs\about-info-image1.jpg" />
+    <Content Include="wwwroot\media\0zfpwcz3\3-3.png" />
     <Content Include="wwwroot\media\1l4pwhci\teacher-hero-info-icon6.png" />
     <Content Include="wwwroot\media\2kgnqe01\thomas-griesbeck-bs-uxe8wu5y-unsplash.jpg" />
     <Content Include="wwwroot\media\3nxccghh\macbook-pro_forteacher_5.png" />
@@ -35,9 +37,12 @@
     <Content Include="wwwroot\media\5tsfliws\screenshots-image9.jpg" />
     <Content Include="wwwroot\media\ac4fbdbf\blog-item1-image.jpg" />
     <Content Include="wwwroot\media\ao4j5e4p\blog-item6-image.jpg" />
+    <Content Include="wwwroot\media\aptgrayb\ipad-pro-mockup_1.png" />
     <Content Include="wwwroot\media\aq4gbk5l\teacher-hero-info-icon9.png" />
+    <Content Include="wwwroot\media\ar4mmjtj\macbook-pro-17_1.png" />
     <Content Include="wwwroot\media\at2pdc3c\geran-de-klerk-qzgn45hsen0-unsplash.jpg" />
     <Content Include="wwwroot\media\bnqn3fni\screenshots-image8.jpg" />
+    <Content Include="wwwroot\media\bp3pelxu\3-5.png" />
     <Content Include="wwwroot\media\by4hgvu2\school-top-image1.png" />
     <Content Include="wwwroot\media\c1ghewgm\casey-horner-wkjiek4qsnk-unsplash.jpg" />
     <Content Include="wwwroot\media\c5pf3xyr\macbook-pro_fortecher_7.png" />
@@ -47,10 +52,13 @@
     <Content Include="wwwroot\media\ckwbznjm\blog-item3-image.jpg" />
     <Content Include="wwwroot\media\crzntdkk\screenshots-image10.jpg" />
     <Content Include="wwwroot\media\csum3lwi\description-image-1.png" />
+    <Content Include="wwwroot\media\dukjaqgc\shadow.png" />
+    <Content Include="wwwroot\media\e1dax1ps\3-2.png" />
     <Content Include="wwwroot\media\ehbeodnj\teacher-hero-info-icon7.png" />
     <Content Include="wwwroot\media\etrps01s\scott-webb-_k-qkkbn7ds-unsplash.jpg" />
     <Content Include="wwwroot\media\ey1dqfox\teacher-hero-info-icon8.png" />
     <Content Include="wwwroot\media\f5qjafx4\teacher-branch-image1.jpg" />
+    <Content Include="wwwroot\media\fmcejuor\iphone-x-mockup_1.png" />
     <Content Include="wwwroot\media\fvyjadev\2-2.png" />
     <Content Include="wwwroot\media\fwkgbbpm\1.png" />
     <Content Include="wwwroot\media\gbdckvo3\screenshots-image7.jpg" />
@@ -62,11 +70,15 @@
     <Content Include="wwwroot\media\hiydim21\teacher-hero-info-icon5.png" />
     <Content Include="wwwroot\media\hsdhddlz\meiying-ng-orwkd-iwgqg-unsplash.jpg" />
     <Content Include="wwwroot\media\hwdhmosr\teacher-hero-info-icon2.png" />
+    <Content Include="wwwroot\media\i13jgbmz\ezgifcom-video-to-gif-1.gif" />
+    <Content Include="wwwroot\media\i2mchrk4\3-7.png" />
     <Content Include="wwwroot\media\i4wp2u2u\steps-item2-image-small.png" />
     <Content Include="wwwroot\media\ir2lcefb\blog-item5-image.jpg" />
     <Content Include="wwwroot\media\j0hichsi\screenshots-image4.jpg" />
+    <Content Include="wwwroot\media\jn2bwrns\color.png" />
     <Content Include="wwwroot\media\k31oq3tc\hossein-nasr-uj99hdy2mmw-unsplash.jpg" />
     <Content Include="wwwroot\media\khkeollv\4.png" />
+    <Content Include="wwwroot\media\l1an1aof\3-6.png" />
     <Content Include="wwwroot\media\lgsbnjbc\collin-clyne-zsuely56fzu-unsplash.jpg" />
     <Content Include="wwwroot\media\lsenk53v\jay-mantri-qkfxq3x-ybi-unsplash.jpg" />
     <Content Include="wwwroot\media\ltwauhco\2.png" />
@@ -77,6 +89,7 @@
     <Content Include="wwwroot\media\o0qf5sm0\tutor-lesson-item1-image2.png" />
     <Content Include="wwwroot\media\oaqnjquh\hossein-nasr-vmst7pnoto-unsplash.jpg" />
     <Content Include="wwwroot\media\ojnf5b12\macbook_forteacher_1.png" />
+    <Content Include="wwwroot\media\ondkijef\macbook-pro-17_3.png" />
     <Content Include="wwwroot\media\p04j54yn\23.png" />
     <Content Include="wwwroot\media\p2ti1orl\3-6.png" />
     <Content Include="wwwroot\media\p3cofzms\tutor-lesson-item1-image.png" />
@@ -94,6 +107,7 @@
     <Content Include="wwwroot\media\rxxfl2hg\macbook-pro_fortecher_3.png" />
     <Content Include="wwwroot\media\s4opjhaj\matirials-item1-image.jpg" />
     <Content Include="wwwroot\media\smulggao\1-2.png" />
+    <Content Include="wwwroot\media\sr4fqvq3\3-4.png" />
     <Content Include="wwwroot\media\tmljqwp2\teacher-hero-info-icon4.png" />
     <Content Include="wwwroot\media\txxp4ui2\teacher-hero-info-icon1.png" />
     <Content Include="wwwroot\media\uawpclj2\6.png" />
@@ -154,6 +168,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Our.Umbraco.StorageProviders.AWSS3" Version="1.3.0" />
     <PackageReference Include="Umbraco.Cms" Version="13.2.2" />

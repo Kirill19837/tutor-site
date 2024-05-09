@@ -11,7 +11,7 @@
                 }
                 @if (Model.TContactUsFooter != null)
                 {
-                    @await Html.PartialAsync("tutorPartials/TContacts", Model.TContactUsFooter.Content)
+                    @await Html.PartialAsync("tutorPartials/TContacts", Model.TContactUsFooter.Content, new ViewDataDictionary(ViewData))
                 }
                 @if(Model.TAboutFoot != null)
                 {

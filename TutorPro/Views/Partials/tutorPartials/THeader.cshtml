@@ -29,21 +29,24 @@
                                     <li class="header__menu-item">
                                         <a class="header__menu-link @(ViewData["pageName"]?.ToString() == blockLink.TUrl?.Name  ? "active" : "")" href="@blockLink.TUrl?.Url">@blockLink.TLinkTitle</a>
                                     </li>
-                                }
-                                
+                                }                              
                             }
                         }
                     </ul>
                 </div>
             </nav>
-
+            
             <div class="header__actions" id="header-actions">
-                <div class="header__languages languages">
-                    @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent, new ViewDataDictionary(ViewData) { { "DropDown", true } })
-                </div>
-                @if(button != null)
+                @if(ViewData["languages"] as bool? ?? true)
                 {
-                    @await Html.PartialAsync("tutorPartials/TButton", button, new ViewDataDictionary(ViewData) { { "class", "header__link" }, {"span", true} })
+                    <div class="header__languages languages">
+                        @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent, new ViewDataDictionary(ViewData) { { "DropDown", true } })
+                    </div>
+                }
+               
+                @if (button != null)
+                {
+                    @await Html.PartialAsync("tutorPartials/TButton", button, new ViewDataDictionary(ViewData) { { "class", "header__link" }, { "span", true } })
                 }
             </div>
 
@@ -52,6 +55,7 @@
                 <span></span>
                 <span></span>
             </button>
+                     
         </div>
     </div>
 </header>  

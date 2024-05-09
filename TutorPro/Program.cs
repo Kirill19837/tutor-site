@@ -1,4 +1,7 @@
 using Our.Umbraco.StorageProviders.AWSS3.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using TutorPro.Application;
+using TutorPro.Application.Mapping;
 using TutorPro.Configuration;
 using TutorPro.Middlewares;
 
@@ -13,7 +16,14 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
     .Build();
 
 builder.Services.AddServ();
+builder.Services.AddAutoMapper(typeof(WaitlistUserProfile).Assembly);
 
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddUmbracoDbContext<ApplicationDbContext>((options) =>
+{
+    options.UseSqlite(connection);
+});
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();

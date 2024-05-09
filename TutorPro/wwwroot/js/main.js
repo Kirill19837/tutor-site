@@ -102,44 +102,55 @@ $(function () {
     $(this).closest('form').find('.request-form__error span').html('');
   }); 
 
-  let validateInputs = function(input) {
-		let inputField = $(input),
-        type = inputField.attr('type'),
-        value = inputField.val(),
-        letterNumber = 0;      
-		switch(type)
-		{
-			case 'text':	
-        for(let i=0; i<value.length; i++) {
-          if(value[i] != ' ') {
-            letterNumber++;
-          }
-        }			
-				if(value == '') {
-					inputField.addClass('error').parent().addClass('error');
-				} else
-					if(letterNumber == 0) {
-						inputField.addClass('error').parent().addClass('error');
-					} else { 
-							inputField.removeClass('error').parent().removeClass('error');
-						}
-			break;
-      case 'email':
-				let rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
-				if(value == '') {
-					inputField.addClass('error').parent().addClass('error');
-				} else
-					if(rv_email.test(value)) {
-						inputField.removeClass('error').parent().removeClass('error');
-					}	else {
-            inputField.addClass('error').parent().addClass('error');
-						}
+    let validateInputs = function (input) {
+        let inputField = $(input),
+            type = inputField.attr('type'),
+            value = inputField.val(),
+            letterNumber = 0;
+        switch (type) {
+            case 'text':
+                for (let i = 0; i < value.length; i++) {
+                    if (value[i] != ' ') {
+                        letterNumber++;
+                    }
+                }
+                if (value == '') {
+                    inputField.addClass('error').parent().addClass('error');
+                } else
+                    if (letterNumber == 0) {
+                        inputField.addClass('error').parent().addClass('error');
+                    } else {
+                        inputField.removeClass('error').parent().removeClass('error');
+                    }
                 break;
-            //TODO: Validation for phone number
-      case 'tel':
-			break;
-			} 
-	};
+            case 'email':
+                let rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+                if (value == '') {
+                    inputField.addClass('error').parent().addClass('error');
+                } else
+                    if (rv_email.test(value)) {
+                        inputField.removeClass('error').parent().removeClass('error');
+                    } else {
+                        inputField.addClass('error').parent().addClass('error');
+                    }
+                break;
+            case 'tel':
+                for (let i = 0; i < value.length; i++) {
+                    if (value[i] == 'x') {
+                        letterNumber++;
+                    }
+                }
+                if (value == '') {
+                    inputField.addClass('error').parent().addClass('error');
+                } else
+                    if (letterNumber > 0) {
+                        inputField.addClass('error').parent().addClass('error');
+                    } else {
+                        inputField.removeClass('error').parent().removeClass('error');
+                    }
+                break;
+        }
+    };
 
   $('.request-form').on('submit',function(e){
     e.preventDefault();
@@ -183,26 +194,28 @@ $(function () {
             }
         });
       } else {
-        let errorString = 'Enter ',
+        let errorString = currentForm.data('word1'),
             wordDevider1 = ', ',
-            wordDevider2 = ' and ';
+            wordDevider2 = currentForm.data('word2'),
+            word3 = currentForm.data('word3'),
+            word4 = currentForm.data('word4');
 
-        if(errorInputs.length === 1) {
-          // Only one invalid input
-          errorString = 'Invalid ' + errorInputs.data('name') + ' format';
-          currentForm.find('.request-form__error span').html(errorString);
+        if (errorInputs.length === 1) {
+            // Only one invalid input
+            errorString = word3 + errorInputs.data('name') + word4;
+            currentForm.find('.request-form__error span').html(errorString);
         } else {
-          // All inputs are invalid
-          errorInputs.each(function(index){
-            if(index === (errorInputs.length - 2)) {
-              errorString += $(this).data('name') + wordDevider2;
-            } else if(index === (errorInputs.length - 1)) {
-                errorString += $(this).data('name');
-              } else {
-                  errorString += $(this).data('name') + wordDevider1;
+            // All inputs are invalid
+            errorInputs.each(function (index) {
+                if (index === (errorInputs.length - 2)) {
+                    errorString += $(this).data('name') + wordDevider2;
+                } else if (index === (errorInputs.length - 1)) {
+                    errorString += $(this).data('name');
+                } else {
+                    errorString += $(this).data('name') + wordDevider1;
                 }
-          });
-          currentForm.find('.request-form__error span').html(errorString);
+            });
+            currentForm.find('.request-form__error span').html(errorString);
         }
       }    
   });

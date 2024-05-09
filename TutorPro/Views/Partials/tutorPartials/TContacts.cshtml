@@ -1,4 +1,7 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TContact>
+@{
+    var languagesVisible = ViewData["Languages"] as bool? ?? true;
+}
 
 <div class="footer__contacts">
     <span class="footer__title medium-title">@Model.TContactTitle</span>
@@ -18,7 +21,7 @@
             }         
         }       
     </ul>
-    @if (Model.TShowLanguageDropdown)
+    @if (Model.TShowLanguageDropdown && languagesVisible)
     {
         <div class="footer__languages">
             @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent)
