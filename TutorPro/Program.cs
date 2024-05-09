@@ -1,13 +1,15 @@
+using Our.Umbraco.StorageProviders.AWSS3.DependencyInjection;
 using TutorPro.Configuration;
 using TutorPro.Middlewares;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.CreateUmbracoBuilder()
+ builder.CreateUmbracoBuilder()
     .AddBackOffice()
     .AddWebsite()
     .AddDeliveryApi()
     .AddComposers()
+    .AddAWSS3MediaFileSystem()
     .Build();
 
 builder.Services.AddServ();
@@ -18,11 +20,17 @@ await app.BootUmbracoAsync();
 
 app.UseGlobalExceptionHandler();
 
+app.UseStaticFiles();
+
 app.UseUmbraco()
     .WithMiddleware(u =>
     {
         u.UseBackOffice();
         u.UseWebsite();
+
+        // Enables the AWS S3 Storage middleware for Media
+        u.UseAWSS3MediaFileSystem();
+
     })
     .WithEndpoints(u =>
     {
