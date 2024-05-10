@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - development
+      - task/connectAwsMedia
   workflow_dispatch: null
 jobs:
   build:
