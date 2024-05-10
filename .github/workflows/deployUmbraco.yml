@@ -57,6 +57,16 @@ jobs:
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
           script: |
             cp /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/BackUpDataBase/Umbraco.sqlite.db /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/umbraco/Data
+      - name: Replace all sensetive data
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEPLOY_IP }}
+          username: ${{ secrets.HOST_ADMIN_USER }}
+          key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
+          script: |
+            cd /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj
+            sed -i "s/ACCESS_KEY/${{ secrets.ACCESSKEY_AWS }}/g"  /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/appsettings.Production.json
+            sed -i "s/SECRET_KEY/${{ secrets.SECRETKEY }}/g"  /tutorproPl/${{ secrets.HOST_ADMIN_USER }}/proj/TutorPro/appsettings.Production.json
       - name: Dangling images prune
         uses: appleboy/ssh-action@master
         with:
