@@ -5,7 +5,7 @@
     Layout = "Main.cshtml";
     var guid = Context.Request.Query["guid"];
     var title = Context.Request.Query["title"];
-    var language = Umbraco.CultureDictionary.Culture.Name.ToLower();
+    var language = Umbraco.CultureDictionary.Culture.Name.Split("-")[0].ToLower();
 }
 <h1 class="main-top__title"><span>@title</span></h1>
 <link rel="stylesheet" href="@(Model.TApiUrl).css">
