@@ -1,10 +1,30 @@
-angular.module("umbraco").controller("tMainTop", function ($scope) {
+angular.module("umbraco").controller("tMainTop", function ($scope, mediaResource) {
     var content = $scope.block.data;
     var titleParts = content.tTitle.split(" ");
     $scope.firstTitlePart = "";
     $scope.secondTitlePart = "";
 
-    //TODO make gif visual
+    $scope.images = [];
+
+    var images = content.tImages;
+
+    if (images && images.length > 0) {
+        images.forEach(function (image) {
+            var imageUdi = image.mediaKey;
+
+            if (imageUdi) {
+                mediaResource.getById(imageUdi)
+                    .then(function (media) {
+                        $scope.images.push(media);
+                    })
+                    .catch(function (error) {
+                        console.error("Error loading media:", error);
+                    });
+            } else {
+                console.error("Image UDI is missing.");
+            }
+        });
+    }
 
     for (var i = 0; i < Math.min(content.tNumberOfColoredWords, titleParts.length); i++) {
         $scope.firstTitlePart += " " + titleParts[i];

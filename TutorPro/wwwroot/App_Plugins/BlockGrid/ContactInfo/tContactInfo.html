@@ -1,0 +1,35 @@
+﻿<div class="contacts-info-block info-block radial-bg"  ng-controller="tContactInfo" ng-click="block.edit()">
+    <div class="info-block__bg radial-bg"></div>
+    <div class="container">
+        <div class="info-block__contacts-block">
+            <div class="info-block__contacts-links">
+                <div ng-repeat="card in linkCards">
+                    <div class="info-block__contacts-item">
+                        <span class="info-block__contacts-title medium-title">{{card.tTitle}}</span>
+                        <a class="info-block__contacts-link">{{card.tUrl[0].name}}</a>
+                        <div ng-if="card.tText" ng-bind-html="card.tText.markup"></div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="info-block__contacts-info">
+                <div ng-repeat="card in infoCards">
+                    <div class="info-block__contacts-item">
+                        <span class="info-block__contacts-title medium-title">{{card.tTitle}}</span>
+                        <a class="info-block__contacts-link">{{card.tUrl[0].name}}</a>
+                        <div ng-if="card.tText" ng-bind-html="card.tText.markup"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-block__contacts-socials">
+                <span class="info-block__contacts-title medium-title">{{ content.tSocialNetworkTitle }}</span>
+                <ul class="info-block__socials">
+                    <li ng-repeat="link in socialLinks">
+                        <a class="info-block__socials-link">
+                            <img class="social-icon" width="32" height="36" ng-src="{{ link.TIcon[0].src }}" alt="Icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

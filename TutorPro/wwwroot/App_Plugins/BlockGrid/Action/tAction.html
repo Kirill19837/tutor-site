@@ -7,7 +7,7 @@
                         <div class="actions__item" tabindex="0">
                             <span class="actions__item-title medium-title">{{card.tTitle}}</span>
                             <p class="actions__item-text" ng-bind-html="card.tText.markup"></p>
-                            <button ng-controller="tButton" ng-init="initButton(card.tButton.contentData[0])" ng-class="toggleClass">
+                            <button class="actions__item-link" ng-controller="tButton" ng-init="initButton(card.tButton.contentData[0])" ng-class="toggleClass">
                                 <span>{{card.tButton.contentData[0].tButtonTitle}}</span>
                             </button>
                         </div>

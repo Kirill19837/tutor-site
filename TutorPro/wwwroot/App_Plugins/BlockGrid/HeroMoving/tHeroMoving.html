@@ -1,0 +1,52 @@
+﻿<div ng-controller="tHeroMoving" ng-click="block.edit()">
+    <section ng-class="mainClass">
+        <div class="school-info__top">
+            <div class="container">
+                <h2 class="school-info__title section-title">{{content.tTitle}}</h2>
+                <p class="school-info__subtitle" ng-if="content.tSubTitle != null">{{content.tSubTitle}}</p>
+            </div>
+            <div class="school-info__moving-block animated">
+                <div ng-repeat="block in content.tMovingBlocks.contentData">
+                    <div class="animated__row-wrap" data-duration="{{block.tDuration}}s" data-left-offset="{{block.tLeftOffset}}px" tabindex="0">
+                        <div class="animated__row">
+                            <div ng-repeat="item in block.tItems.contentData">
+                                <div class="animated__item">
+                                    <p ng-bind-html="item.tText.markup"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="school-info__bottom" ng-if="bottomInfo != null">
+            <div class="container">
+                <div ng-if="content.tStyle == 'school'">
+                    <div class="school-info__description description-block {{bottomInfoClass}}">                       
+                        <div class="description-block__info">
+                            <span class="description-block__title" ng-if="bottomInfo.tTitile != null">{{bottomInfo.tTitile}}</span>
+                                <p class="description-block__text" ng-bind-html="bottomInfo.tText.markup"></p>
+                                <button class="description-block__link" ng-controller="tButton" ng-init="initButton(bottomInfo.tButton.contentData[0])" ng-class="toggleClass">
+                                    <span>{{bottomInfo.tButton.contentData[0].tButtonTitle}}</span>
+                                </button>
+                        </div>
+                        <div class="description-block__image">
+                            <img ng-src="{{image.mediaLink}}" ng-if="bottomInfo.tImage != null">                            
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="content.tStyle == 'teacher'">
+                    <div class="school-info__descr">
+                        <div class="school-info__descr-image">
+                            <img ng-src="{{image.mediaLink}}" ng-if="bottomInfo.tImage != null">
+                        </div>
+                        <p class="school-info__descr-text" ng-bind-html="bottomInfo.tText.markup"></p>
+                        <button class="description-block__link" ng-controller="tButton" ng-init="initButton(bottomInfo.tButton.contentData[0])" ng-class="toggleClass">
+                            <span>{{bottomInfo.tButton.contentData[0].tButtonTitle}}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

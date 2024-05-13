@@ -16,6 +16,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\Branch\package.manifest" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="wwwroot\media\05pht0n0\macbook-pro-17_2.png" />
     <Content Include="wwwroot\media\0agiooc5\13.png" />
     <Content Include="wwwroot\media\0wzakafs\about-info-image1.jpg" />
@@ -198,6 +201,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\App_Plugins\BlockGrid\Branch\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\button\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\button\tButton.controller.js" />
     <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />

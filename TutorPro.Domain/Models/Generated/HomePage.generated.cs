@@ -146,36 +146,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TLogo => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTLogo(this, _publishedValueFallback);
 
 		///<summary>
-		/// Data Word 1: "Enter "
+		/// Data and word: " and "
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord1")]
-		public virtual string TDataWord1 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord1(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data Word 2: " and "
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord2")]
-		public virtual string TDataWord2 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord2(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data word 3: "Invalid"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord3")]
-		public virtual string TDataWord3 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord3(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data word 4: " format"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord4")]
-		public virtual string TDataWord4 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord4(this, _publishedValueFallback);
+		[ImplementPropertyType("tAndWord")]
+		public virtual string TAndWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTAndWord(this, _publishedValueFallback);
 
 		///<summary>
 		/// Email placeholder
@@ -194,12 +170,36 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::System.Collections.Generic.IEnumerable<string> TEmailsToSend => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTEmailsToSend(this, _publishedValueFallback);
 
 		///<summary>
+		/// Data enter word: "Enter "
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tEnterWord")]
+		public virtual string TEnterWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTEnterWord(this, _publishedValueFallback);
+
+		///<summary>
+		/// Data format word: " format"
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tFormatWord")]
+		public virtual string TFormatWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTFormatWord(this, _publishedValueFallback);
+
+		///<summary>
 		/// Form url
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tFormUrl")]
 		public virtual string TFormUrl => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTFormUrl(this, _publishedValueFallback);
+
+		///<summary>
+		/// Data invalid word: "Invalid"
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tInvalidWord")]
+		public virtual string TInvalidWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTInvalidWord(this, _publishedValueFallback);
 
 		///<summary>
 		/// Message placeholder

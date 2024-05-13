@@ -1,19 +1,18 @@
-angular.module("umbraco").controller("tInnerForPage", function ($scope, mediaResource) {
+angular.module("umbraco").controller("tInfo", function ($scope, mediaResource) {
+    console.log($scope);
     $scope.content = $scope.block.data;
-    $scope.class = $scope.content.tFor + "-top inner-top";
-    $scope.changes = $scope.content.tFor[0] === "teacher";
-    $scope.images = [];
-
-    var images = $scope.content.tImages;
+    $scope.items = $scope.content.tItems.contentData;
+    
+    var images = $scope.items;
 
     if (images && images.length > 0) {
         images.forEach(function (image) {
-            var imageUdi = image.mediaKey;
+            var imageUdi = image.tImage[0].mediaKey;
 
             if (imageUdi) {
                 mediaResource.getById(imageUdi)
                     .then(function (media) {
-                        $scope.images.push(media);
+                        image.tImage[0].src = media.mediaLink;
                     })
                     .catch(function (error) {
                         console.error("Error loading media:", error);

@@ -22,25 +22,10 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 	/// <summary>Send form settings</summary>
 	public partial interface ITSendFormSettings : IPublishedContent
 	{
-		/// <summary>Data Word 1</summary>
+		/// <summary>Data and word</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TDataWord1 { get; }
-
-		/// <summary>Data Word 2</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TDataWord2 { get; }
-
-		/// <summary>Data word 3</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TDataWord3 { get; }
-
-		/// <summary>Data word 4</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TDataWord4 { get; }
+		string TAndWord { get; }
 
 		/// <summary>Email placeholder</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -52,10 +37,25 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		global::System.Collections.Generic.IEnumerable<string> TEmailsToSend { get; }
 
+		/// <summary>Data enter word</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string TEnterWord { get; }
+
+		/// <summary>Data format word</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string TFormatWord { get; }
+
 		/// <summary>Form url</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		string TFormUrl { get; }
+
+		/// <summary>Data invalid word</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string TInvalidWord { get; }
 
 		/// <summary>Message placeholder</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -110,56 +110,17 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Data Word 1: "Enter "
+		/// Data and word: " and "
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord1")]
-		public virtual string TDataWord1 => GetTDataWord1(this, _publishedValueFallback);
+		[ImplementPropertyType("tAndWord")]
+		public virtual string TAndWord => GetTAndWord(this, _publishedValueFallback);
 
-		/// <summary>Static getter for Data Word 1</summary>
+		/// <summary>Static getter for Data and word</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTDataWord1(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tDataWord1");
-
-		///<summary>
-		/// Data Word 2: " and "
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord2")]
-		public virtual string TDataWord2 => GetTDataWord2(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Data Word 2</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTDataWord2(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tDataWord2");
-
-		///<summary>
-		/// Data word 3: "Invalid"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord3")]
-		public virtual string TDataWord3 => GetTDataWord3(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Data word 3</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTDataWord3(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tDataWord3");
-
-		///<summary>
-		/// Data word 4: " format"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord4")]
-		public virtual string TDataWord4 => GetTDataWord4(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Data word 4</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTDataWord4(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tDataWord4");
+		public static string GetTAndWord(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tAndWord");
 
 		///<summary>
 		/// Email placeholder
@@ -188,6 +149,32 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public static global::System.Collections.Generic.IEnumerable<string> GetTEmailsToSend(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<global::System.Collections.Generic.IEnumerable<string>>(publishedValueFallback, "tEmailsToSend");
 
 		///<summary>
+		/// Data enter word: "Enter "
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tEnterWord")]
+		public virtual string TEnterWord => GetTEnterWord(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Data enter word</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetTEnterWord(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tEnterWord");
+
+		///<summary>
+		/// Data format word: " format"
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tFormatWord")]
+		public virtual string TFormatWord => GetTFormatWord(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Data format word</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetTFormatWord(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tFormatWord");
+
+		///<summary>
 		/// Form url
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -199,6 +186,19 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		public static string GetTFormUrl(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tFormUrl");
+
+		///<summary>
+		/// Data invalid word: "Invalid"
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tInvalidWord")]
+		public virtual string TInvalidWord => GetTInvalidWord(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Data invalid word</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetTInvalidWord(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tInvalidWord");
 
 		///<summary>
 		/// Message placeholder
