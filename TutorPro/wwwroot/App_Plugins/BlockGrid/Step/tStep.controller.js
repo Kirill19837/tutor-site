@@ -24,5 +24,4 @@ angular.module("umbraco").controller("tStep", function ($scope, mediaResource) {
             }
         });
     }
-    console.log($scope) 
 });
