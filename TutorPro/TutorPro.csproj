@@ -16,7 +16,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\Branch\BranchItem\package.manifest" />
     <Content Remove="wwwroot\App_Plugins\BlockGrid\Branch\package.manifest" />
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\Cards\ActionCard\package.manifest" />
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\ChooseItem\package.manifest" />
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\ChoosePart\package.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\media\05pht0n0\macbook-pro-17_2.png" />
@@ -201,9 +205,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\App_Plugins\BlockGrid\Branch\BranchItem\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\Branch\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\button\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\button\tButton.controller.js" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\Cards\ActionCard\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\ChooseItem\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\ChoosePart\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\richtexteditor\tRichTextEditor.controller.js" />
 	  <Content Include="wwwroot\media\2lppaouk\icons8-linkedin-1.svg" />

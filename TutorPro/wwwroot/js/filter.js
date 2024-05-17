@@ -94,7 +94,7 @@ function updateContent(data) {
             var html = `
                 <div class="matirials__column">
                     <a class="matirials__item" href="${articleUrl}?title=${material.title}&guid=${material.guid}">
-                        ${material.imageUrl ? `<div class="matirials__item-image"><img src="${material.imageUrl}" alt="Item image"></div>` : ''}
+                        ${material.imageUrl ? `<div class="matirials__item-image"><img src="${material.imageUrl}" alt="Item image"></div>` : `<div class="matirials__item-image"></div>`}
                         <h3 class="matirials__item-title">${material.title}</h3>
                         <div class="matirials__item-tags">
                             ${material.tags.map(tag => `<span class="matirials__item-tag">${tag.replace('#', '')}</span>`).join('')}

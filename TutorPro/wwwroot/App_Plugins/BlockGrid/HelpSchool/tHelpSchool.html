@@ -1,0 +1,18 @@
+﻿<div ng-controller="tHelpSchool" ng-click="block.edit()">
+    <section class="platform">
+        <div class="container">
+            <h2 class="platform__title section-title">{{content.tTitle}}</h2>
+            <div class="platform__block">
+                <div class="platform__info">
+                    <ul class="platform__list">
+                        <li ng-repeat="text in content.tContent" class="platform__list-item">{{text.value}}</li>
+                    </ul>
+                </div>
+                <div class="platform__image">                   
+                    <img class="platform__image-big" src="{{images[0].src}}" alt="Big image">
+                    <img class="platform__image-small" src="{{images[1].src}}" alt="Small image">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

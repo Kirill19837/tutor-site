@@ -146,14 +146,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TLogo => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTLogo(this, _publishedValueFallback);
 
 		///<summary>
-		/// Data and word: " and "
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tAndWord")]
-		public virtual string TAndWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTAndWord(this, _publishedValueFallback);
-
-		///<summary>
 		/// Email placeholder
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -170,36 +162,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::System.Collections.Generic.IEnumerable<string> TEmailsToSend => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTEmailsToSend(this, _publishedValueFallback);
 
 		///<summary>
-		/// Data enter word: "Enter "
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEnterWord")]
-		public virtual string TEnterWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTEnterWord(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data format word: " format"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tFormatWord")]
-		public virtual string TFormatWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTFormatWord(this, _publishedValueFallback);
-
-		///<summary>
 		/// Form url
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tFormUrl")]
 		public virtual string TFormUrl => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTFormUrl(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data invalid word: "Invalid"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tInvalidWord")]
-		public virtual string TInvalidWord => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTInvalidWord(this, _publishedValueFallback);
 
 		///<summary>
 		/// Message placeholder

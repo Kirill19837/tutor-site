@@ -11,7 +11,8 @@
                         <div class="animated__row">
                             <div ng-repeat="item in block.tItems.contentData">
                                 <div class="animated__item">
-                                    <p ng-bind-html="item.tText.markup"></p>
+                                    <span ng-if="item.tTitle" ng-bind-html="item.tTitle"></span>
+                                    <p ng-if="item.tText">{{item.tText}}</p>
                                 </div>
                             </div>
                         </div>

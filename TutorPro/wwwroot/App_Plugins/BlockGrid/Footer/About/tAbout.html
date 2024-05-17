@@ -1,0 +1,12 @@
+﻿<div class="footer__inner" style="background-color:black" ng-controller="tAbout" ng-click="block.edit()">
+    <div class="footer__about" style="margin-left: 20px" ng-if="content">
+        <span class="footer__title medium-title">{{content.tAboutTitle}}</span>
+        <ul class="footer__menu">
+            <li class="footer__menu-item" ng-repeat="link in content.tIinks.contentData">
+                <a style="background-color:black" class="footer__menu-link">{{link.tLinkTitle}}</a>
+            </li>
+        </ul>
+        <p class="footer__text">{{content.tAboutAddress}}</p>
+        <p class="footer__text">{{content.tAddresIndex}} <a>{{content.tShortAdress}}</a></p>
+    </div>
+</div>

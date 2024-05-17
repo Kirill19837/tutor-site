@@ -360,6 +360,7 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+
 /* Cookies */
 
 .cookies {
@@ -371,10 +372,10 @@ select:-webkit-autofill:focus {
     background-color: #fdfdfd;
 }
 
-.cookies.accepted {
-    display: none !important;
-    opacity: 0;
-}
+    .cookies.accepted {
+        display: none !important;
+        opacity: 0;
+    }
 
 .cookies__container {
     width: 100%;

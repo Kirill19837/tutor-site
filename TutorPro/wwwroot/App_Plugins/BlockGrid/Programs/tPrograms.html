@@ -1,0 +1,21 @@
+﻿<div >
+    <section class="programs" ng-controller="tPrograms" ng-click="block.edit()">
+        <span class="decor-element ring1 parallax-element"></span>
+        <span class="decor-element ring2 parallax-element"></span>
+        <div class="container">
+            <h2 class="programs__title section-title">{{content.tTitle}}</h2>
+            <div class="programs__block">
+                <div class="programs__column" ng-repeat="card in content.tCards.contentData">
+                    <div class="programs__item">
+                        <div class="programs__item-image">
+                            <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(card.tImage.contentData[0])">
+                                <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                            </div>
+                        </div>
+                        <p class="programs__item-title">{{card.tTitle}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

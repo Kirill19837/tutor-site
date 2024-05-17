@@ -1,0 +1,6 @@
+﻿<div style="width:100%" class="choose__column {{ content.with === '1' ? 'with' : 'without' }}" ng-controller="tChooseItem" ng-click="block.edit()">
+    <li class="choose__list-item">
+        {{content.tTitle}}
+        <span ng-if="content.tTimeValue && content.tTimeType" class="choose__list-notice"><b>{{content.tTimeValue}}</b>{{content.tTimeType}}</span>
+    </li>
+</div>

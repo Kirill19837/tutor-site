@@ -7,7 +7,6 @@ angular.module("umbraco").controller("tHomework", function ($scope, mediaResourc
     $scope.bottomImage = $scope.bottomDesc.tImage[0];
 
     var iconImage = $scope.icon.tIconImage[0];
-    console.log($scope)
     if (iconImage) {
         mediaResource.getById(iconImage.mediaKey)
             .then(function (media) {

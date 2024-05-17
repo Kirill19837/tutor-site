@@ -1,0 +1,17 @@
+﻿<div ng-controller="tTeachingProcess" ng-click="block.edit()">
+    <section class="process">
+        <div class="decor-bg radial-bg green"></div>
+        <div class="decor-bg radial-bg orange"></div>
+        <div class="container">
+            <div class="process__inner">
+                <h2 class="process__title section-title">{{content.tTitle}}</h2>
+                <div class="process__block">
+                    <div class="process__item" ng-repeat="icon in content.tIconItems.contentData">
+                        <img class="process__item-icon" src="{{icon.tIconImage[0].src}}" alt="Item icon">
+                        <p class="process__item-text">{{icon.tText}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
