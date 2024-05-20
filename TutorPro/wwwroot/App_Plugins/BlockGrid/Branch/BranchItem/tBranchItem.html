@@ -1,0 +1,14 @@
+﻿<div ng-controller="tBranchItem" ng-click="block.edit()" class="branches__item" ng-class="{'reverse': item.tReverse === '1'}">
+    <div class="branches__item-info">
+        <span class="branches__item-title">{{item.tTitle}}</span>
+        <p class="branches__item-text" ng-bind-html="item.tText.markup"></p>
+        <button class="branches__item-link" ng-controller="tButton" ng-init="initButton(item.tButton.contentData[0])" ng-class="toggleClass">
+            <span>{{item.tButton.contentData[0].tButtonTitle}}</span>
+        </button>
+    </div>
+    <div class="branches__item-image">
+        <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(item.tMainImage.contentData[0])">
+            <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+        </div>
+    </div>
+</div>

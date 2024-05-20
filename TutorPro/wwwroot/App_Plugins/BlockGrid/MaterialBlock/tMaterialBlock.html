@@ -1,0 +1,50 @@
+﻿<div class="matirials" ng-controller="tMaterialBlock" ng-click="block.edit()">
+    <div class="matirials__filtration-block">
+        <div class="container">
+            <div class="matirials__filtration">
+                <form class="matirials__filtration-form">
+                    <div class="filter-form__item search-item">
+                        <input class="filter-form__input" type="text" placeholder="Search">
+                        <button class="filter-form__search-button" type="button" aria-label="search-button"></button>
+                    </div>
+                    <div class="filter-form__row">
+                        <div class="filter-form__select-wrap" ng-repeat="filter in content.tFilters.contentData">
+                            <div class="select">
+                                <select class="filter-form__select select" name="{{filter.tName}}" id="{{filter.tName}}" data-placeholder="{{filter.tPlaceholder}}" style="display: none;">
+                                    <option value=""></option>
+                                </select>
+                                <div class="new-select empty">{{filter.tPlaceholder}}</div>
+                            </div>                          
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="matirials__content ">
+        <div class="matirials__bg "></div>
+        <div class="matirials__container">
+            <div class="matirials__block" data-notFoundMessage="{{content.tNotFoundMessage}}">
+                <div class="matirials__column">
+                    <a class="matirials__item">                       
+                        <h3 class="matirials__item-title">Test name</h3>
+                        <div class="matirials__item-tags">
+                            <span class="matirials__item-tag">tag</span>
+                        </div>
+                        <p class="matirials__item-text">test text</p>
+                        
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="matirials__pagination pagination" data-pageSize="1">
+                <ul class="pagination__list">
+                    <li class="pagination__list-item"><a class="pagination__list-link active">1</a></li>
+                    <li class="pagination__list-item"><a class="pagination__list-link">2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

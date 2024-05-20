@@ -1,0 +1,10 @@
+﻿<div class="footer__inner" style="background-color:black" ng-controller="tLinks" ng-click="block.edit()" >
+    <div class="footer__actions" style="margin-left: 20px" ng-if="content">
+        <span class="footer__title medium-title">{{content.tQuickTitle}}</span>
+        <ul class="footer__menu">
+            <li class="footer__menu-item" ng-repeat="link in content.tLinks.contentData">
+                <a class="footer__menu-link">{{link.tLinkTitle}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

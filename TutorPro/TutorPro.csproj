@@ -10,6 +10,22 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\Branch\BranchItem\package.manifest" />
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\Branch\package.manifest" />
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\Cards\ActionCard\package.manifest" />
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\ChooseItem\package.manifest" />
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\ChoosePart\package.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\media\05pht0n0\macbook-pro-17_2.png" />
+    <Content Include="wwwroot\media\0agiooc5\13.png" />
+    <Content Include="wwwroot\media\0wzakafs\about-info-image1.jpg" />
+    <Content Include="wwwroot\media\0zfpwcz3\3-3.png" />
+    <Content Include="wwwroot\media\1l4pwhci\teacher-hero-info-icon6.png" />
+    <Content Include="wwwroot\media\2kgnqe01\thomas-griesbeck-bs-uxe8wu5y-unsplash.jpg" />
+    <Content Include="wwwroot\media\3nxccghh\macbook-pro_forteacher_5.png" />
+    <Content Include="wwwroot\media\3yllqyob\blog-item2-image.jpg" />
+    <Content Include="wwwroot\media\3yylu34a\steps-item3-image-big.png" />
     <Content Include="wwwroot\media\4aonipek\hossein-nasr-wr56ynk67uc-unsplash.jpg" />
     <Content Include="wwwroot\media\4sbdlbqh\screenshots-image1.jpg" />
     <Content Include="wwwroot\media\52vji5we\cookies-icon.png" />
@@ -157,8 +173,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\App_Plugins\BlockGrid\Branch\BranchItem\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\Branch\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\button\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\button\tButton.controller.js" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\Cards\ActionCard\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\ChooseItem\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\ChoosePart\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\richtexteditor\tRichTextEditor.controller.js" />
     <Content Include="wwwroot\media\5soptm3s\icon-social-instagram-white.svg" />

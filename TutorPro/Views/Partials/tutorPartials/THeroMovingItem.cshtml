@@ -4,5 +4,12 @@
 }
 
 <div class="animated__@(itemClass)item">
-    @Html.Raw(Model.TText)
+    @if(Model.TTitle != null)
+    {
+        <span>@Html.Raw(Model.TTitle)</span>
+    }
+    @if(Model.TText != null)
+    {
+        <p>@Model.TText</p>
+    }
 </div>

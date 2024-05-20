@@ -1,0 +1,68 @@
+﻿<div ng-controller="tHomework" ng-click="block.edit()">
+    <section class="homework radial-bg">
+        <div class="container">
+            <h2 class="homework__title section-title">{{content.tTitle}}</h2>
+            <div class="homework__notice">
+                <img class="homework__notice-icon" src="{{icon.src}}" alt="Item icon">
+                <p class="homework__notice-text">
+                    <span>{{icon.tText}}</span>
+                </p>
+            </div>
+            <div ng-repeat="item in content.tBranchItems.contentData">
+                <div class="branches__item" ng-class="{'reverse': item.tReverse === '1'}">
+                    <div class="branches__item-info">
+                        <span class="branches__item-title">{{item.tTitle}}</span>
+                        <p class="branches__item-text" ng-bind-html="item.tText.markup"></p>
+                        <button class="branches__item-link" ng-controller="tButton" ng-init="initButton(item.tButton.contentData[0])" ng-class="toggleClass">
+                            <span>{{item.tButton.contentData[0].tButtonTitle}}</span>
+                        </button>
+                    </div>
+                    <div class="branches__item-image">
+                        <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(item.tMainImage.contentData[0])">
+                            <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="homework__second-title small-title type-2">{{info.tTitle}}</h3>
+            <p class="homework__second-subtitle" ng-bind-html="info.tText.markup"></p>
+            <div class="homework__info-block">
+                <div class="homework__info-left">
+                    <div class="homework__info-image">
+                        <div ng-controller="tImage" ng-init="initImage(info.tImage.contentData[0])">
+                            <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                        </div>
+                    </div>
+                    <button ng-if="info.tButton.contentData[0].tButtonTitle" class="homework__info-link" ng-controller="tButton" ng-init="initButton(info.tButton.contentData[0])" ng-class="toggleClass">
+                        <span>{{info.tButton.contentData[0].tButtonTitle}}</span>
+                    </button>
+                </div>
+                <div class="homework__info-right">
+                    <div ng-repeat="textList in content.tHomeworkItem.contentData[0].tTextLists.contentData">
+                        <span class="homework__info-title small-title type-{{textList.tTitleType}}">{{textList.tTitle}}</span>
+                        <ul class="homework__info-list">
+                            <li ng-repeat="text in textList.tListItems" class="homework__info-list-item">{{text.value}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="homework__third-title section-title">{{content.tBottomTitle}}</h2>
+            <div class="homework__description" ng-if="bottomDesc">
+                <div class="school-info__description description-block ">
+                    <div class="description-block__info">
+                        <span class="description-block__title" ng-if="bottomDesc.tTitile != null">{{bottomDesc.tTitile}}</span>
+                        <p class="description-block__text" ng-bind-html="bottomDesc.tText.markup"></p>
+                        <button ng-if="bottomDesc.tButton.contentData[0].tButtonTitle" class="description-block__link" ng-controller="tButton" ng-init="initButton(bottomDesc.tButton.contentData[0])" ng-class="toggleClass">
+                            <span>{{bottomDesc.tButton.contentData[0].tButtonTitle}}</span>
+                        </button>
+                    </div>
+                    <div class="description-block__image">
+                        <img ng-src="{{bottomDesc.tImage[0].src}}" />
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </section>
+</div>

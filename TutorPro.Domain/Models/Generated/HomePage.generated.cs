@@ -146,38 +146,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TLogo => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTLogo(this, _publishedValueFallback);
 
 		///<summary>
-		/// Data Word 1: "Enter "
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord1")]
-		public virtual string TDataWord1 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord1(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data Word 2: " and "
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord2")]
-		public virtual string TDataWord2 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord2(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data word 3: "Invalid"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord3")]
-		public virtual string TDataWord3 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord3(this, _publishedValueFallback);
-
-		///<summary>
-		/// Data word 4: " format"
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tDataWord4")]
-		public virtual string TDataWord4 => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTDataWord4(this, _publishedValueFallback);
-
-		///<summary>
 		/// Email placeholder
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]

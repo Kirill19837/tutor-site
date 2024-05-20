@@ -1,0 +1,41 @@
+﻿<div ng-controller="tDescription" ng-click="block.edit()">
+    <section class="description">
+        <div class="description__top" ng-if="mainInfo">
+            <div class="container">
+                <span ng-if="content.tArrow" class="description__top-arrow">
+                    <img src="/images/icons/icon-arrow4.svg" alt="Arrow icon">
+                </span>
+                <div class="description__top-block description-block" ng-class="{{revertClass}}">
+                    <div class="description-block__info">
+                        <span class="description-block__title">{{mainInfo.tTitle}}</span>
+                        <p class="description-block__text" ng-bind-html="mainInfo.tText.markup"></p>
+                        <button class="description-block__link" ng-controller="tButton" ng-init="initButton(mainInfo.tButton.contentData[0])" ng-class="toggleClass">
+                            <span>{{mainInfo.tButton.contentData[0].tButtonTitle}}</span>
+                        </button>
+                    </div>
+                    <div class="description-block__image">
+                        <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(mainInfo.tImage.contentData[0])">
+                            <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="description__bottom info-block radial-bg" ng-if="bottomInfo">
+            <div class="info-block__bg radial-bg"></div>
+            <div class="container">
+                <h2 class="info-block__title section-title">{{bottomInfo.tTitle}}</h2>
+                <div class="info-block__subtitle" ng-bind-html="bottomInfo.tText.markup"></div>
+                <button class="info-block__main-link" ng-controller="tButton" ng-init="initButton(bottomInfo.tButton.contentData[0])" ng-class="toggleClass">
+                    <span>{{bottomInfo.tButton.contentData[0].tButtonTitle}}</span>
+                </button>
+            </div>
+            <div class="description-block__image big-image" ng-if="bottomInfo.tImage.contentData[0]">
+                <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(bottomInfo.tImage.contentData[0])">
+                    <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                </div>                    
+            </div>
+        </div>
+    </section>
+</div>

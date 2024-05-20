@@ -301,7 +301,7 @@ $(function () {
     });
     $('.new-select__item').on('click', function () {
         const category = $(this).closest(".new-select__list").siblings(".select").attr("id")
-        const data = $(this).find('span').html()
+        const data = $(this).find('span').prevObject[0].dataset.value;
         sendRequest(category, data);
     });
   });

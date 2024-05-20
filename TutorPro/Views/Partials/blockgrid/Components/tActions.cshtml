@@ -53,7 +53,7 @@
                 {
                     <div class="actions__form-wrap">
                         <h2 class="actions__form-title medium-title section-title">@content.TTitle</h2>
-                        <form class="actions__form request-form three-cols" method="post" data-word1="@rootPage.TDataWord1 " data-word2=" @rootPage.TDataWord2 " data-word3="@rootPage.TDataWord3 " data-word4=" @rootPage.TDataWord4">
+                        <form data-word1="@Umbraco.GetDictionaryValue("Enter") " data-word2=" @Umbraco.GetDictionaryValue("and") " data-word3="@Umbraco.GetDictionaryValue("Invalid") " data-word4=" @Umbraco.GetDictionaryValue("format")" class="actions__form request-form three-cols" method="post">
                             @Html.AntiForgeryToken()
                             @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestBlock.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "mainPage", rootPage } })
                         </form>

@@ -1,0 +1,15 @@
+﻿<div class="about-info" ng-controller="tInfo" ng-click="block.edit()">
+    <div class="container">          
+        <div class="about-info__block">
+            <div ng-repeat="info in items" class="about-info__item" ng-class="{'reverse': info.tReverse === '1'}">
+                <span class="decor-element ring-big parallax-element"></span>
+                <div class="about-info__item-content">
+                    <div ng-bind-html="info.tText.markup"></div>
+                </div>
+                <div class="about-info__item-image">
+                    <img src="{{info.tImage[0].src}}" />                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -50,12 +50,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Filter items
+		/// FIlter items
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tFilterItems")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TFilterItems => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tFilterItems");
+		[ImplementPropertyType("tFIlterItems")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TFilterItems => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tFIlterItems");
 
 		///<summary>
 		/// Name: do not change, this is the name for filtering

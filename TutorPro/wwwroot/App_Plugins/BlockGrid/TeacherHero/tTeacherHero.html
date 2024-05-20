@@ -1,0 +1,40 @@
+﻿<div ng-controller="tTeacherHero" ng-click="block.edit()">
+    <section class="teacher-hero school-hero radial-bg">
+        <span class="decor-element ring1 parallax-element"></span>
+        <span class="decor-element ring2 parallax-element"></span>
+        <div class="container">
+            <div class="school-hero__inner">
+                <h2 class="teacher-hero__title section-title first-title">{{ content.tTitile }}</h2>
+                <div class="teacher-hero__info-block" ng-if="content.tIcons.contentData">
+                    <div class="teacher-hero__info-item" ng-repeat="icon in content.tIcons.contentData">
+                        <img class="teacher-hero__info-icon" src="{{icon.tIconImage[0].src}}" alt="Item icon">
+                        <p class="teacher-hero__info-text">{{icon.tText}}</p>
+                    </div>
+                    <button ng-if="content.tButton" class="teacher-hero__info-link" ng-controller="tButton" ng-init="initButton(content.tButton.contentData[0])" ng-class="toggleClass">
+                        <span>{{content.tButton.contentData[0].tButtonTitle}}</span>
+                    </button>
+                </div>
+               
+                <h2 class="teacher-hero__title second-title">{{ content.tSecondTitle }}</h2>
+                <div class="school-hero__block hero-block">
+                    <div class="hero-block__info">
+                        <h3 class="hero-block__title">{{info.tTitle}}</h3>
+                        <div ng-bind-html="info.tText.markup"></div>
+                        <div ng-if="info.tButton">
+                            <button class="hero-block__link" ng-controller="tButton" ng-init="initButton(info.tButton.contentData[0])" ng-class="toggleClass">
+                                <span>{{info.tButton.contentData[0].tButtonTitle}}</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero-block__image radial-bg">
+                        <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(info.tImage.contentData[0])">
+                            <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

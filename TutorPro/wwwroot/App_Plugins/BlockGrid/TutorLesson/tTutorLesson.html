@@ -1,0 +1,34 @@
+﻿<div ng-controller="tTutorLesson" ng-click="block.edit()">
+    <section class="tutor-lesson">
+        <div class="container">
+            <h2 class="tutor-lesson__title section-title">{{content.tTitle}}</h2>
+            <p class="tutor-lesson__subtitle section-subtitle">{{content.tSubTitle}}</p>
+            <div class="tutor-lesson__block">
+                <div ng-repeat="item in content.tItems.contentData">
+                    <div ng-if="item.tIsTitleLower === '1'" class="tutor-lesson__item item2" ng-class="{'reverse': item.tReverse === '1'}">
+                        <div class="tutor-lesson__item-image">
+                            <img ng-if="item.tImages[0]" src="{{ item.tImages[0].src }}" alt="Item image" >
+                        </div>
+                        <div class="tutor-lesson__item-info">
+                            <h3 class="tutor-lesson__item-title">{{ item.tTitle }}</h3>
+                            <p class="tutor-lesson__item-text"><span>{{ item.tText }}</span></p>
+                        </div>
+                    </div>
+                    <div ng-if="item.tIsTitleLower !== '1'" class="tutor-lesson__item item1" ng-class="{'reverse': item.tReverse === '1'}">
+                        <h3 class="tutor-lesson__item-title">{{ item.tTitle }}</h3>
+                        <div class="tutor-lesson__item-info">
+                            <p class="tutor-lesson__item-text"><span>{{ item.tText }}</span></p>
+                            <div class="tutor-lesson__item-image">
+                                <picture>
+                                    <source ng-if="item.tImages[1]" srcset="{{ item.tImages[1].src }}" media="(max-width: 576px)" >
+                                    <img ng-if="item.tImages[0]" src="{{ item.tImages[0].src }}" alt="Item image" >
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+</div>

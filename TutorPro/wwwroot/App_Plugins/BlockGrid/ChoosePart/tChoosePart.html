@@ -1,0 +1,12 @@
+﻿<div style="width:100%" ng-controller="tChoosePart" ng-click="block.edit()" class="choose__column {{ content.tWith === '1' ? 'with' : 'without' }}">
+    <div class="choose__column-info">
+        <p class="choose__column-title">{{content.tTitle}}</p>
+        <ul class="choose__list">
+            <li class="choose__list-item" ng-repeat="item in items">
+                {{item.tTitle}}
+                <span ng-if="item.tTimeValue && item.tTimeType" class="choose__list-notice"><b>{{item.tTimeValue}}</b>{{item.tTimeType}}</span>
+            </li>
+        </ul>
+        <p class="choose__column-result">{{content.tResultTimeValue}} {{content.tResultTimeType}}</p>
+    </div>
+</div>

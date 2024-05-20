@@ -1,0 +1,42 @@
+﻿<div ng-controller="tSchoolHero" ng-click="block.edit()">
+    <section class="school-hero radial-bg">
+        <span class="decor-element ring1 parallax-element"></span>
+        <span class="decor-element ring2 parallax-element"></span>
+        <div class="decor-bg"></div>
+        <div class="container">
+            <div class="school-hero__inner" ng-if="info">
+                <h2 class="school-hero__title">{{ info.tTitle }}</h2>
+                <div class="school-hero__block hero-block">
+                    <div class="hero-block__info">
+                        <div ng-bind-html="info.tText.markup"></div>
+                        <div ng-if="info.tButton">
+                            <button class="hero-block__link" ng-controller="tButton" ng-init="initButton(info.tButton.contentData[0])" ng-class="toggleClass">
+                                <span>{{info.tButton.contentData[0].tButtonTitle}}</span>
+                            </button>
+                        </div>                     
+                    </div>
+                    <div class="hero-block__image">
+                        <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(info.tImage.contentData[0])">
+                            <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="school-hero__moving-block animated">
+            <div ng-repeat="block in movingItems">
+                <div class="animated__row-wrap" data-duration="{{block.tDuration}}s" data-left-offset="{{block.tLeftOffset}}px" tabindex="0">
+                    <div class="animated__row">
+                        <div ng-repeat="item in block.tItems.contentData">
+                            <div class="animated__small-item">
+                                <span ng-if="item.tTitle" ng-bind-html="item.tTitle"></span>
+                                <p ng-if="item.tText">{{item.tText}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

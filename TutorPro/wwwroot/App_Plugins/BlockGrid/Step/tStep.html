@@ -1,0 +1,83 @@
+﻿<div ng-controller="tStep" ng-click="block.edit()">
+    <section class="steps radial-bg">
+        <div class="container">
+            <div class="steps__description1" ng-if="topDesc">
+                <span class="steps__description1-arrow">
+                    <img src="/images/icons/icon-arrow3.svg" alt="Arrow icon">
+                </span>
+                <div class="school-info__description description-block ">
+                    <div class="description-block__info">
+                        <span class="description-block__title" ng-if="topDesc.tTitile != null">{{topDesc.tTitile}}</span>
+                        <p class="description-block__text" ng-bind-html="topDesc.tText.markup"></p>
+                        <button ng-if="topDesc.tButton.contentData[0].tButtonTitle" class="description-block__link" ng-controller="tButton" ng-init="initButton(topDesc.tButton.contentData[0])" ng-class="toggleClass">
+                            <span>{{topDesc.tButton.contentData[0].tButtonTitle}}</span>
+                        </button>
+                    </div>
+                    <div class="description-block__image">
+                        <img ng-src="{{topDesc.tImage[0].src}}"/>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="steps__main-title section-title">Here's a glimpse of how the magic unfolds:</h2>
+            <div class="steps__block">
+                <span class="steps__block-arrow" ng-if="arrow">
+                    <img src="/images/icons/icon-arrow3.svg" alt="Arrow icon">
+                </span>
+                <div ng-repeat="step in items" ng-init="index = $index + 1">
+                    <div class="steps__item" ng-init="index = $index + 1">
+                        <div class="steps__item-info">
+                            <span class="steps__item-number">{{ index }}</span>
+                            <h3 class="steps__item-title small-title type-{{ step.tTitleType[0] }}">{{ step.tTitle }}</h3>
+                            <ul class="steps__item-list" ng-if="step.tTexts">
+                                <li class="steps__item-list-item" ng-repeat="text in step.tTexts">{{ text.value }}</li>
+                            </ul>
+                        </div>
+                        <div class="steps__item-images type-{{ step.tImagesType[0] }}">
+                            <div ng-if="step.tSmallImageOnTop === '1'">
+                                <div class="steps__item-image small-image" ng-if="step.tSmallImage" ng-click="block.edit()">
+                                    <div ng-controller="tImage" ng-init="initImage(step.tSmallImage.contentData[0])">
+                                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                                    </div>
+                                </div>
+                                <div class="steps__item-image big-image" ng-if="step.tBigImage" ng-click="block.edit()">
+                                    <div ng-controller="tImage" ng-init="initImage(step.tBigImage.contentData[0])">
+                                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="step.tSmallImageOnTop !== '1'">
+                                <div class="steps__item-image big-image" ng-if="step.tBigImage" ng-click="block.edit()">
+                                    <div ng-controller="tImage" ng-init="initImage(step.tBigImage.contentData[0])">
+                                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                                    </div>
+                                </div>
+                                <div class="steps__item-image small-image" ng-if="step.tSmallImage" ng-click="block.edit()">
+                                    <div ng-controller="tImage" ng-init="initImage(step.tSmallImage.contentData[0])">
+                                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                                    </div>
+                                </div>
+                            </div>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="steps__description2" ng-if="bottomDesc">
+                <div class="school-info__description description-block ">
+                    <div class="description-block__info">
+                        <span class="description-block__title" ng-if="bottomDesc.tTitile != null">{{bottomDesc.tTitile}}</span>
+                        <p class="description-block__text" ng-bind-html="bottomDesc.tText.markup"></p>
+                        <button ng-if="bottomDesc.tButton.contentData[0].tButtonTitle" class="description-block__link" ng-controller="tButton" ng-init="initButton(bottomDesc.tButton.contentData[0])" ng-class="toggleClass">
+                            <span>{{bottomDesc.tButton.contentData[0].tButtonTitle}}</span>
+                        </button>
+                    </div>
+                    <div class="description-block__image">
+                        <img ng-src="{{bottomDesc.tImage[0].src}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
