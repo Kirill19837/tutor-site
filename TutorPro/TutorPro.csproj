@@ -5,12 +5,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Models\**" />
-    <Content Remove="Models\**" />
-    <EmbeddedResource Remove="Models\**" />
-    <None Remove="Models\**" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="umbraco\Data\**">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -33,7 +27,6 @@
     <Content Include="wwwroot\media\3yllqyob\blog-item2-image.jpg" />
     <Content Include="wwwroot\media\3yylu34a\steps-item3-image-big.png" />
     <Content Include="wwwroot\media\4aonipek\hossein-nasr-wr56ynk67uc-unsplash.jpg" />
-    <Content Include="wwwroot\media\4lwi1dh5\blog-item4-image.jpg" />
     <Content Include="wwwroot\media\4sbdlbqh\screenshots-image1.jpg" />
     <Content Include="wwwroot\media\52vji5we\cookies-icon.png" />
     <Content Include="wwwroot\media\5gjnncui\screenshots-image2.jpg" />
@@ -44,15 +37,11 @@
     <Content Include="wwwroot\media\5tsfliws\screenshots-image9.jpg" />
     <Content Include="wwwroot\media\ac4fbdbf\blog-item1-image.jpg" />
     <Content Include="wwwroot\media\ao4j5e4p\blog-item6-image.jpg" />
-    <Content Include="wwwroot\media\aptgrayb\ipad-pro-mockup_1.png" />
     <Content Include="wwwroot\media\aq4gbk5l\teacher-hero-info-icon9.png" />
-    <Content Include="wwwroot\media\ar4mmjtj\macbook-pro-17_1.png" />
     <Content Include="wwwroot\media\at2pdc3c\geran-de-klerk-qzgn45hsen0-unsplash.jpg" />
     <Content Include="wwwroot\media\bnqn3fni\screenshots-image8.jpg" />
-    <Content Include="wwwroot\media\bp3pelxu\3-5.png" />
     <Content Include="wwwroot\media\by4hgvu2\school-top-image1.png" />
     <Content Include="wwwroot\media\c1ghewgm\casey-horner-wkjiek4qsnk-unsplash.jpg" />
-    <Content Include="wwwroot\media\c5pf3xyr\macbook-pro_fortecher_7.png" />
     <Content Include="wwwroot\media\cfodpvfl\teacher-description-image3.png" />
     <Content Include="wwwroot\media\ch1dsasu\ed-259-xcri6cpkkjs-unsplash.jpg" />
     <Content Include="wwwroot\media\ckjjeme1\teacher-description-image2.png" />
@@ -60,43 +49,29 @@
     <Content Include="wwwroot\media\crzntdkk\screenshots-image10.jpg" />
     <Content Include="wwwroot\media\csum3lwi\description-image-1.png" />
     <Content Include="wwwroot\media\dukjaqgc\shadow.png" />
-    <Content Include="wwwroot\media\e1dax1ps\3-2.png" />
     <Content Include="wwwroot\media\ehbeodnj\teacher-hero-info-icon7.png" />
     <Content Include="wwwroot\media\etrps01s\scott-webb-_k-qkkbn7ds-unsplash.jpg" />
     <Content Include="wwwroot\media\ey1dqfox\teacher-hero-info-icon8.png" />
     <Content Include="wwwroot\media\f5qjafx4\teacher-branch-image1.jpg" />
-    <Content Include="wwwroot\media\fmcejuor\iphone-x-mockup_1.png" />
-    <Content Include="wwwroot\media\fvyjadev\2-2.png" />
-    <Content Include="wwwroot\media\fwkgbbpm\1.png" />
     <Content Include="wwwroot\media\gbdckvo3\screenshots-image7.jpg" />
     <Content Include="wwwroot\media\gfseurhe\teacher-hero-image.png" />
     <Content Include="wwwroot\media\gqlk50nj\matirials-item1-image.jpg" />
-    <Content Include="wwwroot\media\gzulmmaq\15.png" />
     <Content Include="wwwroot\media\hgrk41po\ezgif-4.png" />
-    <Content Include="wwwroot\media\hiwoihxr\31.png" />
     <Content Include="wwwroot\media\hiydim21\teacher-hero-info-icon5.png" />
     <Content Include="wwwroot\media\hsdhddlz\meiying-ng-orwkd-iwgqg-unsplash.jpg" />
     <Content Include="wwwroot\media\hwdhmosr\teacher-hero-info-icon2.png" />
-    <Content Include="wwwroot\media\i13jgbmz\ezgifcom-video-to-gif-1.gif" />
-    <Content Include="wwwroot\media\i2mchrk4\3-7.png" />
     <Content Include="wwwroot\media\i4wp2u2u\steps-item2-image-small.png" />
     <Content Include="wwwroot\media\ir2lcefb\blog-item5-image.jpg" />
     <Content Include="wwwroot\media\j0hichsi\screenshots-image4.jpg" />
-    <Content Include="wwwroot\media\jn2bwrns\color.png" />
     <Content Include="wwwroot\media\k31oq3tc\hossein-nasr-uj99hdy2mmw-unsplash.jpg" />
-    <Content Include="wwwroot\media\khkeollv\4.png" />
-    <Content Include="wwwroot\media\l1an1aof\3-6.png" />
     <Content Include="wwwroot\media\lgsbnjbc\collin-clyne-zsuely56fzu-unsplash.jpg" />
     <Content Include="wwwroot\media\lsenk53v\jay-mantri-qkfxq3x-ybi-unsplash.jpg" />
-    <Content Include="wwwroot\media\ltwauhco\2.png" />
-    <Content Include="wwwroot\media\mpug1y0i\21.png" />
     <Content Include="wwwroot\media\mraez2mf\3-5.png" />
     <Content Include="wwwroot\media\nn1lpby1\yoal-desurmont-jqgsm3b9fpo-unsplash.jpg" />
     <Content Include="wwwroot\media\ny3nerzd\32.png" />
     <Content Include="wwwroot\media\o0qf5sm0\tutor-lesson-item1-image2.png" />
     <Content Include="wwwroot\media\oaqnjquh\hossein-nasr-vmst7pnoto-unsplash.jpg" />
     <Content Include="wwwroot\media\ojnf5b12\macbook_forteacher_1.png" />
-    <Content Include="wwwroot\media\ondkijef\macbook-pro-17_3.png" />
     <Content Include="wwwroot\media\p04j54yn\23.png" />
     <Content Include="wwwroot\media\p2ti1orl\3-6.png" />
     <Content Include="wwwroot\media\p3cofzms\tutor-lesson-item1-image.png" />
@@ -114,7 +89,6 @@
     <Content Include="wwwroot\media\rxxfl2hg\macbook-pro_fortecher_3.png" />
     <Content Include="wwwroot\media\s4opjhaj\matirials-item1-image.jpg" />
     <Content Include="wwwroot\media\smulggao\1-2.png" />
-    <Content Include="wwwroot\media\sr4fqvq3\3-4.png" />
     <Content Include="wwwroot\media\tmljqwp2\teacher-hero-info-icon4.png" />
     <Content Include="wwwroot\media\txxp4ui2\teacher-hero-info-icon1.png" />
     <Content Include="wwwroot\media\uawpclj2\6.png" />
@@ -141,13 +115,6 @@
     <Content Include="wwwroot\media\zt3jnkq2\ezgif-4.png" />
     <Content Include="wwwroot\media\zxelh4yi\grant-ritchie-fbkrqhnlqoy-unsplash.jpg" />
 	  <Content Include="wwwroot\media\sbslj1pa\logo-2.svg" />
-	  <Content Include="wwwroot\media\1aqd11uv\process-item1-icon.svg" />
-	  <Content Include="wwwroot\media\1i0m4qmw\decor-points-green-big.svg" />
-	  <Content Include="wwwroot\media\2jynb010\decor-circle-green.svg" />
-	  <Content Include="wwwroot\media\2sko42mf\steps-bg-figure.svg" />
-	  <Content Include="wwwroot\media\3tejzlbo\process-item5-icon.svg" />
-	  <Content Include="wwwroot\media\4c0njtrs\icon-social-instagram-white.svg" />
-	  <Content Include="wwwroot\media\4k5j4y3k\decor-points-green.svg" />
 	  <Content Include="wwwroot\media\4r5ebwzs\icon-ai.svg" />
 	  <Content Include="wwwroot\media\5arjg5tq\tiktok-1.svg" />
 	  <Content Include="wwwroot\media\b2kbvadt\decor-points-orange.svg" />
@@ -188,6 +155,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="Our.Umbraco.StorageProviders.AWSS3" Version="1.3.0" />
     <PackageReference Include="Umbraco.Cms" Version="13.2.2" />
   </ItemGroup>
 
@@ -214,9 +182,6 @@
     <None Include="wwwroot\App_Plugins\BlockGrid\ChoosePart\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\richtexteditor\tRichTextEditor.controller.js" />
-	  <Content Include="wwwroot\media\2lppaouk\icons8-linkedin-1.svg" />
-    <Content Include="wwwroot\media\1nwjoawg\process-item1-icon.svg" />
-    <Content Include="wwwroot\media\3ltpgwto\icon-social-tiktok-white.svg" />
     <Content Include="wwwroot\media\5soptm3s\icon-social-instagram-white.svg" />
     <Content Include="wwwroot\media\blnnhggy\process-item4-icon.svg" />
     <Content Include="wwwroot\media\bznj1tcp\logo.svg" />
