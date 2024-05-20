@@ -1,8 +1,7 @@
-angular.module("umbraco").controller("tInfo", function ($scope, mediaResource) {
-    $scope.content = $scope.block.data;
-    $scope.items = $scope.content.tItems.contentData;
-    
-    var images = $scope.items;
+angular.module("umbraco").controller("tInfoItem", function ($scope, mediaResource) {
+    $scope.item = $scope.block.data;
+
+    var images = $scope.item;
 
     if (images && images.length > 0) {
         images.forEach(function (image) {
