@@ -5624,7 +5624,6 @@ select:-webkit-autofill:focus {
   .programs__item:focus .programs__item-title {
     -webkit-box-shadow: 0 0 18px 8px rgba(238, 100, 0, 0.2);
     box-shadow: 0 0 18px 8px rgba(238, 100, 0, 0.2);
-    text-decoration: underline;
   }
 
   .actions__item:hover,

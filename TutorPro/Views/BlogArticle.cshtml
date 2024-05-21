@@ -1,9 +1,13 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using System.Globalization
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogArticle>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     Layout = "Main.cshtml";
     var blogPage = Model.Parent as BlogPage;
+    var date = Model.TPublicDate.ToString("M", new CultureInfo(Model.GetCultureFromDomains()));
+    var year = Model.TPublicDate.ToString("yyyy", new CultureInfo(Model.GetCultureFromDomains()));
+    var formatedDate = date + ", " + year;
 }
 
 <!-- Section "Inner page top" -->
@@ -23,38 +27,40 @@
 </section>
 
 <!-- Section "Blog" -->
-<div class="article">
+<div class="blog">
     <div class="container">
-        @if (Model.TBreadcrumbs)
-        {
-            <!-- Breadcrumbs -->
-            <div class="article__breadcrumbs breadcrumbs">
-                <ul class="breadcrumbs__list">
-                    <li class="breadcrumbs__list-item">
-                        <a class="breadcrumbs__list-link" href="@Model.Parent.Url()">@Model.Parent.Name.Split(" ")[0]</a>
-                    </li>
-                    <li class="breadcrumbs__list-item">
-                        <a class="breadcrumbs__list-link" href="#">@Model.TTitle</a>
-                    </li>
-                </ul>
-            </div>
-        }      
+        <div class="blog__block">
+            @if (Model.TBreadcrumbs)
+            {
+                <!-- Breadcrumbs -->
+                <div class="article__breadcrumbs breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li class="breadcrumbs__list-item">
+                            <a class="breadcrumbs__list-link" href="@Model.Parent.Url()">@Model.Parent.Name.Split(" ")[0]</a>
+                        </li>
+                        <li class="breadcrumbs__list-item">
+                            <a class="breadcrumbs__list-link" href="#">@Model.TTitle</a>
+                        </li>
+                    </ul>
+                </div>
+            }
 
-        <!-- Article content -->
-        <div class="article__content">           
-            @if(Model.TImage != null)
-            {
-                <img src="@Model.TImage.Url()" alt="Article image">
-            }
-            
-            <h1>@Model.TTitle</h1>
-            @if(Model.TContent != null)
-            {
-                @await Html.GetBlockGridItemsHtmlAsync(Model.TContent)
-            }
-            
-            <span>@Model.TPublicDate.ToString("MMMM d, yyyy")</span>
-        </div>
+            <!-- Article content -->
+            <div class="article__content">
+                @if (Model.TImage != null)
+                {
+                    <img src="@Model.TImage.Url()" alt="Article image">
+                }
+
+                <h1>@Model.TTitle</h1>
+                @if (Model.TContent != null)
+                {
+                    @await Html.GetBlockGridItemsHtmlAsync(Model.TContent)
+                }
+
+                <span>@formatedDate</span>
+            </div>
+        </div>      
     </div>
 </div>
 @if (blogPage?.TActions != null)
