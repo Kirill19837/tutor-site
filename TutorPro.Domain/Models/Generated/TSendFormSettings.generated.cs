@@ -22,11 +22,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 	/// <summary>Send form settings</summary>
 	public partial interface ITSendFormSettings : IPublishedContent
 	{
-		/// <summary>Email placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TEmailPlaceholder { get; }
-
 		/// <summary>Emails to send</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -36,21 +31,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		string TFormUrl { get; }
-
-		/// <summary>Message placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TMessagePlaceholder { get; }
-
-		/// <summary>Name placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TNamePlaceholder { get; }
-
-		/// <summary>Phone placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TPhonePlaceholder { get; }
 
 		/// <summary>Thanks form</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -90,19 +70,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Email placeholder
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEmailPlaceholder")]
-		public virtual string TEmailPlaceholder => GetTEmailPlaceholder(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Email placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTEmailPlaceholder(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tEmailPlaceholder");
-
-		///<summary>
 		/// Emails to send
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -127,45 +94,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		public static string GetTFormUrl(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tFormUrl");
-
-		///<summary>
-		/// Message placeholder
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tMessagePlaceholder")]
-		public virtual string TMessagePlaceholder => GetTMessagePlaceholder(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Message placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTMessagePlaceholder(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tMessagePlaceholder");
-
-		///<summary>
-		/// Name placeholder
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tNamePlaceholder")]
-		public virtual string TNamePlaceholder => GetTNamePlaceholder(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Name placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTNamePlaceholder(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tNamePlaceholder");
-
-		///<summary>
-		/// Phone placeholder
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tPhonePlaceholder")]
-		public virtual string TPhonePlaceholder => GetTPhonePlaceholder(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Phone placeholder</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTPhonePlaceholder(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tPhonePlaceholder");
 
 		///<summary>
 		/// Thanks form
