@@ -19,7 +19,7 @@ namespace TutorPro.Application.Services
             List<BlogView> viewBlogs = new List<BlogView>();
             foreach (var blog in blogPage.Children)
             {
-                if (blog is not BlogArticle blogArticle)
+                if (blog is not BlogArticle blogArticle || !blog.IsPublished())
                 {
                     continue;
                 }

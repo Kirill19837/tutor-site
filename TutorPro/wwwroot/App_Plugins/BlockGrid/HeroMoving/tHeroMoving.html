@@ -6,13 +6,15 @@
                 <p class="school-info__subtitle" ng-if="content.tSubTitle != null">{{content.tSubTitle}}</p>
             </div>
             <div class="school-info__moving-block animated">
-                <div ng-repeat="block in content.tMovingBlocks.contentData">
-                    <div class="animated__row-wrap" data-duration="{{block.tDuration}}s" data-left-offset="{{block.tLeftOffset}}px" tabindex="0">
-                        <div class="animated__row">
-                            <div ng-repeat="item in block.tItems.contentData">
-                                <div class="animated__item">
-                                    <span ng-if="item.tTitle" ng-bind-html="item.tTitle"></span>
-                                    <p ng-if="item.tText">{{item.tText}}</p>
+                <div class="scrollable-blocks">
+                    <div ng-repeat="block in content.tMovingBlocks.contentData">
+                        <div class="animated__row-wrap" data-duration="{{block.tDuration}}s" data-left-offset="{{block.tLeftOffset}}px" tabindex="0">
+                            <div class="animated__row">
+                                <div ng-repeat="item in block.tItems.contentData">
+                                    <div class="animated__item">
+                                        <span ng-if="item.tTitle" ng-bind-html="item.tTitle"></span>
+                                        <p ng-if="item.tText">{{item.tText}}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -51,3 +53,11 @@
         </div>
     </section>
 </div>
+<style>
+    .scrollable-blocks {
+        overflow-x: auto;
+        white-space: nowrap;
+        max-width: 100%;
+        padding: 10px 0;
+    }
+</style>

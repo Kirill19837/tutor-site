@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>HomePage</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, ITCookies, ITFooterContainer, ITHeaderContainer, ITSendFormSettings
+	public partial class HomePage : PublishedContentModel, ITCookies, ITFooterContainer, ITHeaderContainer, ITMetaSettings, ITSendFormSettings
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -146,12 +146,28 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TLogo => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTLogo(this, _publishedValueFallback);
 
 		///<summary>
-		/// Email placeholder
+		/// Google-site-verification
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEmailPlaceholder")]
-		public virtual string TEmailPlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTEmailPlaceholder(this, _publishedValueFallback);
+		[ImplementPropertyType("tGoogleSiteVerification")]
+		public virtual string TGoogleSiteVerification => global::Umbraco.Cms.Web.Common.PublishedModels.TMetaSettings.GetTGoogleSiteVerification(this, _publishedValueFallback);
+
+		///<summary>
+		/// Meta descriptions
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tMetaDescriptions")]
+		public virtual string TMetaDescriptions => global::Umbraco.Cms.Web.Common.PublishedModels.TMetaSettings.GetTMetaDescriptions(this, _publishedValueFallback);
+
+		///<summary>
+		/// Meta tags
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tMetaTags")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TMetaTags => global::Umbraco.Cms.Web.Common.PublishedModels.TMetaSettings.GetTMetaTags(this, _publishedValueFallback);
 
 		///<summary>
 		/// Emails to send
@@ -168,30 +184,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tFormUrl")]
 		public virtual string TFormUrl => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTFormUrl(this, _publishedValueFallback);
-
-		///<summary>
-		/// Message placeholder
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tMessagePlaceholder")]
-		public virtual string TMessagePlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTMessagePlaceholder(this, _publishedValueFallback);
-
-		///<summary>
-		/// Name placeholder
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tNamePlaceholder")]
-		public virtual string TNamePlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTNamePlaceholder(this, _publishedValueFallback);
-
-		///<summary>
-		/// Phone placeholder
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tPhonePlaceholder")]
-		public virtual string TPhonePlaceholder => global::Umbraco.Cms.Web.Common.PublishedModels.TSendFormSettings.GetTPhonePlaceholder(this, _publishedValueFallback);
 
 		///<summary>
 		/// Thanks form

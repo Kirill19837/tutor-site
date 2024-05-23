@@ -1,0 +1,38 @@
+﻿<div ng-controller="tStepItem" ng-click="block.edit()">
+    <div class="steps__item">
+        <div class="steps__item-info">
+            <span class="steps__item-number">1</span>
+            <h3 class="steps__item-title small-title type-{{ step.tTitleType[0] }}">{{ step.tTitle }}</h3>
+            <ul class="steps__item-list" ng-if="step.tTexts">
+                <li class="steps__item-list-item" ng-repeat="text in step.tTexts">{{ text.value }}</li>
+            </ul>
+        </div>
+        <div class="steps__item-images type-{{ step.tImagesType[0] }}">
+            <div ng-if="step.tSmallImageOnTop === '1'">
+                <div class="steps__item-image small-image" ng-if="step.tSmallImage" ng-click="block.edit()">
+                    <div ng-controller="tImage" ng-init="initImage(step.tSmallImage.contentData[0])">
+                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                    </div>
+                </div>
+                <div class="steps__item-image big-image" ng-if="step.tBigImage" ng-click="block.edit()">
+                    <div ng-controller="tImage" ng-init="initImage(step.tBigImage.contentData[0])">
+                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                    </div>
+                </div>
+            </div>
+            <div ng-if="step.tSmallImageOnTop !== '1'">
+                <div class="steps__item-image big-image" ng-if="step.tBigImage" ng-click="block.edit()">
+                    <div ng-controller="tImage" ng-init="initImage(step.tBigImage.contentData[0])">
+                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                    </div>
+                </div>
+                <div class="steps__item-image small-image" ng-if="step.tSmallImage" ng-click="block.edit()">
+                    <div ng-controller="tImage" ng-init="initImage(step.tSmallImage.contentData[0])">
+                        <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

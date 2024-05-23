@@ -25,14 +25,16 @@ function sendRequest(searchText = null, page = 1) {
 
     var block = document.querySelector('.blog__block');
     var pageSize = block.getAttribute('data-pageSize');
+    var culture = block.getAttribute('data-culture');
   
     $.ajax({
         url: '/Umbraco/Api/Blog/GetBlogs',
         method: 'GET',
         data: {
             searchText: searchValue,
+            culture: culture,
             page: page,
-            pageSize: pageSize,
+            pageSize: pageSize,           
         },
         success: function (response) {
             updateContent(response);
@@ -45,14 +47,17 @@ function sendRequest(searchText = null, page = 1) {
 
 // Function for updating the page content with the received data
 function updateContent(data) {
-    $('.blog__block').empty();
+    var block = document.querySelector('.blog__block');
+    var culture = block.getAttribute('data-culture');
+
+    $('.blog__block').empty();  
 
     // Adding new blocks with the received data
     if (data.blogs && data.blogs.length > 0) {
         data.blogs.forEach(function (blog) {
             const date = new Date(blog.dateTime);
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = date.toLocaleDateString('en-US', options);
+            const formattedDate = date.toLocaleDateString(`${culture}`, options);
             var blogItem = `
                 <a class="blog__item" href="${blog.url}">
                     ${blog.imageUrl ? `

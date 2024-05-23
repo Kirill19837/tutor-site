@@ -3,6 +3,7 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     Layout = "Main.cshtml";
+    var culture = Model.GetCultureFromDomains();
 }
 
 <section class="inner-top blog-top radial-bg">
@@ -31,7 +32,7 @@
         </form>
 
         <!-- Blog items block -->
-        <div class="blog__block" data-pageSize="@Model.TPageSize" data-notFoundMessage="@Model.TNotFoundMessage">
+        <div class="blog__block" data-culture="@culture" data-pageSize="@Model.TPageSize" data-notFoundMessage="@Model.TNotFoundMessage">
             
         </div>
 

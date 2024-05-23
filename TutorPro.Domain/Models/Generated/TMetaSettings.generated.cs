@@ -18,34 +18,34 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "tSendFormSettings"
-	/// <summary>Send form settings</summary>
-	public partial interface ITSendFormSettings : IPublishedContent
+	// Mixin Content Type with alias "tMetaSettings"
+	/// <summary>Meta settings</summary>
+	public partial interface ITMetaSettings : IPublishedContent
 	{
-		/// <summary>Emails to send</summary>
+		/// <summary>Google-site-verification</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		global::System.Collections.Generic.IEnumerable<string> TEmailsToSend { get; }
+		string TGoogleSiteVerification { get; }
 
-		/// <summary>Form url</summary>
+		/// <summary>Meta descriptions</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string TFormUrl { get; }
+		string TMetaDescriptions { get; }
 
-		/// <summary>Thanks form</summary>
+		/// <summary>Meta tags</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TThanksForm { get; }
+		global::System.Collections.Generic.IEnumerable<string> TMetaTags { get; }
 	}
 
-	/// <summary>Send form settings</summary>
-	[PublishedModel("tSendFormSettings")]
-	public partial class TSendFormSettings : PublishedContentModel, ITSendFormSettings
+	/// <summary>Meta settings</summary>
+	[PublishedModel("tMetaSettings")]
+	public partial class TMetaSettings : PublishedContentModel, ITMetaSettings
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		public new const string ModelTypeAlias = "tSendFormSettings";
+		public new const string ModelTypeAlias = "tMetaSettings";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -54,14 +54,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<TSendFormSettings, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<TMetaSettings, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public TSendFormSettings(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public TMetaSettings(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -70,42 +70,42 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Emails to send
+		/// Google-site-verification
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEmailsToSend")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> TEmailsToSend => GetTEmailsToSend(this, _publishedValueFallback);
+		[ImplementPropertyType("tGoogleSiteVerification")]
+		public virtual string TGoogleSiteVerification => GetTGoogleSiteVerification(this, _publishedValueFallback);
 
-		/// <summary>Static getter for Emails to send</summary>
+		/// <summary>Static getter for Google-site-verification</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static global::System.Collections.Generic.IEnumerable<string> GetTEmailsToSend(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<global::System.Collections.Generic.IEnumerable<string>>(publishedValueFallback, "tEmailsToSend");
+		public static string GetTGoogleSiteVerification(ITMetaSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tGoogleSiteVerification");
 
 		///<summary>
-		/// Form url
+		/// Meta descriptions
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tFormUrl")]
-		public virtual string TFormUrl => GetTFormUrl(this, _publishedValueFallback);
+		[ImplementPropertyType("tMetaDescriptions")]
+		public virtual string TMetaDescriptions => GetTMetaDescriptions(this, _publishedValueFallback);
 
-		/// <summary>Static getter for Form url</summary>
+		/// <summary>Static getter for Meta descriptions</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetTFormUrl(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tFormUrl");
+		public static string GetTMetaDescriptions(ITMetaSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "tMetaDescriptions");
 
 		///<summary>
-		/// Thanks form
+		/// Meta tags
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tThanksForm")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TThanksForm => GetTThanksForm(this, _publishedValueFallback);
+		[ImplementPropertyType("tMetaTags")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TMetaTags => GetTMetaTags(this, _publishedValueFallback);
 
-		/// <summary>Static getter for Thanks form</summary>
+		/// <summary>Static getter for Meta tags</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel GetTThanksForm(ITSendFormSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(publishedValueFallback, "tThanksForm");
+		public static global::System.Collections.Generic.IEnumerable<string> GetTMetaTags(ITMetaSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<global::System.Collections.Generic.IEnumerable<string>>(publishedValueFallback, "tMetaTags");
 	}
 }

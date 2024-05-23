@@ -1,42 +1,53 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TRequestForm>
 @{
     var mainPage = ViewData["mainPage"] as HomePage;
+    var mainClass = ViewData["mainClass"] as string;
     var emailsToSend = mainPage?.TEmailsToSend;
 }
 
-@if(Model != null && mainPage != null)
+@if (Model != null && mainPage != null)
 {
-    <div class="request-form__row">
-        <div class="request-form__item required">
-            <input class="request-form__input required" id="nameInput" type="text" data-name="@mainPage.TNamePlaceholder" name="SenderName" placeholder="@mainPage.TNamePlaceholder">
-        </div>
-        <div class="request-form__item required">
-            <input class="request-form__input required" id="emailInput" type="email" data-name="@mainPage.TEmailPlaceholder" name="SenderEmail" placeholder="@mainPage.TEmailPlaceholder">
-        </div>
-        @if (Model.TPhoneInput)
-        {
+    <form data-word1="@Umbraco.GetDictionaryValue("Enter") " data-word2=" @Umbraco.GetDictionaryValue("and") " data-word3="@Umbraco.GetDictionaryValue("Invalid") " data-word4=" @Umbraco.GetDictionaryValue("format")" class="@mainClass request-form" method="post">
+        @Html.AntiForgeryToken()
+        <div class="request-form__row">
             <div class="request-form__item required">
-                <input class="request-form__input required" id="phoneInput" type="tel" data-name="@mainPage.TPhonePlaceholder" name="SenderPhone" placeholder="@mainPage.TPhonePlaceholder">
+                <input class="request-form__input required" id="nameInput" type="text" data-name="@Umbraco.GetDictionaryValue("name placeholder")" name="SenderName" placeholder="@Umbraco.GetDictionaryValue("name placeholder")">
             </div>
-        }     
-    </div>
-    @if(emailsToSend != null)
-    {
-        @foreach (var email in emailsToSend)
+            <div class="request-form__item required">
+                <input class="request-form__input required" id="emailInput" type="email" data-name="@Umbraco.GetDictionaryValue("email placeholder")" name="SenderEmail" placeholder="@Umbraco.GetDictionaryValue("email placeholder")">
+            </div>
+            @if (Model.TPhoneInput)
+            {
+                <div class="request-form__item required">
+                    <input class="request-form__input required" id="phoneInput" type="tel" data-name="@Umbraco.GetDictionaryValue("phone placeholder")" name="SenderPhone" placeholder="@Umbraco.GetDictionaryValue("phone placeholder")">
+                </div>
+            }
+        </div>
+        @if (emailsToSend != null)
         {
-            <input type="hidden" class="check" name="AdditionalEmail" value="@email" />
+            @foreach (var email in emailsToSend)
+            {
+                <input type="hidden" class="check" name="AdditionalEmail" value="@email" />
+            }
         }
-    }
 
-    @if (Model.TMessageInput)
-    {
-        <textarea class="request-form__message" name="SenderMessage" placeholder="@mainPage.TMessagePlaceholder"></textarea>
-    }
-    <div class="request-form__actions @(Model.TCentered ? "centered" : "")">
-        @if (Model.TButton != null)
+        @if (Model.TMessageInput)
         {
-            <button class="request-form__submit link link@(Model.TButton.Content.TFill ? "-main" : "-inverted")" type="submit"><span>@Model.TButton.Content.TButtonTitle</span></button>
+            <textarea class="request-form__message" name="SenderMessage" placeholder="@Umbraco.GetDictionaryValue(" message placeholder")"></textarea>
         }
-        <p class="request-form__error"><span></span></p>
-    </div>
+        <div class="request-form__actions @(Model.TCentered ? "centered" : "")">
+            @if (Model.TButton != null)
+            {
+                <button class="request-form__submit link link@(Model.TButton.Content.TFill ? "-main" : "-inverted")" type="submit"><span>@Model.TButton.Content.TButtonTitle</span></button>
+            }
+            <p class="request-form__error"><span></span></p>
+        </div>
+    </form>
+    <input type="hidden" id="urlToSend" value="@mainPage.TFormUrl" />
+    @if (mainPage?.TThanksForm != null && mainPage?.TThanksForm.FirstOrDefault() != null)
+    {
+        @await Html.PartialAsync("tutorPartials/TThanksForm", mainPage.TThanksForm?.FirstOrDefault()?.Content)
+    }
 }
+
+

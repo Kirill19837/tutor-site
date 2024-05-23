@@ -12,7 +12,7 @@ angular.module("umbraco").controller("tContactInfo", function ($scope, mediaReso
 
             if (imageUdi) {
                 mediaResource.getById(imageUdi)
-                    .then(function (media) {
+                    .then(function (media) {                      
                         icon.tIcon[0].src = media.mediaLink;
                     })
                     .catch(function (error) {

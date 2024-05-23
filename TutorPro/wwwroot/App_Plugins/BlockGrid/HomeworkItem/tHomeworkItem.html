@@ -1,0 +1,24 @@
+﻿<div ng-controller="tHomeworkItem" ng-click="block.edit()">
+    <h3 class="homework__second-title small-title type-2">{{info.tTitle}}</h3>
+    <p class="homework__second-subtitle" ng-bind-html="info.tText.markup"></p>
+    <div class="homework__info-block">
+        <div class="homework__info-left">
+            <div class="homework__info-image">
+                <div ng-controller="tImage" ng-init="initImage(info.tImage.contentData[0])">
+                    <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
+                </div>
+            </div>
+            <button ng-if="info.tButton.contentData[0].tButtonTitle" class="homework__info-link" ng-controller="tButton" ng-init="initButton(info.tButton.contentData[0])" ng-class="toggleClass">
+                <span>{{info.tButton.contentData[0].tButtonTitle}}</span>
+            </button>
+        </div>
+        <div class="homework__info-right">
+            <div ng-repeat="textList in content.tTextLists.contentData">
+                <span class="homework__info-title small-title type-{{textList.tTitleType}}">{{textList.tTitle}}</span>
+                <ul class="homework__info-list">
+                    <li ng-repeat="text in textList.tListItems" class="homework__info-list-item">{{text.value}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
