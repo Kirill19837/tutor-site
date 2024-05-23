@@ -24,7 +24,8 @@
 	}	
 	else if (Umbraco.AssignedContentItem.ContentType.Alias == "blogArticle")
 		pageName = Umbraco.AssignedContentItem.Parent?.Name;
-				
+
+	var metaTags = string.Join(", ", model.TMetaTags);
 }
 <!DOCTYPE html>
 <html lang="@Umbraco.CultureDictionary.Culture.Name.Split("-")[0]">
@@ -32,9 +33,9 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="google-site-verification" content="uwRXjx9KZIXB8BpI_kBgP80uE1x7QLSbP-TIZ19112g" />
+		<meta name="description" content="@(model.TMetaDescriptions)">
+		<meta name="keywords" content="@metaTags">
+		<meta name="google-site-verification" content="@(model.TGoogleSiteVerification)" />
 		<title>TutorPro - @Umbraco.AssignedContentItem.Name</title>
 
 		<link rel="icon" href="@logoIconPath" />

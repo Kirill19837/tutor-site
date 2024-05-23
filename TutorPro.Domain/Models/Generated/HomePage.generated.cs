@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>HomePage</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, ITCookies, ITFooterContainer, ITHeaderContainer, ITSendFormSettings
+	public partial class HomePage : PublishedContentModel, ITCookies, ITFooterContainer, ITHeaderContainer, ITMetaSettings, ITSendFormSettings
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -144,6 +144,30 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tLogo")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TLogo => global::Umbraco.Cms.Web.Common.PublishedModels.THeaderContainer.GetTLogo(this, _publishedValueFallback);
+
+		///<summary>
+		/// Google-site-verification
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tGoogleSiteVerification")]
+		public virtual string TGoogleSiteVerification => global::Umbraco.Cms.Web.Common.PublishedModels.TMetaSettings.GetTGoogleSiteVerification(this, _publishedValueFallback);
+
+		///<summary>
+		/// Meta descriptions
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tMetaDescriptions")]
+		public virtual string TMetaDescriptions => global::Umbraco.Cms.Web.Common.PublishedModels.TMetaSettings.GetTMetaDescriptions(this, _publishedValueFallback);
+
+		///<summary>
+		/// Meta tags
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tMetaTags")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TMetaTags => global::Umbraco.Cms.Web.Common.PublishedModels.TMetaSettings.GetTMetaTags(this, _publishedValueFallback);
 
 		///<summary>
 		/// Emails to send
