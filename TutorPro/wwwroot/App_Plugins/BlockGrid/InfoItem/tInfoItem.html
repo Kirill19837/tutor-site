@@ -5,5 +5,9 @@
     </div>
     <div class="about-info__item-image">
         <img src="{{item.tImage[0].src}}" />
+        <div ng-controller="tDecor" ng-init="initDecors(item)"></div>
+        <span ng-controller="tDecor" ng-repeat="decor in item.tDecors.contentData" class="{{decor.typeClass}}">
+            <img ng-src="{{decor.src}}" alt="Decor points">
+        </span>
     </div>
 </div>

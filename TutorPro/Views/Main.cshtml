@@ -58,10 +58,9 @@
 			@await Html.PartialAsync("tutorPartials/TFooter", model, new ViewDataDictionary(ViewData) { { "pageName", pageName }, { "languages", languageDropDown } })
 		}
 		</div>
-		@await Html.PartialAsync("tutorPartials/TCookies", model)
-		<script src="~/js/cookie.js"></script>
-		<script src="~/js/libs.min.js"></script>
-		<script src="~/js/main.js"></script>
+		@await Html.PartialAsync("tutorPartials/TCookies", model)		
+		<script src="~/js/libs.min.js" defer></script>
+		<script src="~/js/main.js" defer></script>
 	</body>
 </html>
 

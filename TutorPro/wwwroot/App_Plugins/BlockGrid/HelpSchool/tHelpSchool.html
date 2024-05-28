@@ -8,7 +8,12 @@
                         <li ng-repeat="text in content.tContent" class="platform__list-item">{{text.value}}</li>
                     </ul>
                 </div>
-                <div class="platform__image">                   
+                <div class="platform__image">
+                    <div ng-controller="tDecor" ng-init="initDecors(content)">
+                        <span ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                            <img ng-src="{{decor.src}}" alt="Decor points">
+                        </span>
+                    </div>
                     <img class="platform__image-big" src="{{images[0].src}}" alt="Big image">
                     <img class="platform__image-small" src="{{images[1].src}}" alt="Small image">
                 </div>

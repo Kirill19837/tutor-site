@@ -6,6 +6,7 @@ angular.module("umbraco").controller("tMainTop", function ($scope, mediaResource
 
     $scope.images = [];
 
+
     var images = content.tImages;
 
     if (images && images.length > 0) {
@@ -26,6 +27,12 @@ angular.module("umbraco").controller("tMainTop", function ($scope, mediaResource
         });
     }
 
+    if (content.tTopVideo.length > 0) {
+        mediaResource.getById(content.tTopVideo[0].mediaKey).then(function (media) {
+            content.tTopVideo[0].src = media.mediaLink;
+        });
+    }
+    
     for (var i = 0; i < Math.min(content.tNumberOfColoredWords, titleParts.length); i++) {
         $scope.firstTitlePart += " " + titleParts[i];
     }
@@ -37,4 +44,6 @@ angular.module("umbraco").controller("tMainTop", function ($scope, mediaResource
     $scope.content = content;
     $scope.button = content.tButton ? content.tButton.contentData[0] : null;
     $scope.text = content.tInfoText
+
+    console.log($scope)
 });

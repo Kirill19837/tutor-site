@@ -25,7 +25,10 @@
                     </div>
 
                     <div class="hero-block__image">
-                        @Html.GetBlockGridHtml(info.TImage)
+                        @if (info.TImage != null)
+                        {
+                            @Html.GetBlockGridHtml(info.TImage)
+                        }                    
                         @if (content.TDecors != null)
                         {
                             @foreach (var decor in content.TDecors)

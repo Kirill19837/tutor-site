@@ -15,6 +15,10 @@
                 </div>
             </div>
             <div class="actions__form-block">
+                <div ng-controller="tDecor" ng-init="initDecors(content)"></div>
+                <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                    <img ng-src="{{decor.src}}" alt="Decor points">
+                </span>
                 <div class="actions__form-wrap" ng-controller="tRequestForm" ng-click="block.edit()" ng-init="initForm(form)">
                     <h2 class="actions__form-title medium-title section-title">{{content.tTitle}}</h2>
                     <form class="actions__form request-form three-cols" method="post">

@@ -12,14 +12,20 @@
             {
                 <p class="inner-top__subtitle">@content.TsubTitle</p>
             }               
-            <div class="inner-top__images">               
-                <div class="inner-top__image image-@(forTeacher ? "big" : "small")">
-                    <img src="@content.TImages?.ElementAt(0).Content.Url()" alt="Top image1">
-                </div>
-                <div class="inner-top__image image-@(forTeacher ? "small" : "big")">
-                    <img src="@content.TImages?.ElementAt(1).Content.Url()" alt="Top image2">
-                </div>
-
+            <div class="inner-top__images">     
+                @if (content.TImages != null && content.TImages.Count() > 0)
+                {
+                    <div class="inner-top__image image-@(forTeacher ? "big" : "small")">
+                        <img src="@content.TImages.ElementAt(0).Content.Url()" alt="Top image1">
+                    </div>
+                    @if (content.TImages.Count() > 1)
+                    {
+                        <div class="inner-top__image image-@(forTeacher ? "small" : "big")">
+                            <img src="@content.TImages.ElementAt(1).Content.Url()" alt="Top image2">
+                        </div>
+                    }
+                }
+               
                 @if (content.TDecors != null)
                 {
                     @foreach (var decor in content.TDecors)

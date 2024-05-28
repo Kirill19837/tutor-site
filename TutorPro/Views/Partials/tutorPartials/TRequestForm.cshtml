@@ -33,7 +33,7 @@
 
         @if (Model.TMessageInput)
         {
-            <textarea class="request-form__message" name="SenderMessage" placeholder="@Umbraco.GetDictionaryValue(" message placeholder")"></textarea>
+            <textarea class="request-form__message" name="SenderMessage" placeholder="@Umbraco.GetDictionaryValue("message placeholder")"></textarea>
         }
         <div class="request-form__actions @(Model.TCentered ? "centered" : "")">
             @if (Model.TButton != null)

@@ -19,6 +19,10 @@
                         <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(info.tImage.contentData[0])">
                             <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
                         </div>
+                        <div ng-controller="tDecor" ng-init="initDecors(content)"></div>
+                        <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                            <img ng-src="{{decor.src}}" alt="Decor points">
+                        </span>
                     </div>
 
                 </div>

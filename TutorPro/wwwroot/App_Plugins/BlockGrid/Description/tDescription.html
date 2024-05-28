@@ -6,6 +6,10 @@
                     <img src="/images/icons/icon-arrow4.svg" alt="Arrow icon">
                 </span>
                 <div class="description__top-block description-block" ng-class="{{revertClass}}">
+                    <div ng-if="content.tDecorOnTop == '1'" ng-controller="tDecor" ng-init="initDecors(content)" ></div>
+                    <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                        <img ng-src="{{decor.src}}" alt="Decor points">
+                    </span>
                     <div class="description-block__info">
                         <span class="description-block__title">{{mainInfo.tTitle}}</span>
                         <p class="description-block__text" ng-bind-html="mainInfo.tText.markup"></p>
@@ -34,7 +38,11 @@
             <div class="description-block__image big-image" ng-if="bottomInfo.tImage.contentData[0]">
                 <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(bottomInfo.tImage.contentData[0])">
                     <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
-                </div>                    
+                </div>
+                <div ng-if="content.tDecorOnTop != '1'" ng-controller="tDecor" ng-init="initDecors(content)"></div>
+                <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                    <img ng-src="{{decor.src}}" alt="Decor points">
+                </span>
             </div>
         </div>
     </section>
