@@ -92,9 +92,10 @@ $(function () {
      });    
    }
 
-  // Mask for input[type="tel"]
+    // Mask for input[type="tel"]
+    let phoneCode = $('#phoneInput').attr('data-code');
   $('.request-form input[type="tel"]').each(function(){
-    $(this).mask("+999-99-999-99-99",{placeholder:"x"},{autoclear: false});
+      $(this).mask(`${phoneCode.replace(/\d/g, '9')}-99-999-99-99`,{placeholder:"x"},{autoclear: false});
   }); 
 
   $('.request-form input.required').on('focus', function(){

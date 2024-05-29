@@ -1,5 +1,5 @@
 angular.module("umbraco").controller("tDecor", function ($scope) {
-    $scope.init = function (model = $scope.block.data) {
+    $scope.initDecor = function (model = $scope.block.data) {
         $scope.type = model.tType[0];
         $scope.typeNumber = model.tTypeNumber;
         $scope.style = model.tStyle[0];
@@ -11,7 +11,19 @@ angular.module("umbraco").controller("tDecor", function ($scope) {
         $scope.typeClass = "decor-element " + $scope.type + ($scope.dash ? "-" : "") + $scope.typeNumber + " parallax-element " + ($scope.isAbove ? "above" : "");
 
         $scope.src = "/images/icons/decor-elements/decor-" + $scope.type + "-" + $scope.style + ".svg";
-    }   
+    }  
 
-    $scope.init();
+    $scope.initDecors = function (data) {
+        if (data.tDecors)
+        data.tDecors.contentData.forEach(decor => {
+            var type = decor.tType[0];
+            var typeNumber = decor.tTypeNumber;
+            var style = decor.tStyle[0];
+            var dash = (decor.tDash === "1" || decor.tDash === true);
+            var isAbove = (decor.tAbove === "1" || decor.tAbove === true);
+
+            decor.typeClass = "decor-element " + type + (dash ? "-" : "") + typeNumber + " parallax-element " + (isAbove ? "above" : "");
+            decor.src = "/images/icons/decor-elements/decor-" + type + "-" + style + ".svg";
+        })
+    }
 });

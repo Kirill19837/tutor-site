@@ -8,7 +8,6 @@
     if (content.TWidth > 0)
         imageStyle += $"width:{content.TWidth}px;";
     var imageUrl = content.TImage?.Url();
-    
 }
 
-<img src="@imageUrl" alt="@content.TImage?.Name" style="@imageStyle" />
+<img loading="lazy" src="@imageUrl" alt="@content.TImage?.Name" style="@imageStyle" />

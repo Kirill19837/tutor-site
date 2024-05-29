@@ -1,9 +1,16 @@
 $(document).ready(function () {
     sendRequest();
 
+    let searchTimeout;
+    let articleUrlElement = document.querySelector('[data-searchDelay]');
+    let delay = articleUrlElement.getAttribute('data-searchDelay');
     $('.filter-form__input').on('input', function () {
+        clearTimeout(searchTimeout)
         var searchText = $(this).val();
-        sendRequest(searchText); // Passing the new value of searchText to the sendRequest function
+        searchTimeout = setTimeout(function () {
+            sendRequest(searchText); // Passing the new value of searchText to the sendRequest function
+        }, delay); // delay
+        
     });
 
     $('.pagination__list').on('click', '.pagination__list-link', function (e) {

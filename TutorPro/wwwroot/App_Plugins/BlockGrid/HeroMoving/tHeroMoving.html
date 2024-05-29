@@ -42,6 +42,10 @@
                     <div class="school-info__descr">
                         <div class="school-info__descr-image">
                             <img ng-src="{{image.mediaLink}}" ng-if="bottomInfo.tImage != null">
+                            <div ng-controller="tDecor" ng-init="initDecors(content)"></div>
+                            <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                                <img ng-src="{{decor.src}}" alt="Decor points">
+                            </span>
                         </div>
                         <p class="school-info__descr-text" ng-bind-html="bottomInfo.tText.markup"></p>
                         <button class="description-block__link" ng-controller="tButton" ng-init="initButton(bottomInfo.tButton.contentData[0])" ng-class="toggleClass">

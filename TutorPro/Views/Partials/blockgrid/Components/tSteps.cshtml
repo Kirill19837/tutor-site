@@ -18,7 +18,7 @@
             </div>
         }
 
-        <h2 class="steps__main-title section-title">Here's a glimpse of how the magic unfolds:</h2>
+        <h2 class="steps__main-title section-title">@content.TTitle</h2>
         <div class="steps__block">
             <span class="steps__block-arrow">
                 @if (content.TArrow)
@@ -29,8 +29,11 @@
             @if(content.TStepItems != null)
             {
                 @for (int i = 0; i < content.TStepItems.Count; i++)
-                {                                  
-                    @await Html.PartialAsync("tutorPartials/TStepItem", content.TStepItems[i].Content , new ViewDataDictionary(ViewData) {{"index", i+1}})
+                {
+                    @if (content.TStepItems[i] != null)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TStepItem", content.TStepItems[i].Content, new ViewDataDictionary(ViewData) { { "index", i + 1 } })
+                    }                   
                 }
             }          
         </div>

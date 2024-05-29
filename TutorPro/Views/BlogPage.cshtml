@@ -25,8 +25,8 @@
 <div class="blog">
     <div class="container">
         <form class="blog__form filter-form">
-            <div class="filter-form__item search-item">
-                <input id="searchInput" class="filter-form__input" type="text" name="filter-search">
+            <div class="filter-form__item search-item" data-searchDelay="@Model.TSearchDelay">
+                <input id="searchInput" class="filter-form__input" type="text" name="filter-search" placeholder="@Umbraco.GetDictionaryValue("Search")">
                 <button id="searchButton" class="filter-form__search-button" type="button" aria-label="search-button"></button>
             </div>
         </form>
@@ -49,5 +49,5 @@
     @await Html.GetBlockGridItemsHtmlAsync(Model.TActions)
 }
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="~/js/blog.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+<script src="~/js/blog.js" defer></script>

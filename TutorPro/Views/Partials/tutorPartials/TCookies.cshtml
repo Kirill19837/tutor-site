@@ -3,7 +3,7 @@
 <!-- Cookies block -->
 <div class="cookies" id="cookies">
     <div class="cookies__container">
-        <img class="cookies__icon" src="@Model.TCookieIcon?.Url()" alt="Icon">
+        <img loading="lazy" class="cookies__icon" src="@Model.TCookieIcon?.Url()" alt="Icon">
         <div class="cookies__info">
             <p class="cookies__text">@Model.TTopText</p>
             <p class="cookies__text">@Model.TBottomText</p>
@@ -20,3 +20,4 @@
         <a class="cookies__accept link link-orange" href="@Model.TCookieButton?.Content.TLink?.Url">@Model.TCookieButton?.Content.TButtonTitle</a>
     </div>
 </div>
+<script src="~/js/cookie.js" async></script>

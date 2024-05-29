@@ -21,4 +21,5 @@ angular.module("umbraco").controller("tInfo", function ($scope, mediaResource) {
             }
         });
     }
+    console.log($scope)
 });

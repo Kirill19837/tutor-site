@@ -11,6 +11,10 @@
                     <div class="inner-top__image" ng-class="{'image-small': changes, 'image-big': !changes}">
                         <img ng-src="{{images[1].mediaLink}}" alt="Top image2">
                     </div>
+                    <div ng-controller="tDecor" ng-init="initDecors(content)"></div>
+                    <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                        <img ng-src="{{decor.src}}" alt="Decor points">
+                    </span>
                 </div>
             </div>
         </div>

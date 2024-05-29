@@ -1,5 +1,4 @@
-﻿<link rel="stylesheet" href="/css/image.css">
-<div ng-controller="tMainTop" ng-click="block.edit()">
+﻿<div ng-controller="tMainTop" ng-click="block.edit()">
     <section class="main-top">
         <span class="decor-element ring1 parallax-element"></span>
         <span class="decor-element ring2 parallax-element"></span>
@@ -11,10 +10,17 @@
                 <div class="image-container">
                     <img ng-src="{{images[0].mediaLink}}" alt="@content.TImages.ElementAt(0).Name" class="first-image" />
                     <div class="second-image-container">
-                        <img ng-src="{{images[1].mediaLink}}" alt="@content.TImages.ElementAt(1).Name" class="second-image" />
+                        <video autoplay loop muted playsinline class="second-image">
+                            <source ng-src="{{content.tTopVideo[0].src}}" type="video/webm">
+                            not supported
+                        </video>
                     </div>
-                    <img ng-src="{{images[2].mediaLink}}" alt="@content.TImages.ElementAt(2).Name" class="third-image" />
-                </div>               
+                    <img ng-src="{{images[1].mediaLink}}" alt="@content.TImages.ElementAt(1).Name" class="third-image" />
+                </div>
+                <div ng-controller="tDecor" ng-init="initDecors(content)"></div>
+                <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                    <img ng-src="{{decor.src}}" alt="Decor points">
+                </span>
             </div>
             <div class="main-top__info">
                 <p class="main-top__text">{{text}}</p>
@@ -25,3 +31,26 @@
         </div>
     </section>
 </div>
+<style>
+    .image-container {
+        position: relative;
+    }
+
+    .second-image-container {
+        position: absolute;
+        top: 47%;
+        left: 50.5%;
+        transform: translate(-50%, -50%);
+        width: 78%;
+    }
+
+    .second-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .third-image {
+        margin-top: -5px;
+    }
+</style>

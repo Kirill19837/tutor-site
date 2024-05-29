@@ -7,6 +7,10 @@
                 <div ng-controller="tImage" ng-init="initImage(info.tImage.contentData[0])">
                     <img alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
                 </div>
+                <div ng-controller="tDecor" ng-init="initDecors(content)"></div>
+                <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">
+                    <img ng-src="{{decor.src}}" alt="Decor points">
+                </span>
             </div>
             <button ng-if="info.tButton.contentData[0].tButtonTitle" class="homework__info-link" ng-controller="tButton" ng-init="initButton(info.tButton.contentData[0])" ng-class="toggleClass">
                 <span>{{info.tButton.contentData[0].tButtonTitle}}</span>

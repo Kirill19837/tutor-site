@@ -4,7 +4,7 @@
 }
 
 <div class="matirials">
-    <div class="matirials__filtration-block" data-articleUrl="@content.TArticleUrl?.Url">
+    <div class="matirials__filtration-block" data-articleUrl="@content.TArticleUrl?.Url" data-searchDelay="@content.TSearchDelay">
         <div class="container">
             <div class="matirials__filtration">
                 <form class="matirials__filtration-form filter-form" action="/Umbraco/Api/Matirials/GetMatirials" method="post">
@@ -42,5 +42,5 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="~/js/filter.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" async></script>
+<script src="~/js/filter.js" defer></script>

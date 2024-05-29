@@ -81,6 +81,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual int TPageSize => this.Value<int>(_publishedValueFallback, "tPageSize");
 
 		///<summary>
+		/// Search delay: write the value in ms (Example: 500 = 0.5 sec)
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tSearchDelay")]
+		public virtual int TSearchDelay => this.Value<int>(_publishedValueFallback, "tSearchDelay");
+
+		///<summary>
 		/// Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
