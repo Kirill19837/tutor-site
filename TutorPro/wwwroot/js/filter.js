@@ -5,9 +5,16 @@ $(document).ready(function () {
             sendRequest();
         });
 
+        let searchTimeout;
+        let articleUrlElement = document.querySelector('[data-searchDelay]');
+        let delay = articleUrlElement.getAttribute('data-searchDelay');
+        
         document.querySelector('.filter-form__input').addEventListener('input', function () {
-            var searchValue = this.value;
-            sendRequest("search", searchValue); // Passing the new value of searchValue to the sendRequest function
+            clearTimeout(searchTimeout);
+            let searchValue = this.value;
+            searchTimeout = setTimeout(function () {
+                sendRequest("search", searchValue); // Passing the new value of searchValue to the sendRequest function
+            }, delay); // delay time
         });
 
         $('.pagination__list').on('click', '.pagination__list-link', function (e) {
