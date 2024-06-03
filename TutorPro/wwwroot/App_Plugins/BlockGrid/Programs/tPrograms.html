@@ -7,7 +7,7 @@
             <div class="programs__block">
                 <div class="programs__column" ng-repeat="card in content.tCards.contentData">
                     <div class="programs__item">
-                        <div class="programs__item-image">
+                        <div ng-if="card.tImage.contentData[0]" class="programs__item-image">
                             <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(card.tImage.contentData[0])">
                                 <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
                             </div>

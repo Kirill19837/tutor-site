@@ -27,7 +27,10 @@
                 }
             </div>
             <div class="info-block__contacts-socials">
-                <span class="info-block__contacts-title medium-title">@content.TSocialNetworkTitle</span>
+                @if(content.TSocialNetworkTitle != null && !string.IsNullOrEmpty(content.TSocialNetworkTitle))
+                {
+                    <span class="info-block__contacts-title medium-title">@content.TSocialNetworkTitle</span>
+                }             
                 <ul class="info-block__socials">
                     @if (content.TSocialLinks != null)
                     {

@@ -28,11 +28,17 @@
         <div class="description__bottom info-block radial-bg">
             <div class="info-block__bg radial-bg"></div>
             <div class="container">
-                <h2 class="info-block__title section-title">@bottomDesc.TTitle</h2>
+                @if (!string.IsNullOrEmpty(bottomDesc.TTitle))
+                {
+                    <h2 class="info-block__title section-title">@bottomDesc.TTitle</h2>
+                }              
                 @{
                     string text = System.Text.RegularExpressions.Regex.Replace(bottomDesc.TText.ToString(), "<.*?>", string.Empty);
                 }
-                <p class="info-block__subtitle">@text</p>
+                @if (!string.IsNullOrEmpty(text))
+                {
+                    <p class="info-block__subtitle">@text</p>
+                }             
                 @if (bottomDesc.TButton != null && !bottomDesc.TButton.Content.TButtonTitle.IsNullOrWhiteSpace())
                 {
                     @await Html.PartialAsync("tutorPartials/TButton", bottomDesc.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "info-block__main-link" }, { "span", true } })

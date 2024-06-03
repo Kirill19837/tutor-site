@@ -8,7 +8,10 @@
 <!-- Section about homework -->
 <section class="homework radial-bg">
     <div class="container">
-        <h2 class="homework__title section-title">@content.TTitle</h2>
+        @if(content.TTitle != null && !string.IsNullOrEmpty(content.TTitle))
+        {
+            <h2 class="homework__title section-title">@content.TTitle</h2>
+        }    
         <div class="homework__notice">
             @if(icon != null)
             {
@@ -26,11 +29,19 @@
             }
         }
 
-        @await Html.PartialAsync("tutorPartials/THomeworkItem", content.THomeworkItem?.FirstOrDefault()?.Content)
+        @if (content.THomeworkItem != null && content.THomeworkItem.Count > 0)
+        {
+            @await Html.PartialAsync("tutorPartials/THomeworkItem", content.THomeworkItem?.FirstOrDefault()?.Content)
+        }    
 
-        <h2 class="homework__third-title section-title">@content.TBottomTitle</h2>
+        @if(content.TBottomTitle != null && !string.IsNullOrEmpty(content.TBottomTitle))
+        {
+            <h2 class="homework__third-title section-title">@content.TBottomTitle</h2>
+        }       
 
-        @await Html.PartialAsync("tutorPartials/TDescriptionBlock", content.TBottomDescription?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "descriptionClass", "homework__description" } })
-
+        @if(content.TBottomDescription != null && content.TBottomDescription.Count > 0)
+        {
+            @await Html.PartialAsync("tutorPartials/TDescriptionBlock", content.TBottomDescription?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "descriptionClass", "homework__description" } })
+        }      
     </div>
 </section>

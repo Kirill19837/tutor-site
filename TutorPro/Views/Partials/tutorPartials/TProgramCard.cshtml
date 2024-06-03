@@ -5,7 +5,10 @@
     {
         <a class="programs__item" href="@Model.TButton.Content.TLink?.Url">
             <div class="programs__item-image">
-                @Html.GetBlockGridHtml(Model.TImage)
+                @if(Model.TImage != null)
+                {
+                    @Html.GetBlockGridHtml(Model.TImage) 
+                }
             </div>
             <p class="programs__item-title">@Model.TTitle</p>
         </a>
@@ -14,7 +17,10 @@
     {
         <div class="programs__item">
             <div class="programs__item-image">
-                @Html.GetBlockGridHtml(Model.TImage)
+                @if(Model.TImage != null)
+                {
+                    @Html.GetBlockGridHtml(Model.TImage)                 
+                }
             </div>
             <p class="programs__item-title">@Model.TTitle</p>
         </div>

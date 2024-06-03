@@ -7,7 +7,10 @@
 <section class="@content.TFor-top inner-top">
     <div class="container">
         <div class="inner-top__content">
-            <h1 class="inner-top__title big-title">@content.TTitle</h1>
+            @if (!string.IsNullOrEmpty(content.TTitle))
+            {
+                <h1 class="inner-top__title big-title">@content.TTitle</h1>            
+            }
             @if (!content.TsubTitle.IsNullOrWhiteSpace())
             {
                 <p class="inner-top__subtitle">@content.TsubTitle</p>

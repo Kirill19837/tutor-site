@@ -95,7 +95,7 @@ $(function () {
     // Mask for input[type="tel"]
     let phoneCode = $('#phoneInput').attr('data-code');
   $('.request-form input[type="tel"]').each(function(){
-      $(this).mask(`${phoneCode.replace(/\d/g, '9')}-99-999-99-99`,{placeholder:"x"},{autoclear: false});
+      $(this).mask(`${phoneCode.replace(/\d/g, '9')}-99-999-99-99`,{placeholder:"x", autoclear: false});
   }); 
 
   $('.request-form input.required').on('focus', function(){
@@ -157,7 +157,14 @@ $(function () {
     e.preventDefault();
     let currentForm = $(this),
         inputs = currentForm.find('input.required'),
+        submitButton = currentForm.find('button[type="submit"]'),
+        buttonText = submitButton.find('.button-text'),
+        loadingSpinner = submitButton.find('.loading-spinner'),
         formData = {};
+
+      submitButton.prop('disabled', true);
+      buttonText.hide();
+      loadingSpinner.show();
 
     inputs.each(function(){
       validateInputs($(this));
@@ -180,7 +187,8 @@ $(function () {
       var jsonData = JSON.stringify(formData);
 
     let errorInputs = currentForm.find('input.error');
-    if(errorInputs.length === 0) {
+      if (errorInputs.length === 0) {
+
         var actionUrl = $('#urlToSend').val();
         $.ajax({
             type: 'POST',
@@ -189,9 +197,15 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             success: function (response) {
                 currentForm.closest('.actions__form-wrap').addClass('send');
+                submitButton.prop('disabled', false);
+                buttonText.show();
+                loadingSpinner.hide();
             },
             error: function (xhr, status, error) {
                 console.error('Error:', error);
+                submitButton.prop('disabled', false);
+                buttonText.show();
+                loadingSpinner.hide();
             }
         });
       } else {
@@ -217,7 +231,10 @@ $(function () {
                 }
             });
             currentForm.find('.request-form__error span').html(errorString);
-        }
+          }
+          submitButton.prop('disabled', false);
+          buttonText.show();
+          loadingSpinner.hide();
       }    
   });
 

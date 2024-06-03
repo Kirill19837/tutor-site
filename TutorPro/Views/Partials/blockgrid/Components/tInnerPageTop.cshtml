@@ -21,7 +21,10 @@
             }
         }
         <div class="inner-top__content">
-            <h1 class="inner-top__title big-title">@content.TTitle</h1>
+            @if (!string.IsNullOrEmpty(content.TTitle))
+            {
+                <h1 class="inner-top__title big-title">@content.TTitle</h1>                
+            }
             @if (!content.TText.IsNullOrWhiteSpace())
             {
                 @Html.Raw(content.TText)

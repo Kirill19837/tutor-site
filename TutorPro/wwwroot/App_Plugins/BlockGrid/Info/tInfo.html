@@ -11,7 +11,7 @@
                     <div ng-bind-html="info.tText.markup"></div>
                 </div>
                 <div class="about-info__item-image">
-                    <img src="{{info.tImage[0].src}}" />
+                    <img ng-if="info.tImage[0]" src="{{info.tImage[0].src}}" />
                     <div ng-controller="tDecor" ng-init="initDecors(info)"></div>
                     <span ng-controller="tDecor" ng-repeat="decor in info.tDecors.contentData" class="{{decor.typeClass}}">
                         <img ng-src="{{decor.src}}" alt="Decor points">

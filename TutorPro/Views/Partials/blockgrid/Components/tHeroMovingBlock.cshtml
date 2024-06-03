@@ -17,8 +17,11 @@
                     <img src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
                 </span>
             }
-            <h2 class="school-info__title section-title">@content.TTitle</h2>
-            @if(content.TSubTitle != null)
+            @if (!string.IsNullOrEmpty(content.TTitle))
+            {             
+                <h2 class="school-info__title section-title">@content.TTitle</h2>
+            }
+            @if(!string.IsNullOrEmpty(content.TSubTitle))
             {
                 <p class="school-info__subtitle">@content.TSubTitle</p>
             }
@@ -48,7 +51,7 @@
                         <div class="school-info__descr-image">
                             @if(bottomInfo.TImage != null)
                             {
-                                <img src="@bottomInfo.TImage.FirstOrDefault()?.Content.Url()" />
+                                <img src="@bottomInfo.TImage.FirstOrDefault()?.Content.Url()" alt="description image"/>
                             }                       
                             @if (content.TDecors != null)
                             {
@@ -58,7 +61,6 @@
                                 }
                             }
                         </div>
-
                         <p class="school-info__descr-text">@bottomInfo.TText.</p>
                         @if (bottomInfo.TButton != null)
                         {

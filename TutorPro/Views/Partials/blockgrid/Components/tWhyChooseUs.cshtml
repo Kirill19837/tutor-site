@@ -8,7 +8,10 @@
 <section class="choose">
     <div class="choose__top radial-bg">
         <div class="container">
-            <h2 class="choose__title section-title">@content.TTitle</h2>
+            @if (!string.IsNullOrEmpty(content.TTitle))
+            {
+                <h2 class="choose__title section-title">@content.TTitle</h2>           
+            }
             <div class="choose__block">    
                 @if(content.TSections != null)
                 {

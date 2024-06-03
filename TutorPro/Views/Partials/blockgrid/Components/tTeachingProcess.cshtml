@@ -10,7 +10,10 @@
     <div class="decor-bg radial-bg orange"></div>
     <div class="container">
         <div class="process__inner">
-            <h2 class="process__title section-title">@content.TTitle</h2>
+            @if (!string.IsNullOrEmpty(content.TTitle))
+            {
+                <h2 class="process__title section-title">@content.TTitle</h2>              
+            }
             <div class="process__block">
                 @if(content.TIconItems != null)
                 {

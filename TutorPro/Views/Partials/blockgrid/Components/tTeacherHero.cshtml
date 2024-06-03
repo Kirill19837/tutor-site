@@ -10,7 +10,10 @@
     <span class="decor-element ring2 parallax-element"></span>
     <div class="container">
         <div class="school-hero__inner">
-            <h2 class="teacher-hero__title section-title first-title">@content.TTitile</h2>
+            @if (!string.IsNullOrEmpty(content.TTitile))
+            {
+                <h2 class="teacher-hero__title section-title first-title">@content.TTitile</h2>              
+            }
             <div class="teacher-hero__info-block">
                 @if(content.TIcons != null)
                 {
@@ -24,12 +27,18 @@
                     @await Html.PartialAsync("tutorPartials/TButton", content.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "teacher-hero__info-link" }, { "span", false } })
                 }              
             </div>
-            <h2 class="teacher-hero__title second-title">@content.TSecondTitle</h2>
+            @if (!string.IsNullOrEmpty(content.TSecondTitle))
+            {
+                <h2 class="teacher-hero__title second-title">@content.TSecondTitle</h2>              
+            }
             <div class="school-hero__block hero-block">
                 <span class="decor-element points parallax-element" data-speed="50" data-direction="true">
                     <img src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
                 </span>
-                 @await Html.PartialAsync("tutorPartials/THeroInfoCard", content.TBlockInfo?.Content, new ViewDataDictionary(ViewData) {{"style", "white"}})
+                @if(content.TBlockInfo != null)
+                {
+                    @await Html.PartialAsync("tutorPartials/THeroInfoCard", content.TBlockInfo.Content, new ViewDataDictionary(ViewData) {{"style", "white"}})                   
+                }
             </div>
         </div>
     </div>

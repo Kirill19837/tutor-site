@@ -5,7 +5,10 @@
 
 <div class="actions__column">
     <div class="actions__item" tabindex="0">
-        <span class="actions__item-title medium-title">@Model.TTitle</span>
+        @if (!string.IsNullOrEmpty(Model.TTitle))
+        {
+            <span class="actions__item-title medium-title">@Model.TTitle</span>          
+        }
         <p class="actions__item-text">@Model.TText</p>
         @if(button != null)
         {

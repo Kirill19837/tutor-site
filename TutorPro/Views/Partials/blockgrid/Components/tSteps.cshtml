@@ -17,8 +17,10 @@
                             
             </div>
         }
-
-        <h2 class="steps__main-title section-title">@content.TTitle</h2>
+        @if (!string.IsNullOrEmpty(content.TTitle))
+        {
+            <h2 class="steps__main-title section-title">@content.TTitle</h2>           
+        }
         <div class="steps__block">
             <span class="steps__block-arrow">
                 @if (content.TArrow)

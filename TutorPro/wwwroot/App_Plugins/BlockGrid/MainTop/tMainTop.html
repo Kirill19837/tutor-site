@@ -7,15 +7,15 @@
             <!-- <div class="main-top__inner"></div> -->
             <h1 class="main-top__title"><span>{{firstTitlePart}}</span>{{secondTitlePart}}</h1>
             <div style="margin-bottom:30px" class="main-top__image">
-                <div class="image-container">
+                <div class="image-container" ng-if="images[0]">
                     <img ng-src="{{images[0].mediaLink}}" alt="@content.TImages.ElementAt(0).Name" class="first-image" />
-                    <div class="second-image-container">
+                    <div ng-if="content.tTopVideo[0]" class="second-image-container">
                         <video autoplay loop muted playsinline class="second-image">
                             <source ng-src="{{content.tTopVideo[0].src}}" type="video/webm">
                             not supported
                         </video>
                     </div>
-                    <img ng-src="{{images[1].mediaLink}}" alt="@content.TImages.ElementAt(1).Name" class="third-image" />
+                    <img ng-if="images[1]" ng-src="{{images[1].mediaLink}}" alt="@content.TImages.ElementAt(1).Name" class="third-image" />
                 </div>
                 <div ng-controller="tDecor" ng-init="initDecors(content)"></div>
                 <span ng-controller="tDecor" ng-repeat="decor in content.tDecors.contentData" class="{{decor.typeClass}}">

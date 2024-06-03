@@ -7,7 +7,10 @@
 <!-- Section "Platform help school" -->
 <section class="platform">
     <div class="container">
-        <h2 class="platform__title section-title">@content.TTitle</h2>
+        @if (!string.IsNullOrEmpty(content.TTitle))
+        {
+            <h2 class="platform__title section-title">@content.TTitle</h2>         
+        }
         <div class="platform__block">
             <div class="platform__info">
                 <ul class="platform__list">
@@ -28,8 +31,14 @@
                         @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
                     }
                 }
-                <img class="platform__image-big" src="@content.TImage?.Url()" alt="Big image">
-                <img class="platform__image-small" src="@content.TImageSmall?.Url()" alt="Small image">
+                @if(content.TImage != null)
+                {
+                    <img class="platform__image-big" src="@content.TImage?.Url()" alt="Big image">                   
+                }
+                @if(content.TImageSmall != null)
+                {
+                    <img class="platform__image-small" src="@content.TImageSmall?.Url()" alt="Small image">                    
+                }
             </div>
         </div>
     </div>

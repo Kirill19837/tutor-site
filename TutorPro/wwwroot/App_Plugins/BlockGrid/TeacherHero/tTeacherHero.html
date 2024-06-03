@@ -7,7 +7,7 @@
                 <h2 class="teacher-hero__title section-title first-title">{{ content.tTitile }}</h2>
                 <div class="teacher-hero__info-block" ng-if="content.tIcons.contentData">
                     <div class="teacher-hero__info-item" ng-repeat="icon in content.tIcons.contentData">
-                        <img class="teacher-hero__info-icon" src="{{icon.tIconImage[0].src}}" alt="Item icon">
+                        <img ng-if="icon.tIconImage[0]" class="teacher-hero__info-icon" src="{{icon.tIconImage[0].src}}" alt="Item icon">
                         <p class="teacher-hero__info-text">{{icon.tText}}</p>
                     </div>
                     <button ng-if="content.tButton" class="teacher-hero__info-link" ng-controller="tButton" ng-init="initButton(content.tButton.contentData[0])" ng-class="toggleClass">

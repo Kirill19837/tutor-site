@@ -7,6 +7,7 @@
 
 @if (Model != null && mainPage != null)
 {
+    <link rel="stylesheet" href="~/css/loading-spinner.css"/>
     <form data-word1="@Umbraco.GetDictionaryValue("Enter") " data-word2=" @Umbraco.GetDictionaryValue("and") " data-word3="@Umbraco.GetDictionaryValue("Invalid") " data-word4=" @Umbraco.GetDictionaryValue("format")" class="@mainClass request-form" method="post">
         @Html.AntiForgeryToken()
         <div class="request-form__row">
@@ -38,7 +39,10 @@
         <div class="request-form__actions @(Model.TCentered ? "centered" : "")">
             @if (Model.TButton != null)
             {
-                <button class="request-form__submit link link@(Model.TButton.Content.TFill ? "-main" : "-inverted")" type="submit"><span>@Model.TButton.Content.TButtonTitle</span></button>
+                <button id="submitButton" class="request-form__submit link link@(Model.TButton.Content.TFill ? "-main" : "-inverted")" type="submit">
+                    <span class="button-text">@Model.TButton.Content.TButtonTitle</span>
+                    <span class="loading-spinner" style="display: none;"></span>
+                </button>
             }
             <p class="request-form__error"><span></span></p>
         </div>
@@ -46,7 +50,7 @@
     <input type="hidden" id="urlToSend" value="@mainPage.TFormUrl" />
     @if (mainPage?.TThanksForm != null && mainPage?.TThanksForm.FirstOrDefault() != null)
     {
-        @await Html.PartialAsync("tutorPartials/TThanksForm", mainPage.TThanksForm?.FirstOrDefault()?.Content)
+        @await Html.PartialAsync("tutorPartials/TThanksForm", mainPage.TThanksForm.FirstOrDefault()?.Content)
     }
 }
 

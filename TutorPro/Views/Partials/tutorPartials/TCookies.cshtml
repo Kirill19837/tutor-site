@@ -3,7 +3,10 @@
 <!-- Cookies block -->
 <div class="cookies" id="cookies">
     <div class="cookies__container">
-        <img loading="lazy" class="cookies__icon" src="@Model.TCookieIcon?.Url()" alt="Icon">
+        @if(Model.TCookieIcon != null)
+        {
+            <img loading="lazy" class="cookies__icon" src="@Model.TCookieIcon?.Url()" alt="Icon">          
+        }
         <div class="cookies__info">
             <p class="cookies__text">@Model.TTopText</p>
             <p class="cookies__text">@Model.TBottomText</p>

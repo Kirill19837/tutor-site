@@ -16,7 +16,7 @@
                         </div>                     
                     </div>
                     <div class="hero-block__image">
-                        <div ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(info.tImage.contentData[0])">
+                        <div ng-if="info.tImage.contentData[0]" ng-controller="tImage" ng-click="block.edit()" ng-init="initImage(info.tImage.contentData[0])">
                             <img class="image" alt="" ng-src="{{image.mediaLink}}" ng-style="imageStyle" />
                         </div>
                         <div ng-controller="tDecor" ng-init="initDecors(content)"></div>

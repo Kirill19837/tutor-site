@@ -9,7 +9,10 @@
     <span class="decor-element ring1 parallax-element"></span>
     <span class="decor-element ring2 parallax-element"></span>
     <div class="container">
-        <h2 class="programs__title section-title">@content.TTitle</h2>
+        @if (!string.IsNullOrEmpty(content.TTitle))
+        {
+            <h2 class="programs__title section-title">@content.TTitle</h2>           
+        }
         <div class="programs__block">
             @foreach(var card in content.TCards!)
             {

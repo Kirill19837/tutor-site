@@ -6,8 +6,14 @@
 
 <section class="tutor-lesson">
     <div class="container">
-        <h2 class="tutor-lesson__title section-title">@content.TTitle</h2>
-        <p class="tutor-lesson__subtitle section-subtitle">@content.TSubTitle</p>
+        @if (!string.IsNullOrEmpty(content.TTitle))
+        {
+            <h2 class="tutor-lesson__title section-title">@content.TTitle</h2>         
+        }
+        @if (!string.IsNullOrEmpty(content.TSubTitle))
+        {
+            <p class="tutor-lesson__subtitle section-subtitle">@content.TSubTitle</p>        
+        }
         <div class="tutor-lesson__block">
             @if (content.TDecors != null)
             {

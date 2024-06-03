@@ -37,7 +37,7 @@
                
                 @if (content.TImages.Count() >= 1)
                     {
-                        <img src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" class="first-image" />
+                        <img loading="lazy" src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" />
                     }
                     <div class="second-image-container">
                         @if (content.TTopVideo != null)
@@ -62,7 +62,10 @@
             </div>
         }
         <div class="main-top__info">
-            <p class="main-top__text">@content.TInfoText</p>
+            @if (!string.IsNullOrEmpty(content.TInfoText))
+            {
+                <p class="main-top__text">@content.TInfoText</p>                
+            }
             @if(button != null)
             {
                 @await Html.PartialAsync("tutorPartials/TButton", button, new ViewDataDictionary(ViewData) { { "class", "main-top__link" }, { "span", false } })
