@@ -25,16 +25,25 @@
                         }
                     }
                     <div class="description-block__info">
-                        <span class="description-block__title">@mainDesc.TTitle</span>
-                        <p class="description-block__text">@mainDesc.TText</p>
+                        @if (!string.IsNullOrEmpty(mainDesc.TTitle))
+                        {
+                            <span class="description-block__title">@mainDesc.TTitle</span>
+                        }
+                        @if(mainDesc.TText != null)
+                        {
+                            <p class="description-block__text">@mainDesc.TText</p>
+                        }                       
                         @if(mainDesc.TButton != null)
                         {
                             @await Html.PartialAsync("tutorPartials/TButton", mainDesc.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "description-block__link" }, { "span", true } })                  
                         }
                     </div>
-                    <div class="description-block__image">
-                        @Html.GetBlockGridHtml(mainDesc.TImage)
-                    </div>
+                    @if(mainDesc.TImage != null)
+                    {
+                        <div class="description-block__image">
+                            @Html.GetBlockGridHtml(mainDesc.TImage)
+                        </div>
+                    }                 
                 </div>
             </div>
         </div>
@@ -45,8 +54,14 @@
         <div class="description__bottom info-block radial-bg">
             <div class="info-block__bg radial-bg"></div>
             <div class="container">
-                <h2 class="info-block__title section-title">@bottomDesc.TTitle</h2>
-                @Html.Raw(bottomDesc.TText)
+                @if (!string.IsNullOrEmpty(bottomDesc.TTitle))
+                {
+                    <h2 class="info-block__title section-title">@bottomDesc.TTitle</h2>
+                }
+                @if(bottomDesc.TText != null)
+                {
+                    @Html.Raw(bottomDesc.TText)
+                }            
                 @if(bottomDesc.TButton != null)
                 {
                     @await Html.PartialAsync("tutorPartials/TButton", bottomDesc.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "info-block__main-link" }, { "span", true } })                    

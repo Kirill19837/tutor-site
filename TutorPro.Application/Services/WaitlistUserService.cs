@@ -22,7 +22,7 @@ namespace TutorPro.Application.Services
 
         public async Task<List<WaitlistUsers>> GetWaitlistUsers()
         {
-            var users = _context.WaitlistUsers.Where(u => u.DeletedDate == null);
+            var users = _context.WaitlistUsers.Where(u => u.DeletedDate == null).OrderByDescending(u => u.Id);
 
             if(users == null)
             {

@@ -5,10 +5,10 @@
                 <h1 class="inner-top__title big-title">{{content.tTitle}}</h1>
                 <p class="inner-top__subtitle" ng-if="!content.TSubTitle.IsNullOrWhiteSpace()">{{content.TSubTitle}}</p>
                 <div class="inner-top__images">
-                    <div class="inner-top__image" ng-class="{'image-big': changes, 'image-small': !changes}">
+                    <div ng-if="images[0]" class="inner-top__image" ng-class="{'image-big': changes, 'image-small': !changes}">
                         <img ng-src="{{images[0].mediaLink}}" alt="Top image1">
                     </div>
-                    <div class="inner-top__image" ng-class="{'image-small': changes, 'image-big': !changes}">
+                    <div ng-if="images[1]" class="inner-top__image" ng-class="{'image-small': changes, 'image-big': !changes}">
                         <img ng-src="{{images[1].mediaLink}}" alt="Top image2">
                     </div>
                     <div ng-controller="tDecor" ng-init="initDecors(content)"></div>

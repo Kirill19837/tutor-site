@@ -3,10 +3,11 @@
 @{
     var imageUrls = new List<string>();
 
-    foreach(var entry in Model.TImages)
-    {
-        imageUrls.Add(entry.Url());
-    }
+    if(Model.TImages != null && Model.TImages.Count() > 0)
+        foreach(var entry in Model.TImages)
+        {
+            imageUrls.Add(entry.Url());
+        }
 
     var reverse = Model.TReverse ? "reverse" : "";
 }

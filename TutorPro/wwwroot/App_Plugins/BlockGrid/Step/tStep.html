@@ -13,7 +13,7 @@
                             <span>{{topDesc.tButton.contentData[0].tButtonTitle}}</span>
                         </button>
                     </div>
-                    <div class="description-block__image">
+                    <div ng-if="topDesc.tImage[0]" class="description-block__image">
                         <img ng-src="{{topDesc.tImage[0].src}}"/>
                     </div>
                 </div>

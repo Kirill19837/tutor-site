@@ -8,7 +8,10 @@
 <div class="info-block radial-bg">
     <div class="info-block__bg radial-bg"></div>
     <div class="container">
-        <h2 class="info-block__title section-title">@content.TTitle</h2>
+        @if (!string.IsNullOrEmpty(content.TTitle))
+        {
+            <h2 class="info-block__title section-title">@content.TTitle</h2>          
+        }
         <ul class="info-block__socials">
             @if(content.TSocialLinks != null)
             {

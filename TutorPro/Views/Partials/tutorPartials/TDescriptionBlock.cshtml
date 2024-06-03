@@ -24,7 +24,7 @@
         }
     </div>
     <div class="description-block__image">
-        @if(Model.TImage != null)
+        @if(Model.TImage != null && Model.TImage.Count() > 0)
         {
             <img src="@Model.TImage?.FirstOrDefault()?.Url()" alt="Description image">          
         }

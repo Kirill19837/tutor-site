@@ -20,8 +20,14 @@
             @if(rootPage != null)
             {
                 <div class="actions__form-wrap">
-                    <h2 class="actions__form-title medium-title section-title">@content.TTitle</h2>
-                    <p class="actions__form-subtitle">@content.TSubTitle</p>
+                    @if (!string.IsNullOrEmpty(content.TTitle))
+                    {
+                        <h2 class="actions__form-title medium-title section-title">@content.TTitle</h2>                      
+                    }
+                    @if (!string.IsNullOrEmpty(content.TSubTitle))
+                    {
+                        <p class="actions__form-subtitle">@content.TSubTitle</p>                     
+                    }
                     @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestForm?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "mainPage", rootPage }, { "mainClass", "actions__form request-form two-cols" } })                  
                 </div>
             }          
