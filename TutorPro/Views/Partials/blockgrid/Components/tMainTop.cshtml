@@ -37,7 +37,7 @@
                
                 @if (content.TImages.Count() >= 1)
                     {
-                        <img loading="lazy" src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" />
+                        <img src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" />
                     }
                     <div class="second-image-container">
                         @if (content.TTopVideo != null)
