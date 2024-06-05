@@ -7,7 +7,7 @@
 
 @if (Model != null && mainPage != null)
 {
-    <link rel="stylesheet" href="~/css/loading-spinner.css"/>
+    <link rel="stylesheet" href="~/css/loading-spinner.min.css"/>
     <form data-word1="@Umbraco.GetDictionaryValue("Enter") " data-word2=" @Umbraco.GetDictionaryValue("and") " data-word3="@Umbraco.GetDictionaryValue("Invalid") " data-word4=" @Umbraco.GetDictionaryValue("format")" class="@mainClass request-form" method="post">
         @Html.AntiForgeryToken()
         <div class="request-form__row">

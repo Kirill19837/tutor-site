@@ -69,7 +69,7 @@ function updateContent(data) {
                 <a class="blog__item" href="${blog.url}">
                     ${blog.imageUrl ? `
                         <div class="blog__item-image">
-                            <img src="${blog.imageUrl}" alt="Article image">
+                            <img loading="lazy" src="${blog.imageUrl}" alt="Article image">
                         </div>
                     ` : ''}
                     ${blog.title ? `<h3 class="blog__item-title medium-title">${blog.title}</h3>` : ''}

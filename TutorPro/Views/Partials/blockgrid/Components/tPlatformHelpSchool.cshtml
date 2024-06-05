@@ -33,11 +33,11 @@
                 }
                 @if(content.TImage != null)
                 {
-                    <img class="platform__image-big" src="@content.TImage?.Url()" alt="Big image">                   
+                    <img loading="lazy" class="platform__image-big" src="@content.TImage?.Url()" alt="Big image">                   
                 }
                 @if(content.TImageSmall != null)
                 {
-                    <img class="platform__image-small" src="@content.TImageSmall?.Url()" alt="Small image">                    
+                    <img loading="lazy" class="platform__image-small" src="@content.TImageSmall?.Url()" alt="Small image">
                 }
             </div>
         </div>

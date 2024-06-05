@@ -25,3 +25,8 @@
     margin-top: -5px;
     will-change: margin-top;
 }
+
+.image {
+    will-change: transform;
+    position: relative;
+}

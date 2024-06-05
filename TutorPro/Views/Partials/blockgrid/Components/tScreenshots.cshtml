@@ -18,31 +18,31 @@
                         <div class="screenshots__column1">
                             @foreach (var image in images.Take(2))
                             {
-                                <img src="@image.Content.Url()" alt="Image">
+                                <img loading="lazy" src="@image.Content.Url()" alt="Image">
                             }
                         </div>
                         <div class="screenshots__column2">
                             @foreach (var image in images.Skip(2).Take(2))
                             {
-                                <img src="@image.Content.Url()" alt="Image">
+                                <img loading="lazy" src="@image.Content.Url()" alt="Image">
                             }
                         </div>
                         <div class="screenshots__column3">
                             <div class="screenshots__column3-row">
                                 @foreach (var image in images.Skip(4).Take(2))
                                 {
-                                    <img src="@image.Content.Url()" alt="Image">
+                                    <img loading="lazy" src="@image.Content.Url()" alt="Image">
                                 }
                             </div>
                             @if (images.Count() > 6)
                             {
-                                <img src="@images.ElementAt(6).Content.Url()" alt="Image">
+                                <img loading="lazy" src="@images.ElementAt(6).Content.Url()" alt="Image">
                             }
                         </div>
                         <div class="screenshots__bottom">
                             @if (images.Count() > 7)
                             {
-                                <img src="@images.ElementAt(7).Content.Url()" alt="Image">
+                                <img loading="lazy" src="@images.ElementAt(7).Content.Url()" alt="Image">
                             }
                         </div>
                     </div>
@@ -50,12 +50,12 @@
                         @if (images.Count() > 8)
                         {
                             <div class="big-image">
-                                <img src="@images.ElementAt(8).Content.Url()" alt="Image">
+                                <img loading="lazy" src="@images.ElementAt(8).Content.Url()" alt="Image">
                             </div>
                         }
                         @if (images.Count() > 9)
                         {
-                            <img src="@images.ElementAt(9).Content.Url()" alt="Image">
+                            <img loading="lazy" src="@images.ElementAt(9).Content.Url()" alt="Image">
                         }
                     </div>
                 </div>

@@ -20,9 +20,7 @@
     }
     var button = content.TButton?.Content;
 }
-<link rel="stylesheet" href="~/css/image.css">
-
-
+<link rel="stylesheet" href="~/css/image.min.css">
 
 <!-- Section "Main Top" -->
 <section class="main-top">
@@ -39,8 +37,7 @@
                
                 @if (content.TImages.Count() >= 1)
                     {
-                        @* <img src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" /> *@
-                        <img src="~/media/2dmdirxx/color-1-min.webp" />
+                        <img class="image" src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" />
                     }
                     <div class="second-image-container">
                         @if (content.TTopVideo != null)

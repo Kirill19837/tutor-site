@@ -3,7 +3,7 @@
 <div class="teacher-hero__info-item">
     @if(Model.TIconImage != null)
     {
-        <img class="teacher-hero__info-icon" src="@Model.TIconImage?.Url()" alt="Item icon">     
+        <img loading="lazy" class="teacher-hero__info-icon" src="@Model.TIconImage?.Url()" alt="Item icon">
     }
     <p class="teacher-hero__info-text">@Model.TText</p>
 </div>

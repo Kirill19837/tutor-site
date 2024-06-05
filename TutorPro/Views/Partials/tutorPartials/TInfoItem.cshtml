@@ -8,7 +8,7 @@
     <div class="about-info__item-image">
         @if(Model.TImage != null)
         {
-            <img src="@Model.TImage.Url()" />
+            <img loading="lazy" src="@Model.TImage.Url()" />
         }
 
         @if (Model.TDecors != null)

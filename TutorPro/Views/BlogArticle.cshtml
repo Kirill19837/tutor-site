@@ -49,7 +49,7 @@
             <div class="article__content">
                 @if (Model.TImage != null)
                 {
-                    <img src="@Model.TImage.Url()" alt="Article image">
+                    <img loading="lazy" src="@Model.TImage.Url()" alt="Article image">
                 }
 
                 <h1>@Model.TTitle</h1>
