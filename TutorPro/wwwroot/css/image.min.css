@@ -1,0 +1,1 @@
+.image-container{position:relative;width:100%;max-width:1000px;margin:0 auto}.second-image-container{position:absolute;top:47%;left:50.5%;transform:translate(-50%,-50%);width:78%;will-change:transform}.second-image{width:100%;height:100%;object-fit:cover;will-change:width,height}.third-image{margin-top:-5px;will-change:margin-top}.image{will-change:transform;position:relative}

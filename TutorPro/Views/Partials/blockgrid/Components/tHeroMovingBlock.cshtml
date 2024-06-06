@@ -14,7 +14,7 @@
             @if(content.TStyle == "teacher")
             {
                 <span class="decor-element points-1 parallax-element">
-                    <img src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
+                    <img loading="lazy" src="~/images/icons/decor-elements/decor-points-green.svg" alt="Decor points">
                 </span>
             }
             @if (!string.IsNullOrEmpty(content.TTitle))
@@ -51,7 +51,7 @@
                         <div class="school-info__descr-image">
                             @if(bottomInfo.TImage != null)
                             {
-                                <img src="@bottomInfo.TImage.FirstOrDefault()?.Content.Url()" alt="description image"/>
+                                <img loading="lazy" src="@bottomInfo.TImage.FirstOrDefault()?.Content.Url()" alt="description image" />
                             }                       
                             @if (content.TDecors != null)
                             {

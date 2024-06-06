@@ -1,0 +1,44 @@
+[
+  {
+    "outputFileName": "wwwroot/css/image.min.css",
+    "inputFiles": [
+      "wwwroot/css/image.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/style.min.css",
+    "inputFiles": [
+      "wwwroot/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/loading-spinner.min.css",
+    "inputFiles": [
+      "wwwroot/css/loading-spinner.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/blog.min.js",
+    "inputFiles": [
+      "wwwroot/js/blog.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/cookie.min.js",
+    "inputFiles": [
+      "wwwroot/js/cookie.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/filter.min.js",
+    "inputFiles": [
+      "wwwroot/js/filter.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/main.js"
+    ]
+  }
+]

@@ -20,7 +20,7 @@
     }
     var button = content.TButton?.Content;
 }
-<link rel="stylesheet" href="~/css/image.css">
+<link rel="stylesheet" href="~/css/image.min.css">
 
 <!-- Section "Main Top" -->
 <section class="main-top">
@@ -31,13 +31,13 @@
         <!-- <div class="main-top__inner"></div> -->
         <h1 class="main-top__title"><span>@firstTitlePart</span>@secondTitlePart</h1>
         @if (content.TImages != null && content.TImages.Any())
-        { 
+        {
             <div style="margin-bottom:30px" class="main-top__image">
                 <div class="image-container">
                
                 @if (content.TImages.Count() >= 1)
                     {
-                        <img loading="lazy" src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" />
+                        <img class="image" src="@content.TImages.First().Url()" alt="@content.TImages.First().Name" />
                     }
                     <div class="second-image-container">
                         @if (content.TTopVideo != null)

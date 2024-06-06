@@ -16,7 +16,7 @@
         <div class="tutor-lesson__item-image">
             @if (imageUrls[0] != null)
             {
-                <img src="@imageUrls[0]" alt="Item image">
+                <img loading="lazy" src="@imageUrls[0]" alt="Item image">
             }
         </div>
         <div class="tutor-lesson__item-info">
@@ -42,11 +42,11 @@ else
                 <picture>    
                     @if(imageUrls[1] != null)
                     {
-                        <source srcset="@imageUrls[1]" media="(max-width: 576px)">
+                        <source loading="lazy" srcset="@imageUrls[1]" media="(max-width: 576px)">
                     }  
                     @if(imageUrls[0] != null)
                     {
-                        <img src="@imageUrls[0]" alt="Item image">
+                        <img loading="lazy" src="@imageUrls[0]" alt="Item image">
                     }              
                 </picture>
             </div>

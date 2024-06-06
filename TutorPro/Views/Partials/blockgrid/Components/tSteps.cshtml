@@ -10,7 +10,7 @@
         {
             <div class="steps__description1">
                 <span class="steps__description1-arrow">
-                    <img src="~/images/icons/icon-arrow3.svg" alt="Arrow icon">
+                    <img loading="lazy" src="~/images/icons/icon-arrow3.svg" alt="Arrow icon">
                 </span>
             
                 @await Html.PartialAsync("tutorPartials/TDescriptionBlock", content.TTopDescription.FirstOrDefault()?.Content)
@@ -25,7 +25,7 @@
             <span class="steps__block-arrow">
                 @if (content.TArrow)
                 {
-                    <img src="~/images/icons/icon-arrow3.svg" alt="Arrow icon">
+                    <img loading="lazy" src="~/images/icons/icon-arrow3.svg" alt="Arrow icon">
                 }                
             </span>
             @if(content.TStepItems != null)
