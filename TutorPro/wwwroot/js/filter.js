@@ -91,16 +91,13 @@ function updateContent(data) {
     // Clear the current content of the materials block
     $('.matirials__block').empty();
 
-    var articleUrlElement = document.querySelector('[data-articleUrl]');
-    var articleUrl = articleUrlElement.getAttribute('data-articleUrl');
-
     // Add new materials to the materials block
     if (data.materials && data.materials.length > 0) {
         // Add new materials to the materials block
         data.materials.forEach(function (material) {
             var html = `
                 <div class="matirials__column">
-                    <a class="matirials__item" href="${articleUrl}?title=${material.title}&guid=${material.guid}">
+                    <a class="matirials__item" href="${material.url}">
                         ${material.imageUrl ? `<div class="matirials__item-image"><img loading="lazy" src="${material.imageUrl}" alt="Item image"></div>` : `<div class="matirials__item-image"></div>`}
                         <h3 class="matirials__item-title">${material.title}</h3>
                         <div class="matirials__item-tags">

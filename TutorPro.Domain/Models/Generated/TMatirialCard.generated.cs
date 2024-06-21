@@ -50,34 +50,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Date of release/update
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tDateOfReleaseUpdate")]
-		public virtual global::System.DateTime TDateOfReleaseUpdate => this.Value<global::System.DateTime>(_publishedValueFallback, "tDateOfReleaseUpdate");
-
-		///<summary>
-		/// Image
+		/// Guid
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tImage");
+		[ImplementPropertyType("tGuid")]
+		public virtual string TGuid => this.Value<string>(_publishedValueFallback, "tGuid");
 
 		///<summary>
-		/// Item link
+		/// Image url
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tItemLink")]
-		public virtual global::Umbraco.Cms.Core.Models.Link TItemLink => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "tItemLink");
-
-		///<summary>
-		/// Number of use
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tNumberOfUse")]
-		public virtual int TNumberOfUse => this.Value<int>(_publishedValueFallback, "tNumberOfUse");
+		[ImplementPropertyType("tImageUrl")]
+		public virtual string TImageUrl => this.Value<string>(_publishedValueFallback, "tImageUrl");
 
 		///<summary>
 		/// Tags

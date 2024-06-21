@@ -3,19 +3,18 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     Layout = "Main.cshtml";
-    var guid = Context.Request.Query["guid"];
-    var title = Context.Request.Query["title"];
     var language = Umbraco.CultureDictionary.Culture.Name.Split("-")[0].ToLower();
+    var parent = Model.Parent as MaterialPage;
 }
-<h1 class="main-top__title"><span>@title</span></h1>
-<link rel="stylesheet" href="@(Model.TApiUrl).css">
-<script type="module" src="@(Model.TApiUrl).js" async></script>
+<h1 class="main-top__title"><span>@Model.TTitle</span></h1>
+<link rel="stylesheet" href="@(parent.TArticleApiUrl).css">
+<script type="module" src="@(parent.TArticleApiUrl).js" async></script>
 <div style="text-align: center;">
     <div style="display: inline-block; width: 65%; text-align: left;">
-        <ce-tutorpro-material guid="@guid" lang="@language" height="@Model.TMaterialContentBlockHeight"></ce-tutorpro-material>
+        <ce-tutorpro-material guid="@Model.TGuid" lang="@language" height="@parent.TArticleContentWidth"></ce-tutorpro-material>
     </div>
 </div>
 <div style="margin-top:-20px">
-    @await Html.GetBlockGridHtmlAsync(Model.TAction);
+    @await Html.GetBlockGridHtmlAsync(parent.TAction);
 </div>
 
