@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
-using TutorPro.Application.Interfaces;
+﻿using TutorPro.Application.Interfaces;
 using TutorPro.Application.Services;
 using TutorPro.Middlewares;
 
@@ -15,7 +14,7 @@ namespace TutorPro.Configuration
             services.AddScoped<IMaterialsService, MaterialsService>();
             services.AddScoped<IBlogService, BlogService>();
             services.AddScoped<IWaitlistUserService, WaitlistUserService>();
-            services.AddScoped<IExportService, ExportService>();
+            services.AddScoped<IExportService, ExportService>();         
 
             services.AddTransient<ExceptionMiddleware>();
 

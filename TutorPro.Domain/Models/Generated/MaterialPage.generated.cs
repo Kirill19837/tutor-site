@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Matirials</summary>
-	[PublishedModel("tMatirials")]
-	public partial class TMatirials : PublishedElementModel
+	/// <summary>MaterialPage</summary>
+	[PublishedModel("materialPage")]
+	public partial class MaterialPage : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		public new const string ModelTypeAlias = "tMatirials";
+		public new const string ModelTypeAlias = "materialPage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -34,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<TMatirials, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<MaterialPage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public TMatirials(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public MaterialPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,41 +50,42 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Api url: Url from where we get the materials
+		/// Action
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tApiUrl")]
-		public virtual string TApiUrl => this.Value<string>(_publishedValueFallback, "tApiUrl");
+		[ImplementPropertyType("tAction")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TAction => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tAction");
 
 		///<summary>
-		/// Filters
+		/// Article api url
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tFilters")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TFilters => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tFilters");
+		[ImplementPropertyType("tArticleApiUrl")]
+		public virtual string TArticleApiUrl => this.Value<string>(_publishedValueFallback, "tArticleApiUrl");
 
 		///<summary>
-		/// Not found message
+		/// Article content width
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tArticleContentWidth")]
+		public virtual int TArticleContentWidth => this.Value<int>(_publishedValueFallback, "tArticleContentWidth");
+
+		///<summary>
+		/// Inner top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tNotFoundMessage")]
-		public virtual string TNotFoundMessage => this.Value<string>(_publishedValueFallback, "tNotFoundMessage");
+		[ImplementPropertyType("tInnerTop")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TInnerTop => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tInnerTop");
 
 		///<summary>
-		/// Page size
+		/// Material Core
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tPageSize")]
-		public virtual int TPageSize => this.Value<int>(_publishedValueFallback, "tPageSize");
-
-		///<summary>
-		/// Search delay: write the value in ms (Example: 500 = 0.5 sec)
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tSearchDelay")]
-		public virtual int TSearchDelay => this.Value<int>(_publishedValueFallback, "tSearchDelay");
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tMaterialFilters")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TMaterialFilters => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tMaterialFilters");
 	}
 }

@@ -1,10 +1,15 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using StackExchange.Profiling.Internal;
+using System.Text;
 using System.Web;
 using TutorPro.Application.Interfaces;
 using TutorPro.Application.Models;
 using TutorPro.Application.Models.ResponseModel;
+using TutorPro.Application.Models.UmbracoModel;
+using Umbraco.Cms.Core.Models;
+using Umbraco.Cms.Core.Services;
+using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace TutorPro.Application.Services
 {
@@ -12,19 +17,16 @@ namespace TutorPro.Application.Services
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly ILogger<MaterialsService> _logger;
-        public MaterialsService(ILogger<MaterialsService> logger, IHttpClientFactory clientFactory)
+        private readonly IContentService _contentService;
+
+        public MaterialsService(ILogger<MaterialsService> logger, IHttpClientFactory clientFactory, IContentService contentService)
         {
             _logger = logger;
             _clientFactory = clientFactory;
+            _contentService = contentService;
         }
-        public async Task<FilterResponse> GetMaterials(string searchText, string subject, string grade, string level, string sort, string apiUrl, int page = 1, int pageSize = 12)
-        {         
-            // Forming a JSON object for the input parameter
-            var inputObject = new Dictionary<string, object>();
-
-            if (!string.IsNullOrEmpty(searchText))
-                inputObject["searchValue"] = searchText;
-
+        public  FilterResponse GetMaterials(MaterialPage materilaPage, string searchText, string subject, string grade, string level, string sort, int page = 1, int pageSize = 12)
+        {
             var tags = new List<string>();
 
             if (!string.IsNullOrEmpty(subject))
@@ -32,43 +34,73 @@ namespace TutorPro.Application.Services
             if (!string.IsNullOrEmpty(grade))
                 tags.Add("#" + grade.ToLower());
             if (!string.IsNullOrEmpty(level))
-                tags.Add(level.Replace(" ", ""));
+            {
+                bool insideParentheses = false;
+                StringBuilder result = new StringBuilder();
 
-            if (tags.Any())
-                inputObject["tags"] = tags.ToArray();
+                for (int i = 0; i < level.Length; i++)
+                {
+                    char c = level[i];
 
-            if (!string.IsNullOrEmpty(sort))
-                inputObject["sortBy"] = sort;
-            
-            var inputJson = JsonConvert.SerializeObject(inputObject);
+                    if (c == '(')
+                    {
+                        insideParentheses = true;
+                    }
+                    else if (c == ')')
+                    {
+                        insideParentheses = false;
+                    }
 
-            // Making a request to a third-party API
-            var fullUrl = $"{apiUrl}?input={HttpUtility.UrlEncode(inputJson)}";
+                    if (!insideParentheses)
+                    {
+                        if (c == ' ')
+                        {
+                            // Replace space with empty string
+                            result.Append("");
+                        }
+                        else
+                        {
+                            result.Append(c);
+                        }
+                    }
+                    else
+                    {
+                        result.Append(c);
+                    }
+                }
 
-            var client = _clientFactory.CreateClient();
-
-            var response = await client.GetAsync(fullUrl);
-
-            if(!response.IsSuccessStatusCode)
-            {               
-                var errorMessage = $"Failed to retrieve materials from API. Status code: {response.StatusCode}";
-                _logger.LogError(errorMessage);
-                throw new Exception(errorMessage);
+                tags.Add(result.ToString());
             }
 
-            // Getting data from the API response
-            var content = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Result>(content);
-            var materials = result?.ResultData;
+            List<MaterialCard> materilaView = new List<MaterialCard>();
+            foreach(var material in materilaPage.Children)
+            {
+                if(material is not MaterialArticle materialArticle || !material.IsPublished())
+                {
+                    continue;
+                }
 
-            if(materials == null)
-                throw new Exception("Failed to deserialize response content. Response content is null or empty.");
+                if(materialArticle != null && (searchText == null || materialArticle.TTitle.ToLower().Contains(searchText.ToLower())|| materialArticle.TText.ToLower().Contains(searchText.ToLower())))
+                {
+                    if(!tags.Any() || IsMatchFilter(materialArticle, tags))
+                    {
+                        materilaView.Add(new MaterialCard
+                        {
+                            Title = materialArticle.TTitle,
+                            Text = materialArticle.TText,
+                            Tags = materialArticle?.TTags?.ToList(),
+                            ImageUrl = materialArticle?.TImageUrl,
+                            Url = materialArticle?.UrlSegment,
+                        });
+                    }                 
+                }
+            }
 
-            return GetPaginationMaterialsList(materials, page, pageSize);                  
-        }     
+            return GetPaginationMaterialsList(materilaView, page, pageSize);
+        }
 
-        private FilterResponse GetPaginationMaterialsList(List<MaterialCardView> filteredMaterials, int page, int pageSize)
-        {         
+        private FilterResponse GetPaginationMaterialsList(List<MaterialCard> filteredMaterials, int page, int pageSize)
+        {
             // Pagination
             var totalCount = filteredMaterials.Count;
             var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
@@ -84,6 +116,79 @@ namespace TutorPro.Application.Services
                 PageSize = pageSize,
                 Materials = paginatedMaterials
             };
+        }
+
+        private bool IsMatchFilter(MaterialArticle materialCard, List<string> tags)
+        {
+            return tags.All(tag => materialCard.TTags?.Contains(tag) == true);
+        }
+
+        public async Task RefreshMaterialsAsync(string apiUrl, int parentId)
+        {
+            //Get materials
+            var materialData = await GetMaterialList(apiUrl);
+
+            //Delete all articles
+            var pageIndex = 0;
+            const int pageSize = 100;
+            var totalChildren = long.MaxValue;
+
+            while (pageIndex * pageSize < totalChildren)
+            {
+                var children = _contentService.GetPagedChildren(parentId, pageIndex, pageSize, out totalChildren);
+                foreach (var child in children)
+                {
+                    _contentService.Delete(child);
+                }
+                pageIndex++;
+            }
+
+            //Add new articles
+            materialData.ForEach(material =>
+            {
+                IContent newContent = _contentService.Create($"{material.Title}", parentId, "materialArticle");
+
+                newContent.SetValue("tTitle", material.Title);
+                newContent.SetValue("tText", material.Text);
+                string tagList = string.Join("\n", material.Tags.Select(tag => tag.ToString()));
+                newContent.SetValue("tTags", tagList);
+                newContent.SetValue("tImageUrl", material.ImageUrl);
+                newContent.SetValue("tGuid", material.Guid);
+
+                _contentService.SaveAndPublish(newContent);
+            });
+        }       
+
+        private async Task<List<MaterialCardView>> GetMaterialList(string apiUrl)
+        {
+            var inputObject = new Dictionary<string, object>();
+
+            var inputJson = JsonConvert.SerializeObject(inputObject);
+
+            // Making a request to a third-party API
+            var fullUrl = $"{apiUrl}?input={HttpUtility.UrlEncode(inputJson)}";
+
+            var client = _clientFactory.CreateClient();
+
+            var response = await client.GetAsync(fullUrl);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorMessage = $"Failed to retrieve materials from API. Status code: {response.StatusCode}";
+                _logger.LogError(errorMessage);
+
+                throw new Exception(errorMessage);
+            }
+
+            // Getting data from the API response
+            var content = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Result>(content);
+            var materials = result?.ResultData;
+
+            if (materials == null)
+                throw new Exception("Failed to deserialize response content. Response content is null or empty.");
+
+            return materials;
         }
     }
 }

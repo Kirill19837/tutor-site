@@ -20,22 +20,34 @@ namespace TutorPro.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMaterials(string searchText, string subject, string grade, string level, string sort, int page = 1, int pageSize = 12)
         {
-            var materialsPage = _umbracoHelper.ContentAtRoot().DescendantsOrSelf<BlockGridPage>()
-                .FirstOrDefault(x => x.ContentType.Alias == "blockGridPage" && x.Name == "Materials");
+            var materialsPage = _umbracoHelper.ContentAtRoot().DescendantsOrSelf<MaterialPage>()
+                .FirstOrDefault();
 
             if(materialsPage == null)
                 return NotFound("Materials page was not found");
 
-            var materialsBlock = materialsPage.TBlockGridPage?.FirstOrDefault(p => p.Content is TMatirials);
+            var materials = _materialsService.GetMaterials(materialsPage, searchText, subject, grade, level, sort, page, pageSize);
+            
+            return Ok(materials);
+        }
 
-            var apiUrl = (materialsBlock?.Content as TMatirials)?.TApiUrl;
+        [HttpPost]
+        public async Task<IActionResult> RefreshMaterial()
+        {
+            var materialsPage = _umbracoHelper.ContentAtRoot().DescendantsOrSelf<MaterialPage>()
+                .FirstOrDefault();
+
+            if (materialsPage == null || materialsPage.TMaterialFilters == null)
+                return NotFound("Materials page was not found");
+
+            var apiUrl = (materialsPage.TMaterialFilters.FirstOrDefault()?.Content as TMatirials)?.TApiUrl;
 
             if (apiUrl == null)
                 return NotFound("Material api url was not found");
 
-            var materials = await _materialsService.GetMaterials(searchText, subject, grade, level, sort, apiUrl, page, pageSize);
+            await _materialsService.RefreshMaterialsAsync(apiUrl, materialsPage.Id);
 
-            return Ok(materials);
+            return Ok();
         }
     }
 }

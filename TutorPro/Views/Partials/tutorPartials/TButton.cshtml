@@ -1,12 +1,50 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TButton>
 
-<a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" href="@Model.TLink?.Url">
-    @if((ViewData["span"] as bool? ?? false))
-    {
-        <span>@Model.TButtonTitle</span>
-    }
-    else
-    {
-        @Model.TButtonTitle
-    }
-</a>    
+@if (Model.TOpenPopUp)
+{  
+    <link rel="stylesheet" href="~/css/pop-up-window.min.css">
+    var rootPage = Umbraco.ContentAtRoot().FirstOrDefault() as HomePage;
+    var applicationForm = rootPage?.Children.FirstOrDefault(x => x.ContentType.Alias == "ApplicationForm") as ApplicationForm;
+    
+    <a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" onclick="openPopup()">
+        @if ((ViewData["span"] as bool? ?? false))
+        {
+            <span>@Model.TButtonTitle</span>
+        }
+        else
+        {
+            @Model.TButtonTitle
+        }
+    </a>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            @if(applicationForm != null)
+            {
+                <div class="actions__form-wrap" style="margin: 0px;
+                    border-radius: 0px;
+                    padding: 0px 0px 0px;
+                    -webkit-box-shadow: none;
+                    box-shadow: none;">
+                    <p class="actions__form-text">@applicationForm.TTitle</p>
+                    @await Html.PartialAsync("tutorPartials/TRequestForm", applicationForm.TSendForm?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "mainPage", rootPage }, { "mainClass", "actions__form request-form" } })
+                </div>
+            }
+        </div>
+    </div>
+    <script src="~/js/pop-up-window.min.js" defer></script>
+}
+else
+{
+    <a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" href="@Model.TLink?.Url">
+        @if ((ViewData["span"] as bool? ?? false))
+        {
+            <span>@Model.TButtonTitle</span>
+        }
+        else
+        {
+            @Model.TButtonTitle
+        }
+    </a>
+}

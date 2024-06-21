@@ -1,5 +1,5 @@
-﻿<div class="matirials" ng-controller="tMaterialBlock" ng-click="block.edit()">
-    <div class="matirials__filtration-block">
+﻿<div class="matirials" ng-controller="tMaterialBlock">
+    <div class="matirials__filtration-block" ng-click="block.edit()">
         <div class="container">
             <div class="matirials__filtration">
                 <form class="matirials__filtration-form">
@@ -25,17 +25,20 @@
     <div class="matirials__content ">
         <div class="matirials__bg "></div>
         <div class="matirials__container">
-            <div class="matirials__block" data-notFoundMessage="{{content.tNotFoundMessage}}">
+            <div class="matirials__block" data-notFoundMessage="{{content.tNotFoundMessage}}" ng-click="block.edit()">
                 <div class="matirials__column">
-                    <a class="matirials__item">                       
+                    <a class="matirials__item">
                         <h3 class="matirials__item-title">Test name</h3>
                         <div class="matirials__item-tags">
                             <span class="matirials__item-tag">tag</span>
                         </div>
                         <p class="matirials__item-text">test text</p>
-                        
                     </a>
                 </div>
+            </div>
+
+            <div class="button-container">
+                <button class="refresh-button" ng-click="Refresh()" ng-bind="message"></button>
             </div>
 
             <!-- Pagination -->
@@ -48,3 +51,32 @@
         </div>
     </div>
 </div>
+
+<style>
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+
+    .refresh-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 32px; 
+        text-align: center; 
+        text-decoration: none; 
+        display: inline-block;
+        font-size: 16px; 
+        margin: 4px 2px; 
+        cursor: pointer; 
+        border: none;
+        border-radius: 8px; 
+        transition: background-color 0.3s ease;
+    }
+
+    .refresh-button:hover {
+        background-color: #45a049;
+    }
+</style>

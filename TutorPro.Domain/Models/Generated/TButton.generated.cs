@@ -71,5 +71,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tLink")]
 		public virtual global::Umbraco.Cms.Core.Models.Link TLink => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "tLink");
+
+		///<summary>
+		/// Open Pop up
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tOpenPopUp")]
+		public virtual bool TOpenPopUp => this.Value<bool>(_publishedValueFallback, "tOpenPopUp");
 	}
 }

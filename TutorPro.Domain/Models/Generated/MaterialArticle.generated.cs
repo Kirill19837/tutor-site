@@ -50,26 +50,43 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Action
+		/// Guid
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tAction")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TAction => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tAction");
+		[ImplementPropertyType("tGuid")]
+		public virtual string TGuid => this.Value<string>(_publishedValueFallback, "tGuid");
 
 		///<summary>
-		/// Api url
+		/// Image url
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tApiUrl")]
-		public virtual string TApiUrl => this.Value<string>(_publishedValueFallback, "tApiUrl");
+		[ImplementPropertyType("tImageUrl")]
+		public virtual string TImageUrl => this.Value<string>(_publishedValueFallback, "tImageUrl");
 
 		///<summary>
-		/// Material content block height
+		/// Tags
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tMaterialContentBlockHeight")]
-		public virtual int TMaterialContentBlockHeight => this.Value<int>(_publishedValueFallback, "tMaterialContentBlockHeight");
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tTags")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> TTags => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tTags");
+
+		///<summary>
+		/// Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tText")]
+		public virtual string TText => this.Value<string>(_publishedValueFallback, "tText");
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tTitle")]
+		public virtual string TTitle => this.Value<string>(_publishedValueFallback, "tTitle");
 	}
 }
