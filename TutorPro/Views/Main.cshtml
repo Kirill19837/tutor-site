@@ -7,7 +7,7 @@
 	var logoIconPath = model == null ? "/media/okxhqfjy/logo-2.svg" : model.TLogo?.Url();
 	var mainHeader = Model.ContentType.Alias == "homePage";
 	var disableFixedComponents = Model.ContentType.Alias == "page404" || Model.ContentType.Alias == "ApplicationForm";
-	var isBlogComponent = Model.ContentType.Alias == "blogPage" || Model.ContentType.Alias == "blogArticle" || Model.ContentType.Alias == "materialPage";
+	var isBlogComponent = Model.ContentType.Alias == "blogPage" || Model.ContentType.Alias == "blogArticle" || Model.ContentType.Alias == "materialPage" || Model.ContentType.Alias == "materialArticle";
 	var mainHeaderPadding = (mainHeader || disableFixedComponents || isBlogComponent);
 	var languageDropDown = model.TContactUsFooter?.Content.TShowLanguageDropdown;
 	@if(Model is BlockGridPage page)
@@ -17,13 +17,10 @@
 
 	var pageName = Umbraco.AssignedContentItem.Name;
 
-	if (Umbraco.AssignedContentItem.ContentType.Alias == "materialArticle")
+	if (Umbraco.AssignedContentItem.ContentType.Alias == "materialArticle" || Umbraco.AssignedContentItem.ContentType.Alias == "blogArticle")
 	{
 		pageName = Umbraco.AssignedContentItem.Parent?.Name;
-		languageDropDown = false;
 	}	
-	else if (Umbraco.AssignedContentItem.ContentType.Alias == "blogArticle")
-		pageName = Umbraco.AssignedContentItem.Parent?.Name;
 
 	var metaTags = string.Join(", ", model.TMetaTags);
 }

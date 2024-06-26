@@ -125,11 +125,14 @@ namespace TutorPro.Application.Services
 
         public async Task RefreshMaterialsAsync(string apiUrl, int parentId)
         {
-            //Get materials
-            var materialData = await GetMaterialList(apiUrl);
+			//Get materials
+			_logger.LogInformation($"Loading materials for {apiUrl}");
+			var materialData = await GetMaterialList(apiUrl);
 
-            //Delete all articles
-            var pageIndex = 0;
+			_logger.LogInformation($"Materials received");
+
+			//Delete all articles
+			var pageIndex = 0;
             const int pageSize = 100;
             var totalChildren = long.MaxValue;
 
@@ -143,21 +146,33 @@ namespace TutorPro.Application.Services
                 pageIndex++;
             }
 
-            //Add new articles
-            materialData.ForEach(material =>
+            _logger.LogInformation("Materials deleted");
+
+			//Add new articles
+			var cultures = _contentService.GetRootContent().FirstOrDefault()?.AvailableCultures;
+
+			materialData.ForEach(material =>
             {
-                IContent newContent = _contentService.Create($"{material.Title}", parentId, "materialArticle");
+				IContent newContent = _contentService.Create($"{material.Title}", parentId, "materialArticle");
+                newContent.SetCultureEdited(cultures);
 
-                newContent.SetValue("tTitle", material.Title);
-                newContent.SetValue("tText", material.Text);
-                string tagList = string.Join("\n", material.Tags.Select(tag => tag.ToString()));
-                newContent.SetValue("tTags", tagList);
-                newContent.SetValue("tImageUrl", material.ImageUrl);
-                newContent.SetValue("tGuid", material.Guid);
+                foreach(var culture in cultures)
+                {
+					newContent.SetCultureName($"{material.Title}", culture);
 
-                _contentService.SaveAndPublish(newContent);
+					newContent.SetValue("tTitle", material.Title);
+					newContent.SetValue("tText", material.Text);
+					string tagList = string.Join("\n", material.Tags.Select(tag => tag.ToString()));
+					newContent.SetValue("tTags", tagList);
+					newContent.SetValue("tImageUrl", material.ImageUrl);
+					newContent.SetValue("tGuid", material.Guid);
+				}              
+
+				_contentService.SaveAndPublish(newContent);				
             });
-        }       
+
+			_logger.LogInformation("Materials added");
+		}       
 
         private async Task<List<MaterialCardView>> GetMaterialList(string apiUrl)
         {
