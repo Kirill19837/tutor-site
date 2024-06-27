@@ -53,7 +53,7 @@
 		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">
 			@if (!disableFixedComponents)
 			{
-			@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) { { "isDark", mainHeader }, { "pageName", pageName }, { "languages", languageDropDown } })
+				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) { { "isDark", mainHeader }, { "pageName", pageName }, { "languages", languageDropDown } })
 			}
 			
 			<main class="main">
@@ -62,8 +62,8 @@
 
 			@if (!disableFixedComponents)
 			{
-			@await Html.PartialAsync("tutorPartials/TFooter", model, new ViewDataDictionary(ViewData) { { "pageName", pageName }, { "languages", languageDropDown } })
-		}
+				@await Html.PartialAsync("tutorPartials/TFooter", model, new ViewDataDictionary(ViewData) { { "pageName", pageName }, { "languages", languageDropDown } })
+			}
 		</div>
 		@await Html.PartialAsync("tutorPartials/TCookies", model)		
 		<script src="~/js/libs.min.js" defer></script>
