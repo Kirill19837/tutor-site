@@ -37,9 +37,19 @@
 
 		<link rel="icon" href="@logoIconPath" />
 		<link rel="stylesheet" href="~/css/libs.min.css">
-		<link rel="stylesheet" href="~/css/style.min.css">
-	</head>
+		<link rel="stylesheet" href="~/css/style.min.css">		
+	</head>	
 	<body>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-4JLD9KZDLH"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+
+			gtag('config', 'G-4JLD9KZDLH');
+		</script>
+
 		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">
 			@if (!disableFixedComponents)
 			{
