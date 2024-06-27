@@ -5,16 +5,37 @@
     Layout = "Main.cshtml";
     var language = Umbraco.CultureDictionary.Culture.Name.Split("-")[0].ToLower();
     var parent = Model.Parent as MaterialPage;
+    var metaTags = string.Join(", ", Model.TTags);
 }
-<h1 class="main-top__title"><span>@Model.TTitle</span></h1>
+<section class="inner-top matirials-top radial-bg">
+    <div class="material_article_breadcrumbs">
+        <a class="material_article_title" href="@parent.Url()">
+            @parent.Name
+        </a>
+    </div>
+    <h1 class="material_article__title"><span>@Model.TTitle</span></h1>
+</section>
 <link rel="stylesheet" href="@(parent.TArticleApiUrl).css">
 <script type="module" src="@(parent.TArticleApiUrl).js" async></script>
-<div style="text-align: center;">
-    <div style="display: inline-block; width: 65%; text-align: left;">
-        <ce-tutorpro-material guid="@Model.TGuid" lang="@language" height="@parent.TArticleContentWidth"></ce-tutorpro-material>
+
+<link rel="stylesheet" href="~/css/material-article.min.css" />
+<div class="material_article" description-data="@Model.TText" tags-data="@metaTags" title-data="@Model.TTitle">
+    <div class="matirials__content radial-bg">
+        <div style="text-align: center; padding-bottom:12%">
+            <div style="display: inline-block; width: 65%; text-align: left;">
+                <ce-tutorpro-material guid="@Model.TGuid" lang="@language" height="@parent.TArticleContentWidth"></ce-tutorpro-material>
+            </div>            
+        </div>
     </div>
+    <div class="material_article_decor">
+        @if (parent.TDecors != null)
+        {
+            @foreach (var decor in parent.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+    </div>    
 </div>
-<div style="margin-top:-20px">
-    @await Html.GetBlockGridHtmlAsync(parent.TAction);
-</div>
+<script src="~/js/material-article.min.js" />
 

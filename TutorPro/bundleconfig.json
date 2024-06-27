@@ -40,5 +40,35 @@
     "inputFiles": [
       "wwwroot/js/main.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pop-up-window.min.js",
+    "inputFiles": [
+      "wwwroot/js/pop-up-window.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/pop-up-window.min.css",
+    "inputFiles": [
+      "wwwroot/css/pop-up-window.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/screen-grid.min.css",
+    "inputFiles": [
+      "wwwroot/css/screen-grid.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/material-article.min.css",
+    "inputFiles": [
+      "wwwroot/css/material-article.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/material-article.min.js",
+    "inputFiles": [
+      "wwwroot/js/material-article.js"
+    ]
   }
 ]

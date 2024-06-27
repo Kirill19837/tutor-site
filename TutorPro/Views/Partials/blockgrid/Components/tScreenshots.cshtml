@@ -4,7 +4,7 @@
     var content = (TScreenshots)Model.Content;
     var images = content.TImages;
 }
-
+<link rel="stylesheet" href="~/css//screen-grid.min.css" />
 <!-- Section with screenshots -->
 <div class="screenshots">
     <div class="decor-bg radial-bg green"></div>
@@ -14,49 +14,16 @@
             @for (int i = 0; i < 2; i++)
             {
                 <div class="screenshots__block">
-                    <div class="screenshots__left">
-                        <div class="screenshots__column1">
-                            @foreach (var image in images.Take(2))
-                            {
-                                <img loading="lazy" src="@image.Content.Url()" alt="Image">
-                            }
-                        </div>
-                        <div class="screenshots__column2">
-                            @foreach (var image in images.Skip(2).Take(2))
-                            {
-                                <img loading="lazy" src="@image.Content.Url()" alt="Image">
-                            }
-                        </div>
-                        <div class="screenshots__column3">
-                            <div class="screenshots__column3-row">
-                                @foreach (var image in images.Skip(4).Take(2))
-                                {
-                                    <img loading="lazy" src="@image.Content.Url()" alt="Image">
-                                }
-                            </div>
-                            @if (images.Count() > 6)
-                            {
-                                <img loading="lazy" src="@images.ElementAt(6).Content.Url()" alt="Image">
-                            }
-                        </div>
-                        <div class="screenshots__bottom">
-                            @if (images.Count() > 7)
-                            {
-                                <img loading="lazy" src="@images.ElementAt(7).Content.Url()" alt="Image">
-                            }
-                        </div>
-                    </div>
-                    <div class="screenshots__right">
-                        @if (images.Count() > 8)
+                    <div class="screenshots__grid">
+                        @for (int ii = 0; ii < images.Count(); ii++)
                         {
-                            <div class="big-image">
-                                <img loading="lazy" src="@images.ElementAt(8).Content.Url()" alt="Image">
-                            </div>
-                        }
-                        @if (images.Count() > 9)
-                        {
-                            <img loading="lazy" src="@images.ElementAt(9).Content.Url()" alt="Image">
-                        }
+                            if (images.ElementAtOrDefault(ii) != null)
+                            {
+                                <div class="screenshots__item@(ii+1)">
+                                    <img loading="lazy" src="@images.ElementAt(ii).Content.Url()" alt="Screenshot">
+                                </div>
+                            }
+                        }                                                 
                     </div>
                 </div>
             }      
