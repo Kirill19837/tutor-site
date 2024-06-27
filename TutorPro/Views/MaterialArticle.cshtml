@@ -24,7 +24,7 @@
         <div style="text-align: center; padding-bottom:12%">
             <div style="display: inline-block; width: 65%; text-align: left;">
                 <ce-tutorpro-material guid="@Model.TGuid" lang="@language" height="@parent.TArticleContentWidth"></ce-tutorpro-material>
-            </div>            
+            </div>
         </div>
     </div>
     <div class="material_article_decor">
@@ -35,7 +35,8 @@
                 @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
             }
         }
-    </div>    
+    </div>
 </div>
-<script src="~/js/material-article.min.js" />
+<script async src="~/js/material-article.min.js"></script>
+
 
