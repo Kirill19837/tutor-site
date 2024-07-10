@@ -1,27 +1,33 @@
 
 $(document).ready(function () {
-    sendRequest();
-        $('.filter-form__select').on('change', function () {
-            sendRequest();
-        });
+    // load chosen page
+    var currentPage = getParameterByName('page');
+    if (currentPage) {
+        handlePageChange(currentPage);
+    } else {
+        handlePageChange(1);
+    }
+    $('.filter-form__select').on('change', function () {
+        sendRequest();
+    });
 
-        let searchTimeout;
-        let articleUrlElement = document.querySelector('[data-searchDelay]');
-        let delay = articleUrlElement.getAttribute('data-searchDelay');
+    let searchTimeout;
+    let articleUrlElement = document.querySelector('[data-searchDelay]');
+    let delay = articleUrlElement.getAttribute('data-searchDelay');
         
-        document.querySelector('.filter-form__input').addEventListener('input', function () {
-            clearTimeout(searchTimeout);
-            let searchValue = this.value;
-            searchTimeout = setTimeout(function () {
-                sendRequest("search", searchValue); // Passing the new value of searchValue to the sendRequest function
-            }, delay); // delay time
-        });
+    document.querySelector('.filter-form__input').addEventListener('input', function () {
+        clearTimeout(searchTimeout);
+        let searchValue = this.value;
+        searchTimeout = setTimeout(function () {
+            sendRequest("search", searchValue); // Passing the new value of searchValue to the sendRequest function
+        }, delay); // delay time
+    });
 
-        $('.pagination__list').on('click', '.pagination__list-link', function (e) {
-            e.preventDefault();
-            var page = $(this).text(); // Get the page number
-            sendRequest(null, null, page); // Send an AJAX request with the page number
-        });
+    $('.pagination__list').on('click', '.pagination__list-link', function (e) {
+        e.preventDefault();
+        var page = $(this).text(); // get page number
+        handlePageChange(page);
+    });
 });
 
 
@@ -132,4 +138,14 @@ function updatePagination(data) {
         var html = `<li class="pagination__list-item"><a class="pagination__list-link ${activeClass}" href="#">${i}</a></li>`;
         $('.pagination__list').append(html);
     }
+}
+
+function getParameterByName(name) {
+    var url = new URL(window.location.href);
+    return url.searchParams.get(name);
+}
+
+function handlePageChange(page) {
+    sendRequest(null, null, page);
+    history.pushState(null, null, '?page=' + page);
 }
