@@ -13,7 +13,13 @@ namespace TutorPro.Application.Models
         [JsonProperty("image")]
         public string? ImageUrl { get; set; }
         [JsonProperty("guid")]        
-        public string? Guid { get; set; }       
+        public string? Guid { get; set; }
+        [JsonProperty("views")]
+        public int ViewsNumber { get; set; }
+		[JsonProperty("createdAt")]
+		public string? CreatedAt { get; set; }
+		[JsonProperty("updatedAt")]
+		public string? UpdatedAt {  get; set; } 
     }
 
     public class Result

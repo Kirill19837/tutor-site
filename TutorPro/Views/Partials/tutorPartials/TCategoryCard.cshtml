@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlogCategoryPage>
+
+
+<a class="category__item" href="@Model.Url()">
+    <div class="category__item_image">
+        @if (Model.TImage != null)
+        {
+            <img src="@Model.TImage.Url()" />
+        }
+    </div>
+
+    <p class="category__item_title">@Model.TTitle</p>       
+</a>

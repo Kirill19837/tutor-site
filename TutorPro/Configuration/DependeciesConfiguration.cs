@@ -15,6 +15,7 @@ namespace TutorPro.Configuration
             services.AddScoped<IBlogService, BlogService>();
             services.AddScoped<IWaitlistUserService, WaitlistUserService>();
             services.AddScoped<IExportService, ExportService>();         
+            services.AddScoped<ISubscribeService, SubscribeService>();
 
             services.AddTransient<ExceptionMiddleware>();
 

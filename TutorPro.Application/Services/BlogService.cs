@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Linq;
 using TutorPro.Application.Interfaces;
 using TutorPro.Application.Models;
 using TutorPro.Application.Models.ResponseModel;
+using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace TutorPro.Application.Services
@@ -14,10 +16,32 @@ namespace TutorPro.Application.Services
             _logger = logger;
         }
 
-        public BlogResponse GetBlogs(BlogPage blogPage, string searchText, int page = 1,int pageSize = 10)
+        public BlogResponse GetBlogs(BlogPage blogPage, string searchText,string? category, int page = 1,int pageSize = 10)
         {
             List<BlogView> viewBlogs = new List<BlogView>();
-            foreach (var blog in blogPage.Children)
+            IEnumerable<IPublishedContent> Children = blogPage.Children;
+            
+            if(category != null)
+            {
+                var categoryPage = blogPage.Children.FirstOrDefault(c => c is BlogCategoryPage categoryPage && categoryPage.TCategory == category);
+
+                if(categoryPage != null)
+                    Children = categoryPage.Children;
+            }
+            else
+            {
+                var categoryPages = blogPage.Children.OfType<BlogCategoryPage>();
+                var allChildren = new List<BlogArticle>();
+
+                foreach (var categoryPage in categoryPages)
+                {
+                    allChildren.AddRange(categoryPage.Children.OfType<BlogArticle>());
+                }
+
+                Children = Children.Concat(allChildren);
+            }
+
+            foreach (var blog in Children)
             {
                 if (blog is not BlogArticle blogArticle || !blog.IsPublished())
                 {
@@ -29,12 +53,14 @@ namespace TutorPro.Application.Services
                     viewBlogs.Add(new BlogView
                     {
                         Title = blogArticle.TTitle,
-                        Url = blogArticle.UrlSegment,
+                        Url = blogArticle.Url(),
                         ImageUrl = blogArticle.TImage?.Url(),
-                        DateTime = blogArticle.UpdateDate,
+                        DateTime = blogArticle.TPublicDate,
                     });
                 }                                 
             }
+
+            viewBlogs = viewBlogs.OrderByDescending(blog => blog.DateTime).ToList();
 
             return GetPaginationBlogsList(viewBlogs, page, pageSize);
         }

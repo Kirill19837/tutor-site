@@ -35,41 +35,7 @@ namespace TutorPro.Application.Services
                 tags.Add("#" + grade.ToLower());
             if (!string.IsNullOrEmpty(level))
             {
-                bool insideParentheses = false;
-                StringBuilder result = new StringBuilder();
-
-                for (int i = 0; i < level.Length; i++)
-                {
-                    char c = level[i];
-
-                    if (c == '(')
-                    {
-                        insideParentheses = true;
-                    }
-                    else if (c == ')')
-                    {
-                        insideParentheses = false;
-                    }
-
-                    if (!insideParentheses)
-                    {
-                        if (c == ' ')
-                        {
-                            // Replace space with empty string
-                            result.Append("");
-                        }
-                        else
-                        {
-                            result.Append(c);
-                        }
-                    }
-                    else
-                    {
-                        result.Append(c);
-                    }
-                }
-
-                tags.Add(result.ToString());
+                tags.Add(level);
             }
 
             List<MaterialCard> materilaView = new List<MaterialCard>();
@@ -83,7 +49,7 @@ namespace TutorPro.Application.Services
                 if(materialArticle != null && (searchText == null || materialArticle.TTitle.ToLower().Contains(searchText.ToLower())|| materialArticle.TText.ToLower().Contains(searchText.ToLower())))
                 {
                     if(!tags.Any() || IsMatchFilter(materialArticle, tags))
-                    {
+                    {                       
                         materilaView.Add(new MaterialCard
                         {
                             Title = materialArticle.TTitle,
@@ -91,10 +57,15 @@ namespace TutorPro.Application.Services
                             Tags = materialArticle?.TTags?.ToList(),
                             ImageUrl = materialArticle?.TImageUrl,
                             Url = materialArticle?.UrlSegment,
+                            ViewsNumber = materialArticle.TViewsNumber,
+                            CreatedDate = DateTime.Parse(materialArticle.TCreatedDate),
+                            UpdatedDate = DateTime.Parse(materialArticle.TUpdatedDate),
                         });
                     }                 
                 }
             }
+
+            SortBy(ref materilaView, sort);
 
             return GetPaginationMaterialsList(materilaView, page, pageSize);
         }
@@ -116,6 +87,21 @@ namespace TutorPro.Application.Services
                 PageSize = pageSize,
                 Materials = paginatedMaterials
             };
+        }
+
+        private void SortBy(ref List<MaterialCard> materials, string sort)
+        {
+            switch (sort)
+            {
+                case "Number of use":
+                    materials = materials.OrderByDescending(m => m.ViewsNumber).ToList();
+                    break;
+                case "Date of release/update":
+					materials = materials.OrderByDescending(m => m.UpdatedDate).ToList();
+					break;
+                default:
+                    break;
+			}
         }
 
         private bool IsMatchFilter(MaterialArticle materialCard, List<string> tags)
@@ -152,12 +138,12 @@ namespace TutorPro.Application.Services
 			var cultures = _contentService.GetRootContent().FirstOrDefault()?.AvailableCultures;
 
 			materialData.ForEach(material =>
-            {
+			{
 				IContent newContent = _contentService.Create($"{material.Title}", parentId, "materialArticle");
-                newContent.SetCultureEdited(cultures);
+				newContent.SetCultureEdited(cultures);
 
-                foreach(var culture in cultures)
-                {
+				foreach (var culture in cultures)
+				{
 					newContent.SetCultureName($"{material.Title}", culture);
 
 					newContent.SetValue("tTitle", material.Title);
@@ -166,10 +152,13 @@ namespace TutorPro.Application.Services
 					newContent.SetValue("tTags", tagList);
 					newContent.SetValue("tImageUrl", material.ImageUrl);
 					newContent.SetValue("tGuid", material.Guid);
-				}              
+					newContent.SetValue("tViewsNumber", material.ViewsNumber);
+					newContent.SetValue("tCreatedDate", material.CreatedAt);
+					newContent.SetValue("tUpdatedDate", material.UpdatedAt);
+				}
 
-				_contentService.SaveAndPublish(newContent);				
-            });
+				_contentService.SaveAndPublish(newContent);
+			});			
 
 			_logger.LogInformation("Materials added");
 		}       
