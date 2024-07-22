@@ -57,6 +57,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool TBreadcrumbs => this.Value<bool>(_publishedValueFallback, "tBreadcrumbs");
 
 		///<summary>
+		/// Category
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tCategory")]
+		public virtual string TCategory => this.Value<string>(_publishedValueFallback, "tCategory");
+
+		///<summary>
 		/// Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -79,6 +87,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tImage")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "tImage");
+
+		///<summary>
+		/// New: Enable if you want to send the blog letter to the subscriber
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tNew")]
+		public virtual bool TNew => this.Value<bool>(_publishedValueFallback, "tNew");
 
 		///<summary>
 		/// Public date

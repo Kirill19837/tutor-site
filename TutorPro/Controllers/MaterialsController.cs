@@ -18,7 +18,7 @@ namespace TutorPro.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMaterials(string searchText, string subject, string grade, string level, string sort, int page = 1, int pageSize = 12)
+        public async Task<IActionResult> GetMaterials(string searchText, string subject, string grade, string level, int sort, int page = 1, int pageSize = 12)
         {
             var materialsPage = _umbracoHelper.ContentAtRoot().DescendantsOrSelf<MaterialPage>()
                 .FirstOrDefault();

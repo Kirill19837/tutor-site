@@ -14,6 +14,7 @@ namespace TutorPro.Application
         {
             public const string BaseFolder = "EmailTemplates";
             public const string RequestTemplateEmail = BaseFolder + "/EmailTemplate.html";
+            public const string BlogArticleTemplateEmail = BaseFolder + "/BlogTemplates";
         }
 
         public static class EmailProperty
@@ -29,5 +30,9 @@ namespace TutorPro.Application
             public const string MainSection = "Umbraco:CMS:Global:Smtp";
         }
 
+        public static class ApiPaths
+        {
+            public const string UnsubscribeApiPath = "/Umbraco/Api/Newsletter/Unsubscribe";
+        }
     }
 }

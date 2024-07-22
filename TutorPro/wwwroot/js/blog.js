@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     let searchTimeout;
     let articleUrlElement = document.querySelector('[data-searchDelay]');
-    let delay = articleUrlElement.getAttribute('data-searchDelay');
+    let delay = articleUrlElement != null ? articleUrlElement.getAttribute('data-searchDelay') : 0;
     $('.filter-form__input').on('input', function () {
         clearTimeout(searchTimeout)
         var searchText = $(this).val();
@@ -33,6 +33,7 @@ function sendRequest(searchText = null, page = 1) {
     var block = document.querySelector('.blog__block');
     var pageSize = block.getAttribute('data-pageSize');
     var culture = block.getAttribute('data-culture');
+    var category = block.getAttribute('data-category');
   
     $.ajax({
         url: '/Umbraco/Api/Blog/GetBlogs',
@@ -41,7 +42,8 @@ function sendRequest(searchText = null, page = 1) {
             searchText: searchValue,
             culture: culture,
             page: page,
-            pageSize: pageSize,           
+            pageSize: pageSize,   
+            category: category,
         },
         success: function (response) {
             updateContent(response);
@@ -56,6 +58,7 @@ function sendRequest(searchText = null, page = 1) {
 function updateContent(data) {
     var block = document.querySelector('.blog__block');
     var culture = block.getAttribute('data-culture');
+    var border = block.getAttribute('data-border');
 
     $('.blog__block').empty();  
 
@@ -65,15 +68,22 @@ function updateContent(data) {
             const date = new Date(blog.dateTime);
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = date.toLocaleDateString(`${culture}`, options);
+            var additionalClasses = border === 'True' ? ' blog__item--with-border' : '';
+            var dateClass = border === 'True' ? 'blog__item-date' : 'blog__item-date--relative';
+            var additionalTitleClasses = border === 'True' ? ' blog__item-title--margin' : '';
             var blogItem = `
-                <a class="blog__item" href="${blog.url}">
+                <a class="blog__item${additionalClasses}" href="${blog.url}">
                     ${blog.imageUrl ? `
                         <div class="blog__item-image">
                             <img loading="lazy" src="${blog.imageUrl}" alt="Article image">
                         </div>
-                    ` : ''}
-                    ${blog.title ? `<h3 class="blog__item-title medium-title">${blog.title}</h3>` : ''}
-                    <span class="blog__item-date">${formattedDate}</span>
+                    ` : `
+                        <div class="blog__item-image">
+                            <img>
+                        </div>
+                    `}
+                    ${blog.title ? `<p class="blog__item-title${additionalTitleClasses}">${blog.title}</p>` : ''}
+                    <span class="${dateClass}">${formattedDate}</span>
                 </a>
             `;
             $('.blog__block').append(blogItem);

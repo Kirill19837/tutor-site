@@ -20,7 +20,7 @@ namespace TutorPro.Controllers
             _variationContextAccessor = variationContextAccessor;
         }
 
-        public IActionResult GetBlogs(string searchText, string culture, int page = 1, int pageSize = 10)
+        public IActionResult GetBlogs(string searchText, string culture, string category, int page = 1, int pageSize = 10)
         {
             _variationContextAccessor.VariationContext = new VariationContext(culture);
 
@@ -34,7 +34,7 @@ namespace TutorPro.Controllers
             if (blogPage == null)
                 return NotFound("Blog page was not found");
 
-            return Ok(_blogService.GetBlogs(blogPage, searchText, page, pageSize));
+            return Ok(_blogService.GetBlogs(blogPage, searchText,category, page, pageSize));
         }
     }
 }

@@ -70,5 +70,11 @@
     "inputFiles": [
       "wwwroot/js/material-article.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/newsletter.min.js",
+    "inputFiles": [
+      "wwwroot/js/newsletter.js"
+    ]
   }
 ]

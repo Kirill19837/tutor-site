@@ -35,6 +35,12 @@
                 <!-- Breadcrumbs -->
                 <div class="article__breadcrumbs breadcrumbs">
                     <ul class="breadcrumbs__list">
+                        @if(Model.Parent is BlogCategoryPage categoryPage)
+                        {
+                            <li class="breadcrumbs__list-item">
+                                <a class="breadcrumbs__list-link" href="@categoryPage.Parent.Url()">@categoryPage.Parent.Name.Split(" ")[0]</a>
+                            </li>
+                        }
                         <li class="breadcrumbs__list-item">
                             <a class="breadcrumbs__list-link" href="@Model.Parent.Url()">@Model.Parent.Name.Split(" ")[0]</a>
                         </li>

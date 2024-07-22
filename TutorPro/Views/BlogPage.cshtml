@@ -1,4 +1,5 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using System.Globalization
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
@@ -8,6 +9,7 @@
 
 <section class="inner-top blog-top radial-bg">
     <div class="container">
+        <span class="decor-element ring1 parallax-element"></span>
         @if (Model.TDecors != null)
         {
             @foreach (var decor in Model.TDecors)
@@ -15,24 +17,80 @@
                 @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
             }
         }
-        <div class="inner-top__content">
-            <h1 class="inner-top__title big-title">@Model.TTitle</h1>
+        <div class="blog__top-preview">
+            @{
+                var allCategories = Model.Children.OfType<BlogCategoryPage>();
+
+                var allPosts = allCategories
+                .SelectMany(category => category.Children.OfType<BlogArticle>())
+                .Concat(Model.Children.OfType<BlogArticle>());
+
+                var firstBlog = allPosts
+                .OrderByDescending(post => post.TPublicDate)
+                .FirstOrDefault();
+
+                var cultureInfo = new CultureInfo(culture);
+                var formattedDate = firstBlog?.TPublicDate.ToString("D", cultureInfo);
+                formattedDate = formattedDate.Split(' ', 2)[1];
+            }
+            @if (firstBlog != null)
+            {
+                <div class="blog__top-latest_blog">
+                    <a class="blog__item-main" href="@firstBlog.Url()">
+                        @if (firstBlog.TImage != null)
+                        {
+                            <div class="blog__item-image">
+                                <img loading="lazy" src="@firstBlog.TImage?.Url()" alt="Article image">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="blog__item-image">
+                                <img>
+                            </div>
+                        }
+                        <p class="blog__item-title" style="font-size:150%">@firstBlog.TTitle</p>
+                        <span class="blog__item_main-date">@formattedDate</span>
+                    </a>
+                </div>
+            }
+            @if (Model.TNewsletter != null)
+            {
+                @await Html.PartialAsync("tutorPartials/TNewsletter", Model.TNewsletter.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) {{"culture", culture}})
+            }
+
+            <div class="blog__top-preview_title">
+                <p>@Model.TTitleMessage</p>
+            </div>
+                
         </div>
+        
+        @{
+            var categories = Model.Children.Where(c => c is BlogCategoryPage).ToList();
+        }
+        @if(categories.Any())
+        {
+            <div class="blog__top">
+                <p class="categories__block_title">@Umbraco.GetDictionaryValueOrDefault("Categories", "Categories")</p>
+                <div class="categories__block">                    
+                    @foreach (var category in categories)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TCategoryCard", category)
+                    }
+                </div>
+            </div>
+           
+        }     
     </div>
 </section>
 
 <!-- Section "Blog" -->
 <div class="blog">
     <div class="container">
-        <form class="blog__form filter-form">
-            <div class="filter-form__item search-item" data-searchDelay="@Model.TSearchDelay">
-                <input id="searchInput" class="filter-form__input" type="text" name="filter-search" placeholder="@Umbraco.GetDictionaryValue("Search")">
-                <button id="searchButton" class="filter-form__search-button" type="button" aria-label="search-button"></button>
-            </div>
-        </form>
-
         <!-- Blog items block -->
-        <div class="blog__block" data-culture="@culture" data-pageSize="@Model.TPageSize" data-notFoundMessage="@Model.TNotFoundMessage">
+        <span class="decor-element ring1 parallax-element"></span>
+        <p class="blog__title">@Umbraco.GetDictionaryValueOrDefault("Latest posts", "Latest posts")</p>
+        <div class="blog__block" data-culture="@culture" data-pageSize="@Model.TPageSize" data-notFoundMessage="@Model.TNotFoundMessage" data-border="@Model.TChildBorder">
             
         </div>
 

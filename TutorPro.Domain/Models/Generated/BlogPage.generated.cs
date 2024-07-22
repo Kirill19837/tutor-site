@@ -58,12 +58,27 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TActions => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tActions");
 
 		///<summary>
+		/// Child border
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tChildBorder")]
+		public virtual bool TChildBorder => this.Value<bool>(_publishedValueFallback, "tChildBorder");
+
+		///<summary>
 		/// Decors
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tDecors")]
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TDecors => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tDecors");
+
+		///<summary>
+		/// Newsletter
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tNewsletter")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TNewsletter => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tNewsletter");
 
 		///<summary>
 		/// Not found message
@@ -94,5 +109,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tTitle")]
 		public virtual string TTitle => this.Value<string>(_publishedValueFallback, "tTitle");
+
+		///<summary>
+		/// Title message
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tTitleMessage")]
+		public virtual string TTitleMessage => this.Value<string>(_publishedValueFallback, "tTitleMessage");
 	}
 }

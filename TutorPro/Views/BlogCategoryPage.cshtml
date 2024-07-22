@@ -1,0 +1,67 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogCategoryPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Main.cshtml";
+    var culture = Model.GetCultureFromDomains();
+    var parent = Model.Parent as BlogPage;
+}
+
+<section class="inner-top blog-top radial-bg">
+    <div class="container">
+        @if (Model.TDecors != null)
+        {
+            @foreach (var decor in Model.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+        <div class="inner-top__content">
+            <h1 class="inner-top__title big-title">@Model.TTitle</h1>
+        </div>
+    </div>
+</section>
+
+<!-- Section "Blog" -->
+<div class="blog">
+    <div class="container">
+        @if (Model.TBreadcrumbs)
+        {
+            <!-- Breadcrumbs -->
+            <div class="article__breadcrumbs breadcrumbs">
+                <ul class="breadcrumbs__list">
+                    <li class="breadcrumbs__list-item">
+                        <a class="breadcrumbs__list-link" href="@Model.Parent.Url()">@Model.Parent.Name.Split(" ")[0]</a>
+                    </li>
+                    <li class="breadcrumbs__list-item">
+                        <a class="breadcrumbs__list-link" href="#">@Model.TTitle</a>
+                    </li>
+                </ul>
+            </div>
+        }
+        <form class="blog__form filter-form">
+            <div class="filter-form__item search-item" data-searchDelay="@parent?.TSearchDelay">
+                <input id="searchInput" class="filter-form__input" type="text" name="filter-search" placeholder="@Umbraco.GetDictionaryValue("Search")">
+                <button id="searchButton" class="filter-form__search-button" type="button" aria-label="search-button"></button>
+            </div>
+        </form>
+
+        <!-- Blog items block -->
+        <div class="blog__block" data-culture="@culture" data-pageSize="@Model.TPageSize" data-notFoundMessage="@parent?.TNotFoundMessage" data-category="@Model.TCategory" data-border="@Model.TChildBorder">
+           
+        </div>
+
+        <!-- Pagenation of pages -->
+        <div class="blog__pagination pagination">
+            <ul class="pagination__list">
+            </ul>
+        </div>
+    </div>
+</div>
+@if (parent?.TActions != null)
+{
+    @await Html.GetBlockGridItemsHtmlAsync(parent.TActions)
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+<script src="~/js/blog.min.js" defer></script>
