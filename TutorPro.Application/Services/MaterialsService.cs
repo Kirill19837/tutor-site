@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Profiling.Internal;
-using System.Text;
 using System.Web;
 using TutorPro.Application.Interfaces;
 using TutorPro.Application.Models;
@@ -25,7 +24,7 @@ namespace TutorPro.Application.Services
             _clientFactory = clientFactory;
             _contentService = contentService;
         }
-        public  FilterResponse GetMaterials(MaterialPage materilaPage, string searchText, string subject, string grade, string level, string sort, int page = 1, int pageSize = 12)
+        public  FilterResponse GetMaterials(MaterialPage materilaPage, string searchText, string subject, string grade, string level, int sort, int page = 1, int pageSize = 12)
         {
             var tags = new List<string>();
 
@@ -49,8 +48,14 @@ namespace TutorPro.Application.Services
                 if(materialArticle != null && (searchText == null || materialArticle.TTitle.ToLower().Contains(searchText.ToLower())|| materialArticle.TText.ToLower().Contains(searchText.ToLower())))
                 {
                     if(!tags.Any() || IsMatchFilter(materialArticle, tags))
-                    {                       
-                        materilaView.Add(new MaterialCard
+                    {
+						DateTime createdDate;
+						DateTime updatedDate;
+
+						bool isCreatedDateParsed = DateTime.TryParse(materialArticle.TCreatedDate, out createdDate);
+						bool isUpdatedDateParsed = DateTime.TryParse(materialArticle.TUpdatedDate, out updatedDate);
+
+						materilaView.Add(new MaterialCard
                         {
                             Title = materialArticle.TTitle,
                             Text = materialArticle.TText,
@@ -58,9 +63,9 @@ namespace TutorPro.Application.Services
                             ImageUrl = materialArticle?.TImageUrl,
                             Url = materialArticle?.UrlSegment,
                             ViewsNumber = materialArticle.TViewsNumber,
-                            CreatedDate = DateTime.Parse(materialArticle.TCreatedDate),
-                            UpdatedDate = DateTime.Parse(materialArticle.TUpdatedDate),
-                        });
+                            CreatedDate = isCreatedDateParsed ? createdDate : DateTime.UtcNow,
+							UpdatedDate = isUpdatedDateParsed ? updatedDate : DateTime.UtcNow,
+						});
                     }                 
                 }
             }
@@ -89,14 +94,14 @@ namespace TutorPro.Application.Services
             };
         }
 
-        private void SortBy(ref List<MaterialCard> materials, string sort)
+        private void SortBy(ref List<MaterialCard> materials, int sort)
         {
             switch (sort)
             {
-                case "Number of use":
+                case 1:
                     materials = materials.OrderByDescending(m => m.ViewsNumber).ToList();
                     break;
-                case "Date of release/update":
+                case 2:
 					materials = materials.OrderByDescending(m => m.UpdatedDate).ToList();
 					break;
                 default:
@@ -139,7 +144,7 @@ namespace TutorPro.Application.Services
 
 			materialData.ForEach(material =>
 			{
-				IContent newContent = _contentService.Create($"{material.Title}", parentId, "materialArticle");
+				IContent newContent = _contentService.Create($"{material.Title}", parentId, MaterialArticle.ModelTypeAlias); 
 				newContent.SetCultureEdited(cultures);
 
 				foreach (var culture in cultures)

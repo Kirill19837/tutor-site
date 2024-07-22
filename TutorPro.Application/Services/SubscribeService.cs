@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.Text.Json.Nodes;
 using TutorPro.Application.Interfaces;
 using TutorPro.Application.Models;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common;
 using Umbraco.Cms.Web.Common.PublishedModels;
+using TutorPro.Application.Helpers;
 
 namespace TutorPro.Application.Services
 {
@@ -16,19 +14,22 @@ namespace TutorPro.Application.Services
     {
         private readonly IContentService _contentService;
         private readonly UmbracoHelper _umbracoHelper;
-        private readonly ILogger<SubscribeService> _logger;
+        private readonly UmbracoMediaHelper _umbracoMediaHelper;
+		private readonly ILogger<SubscribeService> _logger;
         private readonly IEmailSenderService _emailSenderService;
-        private readonly ILocalizationService _localizationService;
+        private readonly ITranslationsService _translationsService;
+
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public SubscribeService(IContentService contentService, UmbracoHelper umbracoHelper, ILogger<SubscribeService> logger, IEmailSenderService emailSenderService, ILocalizationService localizationService, IHttpContextAccessor httpContextAccessor)
+        public SubscribeService(IContentService contentService, UmbracoHelper umbracoHelper, ILogger<SubscribeService> logger, IEmailSenderService emailSenderService, ITranslationsService translationsService, IHttpContextAccessor httpContextAccessor, UmbracoMediaHelper umbracoMediaHelper)
         {
             _contentService = contentService;
             _umbracoHelper = umbracoHelper;
             _logger = logger;
             _emailSenderService = emailSenderService;
-            _localizationService = localizationService;
+            _translationsService = translationsService;
             _httpContextAccessor = httpContextAccessor;
+            _umbracoMediaHelper = umbracoMediaHelper;
         }
       
         public async Task Subscribe(string email, string culture)
@@ -96,7 +97,7 @@ namespace TutorPro.Application.Services
             {
                 var request = _httpContextAccessor.HttpContext?.Request;
                 var domainName = $"{request.Scheme}://{request.Host}";
-                var message = GetDictionaryValue("New blog", "New blog", sendCulture);
+                var message = _translationsService.GetDictionaryValue("New blog", "New blog", sendCulture);
                 var blogView = CreateBlogView(content, domainName, sendCulture);
                
                 foreach(var email in emailsToSend)
@@ -109,28 +110,7 @@ namespace TutorPro.Application.Services
                 _logger.LogWarning($"No emails found for culture: {sendCulture}");
             }
         }
-
-        private string FormatCulture(string culture)
-        {
-            if (culture.Length > 2)
-            {
-                return culture.Substring(0, 2).ToLower() + "-" + culture.Substring(3).ToUpper();
-            }
-            return culture;
-        }
-
-        private string GetDictionaryValue(string key, string defaultValue, string culture)
-        {
-            var dictionaryItem = _localizationService.GetDictionaryItemByKey(key);
-            if (dictionaryItem != null)
-            {
-                var translation = dictionaryItem.Translations.FirstOrDefault(t => t.Language.IsoCode == FormatCulture(culture));
-                return translation != null ? translation.Value : defaultValue;
-            }
-
-            return defaultValue;
-        }
-
+       
         private NewBlogView CreateBlogView(IContent content, string domainName, string culture)
         {
             var blogView = new NewBlogView
@@ -144,7 +124,7 @@ namespace TutorPro.Application.Services
             else
                 blogView.DateTime = DateTime.Parse(publicDateString);
 
-            blogView.ImageUrl = GetMediaUrl(content, "tImage");
+            blogView.ImageUrl = _umbracoMediaHelper.GetMediaUrl(content, "tImage");
 
             blogView.Url = domainName + _umbracoHelper.Content(content.Id)?.Url(culture);
             blogView.UnsubscribeUrl = domainName + Constants.ApiPaths.UnsubscribeApiPath;
@@ -185,31 +165,6 @@ namespace TutorPro.Application.Services
         {
             content.SetValue("TSenderEmails", string.Join("\n", emailList));
             _contentService.SaveAndPublish(content);
-        }
-
-        private string GetMediaUrl(IContent content, string propertyAlias)
-        {
-            var jsonValue = content.GetValue<string>(propertyAlias);
-
-            var mediaObjects = JsonConvert.DeserializeObject<List<JObject>>(jsonValue);
-
-            if (mediaObjects != null && mediaObjects.Count > 0)
-            {
-                var firstObject = mediaObjects[0];
-
-                var mediaKey = firstObject["mediaKey"]?.ToString();
-
-                if (!string.IsNullOrEmpty(mediaKey))
-                {
-                    var mediaItem = _umbracoHelper.Media(mediaKey);
-                    if (mediaItem != null)
-                    {
-                        return mediaItem.Url();
-                    }
-                }
-            }
-
-            return "";
-        }
+        }       
     }
 }

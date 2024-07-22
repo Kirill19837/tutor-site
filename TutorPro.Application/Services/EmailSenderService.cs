@@ -37,13 +37,7 @@ namespace TutorPro.Application.Services
             bodyBuilder.HtmlBody = await GenerateTemplateAsync(formRequest);
             message.Body = bodyBuilder.ToMessageBody();
 
-            using var client = new SmtpClient();
-
-            await client.ConnectAsync(config.Value.Smtp.Host, config.Value.Smtp.Port, SecureSocketOptions.StartTls, cancellation);
-            await client.AuthenticateAsync(config.Value.Smtp.Username, config.Value.Smtp.Password, cancellation);
-
-            await client.SendAsync(message, cancellation);
-            await client.DisconnectAsync(true, cancellation);
+			await SendMessageAsync(message, cancellation);
         }
 
 		public async Task SendBlogArticleEmailAsync(string email, NewBlogView blogArticle, string subject, string culture, CancellationToken cancellation = default, bool isHtml = true)
@@ -99,12 +93,7 @@ namespace TutorPro.Application.Services
 
 			message.Body = bodyBuilder.ToMessageBody();
 
-			using var client = new SmtpClient();
-			await client.ConnectAsync(config.Value.Smtp.Host, config.Value.Smtp.Port, SecureSocketOptions.StartTls, cancellation);
-			await client.AuthenticateAsync(config.Value.Smtp.Username, config.Value.Smtp.Password, cancellation);
-
-			await client.SendAsync(message, cancellation);
-			await client.DisconnectAsync(true, cancellation);
+			await SendMessageAsync(message, cancellation);
 		}
 
 		private async Task<string> GenerateBlogArticleTemplateAsync(NewBlogView blogArticle, string culture, string email, string templateFileName = Constants.EmailTemplates.BlogArticleTemplateEmail, CancellationToken cancellation = default)
@@ -137,5 +126,16 @@ namespace TutorPro.Application.Services
 
             return body;
         }
-    }
+
+		private async Task SendMessageAsync(MimeMessage message, CancellationToken cancellation)
+		{
+			using var client = new SmtpClient();
+
+			await client.ConnectAsync(config.Value.Smtp.Host, config.Value.Smtp.Port, SecureSocketOptions.StartTls, cancellation);
+			await client.AuthenticateAsync(config.Value.Smtp.Username, config.Value.Smtp.Password, cancellation);
+
+			await client.SendAsync(message, cancellation);
+			await client.DisconnectAsync(true, cancellation);
+		}
+	}
 }

@@ -1,6 +1,7 @@
 ﻿using TutorPro.Application.Interfaces;
 using Umbraco.Cms.Core.Events;
 using Umbraco.Cms.Core.Notifications;
+using Umbraco.Cms.Web.Common.PublishedModels;
 namespace TutorPro.Notifications
 {
     public class BlogPagePublishingHandler : INotificationAsyncHandler<ContentPublishingNotification>
@@ -17,7 +18,7 @@ namespace TutorPro.Notifications
         {
             foreach (var content in notification.PublishedEntities)
             {
-                if (content.ContentType.Alias.Equals("blogArticle"))
+                if (content.ContentType.Alias.Equals(BlogArticle.ModelTypeAlias))
                 {
                     _logger.LogInformation("Blog article was picked");
 
