@@ -179,6 +179,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="EmailTemplates\BlogTemplates\en-us.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="EmailTemplates\BlogTemplates\pl-pl.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="EmailTemplates\BlogTemplates\uk-ua.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="EmailTemplates\EmailTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

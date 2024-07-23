@@ -36,13 +36,14 @@ namespace TutorPro.Application.Services
         {
             var content = await GetNewsletterContent();
             var emailList = GetEmailList(content);
+			var emailWithCulture = $"{email}|{culture.ToLower()}";
 
-            if (emailList.Contains(email))
+			if (emailList.Contains(emailWithCulture))
             {
                 _logger.LogInformation("Email already exists.");
                 return;
             }
-            var emailWithCulture = $"{email}|{culture.ToLower()}";
+            
             emailList.Add(emailWithCulture);
             await UpdateEmailList(content, emailList);
 
