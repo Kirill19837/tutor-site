@@ -313,7 +313,7 @@ $(function () {
             $(this).removeClass('on');
             selectList.slideUp(duration);
             if($(this).hasClass('empty')) {
-              $(this).css({'color':'#FF6B00'});
+                $(this).css({ 'color':'#FFE5C7'});
             }
         }
     });

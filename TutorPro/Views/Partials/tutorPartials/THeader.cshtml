@@ -26,9 +26,16 @@
                             {
                                 @if(link.Content is TBlockLink blockLink && blockLink != null)
                                 {
-                                    <li class="header__menu-item">
-                                        <a class="header__menu-link @(ViewData["pageName"]?.ToString() == blockLink.TUrl?.Name  ? "active" : "")" href="@blockLink.TUrl?.Url">@blockLink.TLinkTitle</a>
-                                    </li>
+                                    @if(blockLink.TBlocks != null && blockLink.TBlocks.Any())
+                                    {
+                                        @await Html.PartialAsync("tutorPartials/THeaderDropdown", blockLink)
+                                    }
+                                    else
+                                    {
+                                        <li class="header__menu-item">
+                                            <a class="header__menu-link @(ViewData["pageName"]?.ToString() == blockLink.TUrl?.Name  ? "active" : "")" href="@blockLink.TUrl?.Url">@blockLink.TLinkTitle</a>
+                                        </li>
+                                    }                                 
                                 }                              
                             }
                         }

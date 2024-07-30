@@ -4,6 +4,7 @@ using StackExchange.Profiling.Internal;
 using System.Web;
 using TutorPro.Application.Interfaces;
 using TutorPro.Application.Models;
+using TutorPro.Application.Models.RequestModel;
 using TutorPro.Application.Models.ResponseModel;
 using TutorPro.Application.Models.UmbracoModel;
 using Umbraco.Cms.Core.Models;
@@ -24,19 +25,8 @@ namespace TutorPro.Application.Services
             _clientFactory = clientFactory;
             _contentService = contentService;
         }
-        public  FilterResponse GetMaterials(MaterialPage materilaPage, string searchText, string subject, string grade, string level, int sort, int page = 1, int pageSize = 12)
-        {
-            var tags = new List<string>();
-
-            if (!string.IsNullOrEmpty(subject))
-                tags.Add("#" + subject.ToLower());
-            if (!string.IsNullOrEmpty(grade))
-                tags.Add("#" + grade.ToLower());
-            if (!string.IsNullOrEmpty(level))
-            {
-                tags.Add(level);
-            }
-
+        public FilterResponse GetMaterials(MaterialPage materilaPage, GetMaterialsRequestModel model)
+        {          
             List<MaterialCard> materilaView = new List<MaterialCard>();
             foreach(var material in materilaPage.Children)
             {
@@ -45,9 +35,9 @@ namespace TutorPro.Application.Services
                     continue;
                 }
 
-                if(materialArticle != null && (searchText == null || materialArticle.TTitle.ToLower().Contains(searchText.ToLower())|| materialArticle.TText.ToLower().Contains(searchText.ToLower())))
+                if(materialArticle != null && (model.SearchText == null || materialArticle.TTitle.ToLower().Contains(model.SearchText.ToLower())|| materialArticle.TText.ToLower().Contains(model.SearchText.ToLower())))
                 {
-                    if(!tags.Any() || IsMatchFilter(materialArticle, tags))
+                    if(IsMatchFilter(materialArticle, model.Subject, model.CategoryItems))
                     {
 						DateTime createdDate;
 						DateTime updatedDate;
@@ -70,9 +60,9 @@ namespace TutorPro.Application.Services
                 }
             }
 
-            SortBy(ref materilaView, sort);
+            SortBy(ref materilaView, model.Sort);
 
-            return GetPaginationMaterialsList(materilaView, page, pageSize);
+            return GetPaginationMaterialsList(materilaView, model.Page, model.PageSize);
         }
 
         private FilterResponse GetPaginationMaterialsList(List<MaterialCard> filteredMaterials, int page, int pageSize)
@@ -109,9 +99,29 @@ namespace TutorPro.Application.Services
 			}
         }
 
-        private bool IsMatchFilter(MaterialArticle materialCard, List<string> tags)
+        private bool IsMatchFilter(MaterialArticle materialCard, string subject, List<CategoryItem> categoryItems)
         {
-            return tags.All(tag => materialCard.TTags?.Contains(tag) == true);
+            string newSubject = string.IsNullOrEmpty(subject) ? null : "#" + subject.ToLower();
+
+            if (!string.IsNullOrEmpty(newSubject) && !materialCard.TTags?.Contains(newSubject) == true)
+            {
+                return false;
+            }
+
+            if (categoryItems != null && categoryItems.Any())
+            {
+                foreach (var categoryItem in categoryItems)
+                {
+                    bool categoryHasMatch = categoryItem.Items.Count == 0 || categoryItem.Items.Any(c => materialCard.TTags?.Contains(c) == true);
+
+                    if (!categoryHasMatch)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         public async Task RefreshMaterialsAsync(string apiUrl, int parentId)

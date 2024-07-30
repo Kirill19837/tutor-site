@@ -1,0 +1,147 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TBlockLink>
+
+    @{
+        var mainUrl = Model.TUrl?.Url;
+    }
+
+<script src="~/js/linkDropdown.js"></script>
+<li class="header__menu-item">
+    <a class="header__menu-link @(ViewData["pageName"]?.ToString() == Model.TUrl?.Name  ? "active" : "")" onclick="toggleDropdown(this)">
+        @Model.TLinkTitle
+        <span class="arrow"></span>
+    </a>
+    <div class="dropdown-content">      
+        <div class="dropdown-content__inner">
+            
+            @if(Model.TBlocks != null && Model.TBlocks.Any())
+            {
+                <div class="info_column">
+                    <h3 class="info_column__title">@Model.TLinkTitle</h3>
+                    @{
+                        var firstBlock = Model.TBlocks.FirstOrDefault();
+                    }
+                    @if (firstBlock != null && firstBlock.Content is THeaderChildBlock firstHeaderBlock && firstHeaderBlock.TChilds != null)
+                    {
+                        <h3 class="column__title" for="language">@firstHeaderBlock.TTitle</h3>
+                        <select data-culture="@Umbraco.CultureDictionary.Culture" class="column__select" id="language">
+                            @foreach (var child in firstHeaderBlock.TChilds)
+                            {
+                                @if(child.Content is TRepeatableDictionary headerChild)
+                                {
+                                    <option value="@headerChild.TKey">@headerChild.TValue</option>
+                                }                              
+                            }
+                        </select>
+                    }             
+                </div>
+                @foreach(var block in Model.TBlocks.Skip(1))
+                {
+                    @if(block.Content is THeaderChildBlock headerBlock)
+                    {
+                        @await Html.PartialAsync("tutorPartials/THeaderBlock", headerBlock, new ViewDataDictionary(ViewData) {{"mainUrl", mainUrl}})                       
+                    }                                                        
+                }
+            }
+        </div>
+    </div>
+</li>
+<style>
+    .info_column {
+        width: 25%;
+        padding-right: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info_column__title {
+        color: #FF6B00;
+        font-size:22px;
+        font-weight:600;
+        margin-bottom:12px;
+    }
+
+    .column__select {
+        margin-top:-5px;
+        max-width:100px;
+        cursor:pointer;
+        font-size:14px;
+        font-weight:400;
+        border: 1px solid #928175;
+        border-radius:5px;
+    }
+
+    .column{
+        width:25%;
+        padding-right:20px;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .column__title {
+        color: #928175;
+        font-size:14px;
+        font-weight: 600;
+        margin-bottom:12px;
+    }
+
+    .column__item {
+        color: #622901;
+        font-size: 16px;
+        font-weight:600;
+        margin-bottom:4px;
+    }
+
+    .dropdown-content {
+        font-family: 'Montserrat', sans-serif;
+        display:none;
+        position: absolute;
+        left:0;
+        top:100%;
+        background-color: #fff;
+        min-width: 100px;
+        width: calc(100% + 80px);
+        box-shadow: 0 4px 22px rgba(0,0,0,0.1);
+        border-radius: 28px;
+        border: 2px solid #FF6B00;
+        z-index: -1;
+        padding: 62px 24px 44px;
+        transform: translate(0,-45px);      
+    }
+
+    .dropdown-content__inner {
+        padding-top:30px;
+        border-top: 1px solid #E4E7ED;
+        display:flex;
+        flex-wrap:wrap;
+        margin-right:-20px;
+    }
+
+    .header__menu-link {
+        cursor: pointer;
+    }
+
+    .header__menu-link.dropdown {
+        color: #FF6B00 !important;
+    }
+
+    .header__menu-link .arrow {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-left: 10px;
+        vertical-align: middle;
+        border: solid currentColor;
+        border-width: 0 2px 2px 0;       
+        transform: scale(0.6) rotate(45deg);
+        transition: transform 0.3s;
+        margin-left: -1px;
+    }
+
+    .header__menu-link.dropdown .arrow {
+        transform: scale(0.6) rotate(225deg); /* Поворот стрілочки вверх */
+    }
+
+    .dropdown-content.show {
+        display: block; 
+    }
+</style>

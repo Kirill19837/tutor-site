@@ -1,11 +1,12 @@
-﻿using TutorPro.Application.Models.ResponseModel;
+﻿using TutorPro.Application.Models.RequestModel;
+using TutorPro.Application.Models.ResponseModel;
 using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace TutorPro.Application.Interfaces
 {
     public interface IMaterialsService
     {
-        FilterResponse GetMaterials(MaterialPage materialPage, string searchText, string subject, string grade, string level, int sort, int page = 1, int pageSize = 12);
+        FilterResponse GetMaterials(MaterialPage materilaPage, GetMaterialsRequestModel model);
         Task RefreshMaterialsAsync(string apiUrl, int parentId);
     }
 }

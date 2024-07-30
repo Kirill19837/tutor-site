@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     // load chosen page
     var currentPage = getParameterByName('page');
@@ -7,6 +6,9 @@ $(document).ready(function () {
     } else {
         handlePageChange(1);
     }
+
+    initFilters();
+
     $('.filter-form__select').on('change', function () {
         sendRequest();
     });
@@ -14,7 +16,7 @@ $(document).ready(function () {
     let searchTimeout;
     let articleUrlElement = document.querySelector('[data-searchDelay]');
     let delay = articleUrlElement.getAttribute('data-searchDelay');
-        
+       
     document.querySelector('.filter-form__input').addEventListener('input', function () {
         clearTimeout(searchTimeout);
         let searchValue = this.value;
@@ -33,23 +35,18 @@ $(document).ready(function () {
 
 // Function for sending AJAX request
 function sendRequest(key = null, value = null, page = 1) {
-    var subject = $('#subject').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
-
-    var grade = $('#grade').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
-
-    var level = $('#level').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
-
     var sort = $('#sort').siblings('.new-select__list').find('.new-select__item.selected').attr('data-value');
 
     var searchValue = document.getElementsByClassName('filter-form__input')[0].value
 
+    var subject = getParameterByName('Filter');
+
+    var language = getParameterByName('Language'); //TODO add language filter
+
     // Checking if a new key and value have been passed
     if (key !== null && value !== null) {
         // Adding a new key and its value to the request parameters object
-        switch (key) {
-            case 'subject':
-                subject = value;
-                break;
+        switch (key) {          
             case 'grade':
                 grade = value;
                 break;
@@ -72,16 +69,19 @@ function sendRequest(key = null, value = null, page = 1) {
 
     $.ajax({
         url: '/Umbraco/Api/Materials/GetMaterials',
-        method: 'GET',
-        data: {
+        method: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        headers: {
+            'Accept': 'application/json'
+        },
+        data: JSON.stringify({
             subject: subject,
-            grade: grade,
-            level: level,
+            categoryItems: getCategories(),
             sort: sort,
             page: page,
             pageSize: pageSize,
             searchText: searchValue,
-        },
+        }),
         success: function (response) {
             // Updating the page content with the received data
             updateContent(response);
@@ -92,24 +92,47 @@ function sendRequest(key = null, value = null, page = 1) {
     });
 }
 
+function getSelectedItemsByCategory(category) {
+    const selector = `.selected[data-categorie="${category}"]`;
+    return document.querySelectorAll(selector);
+}
+function getSelectedKeysByCategory(category) {
+    const selectedItems = getSelectedItemsByCategory(category);
+    const keys = Array.from(selectedItems).map(item => item.getAttribute('data-key'));
+    return keys;
+}
+
 // Function for updating the page content with the received data
 function updateContent(data) {
     // Clear the current content of the materials block
     $('.matirials__block').empty();
 
+    var reviewsText = $('.matirials__block').attr('data-reviews'); 
+    var culture = $('.matirials__block').attr('data-culture'); 
+
     // Add new materials to the materials block
     if (data.materials && data.materials.length > 0) {
         // Add new materials to the materials block
         data.materials.forEach(function (material) {
+            const type = Math.floor(Math.random() * 4) + 1;
+            const date = new Date(material.updatedDate);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = date.toLocaleDateString(`${culture}`, options);
             var html = `
                 <div class="matirials__column">
                     <a class="matirials__item" href="${material.url}">
-                        ${material.imageUrl ? `<div class="matirials__item-image"><img loading="lazy" src="${material.imageUrl}" alt="Item image"></div>` : `<div class="matirials__item-image"></div>`}
+                    <div class="materials__item_content">
+                        ${material.imageUrl ? `<div class="matirials__item-image"><img loading="lazy" src="${material.imageUrl}" alt="Item image"></div>` : `<div class="matirials__item-image"><img loading="lazy" src="/images/matirials/Type=${type}.png" alt="Item image"></div>`}
                         <h3 class="matirials__item-title">${material.title}</h3>
                         <div class="matirials__item-tags">
                             ${material.tags.map(tag => `<span class="matirials__item-tag">${tag.replace('#', '')}</span>`).join('')}
                         </div>
                         ${material.text ? `<p class="matirials__item-text">${material.text}</p>` : ''}
+                    </div>
+                        <div class="materials__item_info">
+                            <div><img src="/images/icons/users-round-16px.svg"/> ${material.viewsNumber} <span>${reviewsText}</span></div>
+                            <div><img src="/images/icons/calendar-16px.svg"/> ${formattedDate}</div>
+                        </div>
                     </a>
                 </div>
             `;
@@ -146,6 +169,69 @@ function getParameterByName(name) {
 }
 
 function handlePageChange(page) {
+    const url = new URL(window.location.href);
+
+    const params = new URLSearchParams(url.search);
+
+    params.set('page', page);
+
+    if (url.searchParams.has('Filter')) {
+        const currentFilter = url.searchParams.get('Filter');
+        params.set('Filter', currentFilter);
+        localStorage.setItem('currentMaterialFilter', currentFilter);
+    }
+    else {
+        const storedFilter = localStorage.getItem('currentMaterialFilter');
+        if(storedFilter){
+            params.set('Filter', storedFilter);
+        }
+    }
+    if (url.searchParams.has('Language')) {
+        const currentLanguage = url.searchParams.get('Language');
+        params.set('Language', currentLanguage);
+        localStorage.setItem('currentMaterialLanguage', currentLanguage);
+    }
+    else {
+        const storedLanguage = localStorage.getItem('currentMaterialLanguage');
+        if (storedLanguage) {
+            params.set('Language', storedLanguage);
+        }
+    }
+
+    history.pushState(null, null, `${url.pathname}?${params.toString()}`);
+
     sendRequest(null, null, page);
-    history.pushState(null, null, '?page=' + page);
+}
+
+function initFilters() {
+    const items = document.querySelectorAll('.matirials__category-item');
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('selected');
+            sendRequest()
+        });
+    });
+}
+
+function getCategories() {
+    const groupedItems = {};
+
+    $('.matirials__category-item.selected').each(function () {
+        const categorie = $(this).data('categorie');
+        const key = $(this).data('key');
+
+        if (!groupedItems[categorie]) {
+            groupedItems[categorie] = [];
+        }
+
+        groupedItems[categorie].push(key);
+    });
+
+    const resultArray = Object.keys(groupedItems).map(categorie => ({
+        category: categorie,
+        items: groupedItems[categorie]
+    }));
+
+    return resultArray;
 }

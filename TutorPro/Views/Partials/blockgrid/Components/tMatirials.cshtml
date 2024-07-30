@@ -1,26 +1,55 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @{
     var content = (TMatirials)Model.Content;
+    var culture = Umbraco.CultureDictionary.Culture;
 }
 
 <div class="matirials">
     <div class="matirials__filtration-block" data-searchDelay="@content.TSearchDelay">
         <div class="container">
+            @if(content.TFilters != null && content.TFilters.Any())
+            {
+                <div class="matirials__categories">
+                    <p class="matirials__title">@Umbraco.GetDictionaryValueOrDefault("Categories", "Categories")</p>
+                    @foreach(var filter in content.TFilters)
+                    {
+                        if(filter.Content is TFilterSelect category)
+                        {
+                            <div class="matirials__category-block">
+                                <p class="matirials__category-title">@category.TPlaceholder</p>
+                                <div class="matirials__category-items">
+                                    @if (category.TFilterItems != null && category.TFilterItems.Any())
+                                    {
+                                        foreach (var item in category.TFilterItems)
+                                        {
+                                            if (item.Content is TRepeatableDictionary filterItem)
+                                            {
+                                                <div class="matirials__category-item" data-categorie="@category.TName" data-key="@filterItem.TKey"><p class="matirials__category-item-text">@filterItem.TValue</p></div>
+                                            }
+                                        }
+                                    }
+                                </div>                             
+                            </div>
+                        }                      
+                    }
+                </div>
+            }          
             <div class="matirials__filtration">
                 <form class="matirials__filtration-form filter-form" action="/Umbraco/Api/Matirials/GetMatirials" method="post">
-                    <div class="filter-form__item search-item">
-                        <input class="filter-form__input" type="text" name="filter-search" placeholder="@Umbraco.GetDictionaryValue("Search")">
-                        <button class="filter-form__search-button" type="button" aria-label="search-button"></button>
-                    </div>
                     <div class="filter-form__row">
-                        @if(content.TFilters != null)
+                        <div class="filter-form__item search-item">
+                            <input class="filter-form__input" type="text" name="filter-search" placeholder="@Umbraco.GetDictionaryValue("Search")">
+                            <button class="filter-form__search-button" type="button" aria-label="search-button"></button>
+                        </div>
+
+                        @if (content.TSortFilter != null)
                         {
-                            @foreach(var filter in content.TFilters)
+                            @foreach (var filter in content.TSortFilter)
                             {
                                 @await Html.PartialAsync("tutorPartials/TFilterSelect", filter.Content)
                             }
                         }
-                    </div>
+                    </div>                                     
                 </form>
             </div>
         </div>
@@ -28,16 +57,18 @@
 
     <div class="matirials__content radial-bg">
         <div class="matirials__bg radial-bg"></div>
-        <div class="matirials__container">
-            <div class="matirials__block" data-notFoundMessage="@content.TNotFoundMessage">
+        <div class="container">
+            <div class="matirials__container">
+                <div class="matirials__block" data-notFoundMessage="@content.TNotFoundMessage" data-reviews="@Umbraco.GetDictionaryValueOrDefault("Reviews", "reviews")" data-culture="@culture">
                 
-            </div>
+                </div>
 
-            <!-- Pagenation of pages -->
-            <div class="matirials__pagination pagination" data-pageSize="@content.TPageSize">
-                <ul class="pagination__list">
+                <!-- Pagenation of pages -->
+                <div class="matirials__pagination pagination" data-pageSize="@content.TPageSize">
+                    <ul class="pagination__list">
                     
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
