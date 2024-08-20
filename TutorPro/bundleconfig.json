@@ -88,5 +88,17 @@
     "inputFiles": [
       "wwwroot/css/header-dropdown.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/footer-dropdown.min.css",
+    "inputFiles": [
+      "wwwroot/css/footer-dropdown.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/footerLinkDropdown.min.js",
+    "inputFiles": [
+      "wwwroot/js/footerLinkDropdown.js"
+    ]
   }
 ]

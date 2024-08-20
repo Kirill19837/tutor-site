@@ -2,7 +2,7 @@
 @{
     var commonUrl = Model.TUrl?.Url;
 }
-<link rel="stylesheet" href="~/css/footer-dropdown.css" />
+<link rel="stylesheet" href="~/css/footer-dropdown.min.css" />
 <li class="footer__menu-item">
     <a class="footer__menu-link @(ViewData["pageName"]?.ToString() == Model.TUrl?.Name  ? "active" : "")">
         @Model.TLinkTitle
@@ -41,4 +41,4 @@
     </div>    
 </li>
 
-<script src="~/js/footerLinkDropdown.js"></script>
+<script src="~/js/footerLinkDropdown.min.js"></script>
