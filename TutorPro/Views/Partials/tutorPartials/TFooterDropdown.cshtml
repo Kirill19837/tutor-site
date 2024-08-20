@@ -1,0 +1,44 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TBlockLink>
+@{
+    var commonUrl = Model.TUrl?.Url;
+}
+<link rel="stylesheet" href="~/css/footer-dropdown.css" />
+<li class="footer__menu-item">
+    <a class="footer__menu-link @(ViewData["pageName"]?.ToString() == Model.TUrl?.Name  ? "active" : "")">
+        @Model.TLinkTitle
+    </a>
+    @{
+        var firstBlock = Model.TBlocks?.FirstOrDefault();        
+    }
+    <div class="footer__menu">
+        <div class="footer__dropdown">
+            @if (Model.TBlocks != null && firstBlock != null && firstBlock.Content is THeaderChildBlock firstFooterBlock && firstFooterBlock.TChilds != null)
+            {
+                <p class="footer__dropdown-title">@firstFooterBlock.TTitle</p>
+                <div class="footer__dropdown-button_container">
+                @foreach (var child in firstFooterBlock.TChilds)
+                {
+                    @if (child.Content is TRepeatableDictionary item)
+                    {
+                        var mainUrl = commonUrl + item.TKey;
+                            <button class="footer__dropdown-button" onclick="showDropdown('@item.TKey')" id="@(item.TKey)Button">@item.TValue</button>
+                        <div class="footer__dropdown-content" id="@(item.TKey)Content">
+                            @foreach (var block in Model.TBlocks.Skip(1))
+                            {
+                                if (block.Content is THeaderChildBlock footerBlock)
+                                {
+                                    @await Html.PartialAsync("tutorPartials/TFooterBlock", footerBlock, new ViewDataDictionary(ViewData) { { "mainUrl", mainUrl } })
+                                    ;
+                                }
+                            }
+                        </div>
+                    }
+                }
+                </div>
+            }
+        </div>
+        
+    </div>    
+</li>
+
+<script src="~/js/footerLinkDropdown.js"></script>

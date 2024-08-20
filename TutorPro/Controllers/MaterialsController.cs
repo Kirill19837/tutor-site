@@ -21,8 +21,7 @@ namespace TutorPro.Controllers
         [HttpPost]
         public async Task<IActionResult> GetMaterials([FromBody] GetMaterialsRequestModel model)
         {
-            var materialsPage = _umbracoHelper.ContentAtRoot().DescendantsOrSelf<MaterialPage>()
-                .FirstOrDefault();
+            var materialsPage = _umbracoHelper.Content(model.PageId);
 
             if(materialsPage == null)
                 return NotFound("Materials page was not found");
@@ -46,7 +45,7 @@ namespace TutorPro.Controllers
             if (apiUrl == null)
                 return NotFound("Material api url was not found");
 
-            await _materialsService.RefreshMaterialsAsync(apiUrl, materialsPage.Id);
+            await _materialsService.RefreshMaterialsAsync(apiUrl, materialsPage);
 
             return Ok();
         }

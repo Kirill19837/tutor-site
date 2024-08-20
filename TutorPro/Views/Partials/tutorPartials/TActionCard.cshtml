@@ -4,12 +4,16 @@
 }
 
 <div class="actions__column">
-    <div class="actions__item" tabindex="0">
+    <div class="actions__item @ViewData["order"] @ViewData["alone"]" style="background-color:@(Model.TBackgroundColor)" tabindex="0">
+        @if(Model.TImage != null)
+        {
+            @await Html.GetBlockGridHtmlAsync(Model.TImage);
+        }
         @if (!string.IsNullOrEmpty(Model.TTitle))
         {
             <span class="actions__item-title medium-title">@Model.TTitle</span>          
         }
-        <p class="actions__item-text">@Model.TText</p>
+        @Html.Raw(@Model.TText)
         @if(button != null)
         {
             @await Html.PartialAsync("tutorPartials/TButton", button, new ViewDataDictionary(ViewData) { { "class", "actions__item-link" }, { "span", true } })

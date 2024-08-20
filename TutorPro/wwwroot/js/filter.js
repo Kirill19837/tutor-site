@@ -39,10 +39,6 @@ function sendRequest(key = null, value = null, page = 1) {
 
     var searchValue = document.getElementsByClassName('filter-form__input')[0].value
 
-    var subject = getParameterByName('Filter');
-
-    var language = getParameterByName('Language'); //TODO add language filter
-
     // Checking if a new key and value have been passed
     if (key !== null && value !== null) {
         // Adding a new key and its value to the request parameters object
@@ -66,6 +62,10 @@ function sendRequest(key = null, value = null, page = 1) {
 
     var pagination = document.querySelector('.matirials__pagination');
     var pageSize = pagination.getAttribute('data-pageSize');
+    const filterElement = document.getElementById('materials_filter');
+    const language = filterElement.getAttribute('data-language');
+    const subject = filterElement.getAttribute('data-subject');
+    const pageId = filterElement.getAttribute('data-pageId');
 
     $.ajax({
         url: '/Umbraco/Api/Materials/GetMaterials',
@@ -76,10 +76,12 @@ function sendRequest(key = null, value = null, page = 1) {
         },
         data: JSON.stringify({
             subject: subject,
+            language: language,
             categoryItems: getCategories(),
             sort: sort,
             page: page,
             pageSize: pageSize,
+            pageId: pageId,
             searchText: searchValue,
         }),
         success: function (response) {
@@ -169,38 +171,8 @@ function getParameterByName(name) {
 }
 
 function handlePageChange(page) {
-    const url = new URL(window.location.href);
-
-    const params = new URLSearchParams(url.search);
-
-    params.set('page', page);
-
-    if (url.searchParams.has('Filter')) {
-        const currentFilter = url.searchParams.get('Filter');
-        params.set('Filter', currentFilter);
-        localStorage.setItem('currentMaterialFilter', currentFilter);
-    }
-    else {
-        const storedFilter = localStorage.getItem('currentMaterialFilter');
-        if(storedFilter){
-            params.set('Filter', storedFilter);
-        }
-    }
-    if (url.searchParams.has('Language')) {
-        const currentLanguage = url.searchParams.get('Language');
-        params.set('Language', currentLanguage);
-        localStorage.setItem('currentMaterialLanguage', currentLanguage);
-    }
-    else {
-        const storedLanguage = localStorage.getItem('currentMaterialLanguage');
-        if (storedLanguage) {
-            params.set('Language', storedLanguage);
-        }
-    }
-
-    history.pushState(null, null, `${url.pathname}?${params.toString()}`);
-
     sendRequest(null, null, page);
+    history.pushState(null, null, '?page=' + page);
 }
 
 function initFilters() {

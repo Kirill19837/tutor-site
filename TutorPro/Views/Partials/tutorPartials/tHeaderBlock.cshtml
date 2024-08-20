@@ -8,7 +8,7 @@
             
             @if (child.Content is TRepeatableDictionary headerChild)
             {
-                var url = $"{ViewData["mainUrl"]}?Filter={headerChild.TKey}";
+                var url = $"{ViewData["mainUrl"]}";
                 <a class="column__item" data-query="@headerChild.TKey" href="@url">@headerChild.TValue</a>
             }
         }

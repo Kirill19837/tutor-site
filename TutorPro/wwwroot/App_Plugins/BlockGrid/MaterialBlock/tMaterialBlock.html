@@ -1,20 +1,36 @@
 ﻿<div class="matirials" ng-controller="tMaterialBlock">
     <div class="matirials__filtration-block" ng-click="block.edit()">
         <div class="container">
+            <div class="matirials__categories" ng-if="filters && filters.length > 0">
+                <p class="matirials__title">Categories</p>
+                <div class="matirials__category-block" ng-repeat="filter in filters">
+                    <div ng-if="filter.tPlaceholder">
+                        <p class="matirials__category-title">{{ filter.tPlaceholder }}</p>
+                        <div class="matirials__category-items">
+                            <div class="matirials__category-item" ng-repeat="item in filter.tFIlterItems.contentData"
+                                 ng-if="item.tValue"
+                                 data-categorie="{{ filter.tName }}"
+                                 data-key="{{ item.tKey }}">
+                                <p class="matirials__category-item-text">{{ item.tValue }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="matirials__filtration">
                 <form class="matirials__filtration-form">
-                    <div class="filter-form__item search-item">
-                        <input class="filter-form__input" type="text" placeholder="Search">
-                        <button class="filter-form__search-button" type="button" aria-label="search-button"></button>
-                    </div>
                     <div class="filter-form__row">
-                        <div class="filter-form__select-wrap" ng-repeat="filter in content.tFilters.contentData">
+                        <div class="filter-form__item search-item">
+                            <input class="filter-form__input" type="text" placeholder="Search">
+                            <button class="filter-form__search-button" type="button" aria-label="search-button"></button>
+                        </div>
+                        <div class="filter-form__select-wrap" ng-repeat="filter in content.tSortFilter.contentData">
                             <div class="select">
                                 <select class="filter-form__select select" name="{{filter.tName}}" id="{{filter.tName}}" data-placeholder="{{filter.tPlaceholder}}" style="display: none;">
                                     <option value=""></option>
                                 </select>
                                 <div class="new-select empty">{{filter.tPlaceholder}}</div>
-                            </div>                          
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -27,13 +43,20 @@
         <div class="matirials__container">
             <div class="matirials__block" data-notFoundMessage="{{content.tNotFoundMessage}}" ng-click="block.edit()">
                 <div class="matirials__column">
-                    <a class="matirials__item">
-                        <h3 class="matirials__item-title">Test name</h3>
-                        <div class="matirials__item-tags">
-                            <span class="matirials__item-tag">tag</span>
+                    <div class="matirials__item">
+                        <div class="materials__item_content">
+                            <div class="matirials__item-image"><img loading="lazy" src="/images/matirials/Type=1.png" alt="Item image"></div>
+                            <h3 class="matirials__item-title">Test</h3>
+                            <div class="matirials__item-tags">
+                                <span class="matirials__item-tag">test tag</span>
+                            </div>
+                            <p>test text</p>
                         </div>
-                        <p class="matirials__item-text">test text</p>
-                    </a>
+                        <div class="materials__item_info">
+                            <div><img src="/images/icons/users-round-16px.svg" /> 1 <span>reviews</span></div>
+                            <div><img src="/images/icons/calendar-16px.svg" /> {{ currentDate | date: 'MMMM d, yyyy' }}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

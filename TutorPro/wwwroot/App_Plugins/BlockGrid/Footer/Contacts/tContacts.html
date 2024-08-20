@@ -1,20 +1,13 @@
-﻿<div class="footer__inner" style="background-color:black" ng-controller="tContacts" ng-click="block.edit()">
+﻿<div class="footer__inner" style="background-color:black;" ng-controller="tContacts" ng-click="block.edit()">
     <div class="footer__contacts" style="margin-left: 20px" ng-if="content">
         <span class="footer__title medium-title">{{content.tContactTitle}}</span>
-        <p class="footer__text">{{content.tContactAddress}}</p>
-        <a class="footer__contacts-link">{{content.tNumber}}</a>
-        <a class="footer__contacts-link">{{content.tEmail}}</a>
-        <ul class="footer__socials">
-            <li class="footer__socials-item" ng-repeat="link in content.tSocialLinks.contentData">
-                <a class="footer__socials-link">
-                    <img class="social-icon-white" src="{{link.tIcon[0].src}}" alt="Icon">
-                </a>
-            </li>
-        </ul>
-        <div class="footer__languages" ng-if="content.tShowLanguageDropdown === '1'">
-            <a class="footer__language">
-                En
-            </a>
-        </div>
+        <span class="footer__sub-title">{{content.tSubTilte}}</span>
+        <div class="footer__contacts-link" ng-repeat="link in content.tItems.contentData">
+            <div class="footer__contacts-link_block">
+                <img ng-if="link.tIcon[0]" src="{{link.tIcon[0].src}}" class="footer__contacts-link_image"/>
+                <div ng-if="!link.tIcon[0]" class="footer__contacts-link_image"></div>
+                <a class="footer__contacts-link">{{link.tSocialName}}</a>
+            </div>                     
+        </div>       
     </div>
 </div>

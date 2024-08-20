@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<THeaderChildBlock>
+<div class="footer__column">
+    <h3 class="footer__dropdown-title">@Model.TTitle</h3>
+    @if (Model.TChilds != null && Model.TChilds.Any())
+    {
+        foreach (var child in Model.TChilds)
+        {
+            @if (child.Content is TRepeatableDictionary footerChild)
+            {
+                var url = $"{ViewData["mainUrl"]}/{footerChild.TKey}";
+                <a class="footer__column__item" data-query="@footerChild.TKey" href="@url">@footerChild.TValue</a>
+            }
+        }
+    }
+</div>

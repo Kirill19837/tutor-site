@@ -4,10 +4,12 @@
     {
         public string? SearchText { get; set; }
         public string? Subject { get; set; }
+        public string? Language { get; set; }
         public List<CategoryItem>? CategoryItems { get; set; }
         public int Sort { get; set; }
         public int Page { get; set; } = 1;
         public int PageSize { get; set; } = 12;
+        public int PageId { get; set; }
     }
 
     public class CategoryItem

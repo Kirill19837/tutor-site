@@ -76,5 +76,17 @@
     "inputFiles": [
       "wwwroot/js/newsletter.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/linkDropdown.min.js",
+    "inputFiles": [
+      "wwwroot/js/linkDropdown.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/header-dropdown.min.css",
+    "inputFiles": [
+      "wwwroot/css/header-dropdown.css"
+    ]
   }
 ]

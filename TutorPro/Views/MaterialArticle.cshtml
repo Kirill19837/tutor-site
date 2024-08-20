@@ -4,12 +4,12 @@
 @{
     Layout = "Main.cshtml";
     var language = Umbraco.CultureDictionary.Culture.Name.Split("-")[0].ToLower();
-    var parent = Model.Parent as MaterialPage;
+    var parent = Model.Parent.Parent.Parent as MaterialPage;
     var metaTags = string.Join(", ", Model.TTags);
 }
 <section class="inner-top matirials-top radial-bg">
     <div class="material_article_breadcrumbs">
-        <a class="material_article_title" href="@parent.Url()">
+        <a class="material_article_title" href="@Model.Parent.Url()">
             @parent.Name
         </a>
     </div>

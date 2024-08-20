@@ -122,6 +122,37 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem<global::Umbraco.Cms.Web.Common.PublishedModels.TQuickLinks> TQuickLinks => global::Umbraco.Cms.Web.Common.PublishedModels.TFooterContainer.GetTQuickLinks(this, _publishedValueFallback);
 
 		///<summary>
+		/// Show language dropdown
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tShowLanguageDropdown")]
+		public virtual bool TShowLanguageDropdown => global::Umbraco.Cms.Web.Common.PublishedModels.TFooterContainer.GetTShowLanguageDropdown(this, _publishedValueFallback);
+
+		///<summary>
+		/// Social links
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tSocialLinks")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TSocialLinks => global::Umbraco.Cms.Web.Common.PublishedModels.TFooterContainer.GetTSocialLinks(this, _publishedValueFallback);
+
+		///<summary>
+		/// Sub title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tSubTitle")]
+		public virtual string TSubTitle => global::Umbraco.Cms.Web.Common.PublishedModels.TFooterContainer.GetTSubTitle(this, _publishedValueFallback);
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tTitle")]
+		public virtual string TTitle => global::Umbraco.Cms.Web.Common.PublishedModels.TFooterContainer.GetTTitle(this, _publishedValueFallback);
+
+		///<summary>
 		/// Button
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]

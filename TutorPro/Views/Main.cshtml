@@ -7,9 +7,10 @@
 	var logoIconPath = model == null ? "/media/okxhqfjy/logo-2.svg" : model.TLogo?.Url();
 	var mainHeader = Model.ContentType.Alias == "homePage";
 	var disableFixedComponents = Model.ContentType.Alias == "page404" || Model.ContentType.Alias == "ApplicationForm";
-	var isBlogComponent = Model.ContentType.Alias == "blogPage" || Model.ContentType.Alias == "blogArticle" || Model.ContentType.Alias == "materialPage" || Model.ContentType.Alias == "materialArticle" || Model.ContentType.Alias == "blogCategoryPage";
+	string[] blogComponentTypes = { BlogPage.ModelTypeAlias, BlogArticle.ModelTypeAlias, MaterialPage.ModelTypeAlias, MaterialArticle.ModelTypeAlias, BlogCategoryPage.ModelTypeAlias, MaterialCategoryPage.ModelTypeAlias };
+	bool isBlogComponent = blogComponentTypes.Contains(Model.ContentType.Alias);
 	var mainHeaderPadding = (mainHeader || disableFixedComponents || isBlogComponent);
-	var languageDropDown = model.TContactUsFooter?.Content.TShowLanguageDropdown;
+	var languageDropDown = model.TShowLanguageDropdown;
 	var culture = Model.GetCultureFromDomains();
 	@if(Model is BlockGridPage page)
 	{
@@ -18,13 +19,17 @@
 
 	var pageName = Umbraco.AssignedContentItem.Name;
 
-	if (Umbraco.AssignedContentItem.ContentType.Alias == "materialArticle" || Umbraco.AssignedContentItem.ContentType.Alias == "blogCategoryPage")
+	if ( Umbraco.AssignedContentItem.ContentType.Alias == BlogCategoryPage.ModelTypeAlias)
 	{
 		pageName = Umbraco.AssignedContentItem.Parent?.Name;
 	}	
-	if (Umbraco.AssignedContentItem.ContentType.Alias == "blogArticle")
+	if (Umbraco.AssignedContentItem.ContentType.Alias == MaterialArticle.ModelTypeAlias || Umbraco.AssignedContentItem.ContentType.Alias == MaterialCategoryPage.ModelTypeAlias)
 	{
-		pageName = Model.Root().FirstChildOfType("blogPage", culture)?.Name;
+		pageName = Model.Root().FirstChildOfType(MaterialPage.ModelTypeAlias, culture)?.Name;
+	}
+	if (Umbraco.AssignedContentItem.ContentType.Alias ==BlogArticle.ModelTypeAlias)
+	{
+		pageName = Model.Root().FirstChildOfType(BlogPage.ModelTypeAlias, culture)?.Name;
 	}
 
 	var metaTags = string.Join(", ", model.TMetaTags);

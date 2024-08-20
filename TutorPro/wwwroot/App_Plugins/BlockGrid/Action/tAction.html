@@ -4,7 +4,8 @@
             <div class="actions__links-wrap" ng-if="cards.length > 0">
                 <div class="actions__links" ng-repeat="card in cards">
                     <div class="actions__column">
-                        <div class="actions__item" tabindex="0">
+                        <div class="actions__item alone" tabindex="0" ng-style="{'background-color': card.tBackgroundColor}">
+                            <img ng-if="card.tImage" src="{{card.tImage.src}}" />
                             <span class="actions__item-title medium-title">{{card.tTitle}}</span>
                             <p class="actions__item-text" ng-bind-html="card.tText.markup"></p>
                             <button class="actions__item-link" ng-controller="tButton" ng-init="initButton(card.tButton.contentData[0])" ng-class="toggleClass">

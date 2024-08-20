@@ -32,7 +32,15 @@
         {
             <div class="actions__links-wrap">
                 <div class="actions__links">
-                    @foreach (var card in content.TCards)
+                    @{
+                        var aloneClass = " ";
+                        if (content.TCards.Count == 1)
+                            aloneClass = "alone";
+                    }
+
+                    @await Html.PartialAsync("tutorPartials/TActionCard", content.TCards.FirstOrDefault()?.Content , new ViewDataDictionary(ViewData){{"order", "first"},{"alone", aloneClass}})
+
+                    @foreach (var card in content.TCards.Skip(1))
                     {
                         @await Html.PartialAsync("tutorPartials/TActionCard", card.Content)
                     }                   

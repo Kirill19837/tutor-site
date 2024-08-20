@@ -1,6 +1,11 @@
 angular.module("umbraco").controller("tMaterialBlock", function ($scope, $http) {
     $scope.content = $scope.block.data;   
     $scope.message = "Refresh materials";
+    $scope.currentDate = new Date();
+    $scope.filters = $scope.content.tFilters.contentData;
+
+    console.log($scope.content);
+    console.log($scope.filters);
 
     $scope.Refresh = function () {
         $scope.message = "updating materials..."

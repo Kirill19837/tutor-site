@@ -1,32 +1,32 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TContact>
-@{
-    var languagesVisible = ViewData["Languages"] as bool? ?? true;
-}
 
 <div class="footer__contacts">
     <span class="footer__title medium-title">@Model.TContactTitle</span>
-    <p class="footer__text">@Model.TContactAddress</p>
-    <a class="footer__contacts-link" href="tel:@Model.TNumber">@Model.TNumber?.ToString()</a>
-    <a class="footer__contacts-link" href="mailto:@Model.TEmail">@Model.TEmail</a>
-    <ul class="footer__socials">
-        @foreach(var link in Model.TSocialLinks!)
+    <div class="footer__menu">
+        <span class="footer__sub-title">@Model.TSubTilte</span>
+        @if (Model.TItems != null && Model.TItems.Any())
         {
-            @if (link.Content is TSocialLink newLink)
+            @foreach (var item in Model.TItems)
             {
-                <li class="footer__socials-item">
-                    <a class="footer__socials-link" target="_blank" href="@newLink?.TUrl?.Url)">
-                        <img loading="lazy" class="social-icon-white" src="@newLink?.TIcon?.Url()" alt="Icon">
-                    </a>
-                </li>
-            }         
-        }       
-    </ul>
-    @if (Model.TShowLanguageDropdown && languagesVisible)
-    {
-        <div class="footer__languages">
-            @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent)
-        </div>
-    }
+                if (item.Content is TSocialLink link)
+                {
+                    <div class="footer__contacts-link_block">
+                        @if (link.TIcon != null)
+                        {
+                            <img class="footer__contacts-link_image" src="@link.TIcon.Url()" />
+                        }
+                        else
+                        {
+                            <div class="footer__contacts-link_image"></div>
+                        }
+                        <a class="footer__contacts-link" href="@link.TUrl">@link.TSocialName</a>
+                    </div>
+                }
+
+            }
+        }
+    </div>
+   
 </div>
 
 

@@ -1,0 +1,13 @@
+﻿<div ng-controller="tCategoriesFilterSelect" ng-click="block.edit()">   
+    <div ng-if="content.tPlaceholder">
+        <p class="matirials__category-title">{{ content.tPlaceholder }}</p>
+        <div class="matirials__category-items">
+            <div class="matirials__category-item" ng-repeat="item in content.tFIlterItems.contentData"
+                 ng-if="item.tValue"
+                 data-categorie="{{ filter.tName }}"
+                 data-key="{{ item.tKey }}">
+                <p class="matirials__category-item-text">{{ item.tValue }}</p>
+            </div>
+        </div>
+    </div>
+</div>

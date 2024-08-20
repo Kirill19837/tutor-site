@@ -22,6 +22,7 @@ function toggleDropdown(element) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const select = document.querySelector('.column__select');
+ 
     const culture = getCountryNameFromLocale(select.getAttribute('data-culture'));
 
     if (culture) {
@@ -32,19 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const items = document.querySelectorAll('.column__item');
+
     function updateUrl(item) {
         const selectedValue = select.value;
-
         const url = new URL(item.href);
 
-        const params = new URLSearchParams(url.search);
-
-        params.set('Language', selectedValue);
-
         const queryValue = item.getAttribute('data-query');
-        params.set('Filter', queryValue);
 
-        return `${url.origin}${url.pathname}?${params.toString()}`;
+        return `${url.origin}${url.pathname}${selectedValue.toLowerCase()}/${queryValue.toLowerCase()}`;
     }
 
     items.forEach(item => {

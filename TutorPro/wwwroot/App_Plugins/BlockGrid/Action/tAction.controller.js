@@ -1,4 +1,4 @@
-angular.module("umbraco").controller("tAction", function ($scope, $sce) {
+angular.module("umbraco").controller("tAction", function ($scope, mediaResource) {
     $scope.content = $scope.block.data;
     $scope.form = $scope.content.tRequestBlock.contentData[0];
     $scope.cards = $scope.content.tCards.contentData;
@@ -18,4 +18,21 @@ angular.module("umbraco").controller("tAction", function ($scope, $sce) {
     }
 
     $scope.actionClass = actionsClass;
+
+    if ($scope.cards) {
+        $scope.cards.forEach(card => {
+            var image = card.tImage.contentData[0].tImage[0];
+            if (image) {
+                mediaResource.getById(image.mediaKey)
+                    .then(function (media) {
+                        card.tImage.src = media.mediaLink;
+                    })
+                    .catch(function (error) {
+                        console.error("Error loading media:", error);
+                    });
+            }
+           
+        })
+       
+    }
 });

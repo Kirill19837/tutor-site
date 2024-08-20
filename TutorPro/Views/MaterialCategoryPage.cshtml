@@ -1,0 +1,92 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.MaterialCategoryPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "Main.cshtml";
+    var mainMaterialPage = Model.Parent.Parent as MaterialPage;
+    var LanguagePage = Model.Parent as MaterialCategoryPage;
+}
+@if (mainMaterialPage != null)
+{
+    <section class="inner-top matirials-top radial-bg">
+        <div class="container">
+            @if (mainMaterialPage.TInnerTop != null && mainMaterialPage.TInnerTop.FirstOrDefault().Content is TInnerPageTop innerTop && innerTop.TDecors != null)
+            {
+                @foreach (var decor in innerTop.TDecors)
+                {
+                    @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+                }
+            }
+            <div class="material_preview"> 
+                <div class="title_block">
+                    <h1 class="title">@Model.TTitle</h1>
+                    <p class="sub-title">@Model.TSubTitle</p>
+                </div>
+                <div class="main-content">
+                    @{
+                        var firstMaterial = Model.Children.FirstOrDefault() as MaterialArticle;
+                    }
+                    
+                    <div class="large-block">
+                        @if(firstMaterial != null)
+                        {
+                            <a href="@firstMaterial.Url()">
+                                @if (firstMaterial.TImageUrl.IsNullOrWhiteSpace())
+                                {
+                                    var randomNumber = new Random().Next(1, 4);
+                                    <img src="~/images/matirials/Type=@(randomNumber).png" alt="preview_image">
+                                }
+                                else
+                                {
+                                    <img src="@firstMaterial.TImageUrl" alt="preview_image" >
+                                }
+                                <h2 class="large-block__title">@firstMaterial.TTitle </h2>
+                                @if (!firstMaterial.TText.IsNullOrWhiteSpace())
+                                {
+                                    <p>@firstMaterial.TText</p>
+                                }
+                            </a>
+                            
+                        }                                              
+                    </div>
+                    <div class="side-block">
+                        @{
+                            var cards = Model.TCards;
+                            if(!cards.Any())
+                            {
+                                cards = LanguagePage.TCards;
+                            }
+                        }
+                        @foreach(var card in cards)
+                        {
+                            @if(card.Content is TCard newCard)
+                            {
+                                var isHaveButton = newCard.TButton != null && newCard.TButton.Content is TButton button && !button.TButtonTitle.IsNullOrWhiteSpace();
+                                <div class="block">
+                                    <h3 class="block__title @(isHaveButton ? "" : "big")">@newCard.TTitle</h3>
+                                    <p>@newCard.TText</p>
+                                    @if(isHaveButton)
+                                    {
+                                        @await Html.PartialAsync("tutorPartials/TButton", newCard.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "material-block__link" }, { "span", true } })
+                                    }                           
+                                </div>
+                            }                           
+                        }                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @if (mainMaterialPage.TMaterialFilters != null)
+    {       
+        <div id="materials_filter" data-language="@LanguagePage.TTag" data-subject="@Model.TTag" data-pageId="@Model.Id">
+            @await Html.GetBlockGridHtmlAsync(mainMaterialPage.TMaterialFilters);
+        </div>
+
+    }
+    @if (mainMaterialPage.TAction != null)
+    {
+        @await Html.GetBlockGridHtmlAsync(mainMaterialPage.TAction);
+    }
+}
+
