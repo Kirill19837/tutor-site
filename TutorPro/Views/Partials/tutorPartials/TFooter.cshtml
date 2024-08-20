@@ -1,22 +1,53 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
+@{
+    var languagesVisible = ViewData["Languages"] as bool? ?? true;
+    var logoIconPath = Model.TLogo == null ? "/media/okxhqfjy/logo-2.svg" : Model.TLogo.Url();
+}
 
 <footer class="footer radial-bg">
     <div class="container">
         <div class="footer__inner">
+            <div class="footer__main-info">
+                <div class="footer__main-info-logo">
+                    <img src="@logoIconPath"/>
+                    <p class="footer__main-info_title">@Model.TTitle</p>
+                </div>
+                <p>@Model.TSubTitle</p>
+                <ul class="footer__main-info_socials">
+                    @foreach (var link in Model.TSocialLinks!)
+                    {
+                        @if (link.Content is TSocialLink newLink)
+                        {
+                            <li class="footer__socials-item">
+                                <a class="footer__socials-link" target="_blank" href="@newLink?.TUrl?.Url)">
+                                    <img loading="lazy" class="social-icon-white" src="@newLink?.TIcon?.Url()" alt="Icon">
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>             
+                @if (Model.TShowLanguageDropdown && languagesVisible)
+                {
+                    <div class="footer__languages">
+                        @await Html.PartialAsync("tutorPartials/TLanguagesList", UmbracoContext?.PublishedRequest?.PublishedContent)
+                    </div>
+                }
+            </div>
             @if(Model != null)
             {
                 @if (Model.TQuickLinks != null)
                 {
                     @await Html.PartialAsync("tutorPartials/TQuickLink", Model.TQuickLinks.Content, new ViewDataDictionary(ViewData))
                 }
+                @if (Model.TAboutFoot != null)
+                {
+                    @await Html.PartialAsync("tutorPartials/TAbout", Model.TAboutFoot.Content)
+                }
                 @if (Model.TContactUsFooter != null)
                 {
                     @await Html.PartialAsync("tutorPartials/TContacts", Model.TContactUsFooter.Content, new ViewDataDictionary(ViewData))
                 }
-                @if(Model.TAboutFoot != null)
-                {
-                    @await Html.PartialAsync("tutorPartials/TAbout", Model.TAboutFoot.Content)                  
-                }                            
+                                      
             }                
         </div>
     </div>

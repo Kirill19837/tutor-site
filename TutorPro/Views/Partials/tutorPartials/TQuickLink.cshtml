@@ -13,11 +13,20 @@
         {
             @foreach(var link in Model.TLinks)
             {
-                var newLink = link.Content as TBlockLink;
- 
-                <li class="footer__menu-item">
-                    <a class="footer__menu-link @(pageName == newLink?.TUrl?.Name  ? "active" : "")" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
-                </li>
+                if(link.Content is TBlockLink newLink)
+                {
+                    if (newLink.TBlocks != null && newLink.TBlocks.Any())
+                    {
+                        @await Html.PartialAsync("tutorPartials/TFooterDropdown", newLink , ViewData)
+                    }
+                    else
+                    {
+                        <li class="footer__menu-item">
+                            <a class="footer__menu-link @(pageName == newLink?.TUrl?.Name  ? "active" : "")" href="@newLink?.TUrl?.Url">@newLink?.TLinkTitle</a>
+                        </li>
+                    }
+                    
+                }             
             }
         }
     </ul>  

@@ -58,7 +58,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string TApiUrl => this.Value<string>(_publishedValueFallback, "tApiUrl");
 
 		///<summary>
-		/// Filters
+		/// Filters: You can add additional filters by tags
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -86,5 +86,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[ImplementPropertyType("tSearchDelay")]
 		public virtual int TSearchDelay => this.Value<int>(_publishedValueFallback, "tSearchDelay");
+
+		///<summary>
+		/// Sort filter
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tSortFilter")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TSortFilter => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tSortFilter");
 	}
 }

@@ -1,0 +1,49 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TBlockLink>
+
+@{
+    var mainUrl = Model.TUrl?.Url;
+}
+
+<link rel="stylesheet" href="~/css/header-dropdown.min.css" />
+<li class="header__menu-item">
+    <a class="header__menu-link @(ViewData["pageName"]?.ToString() == Model.TUrl?.Name  ? "active" : "")" onclick="toggleDropdown(this)">
+        @Model.TLinkTitle
+        <span class="arrow"></span>
+    </a>
+    <div class="dropdown-content">      
+        <div class="dropdown-content__inner">
+            
+            @if(Model.TBlocks != null && Model.TBlocks.Any())
+            {
+                <div class="info_column">
+                    <h3 class="info_column__title">@Model.TLinkTitle</h3>
+                    @{
+                        var firstBlock = Model.TBlocks.FirstOrDefault();
+                    }
+                    @if (firstBlock != null && firstBlock.Content is THeaderChildBlock firstHeaderBlock && firstHeaderBlock.TChilds != null)
+                    {
+                        <h3 class="column__title" for="language">@firstHeaderBlock.TTitle</h3>
+                        <select data-culture="@Umbraco.CultureDictionary.Culture" class="column__select" id="language">
+                            @foreach (var child in firstHeaderBlock.TChilds)
+                            {
+                                @if(child.Content is TRepeatableDictionary headerChild)
+                                {
+                                    <option value="@headerChild.TKey">@headerChild.TValue</option>
+                                }                              
+                            }
+                        </select>
+                    }             
+                </div>
+                @foreach(var block in Model.TBlocks.Skip(1))
+                {
+                    @if(block.Content is THeaderChildBlock headerBlock)
+                    {
+                        @await Html.PartialAsync("tutorPartials/THeaderBlock", headerBlock, new ViewDataDictionary(ViewData) {{"mainUrl", mainUrl}})                       
+                    }                                                        
+                }
+            }
+        </div>
+    </div>
+</li>
+
+<script src="~/js/linkDropdown.min.js"></script>

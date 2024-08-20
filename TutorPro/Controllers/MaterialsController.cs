@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TutorPro.Application.Interfaces;
+using TutorPro.Application.Models.RequestModel;
 using Umbraco.Cms.Web.Common;
 using Umbraco.Cms.Web.Common.Controllers;
 using Umbraco.Cms.Web.Common.PublishedModels;
@@ -17,17 +18,16 @@ namespace TutorPro.Controllers
             _umbracoHelper = umbracoHelper;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetMaterials(string searchText, string subject, string grade, string level, int sort, int page = 1, int pageSize = 12)
+        [HttpPost]
+        public async Task<IActionResult> GetMaterials([FromBody] GetMaterialsRequestModel model)
         {
-            var materialsPage = _umbracoHelper.ContentAtRoot().DescendantsOrSelf<MaterialPage>()
-                .FirstOrDefault();
+            var materialsPage = _umbracoHelper.Content(model.PageId);
 
             if(materialsPage == null)
                 return NotFound("Materials page was not found");
 
-            var materials = _materialsService.GetMaterials(materialsPage, searchText, subject, grade, level, sort, page, pageSize);
-            
+            var materials = _materialsService.GetMaterials(materialsPage, model);
+
             return Ok(materials);
         }
 
@@ -45,9 +45,11 @@ namespace TutorPro.Controllers
             if (apiUrl == null)
                 return NotFound("Material api url was not found");
 
-            await _materialsService.RefreshMaterialsAsync(apiUrl, materialsPage.Id);
+            await _materialsService.RefreshMaterialsAsync(apiUrl, materialsPage);
 
             return Ok();
         }
+
+
     }
 }

@@ -50,14 +50,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Address
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tContactAddress")]
-		public virtual string TContactAddress => this.Value<string>(_publishedValueFallback, "tContactAddress");
-
-		///<summary>
 		/// Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -66,34 +58,19 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string TContactTitle => this.Value<string>(_publishedValueFallback, "tContactTitle");
 
 		///<summary>
-		/// Email
+		/// Items
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tEmail")]
-		public virtual string TEmail => this.Value<string>(_publishedValueFallback, "tEmail");
+		[ImplementPropertyType("tItems")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TItems => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tItems");
 
 		///<summary>
-		/// Number
+		/// Sub tilte
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tNumber")]
-		public virtual string TNumber => this.Value<string>(_publishedValueFallback, "tNumber");
-
-		///<summary>
-		/// Show language dropdown
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tShowLanguageDropdown")]
-		public virtual bool TShowLanguageDropdown => this.Value<bool>(_publishedValueFallback, "tShowLanguageDropdown");
-
-		///<summary>
-		/// Social links
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tSocialLinks")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TSocialLinks => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tSocialLinks");
+		[ImplementPropertyType("tSubTilte")]
+		public virtual string TSubTilte => this.Value<string>(_publishedValueFallback, "tSubTilte");
 	}
 }
