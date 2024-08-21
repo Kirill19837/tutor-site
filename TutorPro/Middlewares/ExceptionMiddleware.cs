@@ -22,13 +22,16 @@ namespace TutorPro.Middlewares
         {
             var statusCode = GetStatusCode(exception);
             var response = new
-            {
-                title = GetTitle(exception),
-                status = statusCode,
-                detail = exception.Message,
-                errors = GetErrors(exception)
-            };
-            httpContext.Response.ContentType = "application/json";
+			{
+				title = GetTitle(exception),
+				status = statusCode,
+				detail = exception.Message,
+				errors = GetErrors(exception),
+				source = exception.Source,
+				stackTrace = exception.StackTrace,
+				method = exception.TargetSite?.Name 
+			};
+			httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = statusCode;
 
             var jsonResponse = JsonConvert.SerializeObject(response);
