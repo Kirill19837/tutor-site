@@ -11,7 +11,20 @@
     background-color: rgba(0,0,0,0.4);
     backdrop-filter: blur(5px);
 }
-
+.pop__title {
+    font-weight: 600;
+    font-size: 30px;
+    color: #622901;
+    margin-bottom:16px;
+    text-align:left;
+}
+.pop__text {
+    font-weight: 500;
+    font-size: 18px;
+    color: #622901;
+    margin-bottom: 32px;
+    text-align: left;
+}
 /* Pop-up content */
 .popup-content {
     transform: scale(0.85);

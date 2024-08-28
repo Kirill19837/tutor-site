@@ -1,9 +1,22 @@
-﻿<div class="footer__inner" style="background-color:black" ng-controller="tLinks" ng-click="block.edit()" >
+﻿<link rel="stylesheet" href="/css/footer-dropdown.min.css" />
+<div class="footer__inner" style="background-color:black" ng-controller="tLinks" ng-click="block.edit()" >
     <div class="footer__actions" style="margin-left: 20px" ng-if="content">
         <span class="footer__title medium-title">{{content.tQuickTitle}}</span>
         <ul class="footer__menu">
             <li class="footer__menu-item" ng-repeat="link in content.tLinks.contentData">
                 <a class="footer__menu-link">{{link.tLinkTitle}}</a>
+                <div class="footer__menu">
+                    <div class="footer__dropdown" ng-if="link.tBlocks && link.tBlocks.contentData[0]">
+                        <p class="footer__dropdown-title">{{ link.tBlocks.contentData[0].tTitle }}</p>
+                        <div class="footer__dropdown-button_container">
+                            <button class="footer__dropdown-button"
+                                    ng-repeat="child in link.tBlocks.contentData[0].tChilds.contentData"
+                                    id="{{ child.tKey }}Button">
+                                {{ child.tValue }}
+                            </button>                       
+                        </div>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>

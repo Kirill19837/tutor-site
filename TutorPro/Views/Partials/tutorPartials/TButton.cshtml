@@ -1,12 +1,14 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TButton>
-
-@if (Model.TOpenPopUp)
+@{
+    var buttonType = ViewData["headerButton"] as string ?? "";
+    var rootPage = Umbraco.ContentAtRoot().FirstOrDefault() as HomePage;
+}
+@if (buttonType == "Request" || string.IsNullOrEmpty(buttonType) && Model.TDropdown == "Request")
 {  
     <link rel="stylesheet" href="~/css/pop-up-window.min.css">
-    var rootPage = Umbraco.ContentAtRoot().FirstOrDefault() as HomePage;
     var applicationForm = rootPage?.Children.FirstOrDefault(x => x.ContentType.Alias == "ApplicationForm") as ApplicationForm;
-    
-    <a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" onclick="openPopup()">
+
+    <a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" onclick="openPopup()" style=" cursor: pointer;">
         @if ((ViewData["span"] as bool? ?? false))
         {
             <span>@Model.TButtonTitle</span>
@@ -31,6 +33,52 @@
                     @await Html.PartialAsync("tutorPartials/TRequestForm", applicationForm.TSendForm?.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "mainPage", rootPage }, { "mainClass", "actions__form request-form" } })
                 </div>
             }
+        </div>
+    </div>
+    <script src="~/js/pop-up-window.min.js" defer></script>
+}
+else if (buttonType == "Platform" || string.IsNullOrEmpty(buttonType) && Model.TDropdown == "Platform")
+{
+    <link rel="stylesheet" href="~/css/pop-up-window.min.css">
+    <a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" onclick="openPopup()" style=" cursor: pointer;">
+        @if ((ViewData["span"] as bool? ?? false))
+        {
+            <span>@Model.TButtonTitle</span>
+        }
+        else
+        {
+            @Model.TButtonTitle
+        }
+    </a>
+
+    <div id="popup" class="popup">
+        <div class="popup-content" style="margin: 15% auto !important">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            @if (rootPage != null)
+            {
+                <div class="actions__form-wrap" style="margin: 0px;
+                border-radius: 0px;
+                padding: 0px 0px 0px;
+                -webkit-box-shadow: none;
+                box-shadow: none;">
+                    <p class="pop__title">@rootPage.TPopUpTitle</p>
+                    <p class="pop__text">@rootPage.TPopUpText</p>
+                    @if (rootPage.TPopUpButton != null)
+                    {
+                        var button = rootPage.TPopUpButton.Content as TButton;
+                        <a class="link link@(button.TFill ? "-main" : "-inverted")" href="@button.TLink?.Url" style="width:60%">
+                            @if ((ViewData["span"] as bool? ?? false))
+                            {
+                                <span>@button.TButtonTitle</span>
+                            }
+                            else
+                            {
+                                @button.TButtonTitle
+                            }
+                        </a>
+                    }
+                </div>
+            }          
         </div>
     </div>
     <script src="~/js/pop-up-window.min.js" defer></script>

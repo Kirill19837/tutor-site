@@ -302,7 +302,7 @@ $(function () {
               $(this).addClass('selected');
                 let chooseItem = $(this).data('value');
 
-                $('select').val(chooseItem).attr('selected', 'selected');
+                _this.val(chooseItem).attr('selected', 'selected');
                 selectHead.text( $(this).find('span').text() );
 
                 selectList.slideUp(duration);

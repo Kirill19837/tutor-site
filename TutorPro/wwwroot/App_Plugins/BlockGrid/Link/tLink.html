@@ -1,5 +1,21 @@
-﻿<div ng-controller="tLink" ng-click="block.edit()">
+﻿<style>
+    .arrow {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        margin-left: -1px;
+        vertical-align: middle;
+        border: solid currentColor;
+        border-width: 0 2px 2px 0;
+        transform: scale(0.6) rotate(45deg);
+        transition: transform 0.3s;
+    }
+</style>
+<div style="color:white" ng-controller="tLink" ng-click="block.edit()">
     <p class="header__menu-item" style="background-color: black; height: 40px; display: flex; align-items: center;">
-        <a style="font-size: 30px;" class="header__menu-link">{{content.tLinkTitle}}</a>
+        <a style="font-size: 30px;" class="header__menu-link">
+            {{content.tLinkTitle}}
+            <span ng-if="content.tBlocks.contentData.length > 0" class="arrow"></span>
+        </a>      
     </p>
 </div>

@@ -53,7 +53,7 @@
                
                 @if (button != null)
                 {
-                    @await Html.PartialAsync("tutorPartials/TButton", button, new ViewDataDictionary(ViewData) { { "class", "header__link" }, { "span", true } })
+                    @await Html.PartialAsync("tutorPartials/TButton", button, new ViewDataDictionary(ViewData) { { "class", "header__link" }, { "span", true }, {"headerButton", ViewData["button"]} })
                 }
             </div>
 

@@ -1,9 +1,9 @@
 ﻿<div style="width:100%" class="actions__column" ng-controller="tActionCard" ng-click="block.edit()">
     <div class="actions__item alone" tabindex="0" ng-style="{'background-color': content.tBackgroundColor}">
-        <img ng-if="content.tImage" src="{{image.src}}" />
+        <img ng-if="image" src="{{image.src}}" />
         <span class="actions__item-title medium-title">{{content.tTitle}}</span>
         <p class="actions__item-text" ng-bind-html="content.tText.markup"></p>
-        <button class="actions__item-link" ng-controller="tButton" ng-init="initButton(content.tButton.contentData[0])" ng-class="toggleClass">
+        <button ng-if="content.tButton.contentData[0].tButtonTitle != ''" class="actions__item-link" ng-controller="tButton" ng-init="initButton(content.tButton.contentData[0])" ng-class="toggleClass">
             <span>{{content.tButton.contentData[0].tButtonTitle}}</span>
         </button>       
     </div>
