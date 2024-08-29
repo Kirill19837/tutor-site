@@ -10,11 +10,13 @@
 	string[] blogComponentTypes = { BlogPage.ModelTypeAlias, BlogArticle.ModelTypeAlias, MaterialPage.ModelTypeAlias, MaterialArticle.ModelTypeAlias, BlogCategoryPage.ModelTypeAlias, MaterialCategoryPage.ModelTypeAlias };
 	bool isBlogComponent = blogComponentTypes.Contains(Model.ContentType.Alias);
 	var mainHeaderPadding = (mainHeader || disableFixedComponents || isBlogComponent);
+	var headerButton = "";
 	var languageDropDown = model.TShowLanguageDropdown;
 	var culture = Model.GetCultureFromDomains();
 	@if(Model is BlockGridPage page)
 	{
 		mainHeaderPadding = !page.TPadding;
+		headerButton = page.THeaderButtonDropdown;
 	}
 
 	var pageName = Umbraco.AssignedContentItem.Name;
@@ -63,7 +65,7 @@
 		<div class="wrapper@(mainHeaderPadding ? "" : " main-padding")" id="top">
 			@if (!disableFixedComponents)
 			{
-				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) { { "isDark", mainHeader }, { "pageName", pageName }, { "languages", languageDropDown } })
+				@await Html.PartialAsync("tutorPartials/THeader", model, new ViewDataDictionary(ViewData) { { "isDark", mainHeader }, { "pageName", pageName }, { "languages", languageDropDown }, {"button", headerButton} })
 			}
 			
 			<main class="main">
