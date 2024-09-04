@@ -3,7 +3,7 @@
     var buttonType = ViewData["headerButton"] as string ?? "";
     var rootPage = Umbraco.ContentAtRoot().FirstOrDefault() as HomePage;
 }
-@if (buttonType == "Request" || string.IsNullOrEmpty(buttonType) && Model.TDropdown == "Request")
+@if (buttonType == "Request" || string.IsNullOrEmpty(buttonType) && Model.TPopUp == "Request")
 {  
     <link rel="stylesheet" href="~/css/pop-up-window.min.css">
     var applicationForm = rootPage?.Children.FirstOrDefault(x => x.ContentType.Alias == "ApplicationForm") as ApplicationForm;
@@ -37,7 +37,7 @@
     </div>
     <script src="~/js/pop-up-window.min.js" defer></script>
 }
-else if (buttonType == "Platform" || string.IsNullOrEmpty(buttonType) && Model.TDropdown == "Platform")
+else if (buttonType == "Platform" || string.IsNullOrEmpty(buttonType) && Model.TPopUp == "Platform")
 {
     <link rel="stylesheet" href="~/css/pop-up-window.min.css">
     <a class="@ViewData["class"] link link@(Model.TFill ? "-main" : "-inverted")" onclick="openPopup()" style=" cursor: pointer;">

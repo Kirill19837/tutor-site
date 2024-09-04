@@ -4,8 +4,7 @@
     @if (Model.TChilds != null && Model.TChilds.Any())
     {
         foreach (var child in Model.TChilds)
-        {
-            
+        {            
             @if (child.Content is TRepeatableDictionary headerChild)
             {
                 var url = $"{ViewData["mainUrl"]}";

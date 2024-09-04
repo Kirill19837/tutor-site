@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Profiling.Internal;
+using System.Text.RegularExpressions;
 using System.Web;
 using TutorPro.Application.Interfaces;
 using TutorPro.Application.Models;
@@ -10,6 +11,7 @@ using TutorPro.Application.Models.UmbracoModel;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.Services;
+using Umbraco.Cms.Web.Common;
 using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace TutorPro.Application.Services
@@ -19,12 +21,16 @@ namespace TutorPro.Application.Services
         private readonly IHttpClientFactory _clientFactory;
         private readonly ILogger<MaterialsService> _logger;
         private readonly IContentService _contentService;
+        private readonly UmbracoHelper _umbracoHelper;
+        private readonly IVariationContextAccessor _variationContextAccessor;
 
-        public MaterialsService(ILogger<MaterialsService> logger, IHttpClientFactory clientFactory, IContentService contentService)
+        public MaterialsService(ILogger<MaterialsService> logger, IHttpClientFactory clientFactory, IContentService contentService, UmbracoHelper umbracoHelper, IVariationContextAccessor variationContextAccessor)
         {
             _logger = logger;
             _clientFactory = clientFactory;
             _contentService = contentService;
+            _umbracoHelper = umbracoHelper;
+            _variationContextAccessor = variationContextAccessor;
         }
         public FilterResponse GetMaterials(IPublishedContent materilaPage, GetMaterialsRequestModel model)
         {          
@@ -226,6 +232,36 @@ namespace TutorPro.Application.Services
                 throw new Exception("Failed to deserialize response content. Response content is null or empty.");
 
             return materials;
+        }
+
+        public async Task<bool> IsMaterialPageHasChild(string language, string pageName, string culture)
+        {
+            _variationContextAccessor.VariationContext = new VariationContext(culture);
+
+            return await Task.Run(() =>
+            {
+                var root = _umbracoHelper.ContentAtRoot();
+
+                var materialPage = root.DescendantsOrSelf<MaterialPage>().FirstOrDefault();
+                if (materialPage == null)
+                {
+                    return false;
+                }
+
+                var languagePage = materialPage.Children.FirstOrDefault(c => c.Name == language);
+                if (languagePage == null)
+                {
+                    return false;
+                }
+
+                var targetPage = languagePage.Children.FirstOrDefault(c => c.Name == pageName);
+                if (targetPage == null)
+                {
+                    return false;
+                }
+
+                return targetPage.Children.Any();
+            });
         }
     }
 }
