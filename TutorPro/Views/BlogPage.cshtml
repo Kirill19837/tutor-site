@@ -35,33 +35,38 @@
             }
             @if (firstBlog != null)
             {
-                <div class="blog__top-latest_blog">
+                <div class="large_blog-block">
                     <a class="blog__item-main" href="@firstBlog.Url()">
+                        <div class="blog__item-image">
                         @if (firstBlog.TImage != null)
-                        {
-                            <div class="blog__item-image">
-                                <img loading="lazy" src="@firstBlog.TImage?.Url()" alt="Article image">
-                            </div>
+                        {                            
+                             <img loading="lazy" src="@firstBlog.TImage?.Url()" alt="Article image">                           
                         }
                         else
                         {
-                            <div class="blog__item-image">
-                                <img>
-                            </div>
+                             <img>
                         }
+                        </div>
                         <p class="blog__item-title" style="font-size:150%">@firstBlog.TTitle</p>
                         <span class="blog__item_main-date">@formattedDate</span>
                     </a>
                 </div>
             }
-            @if (Model.TNewsletter != null)
-            {
-                @await Html.PartialAsync("tutorPartials/TNewsletter", Model.TNewsletter.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) {{"culture", culture}})
-            }
-
-            <div class="blog__top-preview_title">
-                <p>@Model.TTitleMessage</p>
+            <div class="side-block">
+                <div class="blog-block">
+                    @if (Model.TNewsletter != null)
+                    {
+                        @await Html.PartialAsync("tutorPartials/TNewsletter", Model.TNewsletter.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "culture", culture } })
+                    }
+                </div>
+                
+                <div class="blog-block">
+                    <div class="blog__top-preview_title">
+                    <p>@Model.TTitleMessage</p>
+                    </div>
+                </div>
             </div>
+           
                 
         </div>
         

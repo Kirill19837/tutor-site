@@ -9,5 +9,6 @@ namespace TutorPro.Application.Interfaces
     {
         FilterResponse GetMaterials(IPublishedContent materilaPage, GetMaterialsRequestModel model);
         Task RefreshMaterialsAsync(string apiUrl, MaterialPage materialPage);
+        Task<bool> IsMaterialPageHasChild(string language, string pageName, string culture);
     }
 }
