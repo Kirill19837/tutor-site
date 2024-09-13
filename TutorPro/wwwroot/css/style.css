@@ -9774,7 +9774,7 @@ select.subscription-form__input:-webkit-autofill:focus {
         }
 
         .actions__item-text {
-            margin-bottom: 0;
+            margin-bottom: 8px;
         }
 
         .actions__item-link {
