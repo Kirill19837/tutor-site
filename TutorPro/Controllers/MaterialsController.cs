@@ -23,7 +23,7 @@ namespace TutorPro.Controllers
         {
             var materialsPage = _umbracoHelper.Content(model.PageId);
 
-            if(materialsPage == null)
+            if (materialsPage == null)
                 return NotFound("Materials page was not found");
 
             var materials = _materialsService.GetMaterials(materialsPage, model);
@@ -50,6 +50,10 @@ namespace TutorPro.Controllers
             return Ok();
         }
 
-
+        [HttpGet]
+        public async Task<IActionResult> IsMaterialPageHasChild(string language, string pageName, string culture)
+        {
+            return Ok(await _materialsService.IsMaterialPageHasChild(language, pageName, culture));
+        }
     }
 }

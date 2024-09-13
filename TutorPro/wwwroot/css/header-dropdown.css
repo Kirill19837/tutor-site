@@ -91,14 +91,22 @@
         transform: scale(0.6) rotate(45deg);
         transition: transform 0.3s;
         margin-left: -1px;
+        margin-bottom:5px;
     }
 
     .header__menu-link.dropdown .arrow {
         transform: scale(0.6) rotate(225deg);
+        margin-top: 5px;
     }
 
 .dropdown-content.show {
     display: block;
+}
+
+.column__item.disable {
+    pointer-events: none;
+    color: gray;
+    text-decoration: none;
 }
 
 @media (max-width: 992px) {
