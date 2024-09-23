@@ -50,13 +50,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Bold
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[ImplementPropertyType("tBold")]
-		public virtual bool TBold => this.Value<bool>(_publishedValueFallback, "tBold");
-
-		///<summary>
 		/// Center align
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -72,12 +65,26 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string TColor => this.Value<string>(_publishedValueFallback, "tColor");
 
 		///<summary>
-		/// Size
+		/// Font
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tFont")]
+		public virtual string TFont => this.Value<string>(_publishedValueFallback, "tFont");
+
+		///<summary>
+		/// Size: The values are written in pixels (px)
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[ImplementPropertyType("tSize")]
-		public virtual string TSize => this.Value<string>(_publishedValueFallback, "tSize");
+		public virtual int TSize => this.Value<int>(_publishedValueFallback, "tSize");
+
+		///<summary>
+		/// Sub title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tSubTitle")]
+		public virtual bool TSubTitle => this.Value<bool>(_publishedValueFallback, "tSubTitle");
 
 		///<summary>
 		/// Title
@@ -86,5 +93,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tTitle")]
 		public virtual string TTitle => this.Value<string>(_publishedValueFallback, "tTitle");
+
+		///<summary>
+		/// Weight
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tWeight")]
+		public virtual int TWeight => this.Value<int>(_publishedValueFallback, "tWeight");
 	}
 }

@@ -3,7 +3,7 @@
     public class GetMaterialsRequestModel
     {
         public string? SearchText { get; set; }
-        public string? Subject { get; set; }
+        public string[]? Subject { get; set; }
         public string? Language { get; set; }
         public List<CategoryItem>? CategoryItems { get; set; }
         public int Sort { get; set; }

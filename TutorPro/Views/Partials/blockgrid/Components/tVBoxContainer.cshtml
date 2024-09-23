@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var container = (TVboxContainer)Model.Content;
+}
+<div class="v-box-container" style="max-width:@(container.TMaxWidth + "px"); gap:@(container.TGap + "px"); align-content:@(container.TCentered ? "center" : "inherit")">
+    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+</div> 

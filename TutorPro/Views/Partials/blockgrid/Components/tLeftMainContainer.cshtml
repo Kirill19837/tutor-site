@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+<div class="main-content">
+    @foreach(var area in Model.Areas)
+    {
+        var blockClass = area.ColumnSpan > 3 ? "large-block" : "side-block";
+        <div class="@blockClass">
+            @await Html.GetBlockGridItemAreaHtmlAsync(area)
+        </div>
+    }
+</div> 

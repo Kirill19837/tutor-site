@@ -64,7 +64,6 @@ function sendRequest(key = null, value = null, page = 1) {
     var pageSize = pagination.getAttribute('data-pageSize');
     const filterElement = document.getElementById('materials_filter');
     const language = filterElement.getAttribute('data-language');
-    const subject = filterElement.getAttribute('data-subject');
     const pageId = filterElement.getAttribute('data-pageId');
 
     $.ajax({
@@ -75,7 +74,7 @@ function sendRequest(key = null, value = null, page = 1) {
             'Accept': 'application/json'
         },
         data: JSON.stringify({
-            subject: subject,
+            subject: subjects,
             language: language,
             categoryItems: getCategories(),
             sort: sort,

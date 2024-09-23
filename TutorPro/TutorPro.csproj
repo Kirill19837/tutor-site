@@ -10,6 +10,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="wwwroot\App_Plugins\BlockGrid\Cards\PreviewCard\package.manifest" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="wwwroot\media\4aonipek\hossein-nasr-wr56ynk67uc-unsplash.jpg" />
     <Content Include="wwwroot\media\4sbdlbqh\screenshots-image1.jpg" />
     <Content Include="wwwroot\media\52vji5we\cookies-icon.png" />
@@ -165,6 +168,7 @@
     <None Include="wwwroot\App_Plugins\BlockGrid\button\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\button\tButton.controller.js" />
     <None Include="wwwroot\App_Plugins\BlockGrid\Cards\ActionCard\package.manifest" />
+    <None Include="wwwroot\App_Plugins\BlockGrid\Cards\PreviewCard\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\ChooseItem\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\ChoosePart\package.manifest" />
     <None Include="wwwroot\App_Plugins\BlockGrid\RichTextEditor\package.manifest" />

@@ -1,0 +1,9 @@
+﻿<div ng-controller="tCard" ng-click="block.edit()">
+    <div class="block" tabindex="0" ng-style="{'background-color': content.tBackgroundColor}">
+        <h3 ng-class="titleClass">{{content.tTitle}}</h3>
+        <p class="actions__item-text" ng-bind-html="content.tText.markup"></p>
+        <button ng-if="content.tButton.contentData[0].tButtonTitle != ''" class="actions__item-link" ng-controller="tButton" ng-init="initButton(content.tButton.contentData[0])" ng-class="toggleClass">
+            <span>{{content.tButton.contentData[0].tButtonTitle}}</span>
+        </button>       
+    </div>
+</div>

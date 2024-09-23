@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var container = (THboxContainer)Model.Content;
+}
+<div class="h-box-container" style="max-height:@(container.TMaxHeight + "px"); gap:@(container.TGap + "px"); justify-content:@(container.TCentered ? "center" : "inherit")">
+    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+</div> 

@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var card = (TCard)Model.Content;
+    var isHaveButton = card.TButton != null && card.TButton.Content is TButton button && !button.TButtonTitle.IsNullOrWhiteSpace();
+}
+ 
+<div class="block">
+    <h3 class="block__title @(isHaveButton ? "" : "big")">@card.TTitle</h3>
+    <p>@card.TText</p>
+    @if (isHaveButton)
+    {
+        @await Html.PartialAsync("tutorPartials/TButton", card.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "material-block__link" }, { "span", true } })
+    }
+</div>

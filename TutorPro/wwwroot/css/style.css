@@ -4076,9 +4076,29 @@ height: 100%;
         margin-right: -24px;
     }
 
-    .teacher-description .description__top {
-        padding-top: 71px;
+.half_container {
+    margin-top:10px;
+}
+
+    .half_container .umb-block-grid__area-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
     }
+
+        .half_container .umb-block-grid__area-container .umb-block-grid__area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .teacher-description .description__top {
+            padding-top: 71px;
+        }
 
         .teacher-description .description__top .container {
             padding-bottom: 21px;
@@ -4694,6 +4714,8 @@ height: 100%;
 .material_preview {
     padding: 0 20px;
 }
+.title_block {
+}
 
 .title_block .title {
     font-size: 45px;
@@ -4704,8 +4726,7 @@ height: 100%;
     font-size: 18px;
     font-weight: 500;
     color: #622901;
-    max-width: 70%;
-    margin-bottom: 48px;
+    max-width: 70%;   
     margin-top:8px;
 }
 
@@ -4716,25 +4737,39 @@ height: 100%;
     align-content: center;
     justify-content: center;
 }
-
 .large-block {
-    background-color: #fff;
-    padding: 8px;
-    border-radius: 16px;
-    border: 1px solid #C9550033;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     width: 100%;
 }
 
-    .large-block img {
+    .large-block .umb-block-grid__layout-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+        .large-block .umb-block-grid__layout-container .umb-block-grid__layout-item {
+            height: 100%;
+            width:100%;
+        }
+
+    .material_item_block {
+        background-color: #fff;
+        padding: 8px;
+        border-radius: 16px;
+        border: 1px solid #C9550033;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        height: 100%;
+    }
+
+    .material_item_block img {
         max-height: 330px;
         width: 100%;
         height: auto;
         border-radius: 10px;
     }
 
-    .large-block p {
+    .material_item_block p {
         font-size: 1em;
         color: #555;
         padding: 0 12px 0 12px;
@@ -4746,7 +4781,7 @@ height: 100%;
         margin-top:6px;
     }
 
-    .large-block__title {
+    .material_item_block .title {
         color: #0A0400 !important;
         font-size: 28px;
         font-weight:600;
@@ -4754,16 +4789,86 @@ height: 100%;
         padding: 0 12px 0 12px;
         margin-top:12px;
     }
-.large-block:hover {
+.material_item_block:hover {
     -webkit-box-shadow: 0 0 18px 8px rgba(238, 100, 0, 0.2);
     box-shadow: 0 0 18px 8px rgba(238, 100, 0, 0.2);
 }
+
 .side-block {
     display: flex;
     flex-direction: column;
     gap: 24px;
     justify-content: space-between;
 }
+
+.side-block .umb-block-grid__layout-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: space-between;
+    height:100%;
+}
+
+    .h-box-container {
+        display: flex;
+        flex-direction:row;
+        width: 100%;
+    }
+
+        .h-box-container .umb-block-grid__area-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            gap: inherit;
+            justify-content: inherit;
+        }
+
+            .h-box-container .umb-block-grid__area-container .umb-block-grid__area {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                gap: inherit;
+                justify-content: inherit;
+            }
+                .h-box-container .umb-block-grid__area-container .umb-block-grid__area .umb-block-grid__layout-container {
+                    display: inherit;
+                    flex-direction: inherit;
+                    width: inherit;
+                    justify-content: inherit;
+                    gap: inherit;
+                    justify-content: inherit;
+                }
+
+    .v-box-container  {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;       
+    }
+
+
+    .v-box-container .umb-block-grid__area-container {
+        height: inherit;
+        display: inherit;
+        flex-direction: inherit;
+        align-content: inherit;
+        gap: inherit;
+    }
+    .v-box-container .umb-block-grid__area-container .umb-block-grid__area {
+        height: inherit;
+        display: inherit;
+        flex-direction: inherit;
+        align-content: inherit;
+        gap: inherit;
+    }
+
+        .v-box-container .umb-block-grid__area-container .umb-block-grid__area .umb-block-grid__layout-container {
+            height: inherit;
+            display: inherit;
+            flex-direction: inherit;
+            align-content: inherit;
+            gap: inherit;
+        }
 
 .block {
     border: 1px solid #C9550033;
@@ -4773,7 +4878,7 @@ height: 100%;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 100%;
-    z-index:1;
+    z-index: 1;
 }
 
     .block__title {
@@ -6517,6 +6622,10 @@ select.subscription-form__input:-webkit-autofill:focus {
     @media (max-width:1247px){
         .side-block{
             flex-direction:inherit;
+        }
+
+        .side-block .umb-block-grid__layout-container {
+            flex-direction: row !important;
         }
     }
     @media (max-width: 1200px) {
@@ -11022,12 +11131,25 @@ select.subscription-form__input:-webkit-autofill:focus {
             -ms-transform: translate(65%, 75%);
             transform: translate(65%, 75%);
         }
-        .title_block.sub-title {
-            font-size:12px;
-            line-height:16.2px;
+        .margin_container {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .title_block {
+            margin-bottom:12px;
+        }
+        .title_block .title {
+            font-size: 42px !important;
+        }
+        .title_block .sub-title {
+            font-size: 12px !important;
+            line-height: 16.2px !important;
+            font-weight:600 !important;
         }
         
-        .large-block__title {
+        .material_item_block__title {
             margin-top:4px;
             font-size:18px;
             line-height:23.2px;
