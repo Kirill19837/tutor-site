@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TMaterialBlock)Model.Content;
+    var material = content.TMaterialContent;
+}
+@if(material is MaterialArticle materialArticle)
+{
+    <div class="material_item_block">
+        <a href="@materialArticle.Url()">
+            @if (materialArticle.TImageUrl.IsNullOrWhiteSpace())
+            {
+                var randomNumber = new Random().Next(1, 4);
+                <img src="~/images/matirials/Type=@(randomNumber).png" alt="preview_image">
+            }
+            else
+            {
+                <img src="@materialArticle.TImageUrl" alt="preview_image">
+            }
+            <h2 class="title">@materialArticle.TTitle </h2>
+            @if (!materialArticle.TText.IsNullOrWhiteSpace())
+            {
+                <p>@materialArticle.TText</p>
+            }
+        </a>
+    </div> 
+}

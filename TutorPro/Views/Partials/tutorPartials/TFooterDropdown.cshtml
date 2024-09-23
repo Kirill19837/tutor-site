@@ -21,8 +21,8 @@
                     @if (child.Content is TRepeatableDictionary item)
                     {
                         var mainUrl = commonUrl + item.TKey;
-                        <button class="footer__dropdown-button" onclick="showDropdown('@item.TKey')" id="@(item.TKey)Button">@item.TValue</button>
-                        <div class="footer__dropdown-content" id="@(item.TKey)Content">
+                            <button class="footer__dropdown-button" onclick="showDropdown('@item.TKey')" id="@(item.TKey)Button" data-key="@item.TKey" data-culture="@Umbraco.CultureDictionary.Culture">@item.TValue</button>
+                            <div class="footer__dropdown-content" id="@(item.TKey)Content">
                             @foreach (var block in Model.TBlocks.Skip(1))
                             {
                                 if (block.Content is THeaderChildBlock footerBlock)

@@ -106,9 +106,9 @@ namespace TutorPro.Application.Services
 			}
         }
 
-        private bool IsMatchFilter(MaterialArticle materialCard, string subject, List<CategoryItem> categoryItems) //TODO Add language filtration
+        private bool IsMatchFilter(MaterialArticle materialCard, string[] subject, List<CategoryItem> categoryItems) //TODO Add language filtration
         {
-            if (!string.IsNullOrEmpty(subject) && !materialCard.TTags?.Contains(subject) == true)
+            if (subject != null && subject.Any() && !subject.All(tag => materialCard.TTags?.Contains(tag) == true))
             {
                 return false;
             }
@@ -152,28 +152,38 @@ namespace TutorPro.Application.Services
                     _logger.LogInformation($"{categorySubjectPage.Name} - Materials deleted");
 
                     //Add new articles
-                    var filteredMaterials = materialData.Where(m => m.Tags.Contains(categorySubjectPage.TTag)).ToList(); //TODO add languages filtration
-                    AddMaterialsToContent(categorySubjectPage.Id, filteredMaterials, cultures);
+                    if(categorySubjectPage.TTag != null && categorySubjectPage.TTag.Any())
+                    {
+                        var filteredMaterials = materialData
+                        .Where(m => m.Tags != null && categorySubjectPage.TTag.All(tag => m.Tags.Contains(tag)))
+                        .ToList(); //TODO add languages filtration
+
+                        AddMaterialsToContent(categorySubjectPage.Id, filteredMaterials, cultures);
+                    }
+                    
 
                     _logger.LogInformation($"{categorySubjectPage.Name} - Materials added");
                 }
             }                             
-		}    
-        
+		}
+
         private void DeleteMaterialsFromContent(int contentId)
         {
+            List<IContent> allChildren = new List<IContent>();
             var pageIndex = 0;
             const int pageSize = 100;
-            var totalChildren = long.MaxValue;
+            long totalChildren;
 
-            while (pageIndex * pageSize < totalChildren)
+            do
             {
                 var children = _contentService.GetPagedChildren(contentId, pageIndex, pageSize, out totalChildren);
-                foreach (var child in children)
-                {
-                    _contentService.Delete(child);
-                }
+                allChildren.AddRange(children);
                 pageIndex++;
+            } while (pageIndex * pageSize < totalChildren);
+
+            foreach (var child in allChildren)
+            {
+                _contentService.Delete(child);
             }
         }
         private void AddMaterialsToContent(int contentId, List<MaterialCardView> materials, IEnumerable<string> cultures)
@@ -189,7 +199,9 @@ namespace TutorPro.Application.Services
 
                     newContent.SetValue("tTitle", material.Title);
                     newContent.SetValue("tText", material.Text);
-                    string tagList = string.Join("\n", material.Tags.Select(tag => tag.ToString()));
+                    string tagList = material.Tags != null
+                        ? string.Join("\n", material.Tags.Select(tag => tag.ToString()))
+                        : string.Empty;
                     newContent.SetValue("tTags", tagList);
                     newContent.SetValue("tImageUrl", material.ImageUrl);
                     newContent.SetValue("tGuid", material.Guid);

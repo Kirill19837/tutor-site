@@ -56,8 +56,19 @@
     color: #FF6B00;
 }
 
-@media (max-width: 576px) {
-    .footer__dropdown-content{
+    .footer__column__item.disable {
+        pointer-events: none;
+        color:dimgray;
+        text-decoration: none;
+    }
+        .footer__column__item.disable:hover {
+            color: dimgray;
+            text-decoration: none;
+            cursor: default;
+        }
+
+    @media (max-width: 576px) {
+        .footer__dropdown-content{
         justify-content:center;
     }
 

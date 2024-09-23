@@ -50,20 +50,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Cards
+		/// Preview
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tCards")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TCards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tCards");
-
-		///<summary>
-		/// Sub title
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tSubTitle")]
-		public virtual string TSubTitle => this.Value<string>(_publishedValueFallback, "tSubTitle");
+		[ImplementPropertyType("tPreview")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel TPreview => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "tPreview");
 
 		///<summary>
 		/// Tag
@@ -71,14 +63,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tTag")]
-		public virtual string TTag => this.Value<string>(_publishedValueFallback, "tTag");
-
-		///<summary>
-		/// Title
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("tTitle")]
-		public virtual string TTitle => this.Value<string>(_publishedValueFallback, "tTitle");
+		public virtual global::System.Collections.Generic.IEnumerable<string> TTag => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "tTag");
 	}
 }
