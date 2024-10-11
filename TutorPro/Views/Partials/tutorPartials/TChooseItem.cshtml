@@ -1,9 +1,6 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TChooseItemCard>
-@{
-    var gap = ViewData["gap"] + "px";
-}
 
-<li class="choose__list-item" style="margin-bottom:@gap">
+<li class="choose__list-item">
     @Model.TTitle
     @if(!Model.TTimeValue.IsNullOrWhiteSpace() && Model.TTimeType != null)
     {
