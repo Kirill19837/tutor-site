@@ -3,11 +3,10 @@
 @{
     var content = (TScreenshots)Model.Content;
     var images = content.TImages;
-    var rootPage = Umbraco.ContentAtRoot().FirstOrDefault() as HomePage;
 }
 <link rel="stylesheet" href="~/css//screen-grid.min.css" />
 <!-- Section with screenshots -->
-<div class="screenshots @(content.TModal == "Platform" ? "pop-up": "")">
+<div class="screenshots">
     <div class="decor-bg radial-bg green"></div>
     <div class="decor-bg radial-bg orange"></div>
     <div class="screenshots__block-wrap">
@@ -28,32 +27,6 @@
                     </div>
                 </div>
             }      
-        }       
+        }
     </div>
-    @if (content.TModal == "Platform")
-    {
-        <div id="popup" class="popup_inside">
-            <div class="popup-content_inside">
-                @if (rootPage != null)
-                {
-                    <div class="actions__form-wrap" style="margin: 0px;
-                        border-radius: 0px;
-                        padding: 0px 0px 0px;
-                        -webkit-box-shadow: none;
-                        box-shadow: none;">
-                        <p class="pop__title">@rootPage.TPopUpTitle</p>
-                        <p class="pop__text">@rootPage.TPopUpText</p>
-                        @if (rootPage.TPopUpButton != null)
-                        {
-                            var button = rootPage.TPopUpButton.Content as TButton;
-                            <a class="link pop-up-link link@(button.TFill ? "-main" : "-inverted")" href="@button.TLink?.Url" style="width:60%">
-                                <span>@button.TButtonTitle</span>
-                            </a>
-                        }
-                    </div>
-                }
-            </div>
-        </div>
-        <script src="~/js/pop-up-window.min.js" defer></script>
-    }
 </div>

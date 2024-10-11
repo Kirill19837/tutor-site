@@ -100,17 +100,5 @@
     "inputFiles": [
       "wwwroot/js/footerLinkDropdown.js"
     ]
-  },
-  {
-    "outputFileName": "wwwroot/js/tabs.min.js",
-    "inputFiles": [
-      "wwwroot/js/tabs.js"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/js/slider.min.js",
-    "inputFiles": [
-      "wwwroot/js/slider.js"
-    ]
   }
 ]
