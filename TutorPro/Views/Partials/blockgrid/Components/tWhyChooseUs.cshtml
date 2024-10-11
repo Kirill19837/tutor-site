@@ -4,41 +4,89 @@
     var content = (TWhyChooseUs)Model.Content;
     var card = content.TCard?.Content;
 }
-
-<section class="choose">
-    <div class="choose__top radial-bg">
-        <div class="container">
-            @if (!string.IsNullOrEmpty(content.TTitle))
-            {
-                <h2 class="choose__title section-title">@content.TTitle</h2>           
-            }
-            <div class="choose__block">    
-                @if(content.TSections != null)
+@if (content.TStyle == "main")
+{
+    <section class="choose">
+        <div class="choose__top radial-bg">
+            <div class="container">
+                @if (!string.IsNullOrEmpty(content.TTitle))
                 {
-                    @foreach(var section in content.TSections)
-                    {
-                        @await Html.PartialAsync("tutorPartials/TChoosePart", section.Content)
-                    }
+                    <h2 class="choose__title section-title">@content.TTitle</h2>
                 }
-            </div>
-        </div>
-    </div>
-
-    <div class="choose__bottom">
-        <div class="container">
-            <div class="choose__bottom-inner">
-                <img class="choose__bottom-arrow" src="~/images/icons/icon-arrow2.svg" alt="Arrow image">
-                <div class="choose__bottom-info">
-                    @if(card != null)
+                <div class="choose__block">
+                    @if (content.TSections != null)
                     {
-                        <p class="choose__bottom-text">@card.TText</p>
-                        @if(card.TButton != null)
+                        @foreach (var section in content.TSections)
                         {
-                            @await Html.PartialAsync("tutorPartials/TButton", card.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "choose__bottom-link" }, { "span", true } })
+                            @await Html.PartialAsync("tutorPartials/TChoosePart", section.Content)
                         }
                     }
                 </div>
             </div>
         </div>
-    </div>
-</section>
+
+        <div class="choose__bottom">
+            <div class="container">
+                <div class="choose__bottom-inner">
+                    <img class="choose__bottom-arrow" src="~/images/icons/icon-arrow2.svg" alt="Arrow image">
+                    <div class="choose__bottom-info">
+                        @if (card != null)
+                        {
+                            <p class="choose__bottom-text">@card.TText</p>
+                            @if (card.TButton != null)
+                            {
+                                @await Html.PartialAsync("tutorPartials/TButton", card.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "choose__bottom-link" }, { "span", true } })
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if(content.TStyle == "teacher")
+{
+    <section class="choose_teacher">
+        @if (content.TDecors != null)
+        {
+            @foreach (var decor in content.TDecors)
+            {
+                @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+            }
+        }
+        <div class="choose_teacher__top radial-bg">
+            <div class="container">
+                @if (!string.IsNullOrEmpty(content.TTitle))
+                {
+                    <h2 class="choose__title section-title">@content.TTitle</h2>
+                }
+                <div class="choose_teacher__block">
+                    @if (content.TSections != null)
+                    {
+                        @foreach (var section in content.TSections)
+                        {
+                            @await Html.PartialAsync("tutorPartials/TChoosePart", section.Content)
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="choose_teacher__bottom">
+            <div class="container">
+                <div class="choose_teacher__bottom-inner">
+                    <div class="choose_teacher__bottom-info">
+                        @if (card != null)
+                        {
+                            <p class="choose_teacher__bottom-text">@card.TText</p>
+                            @if (card.TButton != null)
+                            {
+                                @await Html.PartialAsync("tutorPartials/TButton", card.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "choose__bottom-link" }, { "span", true } })
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
