@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TInfoBlock)Model.Content;
+}
+<div class="info-block radial-bg">
+    <div class="info-block__bg radial-bg"></div>
+    <div class="info_block_content">
+        <h1 class="info-block-title big-title">@content.TTitle</h1>
+        <div class="info_block__link_container">
+            @if (content.TButton != null)
+            {
+                @await Html.PartialAsync("tutorPartials/TButton", content.TButton.Content, new ViewDataDictionary(ViewData) { { "class", "info_block__link" }, { "span", false } })
+            }
+        </div>
+       
+    </div>
+</div>

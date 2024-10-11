@@ -1,0 +1,51 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TTeamBlock)Model.Content;
+}
+
+<div class="team_container">
+    @if (content.TDecors != null)
+    {
+        @foreach (var decor in content.TDecors)
+        {
+            @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+        }
+    }
+    <div class="container">
+        <div class="team_content">
+            @if (content.TPreviewCard != null)
+            {                         
+                <div class="team_preview_block">
+                    <div class="team_preview_image ">
+                        @await Html.GetBlockGridHtmlAsync(content.TPreviewCard.Content.TImage)
+                    </div>  
+                    <div class="team_preview_text">
+                        @Html.Raw(content.TPreviewCard.Content.TText)
+                    </div>
+                    
+                </div>             
+            }
+            @if (content.TTeamCards != null)
+            {
+                <div class="team_cards_block">
+                    @foreach (var item in content.TTeamCards)
+                    {
+                        @if(item.Content is TCard card)
+                        {
+                            <div class="team_card">
+                                <div class="team_card_image ">
+                                    @await Html.GetBlockGridHtmlAsync(card.TImage)
+                                </div>
+                            
+                                <div class="team_card_text">
+                                    @Html.Raw(card.TText)
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }            
+        </div>
+    </div>
+</div>

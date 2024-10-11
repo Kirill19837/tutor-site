@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var contentModel = (TSlider)Model.Content;
+    var content = contentModel.TSlides;
+}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<div class="slider_conteiner">
+    <div class="container">
+        <h1 class="slider_title big-title">@contentModel.TTitle</h1>
+        @if (content != null && content.Any())
+        {
+            <div class="slider">
+                @for (int i = 0; i < content.Count; i++)
+                {
+                    <div>
+                        @await Html.PartialAsync($"Partials/tutorPartials/{content[i].Content.ContentType.Alias}", content[i].Content)
+                    </div>
+                }
+            </div>
+        }
+    </div>  
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="~/js/slider.min.js"></script>

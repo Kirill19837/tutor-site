@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TSlide>
+
+<div class="testimonial-card" data-rating="@Model.TRating">
+    <h2 class="testimonial-title">@Model.TTitle</h2>
+    <p class="testimonial-content">@Model.TText</p>
+    <div class="stars-container"></div>
+    <div class="author-info">
+        <div class="author-title">@Model.TAdditionalInfo</div>
+        <div class="author-name">@Model.TTeacher</div>
+    </div>
+</div>

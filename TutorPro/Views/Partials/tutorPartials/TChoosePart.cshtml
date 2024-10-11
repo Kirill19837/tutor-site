@@ -5,16 +5,25 @@
 
 <div class="choose__column @withClass">
     <div class="choose__column-info">
-        <p class="choose__column-title">@Model.TTitle</p>
+        <p class="choose__column-title" style="margin-bottom:@(Model.TTitlePaddingBottom + "px"); margin-top:@(Model.TTitlePaddingTop + "px")">@Model.TTitle</p>
         <ul class="choose__list">
             @if(Model.TItems != null)
             {
                 foreach(var item in Model.TItems)
                 {
-                    @await Html.PartialAsync("tutorPartials/TChooseItem", item.Content)
+                    @await Html.PartialAsync("tutorPartials/TChooseItem", item.Content, new ViewDataDictionary(ViewData) {{ "gap", Model.TGap }})
                 }
             }
         </ul>
         <p class="choose__column-result">@($"{Model.TResultTimeValue} {Model.TResultTimeType}")</p>
+        <ul class="choose__list additional">
+            @if (Model.TAdditionalItems != null)
+            {
+                foreach (var item in Model.TAdditionalItems)
+                {
+                    @await Html.PartialAsync("tutorPartials/TChooseItem", item.Content)
+                }
+            }
+        </ul>
     </div>
 </div>

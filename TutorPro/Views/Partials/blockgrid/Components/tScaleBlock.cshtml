@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TScaleBlock)Model.Content;
+}
+<div class="scale_container">
+    @if (content.TDecors != null)
+    {
+        @foreach (var decor in content.TDecors)
+        {
+            @await Html.PartialAsync("tutorPartials/TDecorItem", decor.Content)
+        }
+    }
+    <div class="container"> 
+       <div class="scale_text">
+           <p class="scale_title">@content.TTitle</p>
+           <p class="scale_sub-title">@content.TSubTitle</p>
+       </div>
+        @if(content.TCircles != null && content.TCircles.Any() && content.TCircles.Count >= 3)
+        {           
+            <div class="scale_content">
+                <div class="scale_path">
+                    <img src="~/images/for-teacher/Vector 34.svg"/>
+                </div>
+                @for (int i = 0; i < content.TCircles.Count(); i++)
+                {
+                    @await Html.PartialAsync("tutorPartials/TCircleText", content.TCircles[i].Content, new ViewDataDictionary(ViewData) { { "index", i } })                   
+                }              
+            </div>
+        }
+        
+    </div>
+</div>
+
+<style>
+    
+</style>
