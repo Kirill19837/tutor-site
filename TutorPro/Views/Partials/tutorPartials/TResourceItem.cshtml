@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TIcon>
+
+<div class="resource-item">
+    @if(Model.TIconImage != null)
+    {
+        <div class="resource-image">
+            <img loading="lazy" src="@Model.TIconImage.Url()" />
+        </div>
+        <p class="recource-item-text">@Model.TText</p>
+    }   
+</div>

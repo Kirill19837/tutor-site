@@ -50,6 +50,21 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// Additional items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tAdditionalItems")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TAdditionalItems => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "tAdditionalItems");
+
+		///<summary>
+		/// Gap: gap between items
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tGap")]
+		public virtual int TGap => this.Value<int>(_publishedValueFallback, "tGap");
+
+		///<summary>
 		/// Items
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -80,6 +95,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("tTitle")]
 		public virtual string TTitle => this.Value<string>(_publishedValueFallback, "tTitle");
+
+		///<summary>
+		/// Title padding bottom
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tTitlePaddingBottom")]
+		public virtual int TTitlePaddingBottom => this.Value<int>(_publishedValueFallback, "tTitlePaddingBottom");
+
+		///<summary>
+		/// Title padding top
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[ImplementPropertyType("tTitlePaddingTop")]
+		public virtual int TTitlePaddingTop => this.Value<int>(_publishedValueFallback, "tTitlePaddingTop");
 
 		///<summary>
 		/// With?
