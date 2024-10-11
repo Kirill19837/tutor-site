@@ -1,0 +1,59 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var content = (TReceivesBlock)Model.Content;
+}
+
+<div class="receives_block">
+    <div class="container">
+        <div class="receives_block-content">
+            <h1 class="receives-title big-title">@content.TTitle</h1>
+            @if (content.TCards != null && content.TCards.Any())
+            {
+                <div class="receives-item receives-item-1">
+                    @foreach (var card in content.TCards.Take(2))
+                    {
+                        @await Html.PartialAsync("tutorPartials/TTinyCard", card.Content)
+                    }
+                </div>
+                <div class="receives-item receives-item-2">
+                    @foreach (var card in content.TCards.Skip(2).Take(1))
+                    {
+                        @await Html.PartialAsync("tutorPartials/TTinyCard", card.Content)
+                    }
+                </div>
+                <div class="receives-item receives-item-3">
+                    @foreach (var card in content.TCards.Skip(3).Take(1))
+                    {
+                        @await Html.PartialAsync("tutorPartials/TTinyCard", card.Content)
+                    }
+                </div>
+                <div class="receives-item receives-item-4">
+                    @foreach (var card in content.TCards.Skip(4).Take(1))
+                    {
+                        @await Html.PartialAsync("tutorPartials/TTinyCard", card.Content)
+                    }
+                </div>
+                <div class="receives-item receives-item-5">
+                    @foreach (var card in content.TCards.Skip(5).Take(1))
+                    {
+                        @await Html.PartialAsync("tutorPartials/TTinyCard", card.Content)
+                    }
+                </div>
+                <div class="receives-item receives-item-6">
+                    @foreach (var card in content.TCards.Skip(6).Take(1))
+                    {
+                        @await Html.PartialAsync("tutorPartials/TTinyCard", card.Content)
+                    }
+                </div>
+                <div class="receives-item receives-item-7">
+                    @foreach (var card in content.TCards.Skip(7).Take(2))
+                    {
+                        @await Html.PartialAsync("tutorPartials/TTinyCard", card.Content)
+                    }
+                </div>
+                
+            }
+        </div>            
+    </div>
+</div>

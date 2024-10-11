@@ -11,6 +11,35 @@
     background-color: rgba(0,0,0,0.4);
     backdrop-filter: blur(5px);
 }
+.popup_inside {
+    display: flex;
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height:100%;
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin:auto;
+    justify-content:center;
+    align-items:center;
+}
+    .popup_inside::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .4);
+        backdrop-filter: blur(5px);
+        z-index: -1; 
+        border-radius: inherit; 
+    }
+
 .pop__title {
     font-weight: 600;
     font-size: 30px;
@@ -27,10 +56,25 @@
 }
 /* Pop-up content */
 .popup-content {
+    z-index:101;
     transform: scale(0.85);
     background-color: #fff;
     margin: 3% auto; /* Centered */
     padding: 58px 50px 56px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 590px;
+    max-height: auto;
+    position: relative;
+    text-align: center;
+}
+.popup-content_inside {
+    z-index: 101;
+    transform: scale(0.85);
+    background-color: #fff;
+    padding: 58px 50px 56px;
+    margin: auto;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     width: 90%;
@@ -76,7 +120,18 @@
     }
 
 
-@media (max-width: 600px) {
+@media (max-width:992px){
+    .popup-content_inside {
+        transform:scale(0.5);
+        margin-top:-50px;
+    }
+}
+@media (max-width:700px){
+    .popup-content_inside {
+        padding: 32px 20px 32px 20px;
+    }
+}
+@media (max-width: 619px) {
     .popup-content {
         padding: 10px;
     }
@@ -85,5 +140,32 @@
         top: 5px;
         right: 10px;
         font-size: 24px;
+    }
+
+    .popup-content_inside {
+        margin-top: -80px;
+    }
+}
+
+@media (max-width:576px){
+    .popup-content_inside {
+        width:100%;
+        max-width:600px;
+        margin-top:-70px;
+    }
+    .popup-content_inside .pop__title{
+        font-size:22px;
+    }
+}
+@media (max-width:495px){
+    .popup-content_inside {
+        margin-top: -70px;
+        margin-left: -50px;
+        margin-right: -50px;
+        width:500px;
+    }
+
+    .pop-up-link{
+        width:100% !important;
     }
 }
