@@ -15,7 +15,7 @@
                 @for (int i = 0; i < content.Count; i++)
                 {
                     <div>
-                        @await Html.PartialAsync($"Partials/tutorPartials/{content[i].Content.ContentType.Alias}", content[i].Content)
+                        @await Html.PartialAsync($"Partials/tutorPartials/TSlide", content[i].Content)
                     </div>
                 }
             </div>

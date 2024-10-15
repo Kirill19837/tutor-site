@@ -11,14 +11,16 @@
             <div class="tabs" data-autoMoveDelay="@content.TAutoMoveDelay">
                 @if (content.TSlides.FirstOrDefault()?.Content is TTab firstSlide)
                 {
-                    <button class="tab-button active" data-tab="@firstSlide.TTitle?.ToLower()">@firstSlide.TTitle</button>
+                    <button class="tab-button active fill" data-tab="@firstSlide.TTitle?.ToLower()"><p>@firstSlide.TTitle</p></button>
                 }
                 
                 @foreach (var item in content.TSlides.Skip(1))
                 {
                     if (item.Content is TTab slide)
                     {
-                        <button class="tab-button" data-tab="@slide.TTitle?.ToLower()">@slide.TTitle</button>
+                        <button class="tab-button" data-tab="@slide.TTitle?.ToLower()">
+                            <p>@slide.TTitle</p>
+                        </button>
                     }
                 }
             </div>
