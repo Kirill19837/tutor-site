@@ -3,9 +3,7 @@
 <div class="tiny_card @(Model.TBorder ? "border" : " ")" style="background-color:@Model.TBackgroundColor; @(Model.TGrow ? "flex-grow:1;" : "flex-grow:0; flex-shrink:2")">
     @if(Model.TImage != null)
     {
-        <div class="tiny_card-image" style="order:@(Model.TImageReverse ? 1 : 0)">
-            <img src="@Model.TImage.Url()" />
-        </div>
+        <img class="tiny_card-image" src="@Model.TImage.Url()" style="order:@(Model.TImageReverse ? 1 : 0)" />
     }    
     <div class="tiny_card-text-content">
         @if (!string.IsNullOrEmpty(Model.TTitle))
@@ -18,14 +16,3 @@
         }
     </div>   
 </div>
-
-<style>
-    .tiny_card-image{
-        display:block;
-    }
-    .tiny_card-image img {
-        display:block;
-        width:auto;
-        height:100%;
-    }
-</style>

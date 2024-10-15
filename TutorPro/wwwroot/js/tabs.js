@@ -2,16 +2,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const autoMoveDelay = document.querySelector('.tabs').getAttribute('data-autoMoveDelay') * 1000;
     const tabs = document.querySelectorAll('.tab-button');
     const contents = document.querySelectorAll('.tab-content');
+    const animationDuration = document.querySelector('.tabs').getAttribute('data-autoMoveDelay') + 's';
     let currentTabIndex = 0;
     let intervalId;
 
     function showTab(index) {
         tabs.forEach((t, i) => {
             if (i === index) {
+                t.style.setProperty('--animation-duration', animationDuration);
                 t.classList.add('active');
+                t.classList.add('fill')
                 contents[i].style.display = 'flex';
             } else {
                 t.classList.remove('active');
+                t.classList.remove('fill')
                 contents[i].style.display = 'none';
             }
         });
