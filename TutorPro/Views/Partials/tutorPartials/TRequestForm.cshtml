@@ -37,6 +37,7 @@
             <textarea class="request-form__message" name="SenderMessage" placeholder="@Umbraco.GetDictionaryValue("message placeholder")"></textarea>
         }
         <div class="request-form__actions @(Model.TCentered ? "centered" : "")">
+            <p class="request-form__error"><span></span></p>
             @if (Model.TButton != null)
             {
                 <button id="submitButton" class="request-form__submit link link@(Model.TButton.Content.TFill ? "-main" : "-inverted")" type="submit">
@@ -44,7 +45,7 @@
                     <span class="loading-spinner" style="display: none;"></span>
                 </button>
             }
-            <p class="request-form__error"><span></span></p>
+            
         </div>
     </form>
     <input type="hidden" id="urlToSend" value="@mainPage.TFormUrl" />

@@ -51,7 +51,7 @@
 .material_article_breadcrumbs {
     position: absolute;
     left: 19%;
-    top: 50%;
+    top: 45%;
     text-decoration: none;
     background: url("../images/icons/icon-back.svg") left top/contain no-repeat;
     background-size: 5px;

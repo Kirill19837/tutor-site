@@ -22,7 +22,7 @@
 <div class="material_article" description-data="@Model.TText" tags-data="@metaTags" title-data="@Model.TTitle">
     <div class="matirials__content radial-bg">
         <div style="text-align: center; padding-bottom:12%">
-            <div style="display: inline-block; width: 65%; text-align: left;">
+            <div class="matirials_article_wrap" style="">
                 <ce-tutorpro-material guid="@Model.TGuid" lang="@language" height="@parent.TArticleContentWidth"></ce-tutorpro-material>
             </div>
         </div>
@@ -37,6 +37,7 @@
         }
     </div>
 </div>
+
 <div style="margin-top:-20px">
     @await Html.GetBlockGridHtmlAsync(parent.TAction);
 </div>
