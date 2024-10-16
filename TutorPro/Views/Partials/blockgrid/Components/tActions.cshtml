@@ -61,6 +61,10 @@
                 {
                     <div class="actions__form-wrap">
                         <h2 class="actions__form-title medium-title section-title">@content.TTitle</h2>
+                        @if (!string.IsNullOrEmpty(content.TSubTitle))
+                        {
+                            <p class="actions__form-sub-title">@content.TSubTitle</p>
+                        }                     
                         @await Html.PartialAsync("tutorPartials/TRequestForm", content.TRequestBlock.FirstOrDefault()?.Content, new ViewDataDictionary(ViewData) { { "mainPage", rootPage }, { "mainClass", "actions__form request-form three-cols" } })
                     </div>
                 }          
