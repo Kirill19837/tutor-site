@@ -34,19 +34,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateUrl(item) {
-        const selectedValue = select.value;
+        const selectedValue = select.value.toLowerCase();
         const url = new URL(item.href);
-        const queryValue = item.getAttribute('data-query');
-        return `${url.origin}${url.pathname}${selectedValue.toLowerCase()}/${queryValue.toLowerCase()}`;
+        const queryValue = item.getAttribute('data-query').toLowerCase();
+
+        let pathSegments = url.pathname.split('/').filter(segment => segment);
+
+        pathSegments = pathSegments.slice(0, 2);
+
+        pathSegments.push(selectedValue, queryValue);
+
+        return `${url.origin}/${pathSegments.join('/')}`;
     }
 
-    items.forEach(item => {
-        item.addEventListener('click', function (event) {
-            event.preventDefault();
-            const newUrl = updateUrl(this);
-            window.location.href = newUrl;
-        });
-    });
+    //items.forEach(item => {
+    //    item.addEventListener('click', function (event) {
+    //        event.preventDefault();
+    //        const newUrl = updateUrl(this);
+    //        window.location.href = newUrl;
+    //    });
+    //});
 
     languageElement.addEventListener('change', handleLanguageChange);
 
@@ -56,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const culture = languageElement.getAttribute('data-culture');
 
         const requests = Array.from(items).map(item => {
+            const newUrl = updateUrl(item);
+            item.href = newUrl;
             return $.ajax({
                 url: `/Umbraco/Api/Materials/IsMaterialPageHasChild`,
                 type: 'GET',
@@ -63,6 +72,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 success: function (result) {
                     if (!result) {
                         item.classList.add('disable');
+                    }
+                    else {
+                        item.classList.remove('disable');
                     }
                 },
                 error: function (xhr, status, error) {
